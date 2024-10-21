@@ -17,6 +17,19 @@ export default {
         },
     },
 
+    daisyui: {
+        themes: [
+            "light",
+            "dark",
+            "autumn",
+            "emerald",
+            "winter",
+            "dim",
+            "nord",
+            "fantasy",
+        ],
+    },
+
     plugins: [
         forms,
         require('daisyui'),
