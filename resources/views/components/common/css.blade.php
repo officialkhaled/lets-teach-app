@@ -1,5 +1,7 @@
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css" integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA=="
+	  crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 <style>
     *, ::after, ::before {
@@ -95,6 +97,31 @@
     button, select {
         text-transform: none
     }
+
+	.btn-white {
+        color: #fff !important;
+	}
+	
+    .btn-label {
+        position: relative;
+        padding-left: 44px;
+    }
+
+    .bg-gradient {
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)) !important;
+    }
+
+    .waves-effect {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
 
     [type=button], [type=reset], [type=submit], button {
         -webkit-appearance: button;
