@@ -47,5 +47,7 @@
 		
 		<a href="{{ route('login') }}" class="btn btn-info btn-sm btn-white waves-effect bg-gradient ml-2 mr-1">Login</a>
 		<a href="{{ route('register') }}" class="btn btn-error btn-sm btn-white waves-effect bg-gradient ml-1 mr-1">Register</a>
+	
+	
 	</div>
 </div>
