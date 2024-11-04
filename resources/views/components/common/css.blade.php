@@ -15,6 +15,15 @@
         --tw-content: ''
     }
 
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .scrollbar-hidden {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+
     html {
         line-height: 1.5;
         -webkit-text-size-adjust: 100%;
@@ -26,13 +35,13 @@
 
     body {
         margin: 0;
-        line-height: inherit
+        line-height: inherit;
     }
 
     hr {
         height: 0;
         color: inherit;
-        border-top-width: 1px
+        border-top-width: 1px;
     }
 
     abbr:where([title]) {

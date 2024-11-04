@@ -12,13 +12,14 @@ Route::middleware(['auth', 'can:admin-only'])->group(function () {
     
     Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
+        Route::get('/view', [AdminController::class, 'view'])->name('view');
         Route::get('/create', [AdminController::class, 'create'])->name('create');
         Route::post('/', [AdminController::class, 'store'])->name('store');
-        Route::get('/{styleArchive}/edit', [AdminController::class, 'edit'])->name('edit');
-        Route::put('{styleArchive}', [AdminController::class, 'update'])->name('update');
-        Route::delete('{styleArchive}', [AdminController::class, 'destroy'])->name('delete');
-        Route::get('{styleArchive}/approve', [AdminController::class, 'approve'])->name('approve');
-        Route::get('{styleArchive}/draft', [AdminController::class, 'draft'])->name('draft');
+        Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('edit');
+        Route::put('{id}', [AdminController::class, 'update'])->name('update');
+        Route::delete('{id}', [AdminController::class, 'destroy'])->name('delete');
+        Route::get('{id}/approve', [AdminController::class, 'approve'])->name('approve');
+        Route::get('{id}/draft', [AdminController::class, 'draft'])->name('draft');
     });
 });
 
@@ -41,12 +42,8 @@ Route::middleware(['auth', 'can:parent-only'])->group(function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

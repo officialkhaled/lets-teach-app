@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="corporate">
+<!doctype html>
+<html lang="en" data-theme="corporate" style="-ms-overflow-style: none !important; scrollbar-width: none !important;">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	
-	<title>Let's Teach App</title>
+	<title>Dashboard | Let's Teach App</title>
 	
 	@include('components.common.css')
 </head>
-<body class="antialiased scrollbar-hidden">
+<body>
 
-<div class="container-sm h-lvh scrollbar-hidden">
+<div class="container-sm h-lvh">
 	@include('components.common.header')
 	
 	<div class="min-h-screen bg-gray-100">
@@ -21,6 +22,8 @@
 	
 	@include('components.common.footer')
 </div>
+
+@include('components.common.script')
 
 <script>
 
