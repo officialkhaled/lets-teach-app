@@ -17,21 +17,5 @@ export default {
         },
     },
 
-    daisyui: {
-        themes: [
-            "light",
-            "dark",
-            "cupcake",
-            "dim",
-            "emerald",
-            "corporate",
-            "fantasy",
-            "pastel",
-        ],
-    },
-
-    plugins: [
-        forms,
-        require('daisyui')
-    ],
+    plugins: [forms],
 };
