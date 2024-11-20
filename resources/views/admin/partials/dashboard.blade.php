@@ -2,6 +2,7 @@
 @section('content')
 	
 	<main id="main-container">
+		
 		<div class="content">
 			<div class="row">
 				<div class="col-6 col-xl-3">
@@ -562,6 +563,7 @@
 				</div>
 			</div>
 		</div>
+	
 	</main>
 
 @endsection

@@ -1,16 +1,15 @@
 <!doctype html>
 <html lang="en" class="remember-theme">
 <head>
-	<meta charset="utf-8">
 	<!--
 	  Available classes for <html> element:
-
 	  'dark'                  Enable dark mode - Default dark mode preference can be set in app.js file (always saved and retrieved in localStorage afterwards):
 								window.Codebase = new App({ darkMode: "system" }); // "on" or "off" or "system"
 	  'dark-custom-defined'   Dark mode is always set based on the preference in app.js file (no localStorage is used)
 	  'remember-theme'        Remembers active color theme between pages using localStorage when set through
 								- Theme helper buttons [data-toggle="theme"]
 	-->
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	
 	<title>Admin Dashboard</title>
@@ -20,10 +19,22 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
 	
 	<link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+		  integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
 	<!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
 	<!-- END Stylesheets -->
 	<script src="{{ asset('assets/js/setTheme.js') }}"></script>
+	
+	<style>
+        #page-container.main-content-boxed > #main-container .content,
+        #page-container.main-content-boxed > #page-footer .content,
+        #page-container.main-content-boxed > #page-header .content,
+        #page-container.main-content-boxed > #page-header .content-header {
+            max-width: 1740px !important;
+        }
+	</style>
 </head>
 
 <body>

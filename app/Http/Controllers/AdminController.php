@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.partials.dashboard');
+        $user = Auth::user();
+        
+        return view('admin.partials.dashboard', [
+            'user' => $user
+        ]);
     }
     
     public function create()
