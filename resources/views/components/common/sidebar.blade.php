@@ -14,12 +14,12 @@
 			{{-- Logo --}}
 			<div>
               <span class="smini-visible fw-bold tracking-wide fs-lg">
-                k<span class="text-primary">d</span>
+                l<span class="text-primary">t</span>
               </span>
 				<a class="link-fx fw-bold tracking-wide mx-auto" href="#">
                 <span class="smini-hidden">
                   <i class="fa fa-fire text-primary"></i>
-                  <span class="fs-4 text-dual">khaled</span><span class="fs-4 text-primary">.dev</span>
+                  <span class="fs-4 text-dual">Let's</span><span class="fs-4 text-primary">Teach</span>
                 </span>
 				</a>
 			</div>
@@ -59,43 +59,42 @@
 					</div>
 				</div>
 				
-				<div class="content-side content-side-full">
+				<div class="content	-side content-side-full">
 					<ul class="nav-main">
 						<li class="nav-main-item">
 							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
-								<i class="nav-main-link-icon fa fa-house-user"></i>
+								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
 						<li class="nav-main-item">
-							<a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" href="#">
-								<i class="nav-main-link-icon fa fa-award"></i>
-								<span class="nav-main-link-name">Page Kits</span>
+							<a class="nav-main-link" href="#">
+								<i class="nav-main-link-icon fa-solid fa-users"></i>
+								<span class="nav-main-link-name">User Management</span>
 							</a>
-							<ul class="nav-main-submenu">
-								<li class="nav-main-item open">
-									<a class="nav-main-link" data-toggle="submenu" href="#">
-										<span class="nav-main-link-name">Dashboards</span>
-									</a>
-								</li>
-							</ul>
 						</li>
 						
-						<li class="nav-main-heading">User Interface</li>
 						<li class="nav-main-item">
-							<a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-								<i class="nav-main-link-icon fa fa-grip-vertical"></i>
-								<span class="nav-main-link-name">Blocks</span>
+							<a class="nav-main-link" href="#">
+								<i class="nav-main-link-icon fa-solid fa-tags"></i>
+								<span class="nav-main-link-name">Tag Management</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item">
+							<a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" href="#">
+								<i class="nav-main-link-icon fa-solid fa-envelopes-bulk"></i>
+								<span class="nav-main-link-name">Content Moderation</span>
 							</a>
 							<ul class="nav-main-submenu">
 								<li class="nav-main-item">
 									<a class="nav-main-link" href="#">
-										<span class="nav-main-link-name">Styles</span>
+										<span class="nav-main-link-name">Posts</span>
 									</a>
 								</li>
 								<li class="nav-main-item">
 									<a class="nav-main-link" href="#">
-										<span class="nav-main-link-name">Options</span>
+										<span class="nav-main-link-name">Reviews</span>
 									</a>
 								</li>
 							</ul>

@@ -17,14 +17,11 @@
 	<link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
 	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
-	
 	<link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
-	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
-		  integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-	<!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
-	<!-- END Stylesheets -->
+		  integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link rel="stylesheet" id="css-theme" href="{{ asset('assets/css/themes/flat.min.css') }}">
+	
 	<script src="{{ asset('assets/js/setTheme.js') }}"></script>
 	
 	<style>

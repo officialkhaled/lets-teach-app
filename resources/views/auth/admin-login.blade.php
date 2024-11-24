@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	
-	<title>Login</title>
+	<title>Admin Login</title>
 	
 	<link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
 	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
@@ -31,27 +31,26 @@
 								<span class="fs-4 text-body-color">Let's</span><span class="fs-4">Teach</span>
 							</a>
 							<h1 class="h3 fw-bold mt-4 mb-1">
-								Welcome Back!
+								Welcome Back Admin!
 							</h1>
 							<h2 class="fs-5 lh-base fw-normal text-muted mb-0">
-								Hope you're having a great day today!
+								It’s a great day today!
 							</h2>
 						</div>
 						
 						<form class="js-validation-signin" action="{{ route('login') }}" method="POST">
-							@csrf
 							<div class="block block-themed block-rounded block-fx-shadow">
 								<div class="block-header bg-gd-dusk">
 									<h3 class="block-title">Please Sign In</h3>
 								</div>
 								<div class="block-content">
-									<div class="mb-4">
+									<div class="form-floating mb-4">
+										<input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
 										<label class="form-label" for="email">Email</label>
-										<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
 									</div>
-									<div class="mb-4">
+									<div class="form-floating mb-4">
+										<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" autocomplete="current-password">
 										<label class="form-label" for="password">Password</label>
-										<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" autocomplete="current-password">
 									</div>
 									<div class="row">
 										<div class="col-sm-6 d-sm-flex align-items-center push">
@@ -61,8 +60,8 @@
 											</div>
 										</div>
 										<div class="col-sm-6 text-sm-end push">
-											<button type="submit" class="btn btn-sm btn-alt-primary fw-medium">
-												&nbsp;<i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Sign In&nbsp;
+											<button type="submit" class="btn btn-lg btn-alt-primary fw-medium">
+												Sign In
 											</button>
 										</div>
 									</div>
