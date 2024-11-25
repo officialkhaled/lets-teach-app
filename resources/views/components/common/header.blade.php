@@ -1,5 +1,5 @@
 <header id="page-header">
-	<div class="content-header">
+	<div class="content-header" style="padding-top: 0;">
 		{{-- Left Part --}}
 		<div class="space-x-1">
 			<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle" title="Toggle Sidebar">
@@ -85,20 +85,20 @@
 						</div>
 					</div>
 					
-					{{--					<div class="p-3 bg-body-light rounded-bottom">--}}
-					{{--						<div class="row g-sm text-center">--}}
-					{{--							<div class="col-6">--}}
-					{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
-					{{--									<i class="fa fa-flask opacity-50 me-1"></i> Layout API--}}
-					{{--								</a>--}}
-					{{--							</div>--}}
-					{{--							<div class="col-6">--}}
-					{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
-					{{--									<i class="fa fa-paint-brush opacity-50 me-1"></i> Themes--}}
-					{{--								</a>--}}
-					{{--							</div>--}}
-					{{--						</div>--}}
-					{{--					</div>--}}
+					<div class="p-3 bg-body-light rounded-bottom">
+						<div class="row g-sm text-center">
+							{{--							<div class="col-6">--}}
+							{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
+							{{--									<i class="fa fa-flask opacity-50 me-1"></i> Layout API--}}
+							{{--								</a>--}}
+							{{--							</div>--}}
+							<div class="col-12">
+								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">
+									<i class="fa fa-paint-brush opacity-50 me-1"></i> Themes
+								</a>
+							</div>
+						</div>
+					</div>
 				
 				</div>
 			</div>
@@ -108,8 +108,10 @@
 		@auth
 			<div class="space-x-1">
 				<div class="dropdown d-inline-block">
-					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-user d-sm-none"></i>
+					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
+							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img class="img-avatar img-avatar32" style="margin-right: 6px;"
+							 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
 						<span class="d-none d-sm-inline-block fw-semibold">{{ $user->name }}</span>
 						<i class="fa fa-angle-down opacity-50 ms-1"></i>
 					</button>

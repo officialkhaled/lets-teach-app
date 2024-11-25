@@ -32,20 +32,18 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+        
         if ($request->image) {
-            if ($request->image) {
-                Storage::delete('public/profile_image/' . $request->image);
-            }
-
-            $file = $request->file('image');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/profile_image', $fileName);
+            $user = Auth::user();
             
-            $request->image = $fileName;
+            $imageName = "images/" . time() . '.' . $request->image->extension();
+            $request->image->move(storage_path('app/public/images'), $imageName);
+            
+            $user->image = $imageName;
+            $user->save();
         } else {
             logger('No new profile picture uploaded.');
         }
-        
         
         $request->user()->save();
         

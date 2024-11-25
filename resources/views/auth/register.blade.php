@@ -10,31 +10,58 @@
 	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
 	<link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
-		  integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 	
 	<script src="{{ asset('assets/js/setTheme.js') }}"></script>
+	
+	<style>
+        .select2-selection__clear {
+            background-color: #b1b1b1 !important;
+            border: none;
+            font-size: 1em;
+            font-weight: bold;
+            margin-right: 30px !important;
+        }
+
+        .select2-container--bootstrap4 .select2-selection__clear {
+            float: right;
+            width: 1em;
+            height: 1em;
+            padding-left: .15em;
+            margin-top: 0.7em;
+            margin-right: .3em;
+            line-height: .85em;
+            color: #f8f9fa;
+            background-color: #c8c8c8;
+            border-radius: 100%;
+        }
+
+        .select2-selection__clear:hover {
+            background-color: #868686 !important;
+        }
+	</style>
 </head>
 
 <body>
 
 <div id="page-container" class="main-content-boxed">
-	
 	<main id="main-container">
 		<div class="bg-body-dark">
 			<div class="hero-static content content-full px-1">
 				<div class="row mx-0 justify-content-center">
 					<div class="col-lg-8 col-xl-6">
-						<div class="py-2 text-center">
+						<div class="text-center">
 							<a class="link-fx fw-bold" href="#">
 								<i class="fa fa-fire"></i>
 								<span class="fs-4 text-body-color">Let's</span><span class="fs-4">Teach</span>
 							</a>
-							<h1 class="h3 fw-bold mt-4 mb-1">
+							<h1 class="h3 fw-bold mt-2 mb-0">
 								Create New Account
 							</h1>
-							<h2 class="fs-5 lh-base fw-normal text-muted mb-0">
+							<h2 class="fs-5 lh-base fw-normal text-muted mb-3">
 								We’re excited to have you on board!
 							</h2>
 						</div>
@@ -46,6 +73,7 @@
 								<div class="block-header bg-gd-emerald">
 									<h3 class="block-title">Please enter your details</h3>
 								</div>
+								
 								<div class="block-content">
 									<div class="mb-4">
 										<label class="form-label" for="name">Name</label>
@@ -57,26 +85,28 @@
 									</div>
 									<div class="mb-4">
 										<label class="form-label" for="role">Usertype</label>
-										<select name="role" id="role" class="form-select">
-											<option selected>Select</option>
+										<select name="role" id="role" class="form-select select2">
+											<option></option>
 											<option value="1">Tutor</option>
 											<option value="2">Student</option>
 										</select>
 									</div>
 									<div class="mb-4">
 										<label class="form-label" for="password">Password</label>
-										<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" autocomplete="new-password">
+										<input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+											   autocomplete="new-password">
 									</div>
 									<div class="mb-4">
-										<label class="form-label" for="password_confirmation">Confirm Password</label>
-										<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" autocomplete="new-password">
+										<label class="form-label" for="password-confirm">Confirm Password</label>
+										<input type="password" class="form-control" id="password-confirm" name="password-confirm"
+											   placeholder="Confirm your password" autocomplete="new-password">
 									</div>
 									
 									<div class="row">
 										<div class="col-sm-6 d-sm-flex align-items-center push">
 											<div class="form-check">
 												<input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms" value="1">
-												<label class="form-check-label" for="signup-terms">I agree to Terms</label>
+												<label class="form-check-label" for="signup-terms">Accept Terms &amp; Conditions</label>
 											</div>
 										</div>
 										<div class="col-sm-6 text-sm-end push">
@@ -86,11 +116,13 @@
 										</div>
 									</div>
 								</div>
+								
 								<div class="block-content block-content-full bg-body-light d-flex justify-content-between">
 									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('login') }}">
 										<i class="fa fa-arrow-left opacity-50 me-1"></i> Sign In
 									</a>
-									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="#" data-bs-toggle="modal" data-bs-target="#modal-terms">
+									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="#" data-bs-toggle="modal"
+									   data-bs-target="#modal-terms">
 										<i class="fa fa-book opacity-50 me-1"></i> Read Terms
 									</a>
 								</div>
@@ -149,63 +181,22 @@
 </div>
 
 <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
-<script src="{{ asset('assets/js/lib/jquery.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('assets/js/pages/op_auth_signup.min.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $.fn.select2.defaults.set("theme", "bootstrap4");
+    $.fn.select2.defaults.set("placeholder", "Select");
+
+    $(document).ready(function () {
+        $('.select2').select2({
+            allowClear: true,
+        });
+    });
+</script>
+
 </body>
 </html>
-
-
-{{--<x-guest-layout>--}}
-{{--	<form method="POST" action="{{ route('register') }}">--}}
-{{--		@csrf--}}
-{{--		--}}
-{{--		<!-- Name -->--}}
-{{--		<div>--}}
-{{--			<x-input-label for="name" :value="__('Name')"/>--}}
-{{--			<x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"/>--}}
-{{--			<x-input-error :messages="$errors->get('name')" class="mt-2"/>--}}
-{{--		</div>--}}
-{{--		--}}
-{{--		<!-- Email Address -->--}}
-{{--		<div class="mt-4">--}}
-{{--			<x-input-label for="email" :value="__('Email')"/>--}}
-{{--			<x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username"/>--}}
-{{--			<x-input-error :messages="$errors->get('email')" class="mt-2"/>--}}
-{{--		</div>--}}
-{{--		--}}
-{{--		<!-- Password -->--}}
-{{--		<div class="mt-4">--}}
-{{--			<x-input-label for="password" :value="__('Password')"/>--}}
-{{--			--}}
-{{--			<x-text-input id="password" class="block mt-1 w-full"--}}
-{{--						  type="password"--}}
-{{--						  name="password"--}}
-{{--						  required autocomplete="new-password"/>--}}
-{{--			--}}
-{{--			<x-input-error :messages="$errors->get('password')" class="mt-2"/>--}}
-{{--		</div>--}}
-{{--		--}}
-{{--		<!-- Confirm Password -->--}}
-{{--		<div class="mt-4">--}}
-{{--			<x-input-label for="password_confirmation" :value="__('Confirm Password')"/>--}}
-{{--			--}}
-{{--			<x-text-input id="password_confirmation" class="block mt-1 w-full"--}}
-{{--						  type="password"--}}
-{{--						  name="password_confirmation" required autocomplete="new-password"/>--}}
-{{--			--}}
-{{--			<x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>--}}
-{{--		</div>--}}
-{{--		--}}
-{{--		<div class="flex items-center justify-end mt-4">--}}
-{{--			<a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">--}}
-{{--				{{ __('Already registered?') }}--}}
-{{--			</a>--}}
-{{--			--}}
-{{--			<x-primary-button class="ms-4">--}}
-{{--				{{ __('Register') }}--}}
-{{--			</x-primary-button>--}}
-{{--		</div>--}}
-{{--	</form>--}}
-{{--</x-guest-layout>--}}

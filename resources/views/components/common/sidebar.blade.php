@@ -13,9 +13,9 @@
 		<div class="content-header justify-content-lg-center">
 			{{-- Logo --}}
 			<div>
-              <span class="smini-visible fw-bold tracking-wide fs-lg">
-                l<span class="text-primary">t</span>
-              </span>
+				{{-- <span class="smini-visible fw-bold tracking-wide fs-lg">
+				  l<span class="text-primary">t</span>
+				</span> --}}
 				<a class="link-fx fw-bold tracking-wide mx-auto" href="#">
                 <span class="smini-hidden">
                   <i class="fa fa-fire text-primary"></i>
@@ -34,14 +34,14 @@
 		
 		@auth
 			<div class="js-sidebar-scroll">
-				<div class="content-side content-side-user px-0 py-0">
+				{{-- <div class="content-side content-side-user px-0 py-0">
 					<div class="smini-visible-block animated fadeIn px-3">
-						<img class="img-avatar img-avatar32" src="{{ asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+						<img class="img-avatar img-avatar32" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
 					</div>
-					
+
 					<div class="smini-hidden text-center mx-auto">
 						<a class="img-link" href="#">
-							<img class="img-avatar" src="{{ asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+							<img class="img-avatar" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
 						</a>
 						<ul class="list-inline mt-3 mb-0">
 							<li class="list-inline-item">
@@ -50,6 +50,7 @@
 							<li class="list-inline-item">
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
 									@csrf
+
 									<button type="submit" class="btn">
 										<i class="fa fa-sign-out-alt text-danger"></i>
 									</button>
@@ -57,18 +58,19 @@
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> --}}
 				
-				<div class="content	-side content-side-full">
+				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
-						<li class="nav-main-item">
+						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
 							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item">
-							<a class="nav-main-link" href="#">
+						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
+							   href="{{ route('admin.user-management.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-users"></i>
 								<span class="nav-main-link-name">User Management</span>
 							</a>

@@ -16,7 +16,7 @@
 								</p>
 							</div>
 							<div class="">
-								<a href="{{  url()->previous() }}" class="btn btn-info btn-sm">
+								<a href="{{ route('admin.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 									&nbsp;<i class="fa-regular fa-circle-left"></i>&nbsp;&nbsp;Back&nbsp;
 								</a>
 							</div>
@@ -35,30 +35,12 @@
 									<div class="row">
 										<div class="col-md-6">
 											<label class="form-label" for="name">Name</label>
-											<input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ $user->name }}">
+											<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ $user->name }}">
 										</div>
 										
 										<div class="col-md-6">
 											<label class="form-label" for="email">Email</label>
-											<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ $user->email }}">
-											
-											{{--											@if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())--}}
-											{{--												<div>--}}
-											{{--													<p class="text-sm mt-2 text-gray-800">--}}
-											{{--														{{ __('Your email address is unverified.') }}--}}
-											{{--														--}}
-											{{--														<button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">--}}
-											{{--															{{ __('Click here to re-send the verification email.') }}--}}
-											{{--														</button>--}}
-											{{--													</p>--}}
-											{{--													--}}
-											{{--													@if (session('status') === 'verification-link-sent')--}}
-											{{--														<p class="mt-2 font-medium text-sm text-green-600">--}}
-											{{--															{{ __('A new verification link has been sent to your email address.') }}--}}
-											{{--														</p>--}}
-											{{--													@endif--}}
-											{{--												</div>--}}
-											{{--											@endif--}}
+											<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="{{ $user->email }}">
 										</div>
 									</div>
 									
@@ -69,8 +51,9 @@
 										</div>
 										
 										<div class="col-md-6 text-center">
-											<img id="preview" alt="Profile Picture Preview" class="img-fluid" style="width: 150px; height: 150px; object-fit: cover"
-												 src="{{ $user->image ? asset('storage/profile_image/' . $user->image) : asset('assets/no_image.jpg') }}">
+											<img id="preview" alt="Profile Picture Preview" class="img-fluid"
+												 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
+												 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/no_image.jpg') }}">
 										</div>
 									</div>
 								</div>

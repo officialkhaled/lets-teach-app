@@ -101,7 +101,7 @@ class pageFormsValidation {
         'val-digits': 'Please enter only digits!',
         'val-number': 'Please enter a number!',
         'val-range': 'Please enter a number between 1 and 5!',
-        'val-terms': 'You must agree to the service terms!'
+        'val-terms': 'You must agree to the T/C!'
       }
     });
 

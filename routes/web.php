@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserManagementController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 
@@ -22,7 +23,18 @@ Route::middleware('auth')->group(function () {
             Route::post('/', 'store')->name('store');
             Route::get('/{id}', 'edit')->name('edit');
             Route::patch('/', 'update')->name('update');
-            Route::delete('/{id}', 'delete')->name('delete');
+            Route::delete('/{id}', 'destroy')->name('destroy');
+        });
+        
+        Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
+            Route::controller(UserManagementController::class)->group(function () {
+                Route::get('/users-list', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('/{user}', 'edit')->name('edit');
+                Route::patch('/', 'update')->name('update');
+                Route::delete('/{user}', 'destroy')->name('destroy');
+            });
         });
     });
     

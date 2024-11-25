@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-
+    
     /**
      * Handle an incoming registration request.
      *
@@ -32,22 +32,23 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'role' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        dd('test');
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
-
+        
         event(new Registered($user));
-
+        
         Auth::login($user);
-
+        
         return redirect(RouteServiceProvider::HOME);
     }
 }
