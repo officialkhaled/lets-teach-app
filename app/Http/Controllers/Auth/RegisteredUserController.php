@@ -30,25 +30,29 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'role' => ['required'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-        dd('test');
-        
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password),
-        ]);
-        
-        event(new Registered($user));
-        
-        Auth::login($user);
-        
-        return redirect(RouteServiceProvider::HOME);
+        try {
+            $request->validate([
+                'name' => ['required', 'string'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'unique:' . User::class],
+                'role' => ['required'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
+            
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role,
+                'password' => Hash::make($request->password),
+            ]);
+            
+            event(new Registered($user));
+            
+            Auth::login($user);
+            
+            return redirect(RouteServiceProvider::HOME);
+        } catch (\Exception $e) {
+            \Log::error('Error during user registration: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => 'An error occurred during registration.']);
+        }
     }
 }

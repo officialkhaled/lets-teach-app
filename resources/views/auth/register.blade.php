@@ -97,17 +97,17 @@
 											   autocomplete="new-password">
 									</div>
 									<div class="mb-4">
-										<label class="form-label" for="password-confirm">Confirm Password</label>
-										<input type="password" class="form-control" id="password-confirm" name="password-confirm"
+										<label class="form-label" for="password_confirmation">Confirm Password</label>
+										<input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
 											   placeholder="Confirm your password" autocomplete="new-password">
 									</div>
 									
 									<div class="row">
 										<div class="col-sm-6 d-sm-flex align-items-center push">
-											<div class="form-check">
-												<input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms" value="1">
-												<label class="form-check-label" for="signup-terms">Accept Terms &amp; Conditions</label>
-											</div>
+{{--											<div class="form-check">--}}
+{{--												<input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms" value="1">--}}
+{{--												<label class="form-check-label" for="signup-terms">Accept Terms &amp; Conditions</label>--}}
+{{--											</div>--}}
 										</div>
 										<div class="col-sm-6 text-sm-end push">
 											<button type="submit" class="btn btn-sm btn-alt-primary fw-semibold">

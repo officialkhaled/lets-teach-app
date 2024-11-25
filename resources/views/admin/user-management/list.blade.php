@@ -29,7 +29,7 @@
 								<td class="fw-semibold">{{ $user->name }}</td>
 								<td class="d-none d-sm-table-cell">{{ $user->email }}</td>
 								<td class="d-none d-sm-table-cell text-center">
-									<span class="badge {{ $user->role === 1 ? 'bg-primary' : 'bg-info' }}">
+									<span class="badge {{ $user->role === 1 ? 'bg-info' : 'bg-warning' }}">
 										{{ $user->role === 1 ? 'Tutor' : 'Student' }}
 									</span>
 								</td>
