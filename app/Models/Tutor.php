@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tutor extends Model
@@ -17,6 +18,10 @@ class Tutor extends Model
         'education',
         'skills',
         'tags',
+    ];
+    
+    protected $casts = [
+        'education' => Json::class,
     ];
     
     public function user(): BelongsTo

@@ -19,9 +19,8 @@ Route::middleware(['auth', 'role:0,1,2'])->group(function () {
             Route::controller(UserManagementController::class)->group(function () {
                 Route::get('/users-list', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
-                Route::post('/', 'store')->name('store');
                 Route::get('/{user}/edit', 'edit')->name('edit');
-                Route::patch('/', 'update')->name('update');
+                Route::patch('/{user}', 'update')->name('update');
                 Route::delete('/{user}', 'destroy')->name('destroy');
             });
         });

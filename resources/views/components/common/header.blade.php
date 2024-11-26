@@ -1,5 +1,6 @@
 <header id="page-header">
 	<div class="content-header" style="padding-top: 0;">
+		
 		{{-- Left Part --}}
 		<div class="space-x-1">
 			<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle" title="Toggle Sidebar">
@@ -110,10 +111,9 @@
 				<div class="dropdown d-inline-block">
 					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
 							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img class="img-avatar img-avatar32" style="margin-right: 6px;" onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
-							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="">
-						{{--						<img class="img-avatar img-avatar32" style="margin-right: 6px;" --}}
-						{{--							 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">--}}
+						<img class="img-avatar img-avatar32" style="margin-right: 6px;"
+							 onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
+							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="Image">
 						<span class="d-none d-sm-inline-block fw-semibold">{{ auth()->user()->name }}</span>
 						<i class="fa fa-angle-down opacity-50 ms-1"></i>
 					</button>
@@ -131,10 +131,6 @@
 							<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 								<span>Inbox</span>
 								<i class="fa fa-fw fa-envelope-open opacity-25"></i>
-							</a>
-							<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="#">
-								<span>Invoices</span>
-								<i class="fa fa-fw fa-file opacity-25"></i>
 							</a>
 							
 							<div class="dropdown-divider"></div>
