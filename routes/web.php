@@ -1,29 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserManagementController;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:0,1,2'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::controller(AdminController::class)->group(function () {
+        Route::controller(AdminDashboardController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('/', 'store')->name('store');
-            Route::get('/{id}', 'edit')->name('edit');
-            Route::patch('/', 'update')->name('update');
-            Route::delete('/{id}', 'destroy')->name('destroy');
         });
         
         Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
@@ -31,7 +20,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/users-list', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
                 Route::post('/', 'store')->name('store');
-                Route::get('/{user}', 'edit')->name('edit');
+                Route::get('/{user}/edit', 'edit')->name('edit');
                 Route::patch('/', 'update')->name('update');
                 Route::delete('/{user}', 'destroy')->name('destroy');
             });

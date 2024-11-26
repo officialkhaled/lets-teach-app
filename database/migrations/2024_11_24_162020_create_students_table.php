@@ -11,9 +11,10 @@ return new class extends Migration {
             $table->id();
             
             $table->unsignedBigInteger('user_id');
-            $table->string('class');
-            $table->string('subjects');
-            $table->string('tags');
+            $table->string('phone_number')->nullable();
+            $table->string('class')->nullable();
+            $table->string('subjects')->nullable();
+            $table->string('tags')->nullable();
             
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ class Tutor extends Model
     
     protected $fillable = [
         'user_id',
+        'phone_number',
         'bio',
         'experience',
         'education',
@@ -20,6 +21,6 @@ class Tutor extends Model
     
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
 }

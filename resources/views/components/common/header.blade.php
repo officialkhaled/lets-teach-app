@@ -85,20 +85,20 @@
 						</div>
 					</div>
 					
-					<div class="p-3 bg-body-light rounded-bottom">
-						<div class="row g-sm text-center">
-							{{--							<div class="col-6">--}}
-							{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
-							{{--									<i class="fa fa-flask opacity-50 me-1"></i> Layout API--}}
-							{{--								</a>--}}
-							{{--							</div>--}}
-							<div class="col-12">
-								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">
-									<i class="fa fa-paint-brush opacity-50 me-1"></i> Themes
-								</a>
-							</div>
-						</div>
-					</div>
+					{{--					<div class="p-3 bg-body-light rounded-bottom">--}}
+					{{--						<div class="row g-sm text-center">--}}
+					{{--							<div class="col-6">--}}
+					{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
+					{{--									<i class="fa fa-flask opacity-50 me-1"></i> Layout API--}}
+					{{--								</a>--}}
+					{{--							</div>--}}
+					{{--							<div class="col-12">--}}
+					{{--								<a class="dropdown-item fs-sm fw-medium mb-0" href="#">--}}
+					{{--									<i class="fa fa-paint-brush opacity-50 me-1"></i> Themes--}}
+					{{--								</a>--}}
+					{{--							</div>--}}
+					{{--						</div>--}}
+					{{--					</div>--}}
 				
 				</div>
 			</div>
@@ -110,15 +110,17 @@
 				<div class="dropdown d-inline-block">
 					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
 							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img class="img-avatar img-avatar32" style="margin-right: 6px;"
-							 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
-						<span class="d-none d-sm-inline-block fw-semibold">{{ $user->name }}</span>
+						<img class="img-avatar img-avatar32" style="margin-right: 6px;" onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
+							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="">
+						{{--						<img class="img-avatar img-avatar32" style="margin-right: 6px;" --}}
+						{{--							 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">--}}
+						<span class="d-none d-sm-inline-block fw-semibold">{{ auth()->user()->name }}</span>
 						<i class="fa fa-angle-down opacity-50 ms-1"></i>
 					</button>
 					<div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
 						<div class="px-2 py-3 bg-body-light rounded-top">
 							<h5 class="h6 text-center mb-0">
-								{{ $user->name }}
+								{{ auth()->user()->name }}
 							</h5>
 						</div>
 						<div class="p-2">

@@ -11,11 +11,12 @@ return new class extends Migration {
             $table->id();
             
             $table->unsignedBigInteger('user_id');
+            $table->string('phone_number')->nullable();
             $table->string('bio')->nullable();
-            $table->string('experience');
-            $table->string('education');
-            $table->string('skills');
-            $table->string('tags');
+            $table->string('experience')->nullable();
+            $table->string('education')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('tags')->nullable();
             
             $table->timestamps();
         });

@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		
-		@auth
+		@if (auth()->user()->role == 0)
 			<div class="js-sidebar-scroll">
 				{{-- <div class="content-side content-side-user px-0 py-0">
 					<div class="smini-visible-block animated fadeIn px-3">
@@ -104,7 +104,131 @@
 					</ul>
 				</div>
 			</div>
-		@endauth
+		@endif
+		
+		@if (auth()->user()->role == 1)
+			<div class="js-sidebar-scroll">
+				{{-- <div class="content-side content-side-user px-0 py-0">
+					<div class="smini-visible-block animated fadeIn px-3">
+						<img class="img-avatar img-avatar32" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+					</div>
+
+					<div class="smini-hidden text-center mx-auto">
+						<a class="img-link" href="#">
+							<img class="img-avatar" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+						</a>
+						<ul class="list-inline mt-3 mb-0">
+							<li class="list-inline-item">
+								<a class="link-fx text-dual fs-sm fw-semibold text-uppercase" href="{{ route('admin.index') }}">{{ $user->name }}</a>
+							</li>
+							<li class="list-inline-item">
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
+									@csrf
+
+									<button type="submit" class="btn">
+										<i class="fa fa-sign-out-alt text-danger"></i>
+									</button>
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div> --}}
+				
+				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
+					<ul class="nav-main">
+						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+								<i class="nav-main-link-icon fa-solid fa-house"></i>
+								<span class="nav-main-link-name">Dashboard</span>
+							</a>
+						</li>
+						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
+							   href="{{ route('admin.user-management.index') }}">
+								<i class="nav-main-link-icon fas fa-address-card"></i>
+								<span class="nav-main-link-name">Profile Management</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item ">
+							<a class="nav-main-link " href="#">
+								<i class="nav-main-link-icon fas fa-sitemap"></i>
+								<span class="nav-main-link-name">Student Post Interaction</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item ">
+							<a class="nav-main-link " href="#">
+								<i class="nav-main-link-icon fas fa-star"></i>
+								<span class="nav-main-link-name">Ratings and Reviews</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		@endif
+		
+		@if (auth()->user()->role == 2)
+			<div class="js-sidebar-scroll">
+				{{-- <div class="content-side content-side-user px-0 py-0">
+					<div class="smini-visible-block animated fadeIn px-3">
+						<img class="img-avatar img-avatar32" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+					</div>
+
+					<div class="smini-hidden text-center mx-auto">
+						<a class="img-link" href="#">
+							<img class="img-avatar" src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/media/avatars/avatar15.jpg') }}" alt="">
+						</a>
+						<ul class="list-inline mt-3 mb-0">
+							<li class="list-inline-item">
+								<a class="link-fx text-dual fs-sm fw-semibold text-uppercase" href="{{ route('admin.index') }}">{{ $user->name }}</a>
+							</li>
+							<li class="list-inline-item">
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
+									@csrf
+
+									<button type="submit" class="btn">
+										<i class="fa fa-sign-out-alt text-danger"></i>
+									</button>
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div> --}}
+				
+				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
+					<ul class="nav-main">
+						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+								<i class="nav-main-link-icon fa-solid fa-house"></i>
+								<span class="nav-main-link-name">Dashboard</span>
+							</a>
+						</li>
+						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
+							   href="{{ route('admin.user-management.index') }}">
+								<i class="nav-main-link-icon fas fa-address-card"></i>
+								<span class="nav-main-link-name">Profile Management</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item ">
+							<a class="nav-main-link " href="#">
+								<i class="nav-main-link-icon fas fa-tasks"></i>
+								<span class="nav-main-link-name">Post Management</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item ">
+							<a class="nav-main-link " href="#">
+								<i class="nav-main-link-icon fas fa-chalkboard-teacher"></i>
+								<span class="nav-main-link-name">Tutor Interaction</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		@endif
 		
 		@guest
 			<div class="js-sidebar-scroll">

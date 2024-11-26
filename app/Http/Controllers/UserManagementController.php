@@ -10,13 +10,11 @@ class UserManagementController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
         $users = User::query()
             ->whereNot('role', 0)
             ->get();
         
         return view('admin.user-management.list', [
-            'user' => $user,
             'users' => $users,
         ]);
     }
