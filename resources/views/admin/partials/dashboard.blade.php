@@ -9,11 +9,11 @@
 					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="si si-bag fa-2x text-primary-light"></i>
+								<i class="fa-solid fa-person-chalkboard fa-2x text-primary-light"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-primary">1500</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Sales</div>
+								<div class="fs-3 fw-semibold text-primary">{{ $tutors->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-muted">Tutors</div>
 							</div>
 						</div>
 					</a>
@@ -23,11 +23,11 @@
 					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="si si-wallet fa-2x text-earth-light"></i>
+								<i class="fa-solid fa-graduation-cap fa-2x text-earth-light"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-earth">$780</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Earnings</div>
+								<div class="fs-3 fw-semibold text-earth">{{ $students->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-muted">Students</div>
 							</div>
 						</div>
 					</a>
@@ -37,11 +37,11 @@
 					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="si si-envelope-open fa-2x text-elegance-light"></i>
+								<i class="fa-solid fa-tags fa-2x text-pulse"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-elegance">15</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Messages</div>
+								<div class="fs-3 fw-semibold text-pulse">{{ $tags->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-muted">Tags</div>
 							</div>
 						</div>
 					</a>
@@ -51,11 +51,11 @@
 					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="si si-users fa-2x text-pulse"></i>
+								<i class="fa-solid fa-envelopes-bulk fa-2x text-elegance-light"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-pulse">4252</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Online</div>
+								<div class="fs-3 fw-semibold text-elegance">{{ $posts->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-muted">Posts</div>
 							</div>
 						</div>
 					</a>
@@ -63,108 +63,119 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-6">
-					<div class="block block-rounded block-bordered">
-						<div class="block-header block-header-default border-bottom">
-							<h3 class="block-title">
-								Sales <small>This week</small>
-							</h3>
-							<div class="block-options">
-								<button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-									<i class="si si-refresh"></i>
-								</button>
-								<button type="button" class="btn-block-option">
-									<i class="si si-wrench"></i>
-								</button>
-							</div>
-						</div>
-						
-						<div class="block-content block-content-full">
-							<div class="pull pt-5">
-								<!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->
-								<!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-								<canvas id="js-chartjs-dashboard-lines" style="height: 290px"></canvas>
-							</div>
-						</div>
-						
-						<div class="block-content">
-							<div class="row items-push text-center">
-								<div class="col-6 col-sm-4">
-									<div class="fw-semibold text-success">
-										<i class="fa fa-caret-up"></i> +16%
-									</div>
-									<div class="fs-4 fw-semibold">720</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">This Month</div>
-								</div>
-								<div class="col-6 col-sm-4">
-									<div class="fw-semibold text-danger">
-										<i class="fa fa-caret-down"></i> -3%
-									</div>
-									<div class="fs-4 fw-semibold">160</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">This Week</div>
-								</div>
-								<div class="col-12 col-sm-4">
-									<div class="fw-semibold text-success">
-										<i class="fa fa-caret-up"></i> +9%
-									</div>
-									<div class="fs-4 fw-semibold">24.3</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">Average</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-6">
-					<div class="block block-rounded block-bordered">
-						<div class="block-header block-header-default border-bottom">
-							<h3 class="block-title">
-								Earnings <small>This week</small>
-							</h3>
-							<div class="block-options">
-								<button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-									<i class="si si-refresh"></i>
-								</button>
-								<button type="button" class="btn-block-option">
-									<i class="si si-wrench"></i>
-								</button>
-							</div>
-						</div>
-						<div class="block-content block-content-full">
-							<div class="pull pt-5">
-								<!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->
-								<!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-								<canvas id="js-chartjs-dashboard-lines2" style="height: 290px"></canvas>
-							</div>
-						</div>
-						<div class="block-content bg-body-extra-light">
-							<div class="row items-push text-center">
-								<div class="col-6 col-sm-4">
-									<div class="fw-semibold text-success">
-										<i class="fa fa-caret-up"></i> +4%
-									</div>
-									<div class="fs-4 fw-semibold">$ 6,540</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">This Month</div>
-								</div>
-								<div class="col-6 col-sm-4">
-									<div class="fw-semibold text-danger">
-										<i class="fa fa-caret-down"></i> -7%
-									</div>
-									<div class="fs-4 fw-semibold">$ 1,525</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">This Week</div>
-								</div>
-								<div class="col-12 col-sm-4">
-									<div class="fw-semibold text-success">
-										<i class="fa fa-caret-up"></i> +35%
-									</div>
-									<div class="fs-4 fw-semibold">$ 9,352</div>
-									<div class="fs-sm fw-semibold text-uppercase text-muted">Balance</div>
-								</div>
-							</div>
-						</div>
+				<div class="col-md-12">
+					<div class="block block-rounded block-bordered block-link-shadow d-flex justify-content-center"
+						 style="height: 400px; align-items: center">
+						<h1 class="block-title" style="font-size: 28px; flex: none; cursor: pointer;">
+							Welcome to your Dashboard!
+						</h1>
 					</div>
 				</div>
 			</div>
+			
+			{{--			<div class="row">--}}
+			{{--				<div class="col-md-6">--}}
+			{{--					<div class="block block-rounded block-bordered">--}}
+			{{--						<div class="block-header block-header-default border-bottom">--}}
+			{{--							<h3 class="block-title">--}}
+			{{--								Sales <small>This week</small>--}}
+			{{--							</h3>--}}
+			{{--							<div class="block-options">--}}
+			{{--								<button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">--}}
+			{{--									<i class="si si-refresh"></i>--}}
+			{{--								</button>--}}
+			{{--								<button type="button" class="btn-block-option">--}}
+			{{--									<i class="si si-wrench"></i>--}}
+			{{--								</button>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--						--}}
+			{{--						<div class="block-content block-content-full">--}}
+			{{--							<div class="pull pt-5">--}}
+			{{--								<!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->--}}
+			{{--								<!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->--}}
+			{{--								<canvas id="js-chartjs-dashboard-lines" style="height: 290px"></canvas>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--						--}}
+			{{--						<div class="block-content">--}}
+			{{--							<div class="row items-push text-center">--}}
+			{{--								<div class="col-6 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-success">--}}
+			{{--										<i class="fa fa-caret-up"></i> +16%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">720</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">This Month</div>--}}
+			{{--								</div>--}}
+			{{--								<div class="col-6 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-danger">--}}
+			{{--										<i class="fa fa-caret-down"></i> -3%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">160</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">This Week</div>--}}
+			{{--								</div>--}}
+			{{--								<div class="col-12 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-success">--}}
+			{{--										<i class="fa fa-caret-up"></i> +9%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">24.3</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">Average</div>--}}
+			{{--								</div>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--					</div>--}}
+			{{--				</div>--}}
+			{{--				--}}
+			{{--				<div class="col-md-6">--}}
+			{{--					<div class="block block-rounded block-bordered">--}}
+			{{--						<div class="block-header block-header-default border-bottom">--}}
+			{{--							<h3 class="block-title">--}}
+			{{--								Earnings <small>This week</small>--}}
+			{{--							</h3>--}}
+			{{--							<div class="block-options">--}}
+			{{--								<button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">--}}
+			{{--									<i class="si si-refresh"></i>--}}
+			{{--								</button>--}}
+			{{--								<button type="button" class="btn-block-option">--}}
+			{{--									<i class="si si-wrench"></i>--}}
+			{{--								</button>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--						<div class="block-content block-content-full">--}}
+			{{--							<div class="pull pt-5">--}}
+			{{--								<!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->--}}
+			{{--								<!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->--}}
+			{{--								<canvas id="js-chartjs-dashboard-lines2" style="height: 290px"></canvas>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--						<div class="block-content bg-body-extra-light">--}}
+			{{--							<div class="row items-push text-center">--}}
+			{{--								<div class="col-6 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-success">--}}
+			{{--										<i class="fa fa-caret-up"></i> +4%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">$ 6,540</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">This Month</div>--}}
+			{{--								</div>--}}
+			{{--								<div class="col-6 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-danger">--}}
+			{{--										<i class="fa fa-caret-down"></i> -7%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">$ 1,525</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">This Week</div>--}}
+			{{--								</div>--}}
+			{{--								<div class="col-12 col-sm-4">--}}
+			{{--									<div class="fw-semibold text-success">--}}
+			{{--										<i class="fa fa-caret-up"></i> +35%--}}
+			{{--									</div>--}}
+			{{--									<div class="fs-4 fw-semibold">$ 9,352</div>--}}
+			{{--									<div class="fs-sm fw-semibold text-uppercase text-muted">Balance</div>--}}
+			{{--								</div>--}}
+			{{--							</div>--}}
+			{{--						</div>--}}
+			{{--					</div>--}}
+			{{--				</div>--}}
+			{{--			</div>--}}
 			
 			{{--			<div class="row">--}}
 			{{--				<div class="col-md-6">--}}
@@ -570,5 +581,9 @@
 		</div>
 	
 	</main>
+
+@endsection
+
+@section('script')
 
 @endsection
