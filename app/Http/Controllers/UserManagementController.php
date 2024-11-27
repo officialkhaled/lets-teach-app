@@ -43,34 +43,44 @@ class UserManagementController extends Controller
                 ->first();
         }
         
+        $selectedSubjects = $tutor->subjects ?? [];
+        $selectedGrades = $tutor->grades ?? [];
+        
         return view('admin.user-management.edit-user', [
             'user' => $user,
             'tutor' => $tutor,
             'student' => $student,
             'tags' => $tags,
+            'selectedSubjects' => $selectedSubjects,
+            'selectedGrades' => $selectedGrades,
         ]);
     }
     
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        $tutor = Tutor::findOrFail($id);
+        dd($request->all(), $user);
         
-        $tutor->update($request->except(['education', 'subjects', 'skills']));
+        if ($user->role == 1) {
+            $tutor = Tutor::findOrFail($id);
+            
+            $tutor->update($request->except(['education', 'subjects', 'skills']));
+            
+            $tutor->education = [
+                'institution' => $request->input('institution'),
+                'degree' => $request->input('degree'),
+                'score' => $request->input('score'),
+                'completion_year' => $request->input('completion_year'),
+            ];
+            
+            $tutor->subjects = $request->input('subjects');
+            $tutor->grades = $request->input('grades');
+            
+            $tutor->save();
+            
+            return redirect()->route('admin.user-management.index')->with('success', 'Tutor updated successfully.');
+        } else if ($user->role == 2) {
         
-        $tutor->education = [
-            'institution' => $request->input('institution'),
-            'degree' => $request->input('degree'),
-            'score' => $request->input('score'),
-            'completion_year' => $request->input('completion_year'),
-        ];
-        
-        $tutor->subjects = $request->input('subjects');
-        $tutor->grades = $request->input('grades');
-        
-        $tutor->save();
-        
-        return redirect()->route('admin.user-management.index')->with('success', 'Tutor updated successfully.');
+        }
     }
     
     public function destroy($id)

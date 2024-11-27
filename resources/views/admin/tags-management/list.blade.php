@@ -9,6 +9,10 @@
 					<h3 class="block-title">
 						Tags Management <small>(Subjects &amp; Grades List)</small>
 					</h3>
+					
+					<a href="{{ route('admin.tags-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+						&nbsp;<i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add&nbsp;
+					</a>
 				</div>
 				
 				<div class="block-content block-content-full overflow-x-auto">
@@ -27,19 +31,30 @@
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
 								<td class="fw-semibold">{{ $tag->name }}</td>
-								<td class="d-none d-sm-table-cell">{{ $tag->type === 1 ? 'Subject' : 'Grade' }}</td>
+								<td class="d-none d-sm-table-cell">
+									<span class="badge {{ $tag->type === 1 ? 'bg-info' : 'bg-warning' }}">
+										{{ $tag->type === 1 ? 'Subject' : 'Grade' }}
+									</span>
+								</td>
 								<td class="d-none d-sm-table-cell text-center">
-									<span class="badge {{ $tag->status === 1 ? 'bg-info' : 'bg-warning' }}">
+									<span class="badge {{ $tag->status === 1 ? 'bg-success' : 'bg-secondary' }}">
 										{{ $tag->status === 1 ? 'Active' : 'Inactive' }}
 									</span>
 								</td>
-								<td class="d-none d-sm-table-cell text-center d-flex justify-content-center gap-2">
-									<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
-										&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
-									</a>
-									<a class="btn btn-danger btn-sm" href="{{ route('admin.tags-management.destroy', $tag->id) }}">
-										&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
-									</a>
+								<td class="d-none d-sm-table-cell text-center">
+									<div class="d-flex justify-content-center gap-2">
+										<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
+											&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
+										</a>
+										<form action="{{ route('admin.tags-management.destroy', $tag->id) }}" method="POST">
+											@csrf
+											@method('DELETE')
+											
+											<button class="btn btn-danger btn-sm">
+												&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+											</button>
+										</form>
+									</div>
 								</td>
 							</tr>
 						@endforeach

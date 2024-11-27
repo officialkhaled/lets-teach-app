@@ -18,7 +18,7 @@
 				<div class="block-content block-content-full overflow-x-auto">
 					@if ($user->role == 1)
 						<div class="row">
-							<form method="post" action="{{ route('admin.user-management.update', $tutor->id) }}" class="space-y-3" enctype="multipart/form-data">
+							<form method="POST" action="{{ route('admin.user-management.update', $tutor->id) }}" class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
 								
@@ -90,7 +90,7 @@
 									
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
-											<h2 class="block-title fw-bold content-heading">Profile Picture</h2>
+											<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
 										</div>
 									</div>
 									
@@ -100,17 +100,20 @@
 											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 1) as $tag)
-													<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
 												@endforeach
 											</select>
 										</div>
-										
 										<div class="col-md-6">
 											<label class="form-label" for="grades">Grades</label>
 											<select name="grades[]" id="grades" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 2) as $tag)
-													<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
 												@endforeach
 											</select>
 										</div>
@@ -144,9 +147,9 @@
 										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
 									
-									<button class="btn btn-warning btn-sm" type="button">
+									<a href="{{ route('admin.user-management.create') }}" class="btn btn-warning btn-sm" type="button">
 										&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh&nbsp;
-									</button>
+									</a>
 								</div>
 							</form>
 						</div>

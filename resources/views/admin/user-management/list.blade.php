@@ -44,18 +44,20 @@
 										{{ $user->role === 1 ? 'Tutor' : 'Student' }}
 									</span>
 								</td>
-								<td class="d-none d-sm-table-cell text-center d-flex justify-content-center gap-2">
-									<a class="btn btn-success btn-sm" href="{{ route('admin.user-management.edit', $user->id) }}">
-										&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
-									</a>
-									<form action="{{ route('admin.user-management.destroy', $user->id) }}" method="POST"
-										  onsubmit="return confirm('Are you sure you want to delete this user?');">
-										@csrf
-										@method('DELETE')
-										<button class="btn btn-danger btn-sm">
-											&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
-										</button>
-									</form>
+								<td class="d-none d-sm-table-cell text-center">
+									<div class="d-flex justify-content-center gap-2">
+										<a class="btn btn-success btn-sm" href="{{ route('admin.user-management.edit', $user->id) }}">
+											&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
+										</a>
+										<form action="{{ route('admin.user-management.destroy', $user->id) }}" method="POST">
+											@csrf
+											@method('DELETE')
+											
+											<button class="btn btn-danger btn-sm">
+												&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+											</button>
+										</form>
+									</div>
 								</td>
 							</tr>
 						@endforeach

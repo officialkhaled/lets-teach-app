@@ -30,6 +30,7 @@ Route::middleware(['auth', 'role:0,1,2'])->group(function () {
             Route::controller(TagManagementController::class)->group(function () {
                 Route::get('/tags-list', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
                 Route::get('/{tag}/edit', 'edit')->name('edit');
                 Route::patch('/{tag}', 'update')->name('update');
                 Route::delete('/{tag}', 'destroy')->name('destroy');
