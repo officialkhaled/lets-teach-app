@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserManagementController;
 
@@ -22,6 +23,16 @@ Route::middleware(['auth', 'role:0,1,2'])->group(function () {
                 Route::get('/{user}/edit', 'edit')->name('edit');
                 Route::patch('/{user}', 'update')->name('update');
                 Route::delete('/{user}', 'destroy')->name('destroy');
+            });
+        });
+        
+        Route::group(['prefix' => 'tags-management', 'as' => 'tags-management.'], function () {
+            Route::controller(TagManagementController::class)->group(function () {
+                Route::get('/tags-list', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::get('/{tag}/edit', 'edit')->name('edit');
+                Route::patch('/{tag}', 'update')->name('update');
+                Route::delete('/{tag}', 'destroy')->name('destroy');
             });
         });
     });

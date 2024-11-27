@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Tutor;
 use App\Models\Student;
@@ -13,6 +14,7 @@ class UserManagementController extends Controller
     {
         $users = User::query()
             ->whereNot('role', 0)
+            ->latest()
             ->get();
         
         return view('admin.user-management.list', [
@@ -24,6 +26,10 @@ class UserManagementController extends Controller
     {
         $tutor = null;
         $student = null;
+        
+        $tags = Tag::query()
+            ->where('status', 1)
+            ->get();
         
         if ($user->role == 1) {
             $tutor = Tutor::query()
@@ -41,12 +47,16 @@ class UserManagementController extends Controller
             'user' => $user,
             'tutor' => $tutor,
             'student' => $student,
+            'tags' => $tags,
         ]);
     }
     
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $tutor = Tutor::findOrFail($id);
+        
+        $tutor->update($request->except(['education', 'subjects', 'skills']));
         
         $tutor->education = [
             'institution' => $request->input('institution'),
@@ -55,21 +65,22 @@ class UserManagementController extends Controller
             'completion_year' => $request->input('completion_year'),
         ];
         
+        $tutor->subjects = $request->input('subjects');
+        $tutor->grades = $request->input('grades');
+        
         $tutor->save();
+        
+        return redirect()->route('admin.user-management.index')->with('success', 'Tutor updated successfully.');
     }
     
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user = User::find($user);
+        $user = User::findOrFail($id);
+        $tutor = Tutor::where('user_id', $user->id)->first();
         
-        if (!$user) {
-            return redirect()->route('admin.user-management.index')
-                ->with('error', 'User Not Found.');
-        }
-        
+        $tutor?->delete();
         $user->delete();
         
-        return redirect()->route('admin.user-management.index')
-            ->with('success', 'User Deleted Successfully.');
+        return redirect()->route('admin.user-management.index')->with('success', 'User and associated tutor deleted successfully.');
     }
 }

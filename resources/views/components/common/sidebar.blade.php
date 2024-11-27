@@ -68,16 +68,17 @@
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
+						<li class="nav-main-item {{ request()->is('admin/user-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/user-management*') ? 'active' : '' }}"
 							   href="{{ route('admin.user-management.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-users"></i>
 								<span class="nav-main-link-name">User Management</span>
 							</a>
 						</li>
 						
-						<li class="nav-main-item">
-							<a class="nav-main-link" href="#">
+						<li class="nav-main-item {{ request()->is('admin/tags-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('admin/tags-management*') ? 'active' : '' }}"
+							   href="{{ route('admin.tags-management.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-tags"></i>
 								<span class="nav-main-link-name">Tag Management</span>
 							</a>
@@ -198,14 +199,14 @@
 				
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
-						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+						<li class="nav-main-item {{ request()->is('dashboard') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
+						<li class="nav-main-item {{ request()->is('profile-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('profile-management*') ? 'active' : '' }}"
 							   href="{{ route('admin.user-management.index') }}">
 								<i class="nav-main-link-icon fas fa-address-card"></i>
 								<span class="nav-main-link-name">Profile Management</span>

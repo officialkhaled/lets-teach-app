@@ -1,6 +1,12 @@
 @extends('admin.layout')
 @section('content')
 	
+	@if(session('success'))
+		<div class="alert alert-success">
+			{{ session('success') }}
+		</div>
+	@endif
+	
 	<main id="main-container">
 		
 		<div class="content">
@@ -42,9 +48,14 @@
 									<a class="btn btn-success btn-sm" href="{{ route('admin.user-management.edit', $user->id) }}">
 										&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
 									</a>
-									<a class="btn btn-danger btn-sm" href="{{ route('admin.user-management.destroy', $user->id) }}">
-										&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
-									</a>
+									<form action="{{ route('admin.user-management.destroy', $user->id) }}" method="POST"
+										  onsubmit="return confirm('Are you sure you want to delete this user?');">
+										@csrf
+										@method('DELETE')
+										<button class="btn btn-danger btn-sm">
+											&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+										</button>
+									</form>
 								</td>
 							</tr>
 						@endforeach

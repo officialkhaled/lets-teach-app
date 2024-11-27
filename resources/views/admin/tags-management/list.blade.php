@@ -1,0 +1,54 @@
+@extends('admin.layout')
+@section('content')
+	
+	<main id="main-container">
+		
+		<div class="content">
+			<div class="block block-rounded">
+				<div class="block-header block-header-default">
+					<h3 class="block-title">
+						Tags Management <small>(Subjects &amp; Grades List)</small>
+					</h3>
+				</div>
+				
+				<div class="block-content block-content-full overflow-x-auto">
+					<table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
+						<thead>
+						<tr>
+							<th class="text-center" style="width: 3%">SL</th>
+							<th>Name</th>
+							<th class="d-none d-sm-table-cell">Type</th>
+							<th class="d-none d-sm-table-cell" style="width: 10%;">Status</th>
+							<th class="d-none d-sm-table-cell text-center" style="width: 15%;">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach($tags as $tag)
+							<tr>
+								<td class="text-center">{{ $loop->iteration }}</td>
+								<td class="fw-semibold">{{ $tag->name }}</td>
+								<td class="d-none d-sm-table-cell">{{ $tag->type === 1 ? 'Subject' : 'Grade' }}</td>
+								<td class="d-none d-sm-table-cell text-center">
+									<span class="badge {{ $tag->status === 1 ? 'bg-info' : 'bg-warning' }}">
+										{{ $tag->status === 1 ? 'Active' : 'Inactive' }}
+									</span>
+								</td>
+								<td class="d-none d-sm-table-cell text-center d-flex justify-content-center gap-2">
+									<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
+										&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
+									</a>
+									<a class="btn btn-danger btn-sm" href="{{ route('admin.tags-management.destroy', $tag->id) }}">
+										&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+									</a>
+								</td>
+							</tr>
+						@endforeach
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+	</main>
+
+@endsection
