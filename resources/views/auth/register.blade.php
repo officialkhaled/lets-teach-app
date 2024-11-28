@@ -13,36 +13,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
 	
 	<script src="{{ asset('assets/js/setTheme.js') }}"></script>
-	
-	<style>
-        .select2-selection__clear {
-            background-color: #b1b1b1 !important;
-            border: none;
-            font-size: 1em;
-            font-weight: bold;
-            margin-right: 30px !important;
-        }
-
-        .select2-container--bootstrap4 .select2-selection__clear {
-            float: right;
-            width: 1em;
-            height: 1em;
-            padding-left: .15em;
-            margin-top: 0.7em;
-            margin-right: .3em;
-            line-height: .85em;
-            color: #f8f9fa;
-            background-color: #c8c8c8;
-            border-radius: 100%;
-        }
-
-        .select2-selection__clear:hover {
-            background-color: #868686 !important;
-        }
-	</style>
 </head>
 
 <body>
@@ -104,10 +77,10 @@
 									
 									<div class="row">
 										<div class="col-sm-6 d-sm-flex align-items-center push">
-{{--											<div class="form-check">--}}
-{{--												<input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms" value="1">--}}
-{{--												<label class="form-check-label" for="signup-terms">Accept Terms &amp; Conditions</label>--}}
-{{--											</div>--}}
+											{{--											<div class="form-check">--}}
+											{{--												<input type="checkbox" class="form-check-input" id="signup-terms" name="signup-terms" value="1">--}}
+											{{--												<label class="form-check-label" for="signup-terms">Accept Terms &amp; Conditions</label>--}}
+											{{--											</div>--}}
 										</div>
 										<div class="col-sm-6 text-sm-end push">
 											<button type="submit" class="btn btn-sm btn-alt-primary fw-semibold">
@@ -188,7 +161,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-    $.fn.select2.defaults.set("theme", "bootstrap4");
+    $.fn.select2.defaults.set("theme", "bootstrap-5");
     $.fn.select2.defaults.set("placeholder", "Select");
 
     $(document).ready(function () {

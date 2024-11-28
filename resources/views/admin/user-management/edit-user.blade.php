@@ -18,7 +18,8 @@
 				<div class="block-content block-content-full overflow-x-auto">
 					@if ($user->role == 1)
 						<div class="row">
-							<form method="POST" action="{{ route('admin.user-management.update', $tutor->user_id) }}" class="space-y-3" enctype="multipart/form-data">
+							<form method="POST" action="{{ route('admin.user-management.update', $tutor->user_id) }}"
+								  class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
 								
@@ -157,33 +158,95 @@
 					
 					@if ($user->role == 2)
 						<div class="row">
-							<form method="post" action="{{ route('profile.update') }}" class="space-y-3" enctype="multipart/form-data">
+							<form method="POST" action="{{ route('admin.user-management.update', $student->user_id) }}"
+								  class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
 								
 								<div class="col-md-12">
 									<div class="row">
-										<div class="col-md-6">
-											<label class="form-label" for="name">Name</label>
-											<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ $user->name }}">
+										<div class="col-md-12">
+											<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 										</div>
-										
-										<div class="col-md-6">
+									</div>
+									
+									<div class="row" style="margin-top: 10px;">
+										<div class="col-md-4">
+											<label class="form-label" for="name">Name</label>
+											<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+												   value="{{ $student->user->name }}">
+										</div>
+										<div class="col-md-4">
 											<label class="form-label" for="email">Email</label>
-											<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="{{ $user->email }}">
+											<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+												   value="{{ $student->user->email }}">
+										</div>
+										<div class="col-md-4">
+											<label class="form-label" for="phone_number">Phone Number (+88)</label>
+											<input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number"
+												   value="{{ $student->phone_number ?? '' }}">
 										</div>
 									</div>
 									
 									<div class="row" style="margin-top: 14px;">
+										<div class="col-md-12">
+											<label class="form-label" for="bio">Description</label>
+											<textarea class="form-control" name="bio" id="bio" cols="20" rows="4" placeholder="Write...">{{ $student->description ?? '' }}</textarea>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 14px;">
+										<div class="col-md-12">
+											<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-6">
-											<label class="form-label" for="image">Profile Picture</label>
+											<label class="form-label" for="subjects">Subjects</label>
+											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
+												<option></option>
+												@foreach($tags->where('type', 1) as $tag)
+													<option value="{{ $tag->id }}"
+															{{ isset($selectedSubjects) && is_array($selectedSubjects) && in_array($tag->id, $selectedSubjects) ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
+												@endforeach
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label class="form-label" for="grades">Grades</label>
+											<select name="grades[]" id="grades" class="select2 form-select" multiple>
+												<option></option>
+												@foreach($tags->where('type', 2) as $tag)
+													<option value="{{ $tag->id }}"
+															{{ isset($selectedGrades) && is_array($selectedGrades) && in_array($tag->id, $selectedGrades) ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
+												@endforeach
+											</select>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 14px;">
+										<div class="col-md-12">
+											<h2 class="block-title fw-bold content-heading">Profile Picture</h2>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 10px;">
+										<div class="col-md-6">
+											<label class="form-label" for="image">Upload Image</label>
 											<input class="form-control" type="file" id="image" name="image" onchange="previewImage(event)">
 										</div>
 										
-										<div class="col-md-6 text-center">
-											<img id="preview" alt="Profile Picture Preview" class="img-fluid"
-												 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
-												 src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/no_image.jpg') }}">
+										<div class="col-md-6">
+											<div class="d-flex" style="flex-direction: column; align-items: center;">
+												<label class="form-label mb-2" for="image">Image Preview</label>
+												<img id="preview" alt="Profile Picture Preview" class="img-fluid"
+													 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
+													 src="{{ $student->user->image ? asset('storage/' . $student->user->image) : asset('assets/no_image.jpg') }}">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -193,9 +256,9 @@
 										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
 									
-									<button class="btn btn-warning btn-sm" type="button">
+									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
 										&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh&nbsp;
-									</button>
+									</a>
 								</div>
 							</form>
 						</div>
@@ -225,20 +288,18 @@
             }
         }
 
-        $.fn.select2.defaults.set("theme", "bootstrap4");
+        $.fn.select2.defaults.set("theme", "bootstrap-5");
         $.fn.select2.defaults.set("placeholder", "Select");
 
         $(document).ready(function () {
-            $('.select2').select2({
-                allowClear: false,
-            });
+            $('.select2').select2();
         });
 		
 		@if(session('success'))
-        	toastr.success('User Updated Successfully!');
+        toastr.success('User Updated Successfully!');
 		@endif
 		@if(session('error'))
-        	toastr.error('Something Went Wrong!');
+        toastr.error('Something Went Wrong!');
 		@endif
 	</script>
 @endsection

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css') }}">
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 <script src="{{ asset('assets/js/setTheme.js') }}"></script>
@@ -36,31 +36,6 @@
 
     .btn-primary:hover {
         background-color: #025197 !important;
-    }
-
-    .select2-selection__clear {
-        background-color: #b1b1b1 !important;
-        border: none;
-        font-size: 1em;
-        font-weight: bold;
-        margin-right: 30px !important;
-    }
-
-    .select2-container--bootstrap4 .select2-selection__clear {
-        float: right;
-        width: 1em;
-        height: 1em;
-        padding-left: .15em;
-        margin-top: 0.7em;
-        margin-right: .3em;
-        line-height: .85em;
-        color: #f8f9fa;
-        background-color: #c8c8c8;
-        border-radius: 100%;
-    }
-
-    .select2-selection__clear:hover {
-        background-color: #868686 !important;
     }
 
     /* light-mode */
@@ -122,29 +97,6 @@
     .btn-refresh {
         background-color: #F0AD4E !important;
         border-color: #F0AD4E !important;
-    }
-
-    .select2-selection__choice {
-        margin-left: 4px !important;
-    }
-
-    .select2-selection__choice__remove {
-        border: none !important;
-        padding: 2px !important;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-    }
-
-    .select2-hidden-accessible {
-        border: 0 !important;
-        clip: rect(0 0 0 0) !important;
-        height: 1px !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        padding: 0 !important;
-        position: absolute !important;
-        width: 1px !important
     }
 
 </style>
