@@ -8,6 +8,7 @@ use App\Models\Tutor;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
+
 class UserManagementController extends Controller
 {
     public function index()
@@ -84,18 +85,27 @@ class UserManagementController extends Controller
             
             $student->save();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Student Updated Successfully.');
+            return redirect()->route('admin.user-management.index')->with('success', toastr()->success('Student Updated Successfully'));
         }
     }
     
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
-        $tutor = Tutor::where('user_id', $user->id)->first();
-        
-        $tutor?->delete();
-        $user->delete();
-        
-        return redirect()->route('admin.user-management.index')->with('success', 'User and associated tutor deleted successfully.');
+        if ($user->role == 1) {
+            $tutor = Tutor::where('user_id', $user->id)->first();
+            $tutor?->delete();
+            $user->delete();
+            
+            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Deleted Successfully.');
+        } elseif ($user->role == 2) {
+            $student = Student::where('user_id', $user->id)->first();
+            $student?->delete();
+            $user->delete();
+            
+            return redirect()->route('admin.user-management.index')->with('success', 'Student Deleted Successfully.');
+        } else {
+            return redirect()->route('admin.user-management.index')->with('error', 'User Not Found.');
+        }
     }
+    
 }
