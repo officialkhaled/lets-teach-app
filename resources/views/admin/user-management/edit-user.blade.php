@@ -233,5 +233,12 @@
                 allowClear: false,
             });
         });
+		
+		@if(session('success'))
+        	toastr.success('User Updated Successfully!');
+		@endif
+		@if(session('error'))
+        	toastr.error('Something Went Wrong!');
+		@endif
 	</script>
 @endsection
