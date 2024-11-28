@@ -38,10 +38,8 @@ class TagManagementController extends Controller
         ]);
     }
     
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        $tag = Tag::findOrFail($id);
-        
         $tag->update([
             'name' => $request->input('name'),
             'type' => $request->input('type'),
@@ -50,12 +48,9 @@ class TagManagementController extends Controller
         return redirect()->route('admin.tags-management.index')->with('success', 'Tag Updated Successfully!');
     }
     
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        $tag = Tag::findOrFail($id);
-        
         $tag->delete();
-        
         return redirect()->route('admin.tags-management.index')->with('success', 'Tag Deleted Successfully!');
     }
 }
