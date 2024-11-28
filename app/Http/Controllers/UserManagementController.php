@@ -85,7 +85,9 @@ class UserManagementController extends Controller
             
             $student->save();
             
-            return redirect()->route('admin.user-management.index')->with('success', toastr()->success('Student Updated Successfully'));
+            return redirect()->route('admin.user-management.index')->with('success', 'Student Updated Successfully');
+        } else {
+            return redirect()->route('admin.user-management.index')->with('error', 'User Not Found.');
         }
     }
     
