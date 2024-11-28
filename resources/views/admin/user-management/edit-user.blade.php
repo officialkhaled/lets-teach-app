@@ -24,7 +24,7 @@
 								@method('patch')
 								
 								<div class="col-md-12">
-									<div class="row">
+									<div class="row" style="margin-top: -60px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 										</div>
@@ -119,31 +119,9 @@
 											</select>
 										</div>
 									</div>
-									
-									<div class="row" style="margin-top: 14px;">
-										<div class="col-md-12">
-											<h2 class="block-title fw-bold content-heading">Profile Picture</h2>
-										</div>
-									</div>
-									
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-md-6">
-											<label class="form-label" for="image">Upload Image</label>
-											<input class="form-control" type="file" id="image" name="image" onchange="previewImage(event)">
-										</div>
-										
-										<div class="col-md-6">
-											<div class="d-flex" style="flex-direction: column; align-items: center;">
-												<label class="form-label mb-2" for="image">Image Preview</label>
-												<img id="preview" alt="Profile Picture Preview" class="img-fluid"
-													 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
-													 src="{{ $tutor->user->image ? asset('storage/' . $tutor->user->image) : asset('assets/no_image.jpg') }}">
-											</div>
-										</div>
-									</div>
 								</div>
 								
-								<div class="d-flex justify-content-center gap-2" style="margin-top: 14px;">
+								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
 										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
@@ -164,7 +142,7 @@
 								@method('patch')
 								
 								<div class="col-md-12">
-									<div class="row">
+									<div class="row" style="margin-top: -60px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 										</div>
@@ -227,31 +205,9 @@
 											</select>
 										</div>
 									</div>
-									
-									<div class="row" style="margin-top: 14px;">
-										<div class="col-md-12">
-											<h2 class="block-title fw-bold content-heading">Profile Picture</h2>
-										</div>
-									</div>
-									
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-md-6">
-											<label class="form-label" for="image">Upload Image</label>
-											<input class="form-control" type="file" id="image" name="image" onchange="previewImage(event)">
-										</div>
-										
-										<div class="col-md-6">
-											<div class="d-flex" style="flex-direction: column; align-items: center;">
-												<label class="form-label mb-2" for="image">Image Preview</label>
-												<img id="preview" alt="Profile Picture Preview" class="img-fluid"
-													 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
-													 src="{{ $student->user->image ? asset('storage/' . $student->user->image) : asset('assets/no_image.jpg') }}">
-											</div>
-										</div>
-									</div>
 								</div>
 								
-								<div class="d-flex justify-content-center gap-2" style="margin-top: 14px;">
+								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
 										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
@@ -296,10 +252,10 @@
         });
 		
 		@if(session('success'))
-        toastr.success('User Updated Successfully!');
+        	toastr.success('User Updated Successfully!');
 		@endif
 		@if(session('error'))
-        toastr.error('Something Went Wrong!');
+        	toastr.error('Something Went Wrong!');
 		@endif
 	</script>
 @endsection
