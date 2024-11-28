@@ -18,7 +18,7 @@
 				<div class="block-content block-content-full overflow-x-auto">
 					@if ($user->role == 1)
 						<div class="row">
-							<form method="POST" action="{{ route('admin.user-management.update', $tutor->id) }}" class="space-y-3" enctype="multipart/form-data">
+							<form method="POST" action="{{ route('admin.user-management.update', $tutor->user_id) }}" class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
 								

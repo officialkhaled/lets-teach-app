@@ -56,14 +56,11 @@ class UserManagementController extends Controller
         ]);
     }
     
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        dd($request->all(), $user);
-        
         if ($user->role == 1) {
-            $tutor = Tutor::findOrFail($id);
-            
-            $tutor->update($request->except(['education', 'subjects', 'skills']));
+            $tutor = Tutor::where('user_id', $user->id)->first();
+            $tutor->update($request->except(['education', 'subjects', 'grades']));
             
             $tutor->education = [
                 'institution' => $request->input('institution'),
@@ -77,9 +74,17 @@ class UserManagementController extends Controller
             
             $tutor->save();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Tutor updated successfully.');
+            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Updated Successfully.');
         } else if ($user->role == 2) {
-        
+            $student = Student::where('user_id', $user->id)->first();
+            $student->update($request->except(['subjects', 'grades']));
+            
+            $student->subjects = $request->input('subjects');
+            $student->grades = $request->input('grades');
+            
+            $student->save();
+            
+            return redirect()->route('admin.user-management.index')->with('success', 'Student Updated Successfully.');
         }
     }
     
