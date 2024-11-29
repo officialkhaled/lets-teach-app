@@ -11,7 +11,7 @@
 					</h3>
 					
 					<a href="{{ route('admin.tags-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add&nbsp;
+						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
 					</a>
 				</div>
 				
@@ -44,14 +44,14 @@
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
 										<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
-											&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
+											&nbsp;<i class="fa fa-edit opacity-50"></i>&nbsp;&nbsp;Edit&nbsp;
 										</a>
 										<form action="{{ route('admin.tags-management.destroy', $tag->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
 											
 											<button class="btn btn-danger btn-sm">
-												&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+												&nbsp;<i class="fa fa-trash opacity-50"></i>&nbsp;&nbsp;Delete&nbsp;
 											</button>
 										</form>
 									</div>

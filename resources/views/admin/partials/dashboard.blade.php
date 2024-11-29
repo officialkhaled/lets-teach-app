@@ -6,56 +6,56 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-6 col-xl-3">
-					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
+					<a class="block block-rounded shadow-none bg-primary" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="fa-solid fa-person-chalkboard fa-2x text-primary-light"></i>
+								<i class="fa-solid fa-person-chalkboard fa-2x text-black-50"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-primary">{{ $tutors->count() }}</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Tutors</div>
+								<div class="fs-3 fw-semibold text-white">{{ $tutors->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Tutors</div>
 							</div>
 						</div>
 					</a>
 				</div>
 				
 				<div class="col-6 col-xl-3">
-					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
+					<a class="block block-rounded shadow-none bg-earth" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="fa-solid fa-graduation-cap fa-2x text-earth-light"></i>
+								<i class="fa-solid fa-graduation-cap fa-2x text-black-50"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-earth">{{ $students->count() }}</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Students</div>
+								<div class="fs-3 fw-semibold text-white">{{ $students->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Students</div>
 							</div>
 						</div>
 					</a>
 				</div>
 				
 				<div class="col-6 col-xl-3">
-					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
+					<a class="block block-rounded shadow-none bg-warning" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="fa-solid fa-tags fa-2x text-pulse"></i>
+								<i class="fa-solid fa-tags fa-2x text-black-50"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-pulse">{{ $tags->count() }}</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Tags</div>
+								<div class="fs-3 fw-semibold text-white">{{ $tags->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Tags</div>
 							</div>
 						</div>
 					</a>
 				</div>
 				
 				<div class="col-6 col-xl-3">
-					<a class="block block-rounded block-bordered block-link-shadow" href="javascript:void(0)">
+					<a class="block block-rounded shadow-none bg-info" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
 							<div class="d-none d-sm-block">
-								<i class="fa-solid fa-envelopes-bulk fa-2x text-elegance-light"></i>
+								<i class="fa-solid fa-envelopes-bulk fa-2x text-black-50"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-elegance">{{ $posts->count() }}</div>
-								<div class="fs-sm fw-semibold text-uppercase text-muted">Posts</div>
+								<div class="fs-3 fw-semibold text-white">{{ $posts->count() }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Posts</div>
 							</div>
 						</div>
 					</a>
@@ -64,9 +64,9 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<div class="block block-rounded block-bordered block-link-shadow d-flex justify-content-center"
-						 style="height: 400px; align-items: center">
-						<h1 class="block-title" style="font-size: 28px; flex: none; cursor: pointer;">
+					<div class="block block-rounded d-flex justify-content-center"
+						 style="height: 600px; align-items: center; background-color: #0d2f38">
+						<h1 class="block-title text-uppercase text-white-75" style="font-size: 28px; flex: none; cursor: pointer;">
 							Welcome to your Dashboard!
 						</h1>
 					</div>

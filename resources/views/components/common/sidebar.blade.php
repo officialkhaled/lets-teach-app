@@ -71,7 +71,7 @@
 						<li class="nav-main-item {{ request()->is('admin/user-management*') ? 'active-menu' : '' }}">
 							<a class="nav-main-link {{ request()->is('admin/user-management*') ? 'active' : '' }}"
 							   href="{{ route('admin.user-management.index') }}">
-								<i class="nav-main-link-icon fa-solid fa-users"></i>
+								<i class="nav-main-link-icon fa-solid fa-users-gear"></i>
 								<span class="nav-main-link-name">User Management</span>
 							</a>
 						</li>

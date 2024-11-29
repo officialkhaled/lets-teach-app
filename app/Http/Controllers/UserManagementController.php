@@ -109,5 +109,4 @@ class UserManagementController extends Controller
             return redirect()->route('admin.user-management.index')->with('error', 'User Not Found.');
         }
     }
-    
 }
