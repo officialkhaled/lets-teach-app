@@ -47,6 +47,8 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                     Route::get('/{tag}/edit', 'edit')->name('edit');
                     Route::patch('/{tag}', 'update')->name('update');
                     Route::delete('/{tag}', 'destroy')->name('destroy');
+                    Route::delete('/{tag}', 'approve')->name('approve');
+                    Route::delete('/{tag}', 'reject')->name('reject');
                 });
             });
             

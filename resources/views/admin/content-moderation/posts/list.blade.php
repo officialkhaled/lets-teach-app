@@ -10,9 +10,9 @@
 						Posts Management
 					</h3>
 					
-					{{--					<a href="{{ route('admin.tags-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">--}}
-					{{--						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;--}}
-					{{--					</a>--}}
+					<a href="{{ route('admin.content-moderation.posts.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
+					</a>
 				</div>
 				
 				<div class="block-content block-content-full overflow-x-auto">
@@ -20,8 +20,10 @@
 						<thead>
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
-							<th>Name</th>
-							<th class="d-none d-sm-table-cell">Type</th>
+							<th class="d-none d-sm-table-cell">Subjects</th>
+							<th class="d-none d-sm-table-cell">Grade</th>
+							<th class="d-none d-sm-table-cell">Budget</th>
+							<th class="d-none d-sm-table-cell">Schedule</th>
 							<th class="d-none d-sm-table-cell" style="width: 10%;">Status</th>
 							<th class="d-none d-sm-table-cell text-center" style="width: 15%;">Action</th>
 						</tr>
@@ -30,12 +32,10 @@
 						@foreach($posts as $post)
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
-								<td class="fw-semibold">{{ $post->name }}</td>
-								<td class="d-none d-sm-table-cell">
-									<span class="badge {{ $post->type === 1 ? 'bg-info' : 'bg-warning' }}">
-										{{ $post->type === 1 ? 'Subject' : 'Grade' }}
-									</span>
-								</td>
+								<td class="d-none d-sm-table-cell">{{ 'Subjects' }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->grade }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->budget }} Tk.</td>
+								<td class="d-none d-sm-table-cell">{{ $post->from_date . ' - ' . $post->to_date }}</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<span class="badge {{ $post->status === 1 ? 'bg-success' : 'bg-secondary' }}">
 										{{ $post->status === 1 ? 'Active' : 'Inactive' }}

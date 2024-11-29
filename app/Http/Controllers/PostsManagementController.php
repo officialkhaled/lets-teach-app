@@ -10,10 +10,22 @@ class PostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::query()->with(['student', 'grade'])->get();
         
         return view('admin.content-moderation.posts.list', [
             'posts' => $posts,
+        ]);
+    }
+    
+    public function create()
+    {
+        $tags = Tag::query()
+            ->where('status', 1)
+            ->latest()
+            ->get();
+        
+        return view('admin.content-moderation.posts.create', [
+            'tags' => $tags,
         ]);
     }
     

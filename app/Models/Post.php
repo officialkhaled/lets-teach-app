@@ -28,4 +28,9 @@ class Post extends Model
     {
         return $this->belongsTo(Student::class);
     }
+    
+    public function grade(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'id', 'grade');
+    }
 }
