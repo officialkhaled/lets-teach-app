@@ -27,6 +27,7 @@ class UserManagementController extends Controller
     {
         $tutor = null;
         $student = null;
+        $selectedSubjects = [];
         $selectedGrades = [];
         
         $tags = Tag::query()

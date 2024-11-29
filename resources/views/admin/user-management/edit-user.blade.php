@@ -101,7 +101,7 @@
 											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 1) as $tag)
-													<option value="{{ $tag->id }}">
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>
 														{{ $tag->name }}
 													</option>
 												@endforeach
@@ -112,7 +112,7 @@
 											<select name="grades[]" id="grades" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 2) as $tag)
-													<option value="{{ $tag->id }}">
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>
 														{{ $tag->name }}
 													</option>
 												@endforeach
@@ -126,7 +126,7 @@
 										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
 									
-									<a href="{{ route('admin.user-management.create') }}" class="btn btn-warning btn-sm" type="button">
+									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
 										&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh&nbsp;
 									</a>
 								</div>
@@ -185,7 +185,7 @@
 											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 1) as $tag)
-													<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>{{ $tag->name }}</option>
 												@endforeach
 											</select>
 										</div>
