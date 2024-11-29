@@ -124,10 +124,27 @@
 							</h5>
 						</div>
 						<div class="p-2">
-							<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="{{ route('profile.edit') }}">
-								<span>Profile</span>
-								<i class="fa fa-fw fa-user opacity-25"></i>
-							</a>
+							@if (auth()->user()->role === 0)
+								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
+								   href="{{ route('admin.profile.edit') }}">
+									<span>Profile</span>
+									<i class="fa fa-fw fa-user opacity-25"></i>
+								</a>
+							@endif
+							@if (auth()->user()->role === 1)
+								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
+								   href="{{ route('tutor.profile.edit') }}">
+									<span>Profile</span>
+									<i class="fa fa-fw fa-user opacity-25"></i>
+								</a>
+							@endif
+							@if (auth()->user()->role === 2)
+								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
+								   href="{{ route('student.profile.edit') }}">
+									<span>Profile</span>
+									<i class="fa fa-fw fa-user opacity-25"></i>
+								</a>
+							@endif
 							<a class="dropdown-item d-flex align-items-center justify-content-between" href="#">
 								<span>Inbox</span>
 								<i class="fa fa-fw fa-envelope-open opacity-25"></i>
