@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/css/select2.min.css') }}">--}}
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/dropzone/min/dropzone.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
@@ -102,6 +103,28 @@
     .btn-refresh {
         background-color: #F0AD4E !important;
         border-color: #F0AD4E !important;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+        list-style: none;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+        background-color: #e3e3e3;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: .35em .65em;
+        margin-right: .375rem;
+        margin-bottom: .375rem;
+        font-size: 1rem;
+        color: #000;
+        cursor: auto;
+        border: none;
+        border-radius: .25rem;
+        height: 1.375rem;
+        line-height: 1.375rem;
+        font-weight: 400;
     }
 
 </style>

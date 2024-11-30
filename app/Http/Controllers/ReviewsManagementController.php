@@ -14,4 +14,13 @@ class ReviewsManagementController extends Controller
             'reviews' => $reviews,
         ]);
     }
+    
+    public function edit(Review $review)
+    {
+        
+        
+        return view('admin.content-moderation.reviews.edit-review', [
+            'review' => $review,
+        ]);
+    }
 }
