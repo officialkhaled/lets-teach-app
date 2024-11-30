@@ -24,7 +24,7 @@
 							
 							<div class="col-md-12">
 								<div class="row" style="margin-top: 10px;">
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<label class="form-label" for="subjects">Subjects</label>
 										<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 											<option></option>
@@ -35,14 +35,39 @@
 											@endforeach
 										</select>
 									</div>
-									<div class="col-md-6">
-										<label class="form-label" for="grade">Grade</label>
-										<select name="grade" id="grade" class="select2 form-select">
+									<div class="col-md-4">
+										<label class="form-label" for="type">Grade</label>
+										<select name="type" id="type" class="select2 form-select">
 											<option></option>
 											@foreach($tags->where('type', 2) as $tag)
-												<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>{{ $tag->name }}</option>
+												<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>
+													{{ $tag->name }}
+												</option>
 											@endforeach
 										</select>
+									</div>
+									<div class="col-md-4">
+										<label class="form-label" for="budget">Budget (BDT)</label>
+										<input type="number" class="form-control" id="budget" name="budget" placeholder="Enter your budget"
+											   value="{{ $post->budget }}">
+									</div>
+								</div>
+								<div class="row" style="margin-top: 30px;">
+									<div class="col-md-4">
+										<label class="form-label" for="from_time">From Time</label>
+										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time"
+											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i" value="{{ $post->from_time }}">
+									</div>
+									<div class="col-md-4">
+										<label class="form-label" for="to_time">To Time</label>
+										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time"
+											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i" value="{{ $post->to_time }}">
+									</div>
+									<div class="col-md-4">
+										<label class="form-label" for="description">Description</label>
+										<textarea name="description" class="form-control" id="description" rows="1" placeholder="Write...">
+											{{ $post->description }}
+										</textarea>
 									</div>
 								</div>
 							</div>
@@ -51,7 +76,7 @@
 								<button class="btn btn-success btn-sm" type="submit">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
 								</button>
-								<a href="{{ route('admin.tags-management.create') }}" class="btn btn-warning btn-sm" type="button">
+								<a href="{{ route('admin.content-moderation.posts.index') }}" class="btn btn-warning btn-sm" type="button">
 									&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 								</a>
 							</div>

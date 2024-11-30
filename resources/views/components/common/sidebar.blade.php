@@ -51,7 +51,7 @@
 								<li class="nav-main-item">
 									<a class="nav-main-link {{ request()->is('admin/content-moderation/posts*') ? 'active' : '' }}"
 									   href="{{ route('admin.content-moderation.posts.index') }}">
-										<i class="nav-main-link-icon fa-solid fa-envelopes-bulk"></i>
+										<i class="nav-main-link-icon fa-solid fa-layer-group"></i>
 										<span class="nav-main-link-name">Posts</span>
 									</a>
 								</li>

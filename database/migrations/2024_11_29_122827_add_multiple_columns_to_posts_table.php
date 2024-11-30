@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->string('description')->after('grade')->nullable();
-            $table->dateTime('from_time')->after('budget')->nullable();
-            $table->dateTime('to_time')->after('from_time')->nullable();
+            $table->string('from_time')->after('budget')->nullable();
+            $table->string('to_time')->after('from_time')->nullable();
         });
     }
     

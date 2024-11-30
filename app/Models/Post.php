@@ -14,9 +14,10 @@ class Post extends Model
         'student_id',
         'subjects',
         'grade',
-        'from_date',
-        'to_date',
+        'description',
         'budget',
+        'from_time',
+        'to_time',
         'status',
     ];
     
@@ -27,5 +28,10 @@ class Post extends Model
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+    
+    public function grade(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'id', 'grade');
     }
 }
