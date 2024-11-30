@@ -14,9 +14,10 @@ class Post extends Model
         'student_id',
         'subjects',
         'grade',
-        'from_date',
-        'to_date',
+        'description',
         'budget',
+        'from_time',
+        'to_time',
         'status',
     ];
     

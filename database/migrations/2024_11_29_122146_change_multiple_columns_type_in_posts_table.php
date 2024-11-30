@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::table('posts', function (Blueprint $table) {
             $table->json('subject')->nullable()->change();
             $table->tinyInteger('class')->nullable()->change();
-            $table->tinyInteger('tags')->nullable()->comment('1: Active, 2: Inactive')->change();
+            $table->tinyInteger('tags')->nullable()->comment('1: Active, 2: Inactive')->default(1)->change();
             $table->string('budget')->nullable()->change();
         });
     }

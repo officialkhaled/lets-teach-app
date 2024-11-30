@@ -32,8 +32,8 @@
 										</select>
 									</div>
 									<div class="col-md-4">
-										<label class="form-label" for="type">Grade</label>
-										<select name="type" id="type" class="select2 form-select">
+										<label class="form-label" for="grade">Grade</label>
+										<select name="grade" id="grade" class="select2 form-select">
 											<option></option>
 											@foreach($tags->where('type', 2) as $tag)
 												<option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -41,21 +41,23 @@
 										</select>
 									</div>
 									<div class="col-md-4">
-										<label class="form-label" for="type">Budget (BDT)</label>
-										<input type="number" class="form-control" id="name" name="name" placeholder="Enter your budget">
+										<label class="form-label" for="budget">Budget (BDT)</label>
+										<input type="number" class="form-control" id="budget" name="budget" placeholder="Enter your budget">
 									</div>
 								</div>
 								<div class="row" style="margin-top: 30px;">
 									<div class="col-md-4">
-										<label class="form-label" for="type">From Time</label>
-										<input type="text" class="form-control" id="name" name="name" placeholder="Enter from time">
+										<label class="form-label" for="from_time">From Time</label>
+										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time"
+											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
 									</div>
 									<div class="col-md-4">
-										<label class="form-label" for="type">To Time</label>
-										<input type="text" class="form-control" id="name" name="name" placeholder="Enter to time">
+										<label class="form-label" for="to_time">To Time</label>
+										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time"
+											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
 									</div>
 									<div class="col-md-4">
-										<label class="form-label" for="type">Description</label>
+										<label class="form-label" for="description">Description</label>
 										<textarea name="description" class="form-control" id="description" rows="1" placeholder="Write..."></textarea>
 									</div>
 								</div>

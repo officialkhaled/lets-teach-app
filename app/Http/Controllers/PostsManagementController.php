@@ -17,7 +17,7 @@ class PostsManagementController extends Controller
         ]);
     }
     
-    public function create()
+    public function create() //remove from here
     {
         $tags = Tag::query()
             ->where('status', 1)
@@ -32,12 +32,11 @@ class PostsManagementController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::query()
-            ->where('type', 1)
             ->where('status', 1)
             ->latest()
             ->get();
         
-        $selectedSubjects = $student->subjects ?? [];
+        $selectedSubjects = $post->subjects ?? [];
         
         return view('admin.content-moderation.posts.edit-post', [
             'post' => $post,
