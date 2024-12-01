@@ -47,14 +47,14 @@
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
 										<a class="btn btn-success btn-sm" href="{{ route('admin.user-management.edit', $user->id) }}">
-											&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;Edit&nbsp;
+											&nbsp;<i class="fa fa-edit opacity-50"></i>&nbsp;&nbsp;Edit&nbsp;
 										</a>
 										<form action="{{ route('admin.user-management.destroy', $user->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
 											
 											<button class="btn btn-danger btn-sm">
-												&nbsp;<i class="fa fa-trash"></i>&nbsp;&nbsp;Delete&nbsp;
+												&nbsp;<i class="fa fa-trash opacity-50"></i>&nbsp;&nbsp;Delete&nbsp;
 											</button>
 										</form>
 									</div>

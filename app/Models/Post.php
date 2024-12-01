@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -11,15 +12,26 @@ class Post extends Model
     
     protected $fillable = [
         'student_id',
-        'subject',
-        'class',
-        'schedule',
+        'subjects',
+        'grade',
+        'description',
         'budget',
-        'tags',
+        'from_time',
+        'to_time',
+        'status',
+    ];
+    
+    protected $casts = [
+        'subjects' => Json::class,
     ];
     
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+    
+    public function grade(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'id', 'grade');
     }
 }

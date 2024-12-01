@@ -11,7 +11,7 @@
 					</h3>
 					
 					<a href="{{ route('admin.user-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-regular fa-circle-left"></i>&nbsp;&nbsp;Back&nbsp;
+						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
 					</a>
 				</div>
 				
@@ -123,11 +123,11 @@
 								
 								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
-										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
+										&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
 									
-									<a href="{{ route('admin.user-management.create') }}" class="btn btn-warning btn-sm" type="button">
-										&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh&nbsp;
+									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
+										&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 									</a>
 								</div>
 							</form>
@@ -168,8 +168,8 @@
 									
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
-											<label class="form-label" for="bio">Description</label>
-											<textarea class="form-control" name="bio" id="bio" cols="20" rows="4" placeholder="Write...">{{ $student->description ?? '' }}</textarea>
+											<label class="form-label" for="description">Description</label>
+											<textarea class="form-control" name="description" id="description" cols="20" rows="4" placeholder="Write...">{{ $student->description ?? '' }}</textarea>
 										</div>
 									</div>
 									
@@ -185,22 +185,16 @@
 											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 1) as $tag)
-													<option value="{{ $tag->id }}"
-															{{ isset($selectedSubjects) && is_array($selectedSubjects) && in_array($tag->id, $selectedSubjects) ? 'selected' : '' }}>
-														{{ $tag->name }}
-													</option>
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>{{ $tag->name }}</option>
 												@endforeach
 											</select>
 										</div>
 										<div class="col-md-6">
-											<label class="form-label" for="grades">Grades</label>
-											<select name="grades[]" id="grades" class="select2 form-select" multiple>
+											<label class="form-label" for="grade">Grade</label>
+											<select name="grade" id="grade" class="select2 form-select">
 												<option></option>
 												@foreach($tags->where('type', 2) as $tag)
-													<option value="{{ $tag->id }}"
-															{{ isset($selectedGrades) && is_array($selectedGrades) && in_array($tag->id, $selectedGrades) ? 'selected' : '' }}>
-														{{ $tag->name }}
-													</option>
+													<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>{{ $tag->name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -209,11 +203,10 @@
 								
 								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
-										&nbsp;<i class="fa fa-save"></i>&nbsp;&nbsp;Update&nbsp;
+										&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
-									
 									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
-										&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;Refresh&nbsp;
+										&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 									</a>
 								</div>
 							</form>
@@ -224,6 +217,13 @@
 		</div>
 	
 	</main>
+	
+	@if(session('success'))
+		toastr.success('User Updated Successfully!');
+	@endif
+	@if(session('error'))
+		toastr.error('Something Went Wrong!');
+	@endif
 
 @endsection
 
@@ -250,12 +250,5 @@
         $(document).ready(function () {
             $('.select2').select2();
         });
-		
-		@if(session('success'))
-        	toastr.success('User Updated Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('Something Went Wrong!');
-		@endif
 	</script>
 @endsection

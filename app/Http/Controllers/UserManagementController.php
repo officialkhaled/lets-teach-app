@@ -27,9 +27,11 @@ class UserManagementController extends Controller
     {
         $tutor = null;
         $student = null;
+        $selectedGrades = [];
         
         $tags = Tag::query()
             ->where('status', 1)
+            ->latest()
             ->get();
         
         if ($user->role == 1) {
@@ -47,7 +49,6 @@ class UserManagementController extends Controller
                 ->first();
             
             $selectedSubjects = $student->subjects ?? [];
-            $selectedGrades = $student->grades ?? [];
         }
         
         return view('admin.user-management.edit-user', [
@@ -81,10 +82,8 @@ class UserManagementController extends Controller
             return redirect()->route('admin.user-management.index')->with('success', 'Tutor Updated Successfully.');
         } else {
             $student = Student::where('user_id', $user->id)->first();
-            $student->update($request->except(['subjects', 'grades']));
-            
+            $student->update($request->except(['subjects']));
             $student->subjects = $request->input('subjects');
-            $student->grades = $request->input('grades');
             
             $student->save();
             
@@ -110,5 +109,4 @@ class UserManagementController extends Controller
             return redirect()->route('admin.user-management.index')->with('error', 'User Not Found.');
         }
     }
-    
 }

@@ -7,10 +7,10 @@
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
 					<h3 class="block-title">
-						Tags Management <small>(Subjects &amp; Grades List)</small>
+						Posts Management
 					</h3>
 					
-					<a href="{{ route('admin.tags-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+					<a href="{{ route('admin.content-moderation.posts.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
 					</a>
 				</div>
@@ -20,33 +20,33 @@
 						<thead>
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
-							<th>Name</th>
-							<th class="d-none d-sm-table-cell">Type</th>
+							<th class="d-none d-sm-table-cell">Subjects</th>
+							<th class="d-none d-sm-table-cell">Grade</th>
+							<th class="d-none d-sm-table-cell">Budget</th>
+							<th class="d-none d-sm-table-cell">Schedule</th>
 							<th class="d-none d-sm-table-cell" style="width: 10%;">Status</th>
 							<th class="d-none d-sm-table-cell text-center" style="width: 15%;">Action</th>
 						</tr>
 						</thead>
 						<tbody>
-						@foreach($tags as $tag)
+						@foreach($posts as $post)
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
-								<td class="fw-semibold">{{ $tag->name }}</td>
-								<td class="d-none d-sm-table-cell">
-									<span class="badge {{ $tag->type === 1 ? 'bg-info' : 'bg-warning' }}">
-										{{ $tag->type === 1 ? 'Subject' : 'Grade' }}
-									</span>
-								</td>
+								<td class="d-none d-sm-table-cell">{{ 'Subjects' }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->grade }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->budget }} Tk.</td>
+								<td class="d-none d-sm-table-cell">{{ $post->from_date . ' - ' . $post->to_date }}</td>
 								<td class="d-none d-sm-table-cell text-center">
-									<span class="badge {{ $tag->status === 1 ? 'bg-success' : 'bg-secondary' }}">
-										{{ $tag->status === 1 ? 'Active' : 'Inactive' }}
+									<span class="badge {{ $post->status === 1 ? 'bg-success' : 'bg-secondary' }}">
+										{{ $post->status === 1 ? 'Active' : 'Inactive' }}
 									</span>
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
+										<a class="btn btn-success btn-sm" href="{{ route('admin.content-moderation.posts.edit', $post->id) }}">
 											&nbsp;<i class="fa fa-edit opacity-50"></i>&nbsp;&nbsp;Edit&nbsp;
 										</a>
-										<form action="{{ route('admin.tags-management.destroy', $tag->id) }}" method="POST">
+										<form action="{{ route('admin.content-moderation.posts.destroy', $post->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
 											

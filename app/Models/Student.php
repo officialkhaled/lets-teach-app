@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -12,9 +13,13 @@ class Student extends Model
     protected $fillable = [
         'user_id',
         'phone_number',
-        'class',
+        'description',
         'subjects',
-        'tags',
+        'grade',
+    ];
+    
+    protected $casts = [
+        'subjects' => Json::class,
     ];
     
     public function user(): BelongsTo
