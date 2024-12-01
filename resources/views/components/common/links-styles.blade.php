@@ -104,4 +104,11 @@
         border-color: #F0AD4E !important;
     }
 
+    .hide-texts {
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
 </style>

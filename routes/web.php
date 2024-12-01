@@ -44,11 +44,11 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                     Route::get('/posts-list', 'index')->name('index');
                     Route::get('/create', 'create')->name('create');
                     Route::post('/', 'store')->name('store');
-                    Route::get('/{tag}/edit', 'edit')->name('edit');
-                    Route::patch('/{tag}', 'update')->name('update');
-                    Route::delete('/{tag}', 'destroy')->name('destroy');
-                    Route::delete('/{tag}', 'approve')->name('approve');
-                    Route::delete('/{tag}', 'reject')->name('reject');
+                    Route::get('/{post}/edit', 'edit')->name('edit');
+                    Route::patch('/{post}', 'update')->name('update');
+                    Route::delete('/{post}', 'destroy')->name('destroy');
+                    Route::get('/{post}', 'approve')->name('approve');
+                    Route::get('/{post}', 'reject')->name('reject');
                 });
             });
             
@@ -57,9 +57,9 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                     Route::get('/reviews-list', 'index')->name('index');
                     Route::get('/create', 'create')->name('create');
                     Route::post('/', 'store')->name('store');
-                    Route::get('/{tag}/edit', 'edit')->name('edit');
-                    Route::patch('/{tag}', 'update')->name('update');
-                    Route::delete('/{tag}', 'destroy')->name('destroy');
+                    Route::get('/{review}/edit', 'edit')->name('edit');
+                    Route::patch('/{review}', 'update')->name('update');
+                    Route::delete('/{review}', 'destroy')->name('destroy');
                 });
             });
         });
