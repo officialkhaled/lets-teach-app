@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout')
 @section('content')
 	
 	<main id="main-container">

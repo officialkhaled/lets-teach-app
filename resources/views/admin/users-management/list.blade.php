@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout')
 @section('content')
 	
 	@if(session('success'))
@@ -46,15 +46,15 @@
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										<a class="btn btn-success btn-sm" href="{{ route('admin.user-management.edit', $user->id) }}">
-											&nbsp;<i class="fa fa-edit opacity-50"></i>&nbsp;&nbsp;Edit&nbsp;
+										<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+										   href="{{ route('admin.user-management.edit', $user->id) }}">
+											<i class="fa fa-edit opacity-75"></i>
 										</a>
 										<form action="{{ route('admin.user-management.destroy', $user->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
-											
-											<button class="btn btn-danger btn-sm">
-												&nbsp;<i class="fa fa-trash opacity-50"></i>&nbsp;&nbsp;Delete&nbsp;
+											<button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+												<i class="fa fa-trash opacity-75"></i>
 											</button>
 										</form>
 									</div>
