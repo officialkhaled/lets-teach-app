@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Tag extends Model
 {
@@ -13,4 +14,9 @@ class Tag extends Model
         'type',
         'status',
     ];
+    
+    public function grade(): HasOne
+    {
+        return $this->hasOne(Student::class, 'grade');
+    }
 }
