@@ -13,7 +13,7 @@
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
 					<h3 class="block-title">
-						User Management <small>(Tutors &amp; Students List)</small>
+						Users Management <small>(Tutors &amp; Students List)</small>
 					</h3>
 				</div>
 				

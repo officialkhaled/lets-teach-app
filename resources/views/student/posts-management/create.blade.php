@@ -10,14 +10,14 @@
 						Post Entry
 					</h3>
 					
-					<a href="{{ route('student.posts.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+					<a href="{{ route('student.posts-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
 					</a>
 				</div>
 				
 				<div class="block-content block-content-full overflow-x-auto">
 					<div class="row">
-						<form method="post" action="{{ route('student.posts.store') }}" class="space-y-3" enctype="multipart/form-data">
+						<form method="post" action="{{ route('student.posts-management.store') }}" class="space-y-3" enctype="multipart/form-data">
 							@csrf
 							
 							<div class="col-md-12">
@@ -67,7 +67,7 @@
 								<button class="btn btn-success btn-sm" type="submit">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;
 								</button>
-								<a href="{{ route('student.posts.create') }}" class="btn btn-warning btn-sm" type="button">
+								<a href="{{ route('student.posts-management.create') }}" class="btn btn-warning btn-sm" type="button">
 									&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 								</a>
 							</div>

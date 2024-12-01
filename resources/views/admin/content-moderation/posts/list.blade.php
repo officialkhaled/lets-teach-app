@@ -9,12 +9,6 @@
 					<h3 class="block-title">
 						Posts Management
 					</h3>
-					
-					{{-- Remove from here --}}
-					<a href="{{ route('admin.content-moderation.posts.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
-					</a>
-					{{-- Remove from here --}}
 				</div>
 				
 				<div class="block-content block-content-full overflow-x-auto">

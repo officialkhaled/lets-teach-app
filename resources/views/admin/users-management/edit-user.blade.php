@@ -201,7 +201,7 @@
 												<option></option>
 												@foreach($tags->where('type', 2) as $tag)
 													<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>
-														{{ $tag->name }}
+													{{ $tag->name }}
 													</option>
 												@endforeach
 											</select>

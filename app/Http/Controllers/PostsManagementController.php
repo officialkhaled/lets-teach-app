@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'tags', 'tag'])->get();
+        $posts = Post::query()->with(['student', 'tags', 'tag'])->latest()->get();
         
         return view('student.posts-management.list', [
             'posts' => $posts,
@@ -31,8 +32,10 @@ class PostsManagementController extends Controller
     
     public function store(Request $request)
     {
-        $posts = Post::create([
-            'student_id' => 1,
+        $studentId = Student::where('user_id', auth()->user()->id)->first()['id'];
+        
+        Post::create([
+            'student_id' => $studentId,
             'subjects' => $request->input('subjects'),
             'grade' => $request->input('grade'),
             'description' => $request->input('description'),

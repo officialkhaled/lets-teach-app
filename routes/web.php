@@ -19,29 +19,33 @@ Route::middleware(['auth', 'role:0'])->group(function () {
         });
         
         Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
-            Route::controller(UserManagementController::class)->group(function () {
-                Route::get('/users-list', 'index')->name('index');
-                Route::get('/{user}/edit', 'edit')->name('edit');
-                Route::patch('/{user}', 'update')->name('update');
-                Route::delete('/{user}', 'destroy')->name('destroy');
+            Route::group(['prefix' => 'users'], function () {
+                Route::controller(UserManagementController::class)->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/{user}/edit', 'edit')->name('edit');
+                    Route::patch('/{user}', 'update')->name('update');
+                    Route::delete('/{user}', 'destroy')->name('destroy');
+                });
             });
         });
         
         Route::group(['prefix' => 'tags-management', 'as' => 'tags-management.'], function () {
-            Route::controller(TagManagementController::class)->group(function () {
-                Route::get('/tags-list', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
-                Route::post('/', 'store')->name('store');
-                Route::get('/{tag}/edit', 'edit')->name('edit');
-                Route::patch('/{tag}', 'update')->name('update');
-                Route::delete('/{tag}', 'destroy')->name('destroy');
+            Route::group(['prefix' => 'tags'], function () {
+                Route::controller(TagManagementController::class)->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/create', 'create')->name('create');
+                    Route::post('/', 'store')->name('store');
+                    Route::get('/{tag}/edit', 'edit')->name('edit');
+                    Route::patch('/{tag}', 'update')->name('update');
+                    Route::delete('/{tag}', 'destroy')->name('destroy');
+                });
             });
         });
         
         Route::group(['prefix' => 'content-moderation', 'as' => 'content-moderation.'], function () {
             Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
                 Route::controller(PostsManagementController::class)->group(function () {
-                    Route::get('/posts-list', 'index')->name('index');
+                    Route::get('/', 'index')->name('index');
                     Route::get('/create', 'create')->name('create');
                     Route::post('/', 'store')->name('store');
                     Route::get('/{post}/edit', 'edit')->name('edit');
@@ -98,7 +102,7 @@ Route::middleware(['auth', 'role:2'])->group(function () {
             Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
         });
         
-        Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
+        Route::group(['prefix' => 'posts-management', 'as' => 'posts-management.'], function () {
             Route::controller(PostsManagementController::class)->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');

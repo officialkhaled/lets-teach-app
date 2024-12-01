@@ -9,7 +9,7 @@ class TagManagementController extends Controller
 {
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::query()->latest()->get();
         
         return view('admin.tags-management.list', [
             'tags' => $tags,
