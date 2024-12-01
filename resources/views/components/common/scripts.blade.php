@@ -18,17 +18,25 @@
 <script src="{{ asset('assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
-
 <script src="{{ asset('assets/js/pages/be_tables_datatables.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+{{--<script src="{{ asset('assets/js/plugins/select2/js/select2.full.min.js') }}"></script>--}}
 <script src="{{ asset('assets/js/plugins/masked-inputs/jquery.maskedinput.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/dropzone/min/dropzone.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 
 <script>
-    Codebase.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-maxlength', 'jq-select2', 'jq-rangeslider', 'jq-masked-inputs', 'jq-pw-strength']);
+    Codebase.helpersOnLoad([
+        'js-flatpickr',
+        'jq-datepicker',
+        'jq-maxlength',
+        // 'jq-select2',
+        'jq-rangeslider',
+        'jq-masked-inputs',
+        'jq-pw-strength'
+    ]);
 </script>

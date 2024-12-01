@@ -7,7 +7,11 @@
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
 					<h3 class="block-title">
-						User Management <small>(Tutors &amp; Students List)</small>
+						@if ($user->role == 1)
+							User Edit <small>(Tutor)</small>
+						@elseif ($user->role == 2)
+							User Edit <small>(Student)</small>
+						@endif
 					</h3>
 					
 					<a href="{{ route('admin.user-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
@@ -185,7 +189,9 @@
 											<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
 												<option></option>
 												@foreach($tags->where('type', 1) as $tag)
-													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>{{ $tag->name }}</option>
+													<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
 												@endforeach
 											</select>
 										</div>
@@ -194,7 +200,9 @@
 											<select name="grade" id="grade" class="select2 form-select">
 												<option></option>
 												@foreach($tags->where('type', 2) as $tag)
-													<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>{{ $tag->name }}</option>
+													<option value="{{ $tag->id }}" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>
+														{{ $tag->name }}
+													</option>
 												@endforeach
 											</select>
 										</div>
@@ -229,21 +237,6 @@
 
 @section('script')
 	<script>
-        function previewImage(event) {
-            const input = event.target;
-            const preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
         $.fn.select2.defaults.set("theme", "bootstrap-5");
         $.fn.select2.defaults.set("placeholder", "Select");
 
