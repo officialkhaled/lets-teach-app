@@ -10,7 +10,7 @@ class PostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'grade'])->get();
+        $posts = Post::query()->with(['student', 'tags', 'tag'])->get();
         
         return view('admin.content-moderation.posts.list', [
             'posts' => $posts,
@@ -29,6 +29,21 @@ class PostsManagementController extends Controller
         ]);
     }
     
+    public function store(Request $request) //remove from here
+    {
+        $posts = Post::create([
+            'student_id' => 1, //remove from here
+            'subjects' => $request->input('subjects'),
+            'grade' => $request->input('grade'),
+            'description' => $request->input('description'),
+            'budget' => $request->input('budget'),
+            'from_time' => $request->input('from_time'),
+            'to_time' => $request->input('to_time'),
+        ]);
+        
+        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Added Successfully!');
+    }
+    
     public function edit(Post $post)
     {
         $tags = Tag::query()
@@ -45,14 +60,20 @@ class PostsManagementController extends Controller
         ]);
     }
     
-    public function update(Request $request)
+    public function update(Request $request, Post $post)
     {
-    
+        $post->update($request->except('subjects'));
+        $post->subjects = $request->input('subjects');
+        $post->save();
+        
+        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Updated Successfully!');
     }
     
     public function destroy(Post $post)
     {
-    
+        $post->delete();
+        
+        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Deleted Successfully.');
     }
     
     public function approve()

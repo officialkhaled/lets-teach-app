@@ -105,26 +105,11 @@
         border-color: #F0AD4E !important;
     }
 
-    .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
-        list-style: none;
-    }
-
-    .select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
-        background-color: #e3e3e3;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: .35em .65em;
-        margin-right: .375rem;
-        margin-bottom: .375rem;
-        font-size: 1rem;
-        color: #000;
-        cursor: auto;
-        border: none;
-        border-radius: .25rem;
-        height: 1.375rem;
-        line-height: 1.375rem;
-        font-weight: 400;
+    .hide-texts {
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
 </style>
