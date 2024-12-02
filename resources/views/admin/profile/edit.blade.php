@@ -16,7 +16,7 @@
 								</p>
 							</div>
 							<div class="">
-								<a href="{{ route('admin.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+								<a href="{{ route('admin.admin-dashboard') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 									&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
 								</a>
 							</div>
