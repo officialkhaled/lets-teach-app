@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('admin.profile.edit', [
+        return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -26,27 +26,29 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
         
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
         
         if ($request->image) {
-            $user = Auth::user();
-            
             $imageName = "images/" . time() . '.' . $request->image->extension();
             $request->image->move(storage_path('app/public/images'), $imageName);
             
             $user->image = $imageName;
-            $user->save();
-        } else {
-            logger('No new profile picture uploaded.');
         }
         
-        $request->user()->save();
+        $user->save();
         
-        return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
+        if ($user->role === 0) {
+            return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
+        } else if ($user->role === 1) {
+            return Redirect::route('tutor.profile.edit')->with('status', 'profile-updated');
+        } else {
+            return Redirect::route('student.profile.edit')->with('status', 'profile-updated');
+        }
     }
     
     /**

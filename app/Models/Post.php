@@ -23,6 +23,7 @@ class Post extends Model
         'from_time',
         'to_time',
         'status',
+        'approval_status',
     ];
     
     protected $casts = [

@@ -11,7 +11,8 @@ class PostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'tags', 'tag'])->latest()->get();
+        $studentId = Student::query()->where('user_id', auth()->user()->id)->first()['id'] ?? '';
+        $posts = Post::query()->with(['student', 'tags', 'tag'])->where('student_id', $studentId)->latest()->get();
         
         return view('student.posts-management.list', [
             'posts' => $posts,
@@ -75,7 +76,6 @@ class PostsManagementController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        
         return redirect()->route('student.posts-management.index')->with('success', 'Post Deleted Successfully.');
     }
 }
