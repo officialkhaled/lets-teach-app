@@ -51,14 +51,16 @@
 											</button>
 										</form>
 										
-										<a class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
-										   href="{{ route('admin.content-moderation.posts.approve', $post->id) }}">
-											<i class="fa-solid fa-square-check opacity-75"></i>
-										</a>
-										<a class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject"
-										   href="{{ route('admin.content-moderation.posts.reject', $post->id) }}">
-											<i class="fa-solid fa-xmark opacity-75"></i>
-										</a>
+										@if ($post->approval_status === 0)
+											<a class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
+											   href="{{ route('admin.content-moderation.posts.approve', $post->id) }}">
+												<i class="fa-solid fa-square-check opacity-75"></i>
+											</a>
+											<a class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject"
+											   href="{{ route('admin.content-moderation.posts.reject', $post->id) }}">
+												<i class="fa-solid fa-xmark opacity-75"></i>
+											</a>
+										@endif
 									</div>
 								</td>
 							</tr>

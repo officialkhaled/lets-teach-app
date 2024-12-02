@@ -16,18 +16,24 @@
 								</p>
 							</div>
 							<div>
-								<a href="{{ route('admin.admin-dashboard') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+								<a href="{{
+    										auth()->user()->role === 0 ? route('admin.admin-dashboard') :
+											(auth()->user()->role === 1 ? route('tutor.tutor-dashboard') :
+											route('student.student-dashboard'))
+										}}"
+								   class="btn btn-info btn-sm waves-effect bg-gradient">
 									&nbsp;<i class="fa-regular fa-circle-left"></i>&nbsp;&nbsp;Back&nbsp;
 								</a>
 							</div>
 						</header>
 						
-						{{--						<form id="send-verification" method="post" action="{{ route('verification.send') }}">--}}
-						{{--							@csrf--}}
-						{{--						</form>--}}
-						
 						<div class="row">
-							<form method="post" action="{{ route('admin.profile.update') }}" class="space-y-3" enctype="multipart/form-data">
+							<form method="post" class="space-y-3" enctype="multipart/form-data"
+								  action="{{
+    											auth()->user()->role === 0 ? route('admin.profile.update') :
+											   (auth()->user()->role === 1 ? route('tutor.profile.update') :
+											   route('student.profile.update'))
+										   }}">
 								@csrf
 								@method('patch')
 								
@@ -72,30 +78,6 @@
 					
 					</section>
 				</div>
-				
-				
-				{{--				<div class="py-12">--}}
-				{{--					<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">--}}
-				{{--						<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">--}}
-				{{--							<div class="max-w-xl">--}}
-				{{--								@include('profile.partials.update-profile-information-form')--}}
-				{{--							</div>--}}
-				{{--						</div>--}}
-				{{--						--}}
-				{{--						<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">--}}
-				{{--							<div class="max-w-xl">--}}
-				{{--								@include('profile.partials.update-password-form')--}}
-				{{--							</div>--}}
-				{{--						</div>--}}
-				{{--						--}}
-				{{--						<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">--}}
-				{{--							<div class="max-w-xl">--}}
-				{{--								@include('profile.partials.delete-user-form')--}}
-				{{--							</div>--}}
-				{{--						</div>--}}
-				{{--					</div>--}}
-				{{--				</div>--}}
-			
 			</div>
 		</div>
 	</main>

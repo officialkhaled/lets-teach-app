@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
+use App\Http\Controllers\AdminPostsManagementController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
         
         Route::group(['prefix' => 'content-moderation', 'as' => 'content-moderation.'], function () {
             Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
-                Route::controller(PostsManagementController::class)->group(function () {
+                Route::controller(AdminPostsManagementController::class)->group(function () {
                     Route::get('/', 'index')->name('index');
                     Route::get('/create', 'create')->name('create');
                     Route::post('/', 'store')->name('store');
