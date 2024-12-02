@@ -4,35 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'tags', 'tag'])->get();
+        $posts = Post::query()->with(['student', 'tags', 'tag'])->latest()->get();
         
-        return view('admin.content-moderation.posts.list', [
+        return view('student.posts-management.list', [
             'posts' => $posts,
         ]);
     }
     
-    public function create() //remove from here
+    public function create()
     {
         $tags = Tag::query()
             ->where('status', 1)
             ->latest()
             ->get();
         
-        return view('admin.content-moderation.posts.create', [
+        return view('student.posts-management.create', [
             'tags' => $tags,
         ]);
     }
     
-    public function store(Request $request) //remove from here
+    public function store(Request $request)
     {
-        $posts = Post::create([
-            'student_id' => 1, //remove from here
+        $studentId = Student::where('user_id', auth()->user()->id)->first()['id'];
+        
+        Post::create([
+            'student_id' => $studentId,
             'subjects' => $request->input('subjects'),
             'grade' => $request->input('grade'),
             'description' => $request->input('description'),
@@ -41,7 +44,7 @@ class PostsManagementController extends Controller
             'to_time' => $request->input('to_time'),
         ]);
         
-        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Added Successfully!');
+        return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');
     }
     
     public function edit(Post $post)
@@ -53,7 +56,7 @@ class PostsManagementController extends Controller
         
         $selectedSubjects = $post->subjects ?? [];
         
-        return view('admin.content-moderation.posts.edit-post', [
+        return view('student.posts-management.edit-post', [
             'post' => $post,
             'tags' => $tags,
             'selectedSubjects' => $selectedSubjects,
@@ -66,23 +69,13 @@ class PostsManagementController extends Controller
         $post->subjects = $request->input('subjects');
         $post->save();
         
-        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Updated Successfully!');
+        return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
     }
     
     public function destroy(Post $post)
     {
         $post->delete();
         
-        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Deleted Successfully.');
-    }
-    
-    public function approve()
-    {
-    
-    }
-    
-    public function reject()
-    {
-    
+        return redirect()->route('student.posts-management.index')->with('success', 'Post Deleted Successfully.');
     }
 }

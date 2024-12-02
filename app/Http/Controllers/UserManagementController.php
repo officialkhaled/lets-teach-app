@@ -18,7 +18,7 @@ class UserManagementController extends Controller
             ->latest()
             ->get();
         
-        return view('admin.user-management.list', [
+        return view('admin.users-management.list', [
             'users' => $users,
         ]);
     }
@@ -51,7 +51,7 @@ class UserManagementController extends Controller
             $selectedSubjects = $student->subjects ?? [];
         }
         
-        return view('admin.user-management.edit-user', [
+        return view('admin.users-management.edit-user', [
             'user' => $user,
             'tutor' => $tutor,
             'student' => $student,

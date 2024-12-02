@@ -21,7 +21,7 @@
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
 						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.admin-dashboard') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
@@ -30,7 +30,7 @@
 							<a class="nav-main-link {{ request()->is('admin/user-management*') ? 'active' : '' }}"
 							   href="{{ route('admin.user-management.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-users-gear"></i>
-								<span class="nav-main-link-name">User Management</span>
+								<span class="nav-main-link-name">Users Management</span>
 							</a>
 						</li>
 						
@@ -38,7 +38,7 @@
 							<a class="nav-main-link {{ request()->is('admin/tags-management*') ? 'active' : '' }}"
 							   href="{{ route('admin.tags-management.index') }}">
 								<i class="nav-main-link-icon fa-solid fa-tags"></i>
-								<span class="nav-main-link-name">Tag Management</span>
+								<span class="nav-main-link-name">Tags Management</span>
 							</a>
 						</li>
 						
@@ -74,7 +74,7 @@
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
 						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('tutor.tutor-dashboard') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
@@ -109,29 +109,30 @@
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
-						<li class="nav-main-item {{ request()->is('dashboard') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin.index') }}">
+						<li class="nav-main-item {{ request()->is('student/dashboard') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('student/dashboard') ? 'active' : '' }}" href="{{ route('student.student-dashboard') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('profile-management*') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('profile-management*') ? 'active' : '' }}"
-							   href="{{ route('admin.user-management.index') }}">
+						<li class="nav-main-item {{ request()->is('student/profile-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('student/profile-management*') ? 'active' : '' }}"
+							   href="#">
 								<i class="nav-main-link-icon fas fa-address-card"></i>
 								<span class="nav-main-link-name">Profile Management</span>
 							</a>
 						</li>
 						
-						<li class="nav-main-item ">
-							<a class="nav-main-link " href="#">
-								<i class="nav-main-link-icon fas fa-tasks"></i>
+						<li class="nav-main-item {{ request()->is('student/posts-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link  {{ request()->is('student/posts-management*') ? 'active' : '' }}"
+							   href="{{ route('student.posts-management.index') }}">
+								<i class="nav-main-link-icon fa-solid fa-newspaper"></i>
 								<span class="nav-main-link-name">Post Management</span>
 							</a>
 						</li>
 						
-						<li class="nav-main-item ">
-							<a class="nav-main-link " href="#">
+						<li class="nav-main-item  {{ request()->is('student/tutor-interaction*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link  {{ request()->is('student/tutor-interaction*') ? 'active' : '' }}" href="#">
 								<i class="nav-main-link-icon fas fa-chalkboard-teacher"></i>
 								<span class="nav-main-link-name">Tutor Interaction</span>
 							</a>
