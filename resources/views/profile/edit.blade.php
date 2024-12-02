@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layout')
 @section('content')
 	
 	<main id="main-container">
@@ -7,7 +7,7 @@
 				<div class="col-md-12">
 					<section class="block block-rounded block-bordered block-link-shadow" style="padding: 30px;">
 						<header class="d-flex justify-content-between">
-							<div class="">
+							<div>
 								<h3 class="text-lg font-medium text-gray-900">
 									Profile Information
 								</h3>
@@ -15,16 +15,16 @@
 									Update your account's profile information and email address.
 								</p>
 							</div>
-							<div class="">
-								<a href="{{ route('admin.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+							<div>
+								<a href="{{ route('admin.admin-dashboard') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 									&nbsp;<i class="fa-regular fa-circle-left"></i>&nbsp;&nbsp;Back&nbsp;
 								</a>
 							</div>
 						</header>
 						
-						<form id="send-verification" method="post" action="{{ route('verification.send') }}">
-							@csrf
-						</form>
+						{{--						<form id="send-verification" method="post" action="{{ route('verification.send') }}">--}}
+						{{--							@csrf--}}
+						{{--						</form>--}}
 						
 						<div class="row">
 							<form method="post" action="{{ route('admin.profile.update') }}" class="space-y-3" enctype="multipart/form-data">
