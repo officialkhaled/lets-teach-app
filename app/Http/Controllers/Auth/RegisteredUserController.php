@@ -52,7 +52,13 @@ class RegisteredUserController extends Controller
             
             Auth::login($user);
             
-            return redirect(RouteServiceProvider::HOME);
+            if ($user->role === 0) {
+                return redirect(RouteServiceProvider::HOME_ADMIN);
+            } else if ($user->role === 1) {
+                return redirect(RouteServiceProvider::HOME_TUTOR);
+            } else {
+                return redirect(RouteServiceProvider::HOME_STUDENT);
+            }
         } catch (\Exception $e) {
             \Log::error('Error during user registration: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'An error occurred during registration.']);

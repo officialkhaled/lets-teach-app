@@ -23,9 +23,9 @@ class DashboardController extends Controller
             'posts' => $posts,
         ]);
     }
-
-//    public function tutorDashboard()
-//    {
+    
+    public function tutorDashboard()
+    {
 //        $tutors = Tutor::all();
 //        $students = Student::all();
 //        $tags = Tag::query()->where('status', 1)->get();
@@ -37,7 +37,7 @@ class DashboardController extends Controller
 //            'tags' => $tags,
 //            'posts' => $posts,
 //        ]);
-//    }
+    }
     
     public function studentDashboard()
     {
