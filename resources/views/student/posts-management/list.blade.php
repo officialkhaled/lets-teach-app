@@ -9,7 +9,7 @@
 					<h3 class="block-title">
 						Posts Management
 					</h3>
-					
+{{--					@dd($posts->count())--}}
 					<a href="{{ route('student.posts-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
 					</a>
@@ -43,10 +43,12 @@
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-										   href="{{ route('student.posts-management.edit', $post->id) }}">
-											<i class="fa fa-edit opacity-75"></i>
-										</a>
+										@if ($post->approval_status === 0)
+											<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+											   href="{{ route('student.posts-management.edit', $post->id) }}">
+												<i class="fa fa-edit opacity-75"></i>
+											</a>
+										@endif
 										<form action="{{ route('student.posts-management.destroy', $post->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
@@ -71,10 +73,10 @@
 @section('script')
 	<script>
 		@if(session('success'))
-        	toastr.success('Post Deleted Successfully!');
+        toastr.success('Post Deleted Successfully!');
 		@endif
 		@if(session('error'))
-        	toastr.error('User Not Found!');
+        toastr.error('User Not Found!');
 		@endif
 	</script>
 @endsection
