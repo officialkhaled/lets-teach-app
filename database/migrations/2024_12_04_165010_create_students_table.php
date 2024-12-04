@@ -7,13 +7,13 @@ use Illuminate\Database\Migrations\Migration;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-            
-            $table->unsignedBigInteger('tutor_id');
-            $table->unsignedBigInteger('student_id');
-            $table->string('rating');
-            $table->string('review');
+
+            $table->unsignedBigInteger('user_id');
+            $table->string('phone_number')->nullable();
+            $table->json('subject_ids')->nullable();
+            $table->unsignedBigInteger('grade_id')->nullable();
             
             $table->timestamps();
         });
@@ -21,6 +21,6 @@ return new class extends Migration {
     
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('students');
     }
 };

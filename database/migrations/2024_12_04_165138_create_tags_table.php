@@ -12,7 +12,7 @@ return new class extends Migration {
             
             $table->string('name');
             $table->tinyInteger('type')->comment('1: Subject, 2: Grade');
-            $table->tinyInteger('status')->default(1)->comment('1: Active, 2: Inactive');
+            $table->tinyInteger('status')->default(1)->comment('0: Inactive, 1: Active');
             
             $table->timestamps();
         });

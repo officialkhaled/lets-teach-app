@@ -43,11 +43,11 @@ class ProfileController extends Controller
         $user->save();
         
         if ($user->role === 0) {
-            return Redirect::route('admin.admin-dashboard')->with('success', 'Profile Update Successfully.');
+            return Redirect::route('admin.admin-dashboard')->with('success', 'Profile Updated Successfully.');
         } else if ($user->role === 1) {
-            return Redirect::route('tutor.tutor-dashboard')->with('success', 'Profile Update Successfully.');
+            return Redirect::route('tutor.tutor-dashboard')->with('success', 'Profile Updated Successfully.');
         } else {
-            return Redirect::route('student.student-dashboard')->with('success', 'Profile Update Successfully.');
+            return Redirect::route('student.student-dashboard')->with('success', 'Profile Updated Successfully.');
         }
     }
     

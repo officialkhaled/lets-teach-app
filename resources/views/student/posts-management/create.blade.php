@@ -23,8 +23,8 @@
 							<div class="col-md-12">
 								<div class="row" style="margin-top: 10px;">
 									<div class="col-md-4">
-										<label class="form-label" for="subjects">Subjects</label>
-										<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
+										<label class="form-label" for="subject_ids">Subjects</label>
+										<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
 											<option></option>
 											@foreach($tags->where('type', 1) as $tag)
 												<option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -32,8 +32,8 @@
 										</select>
 									</div>
 									<div class="col-md-4">
-										<label class="form-label" for="grade">Grade</label>
-										<select name="grade" id="grade" class="select2 form-select">
+										<label class="form-label" for="grade_id">Grade</label>
+										<select name="grade_id" id="grade_id" class="select2 form-select">
 											<option></option>
 											@foreach($tags->where('type', 2) as $tag)
 												<option value="{{ $tag->id }}">{{ $tag->name }}</option>

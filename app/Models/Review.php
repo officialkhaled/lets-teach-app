@@ -10,19 +10,19 @@ class Review extends Model
     protected $table = 'reviews';
     
     protected $fillable = [
-        'tutor_id',
         'student_id',
+        'tutor_id',
         'rating',
         'review',
     ];
     
-    public function tutor(): BelongsTo
-    {
-        return $this->belongsTo(Tutor::class);
-    }
-    
     public function student(): BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'student_id')->withDefault();
+    }
+    
+    public function tutor(): BelongsTo
+    {
+        return $this->belongsTo(Tutor::class, 'tutor_id')->withDefault();
     }
 }

@@ -40,15 +40,15 @@ class UserManagementController extends Controller
                 ->with('user')
                 ->first();
             
-            $selectedSubjects = $tutor->subjects ?? [];
-            $selectedGrades = $tutor->grades ?? [];
+            $selectedSubjects = $tutor->subject_ids ?? [];
+            $selectedGrades = $tutor->grade_ids ?? [];
         } else {
             $student = Student::query()
                 ->where('user_id', $user->id)
                 ->with('user')
                 ->first();
             
-            $selectedSubjects = $student->subjects ?? [];
+            $selectedSubjects = $student->subject_ids ?? [];
         }
         
         return view('admin.users-management.edit-user', [
@@ -65,7 +65,7 @@ class UserManagementController extends Controller
     {
         if ($user->role == 1) {
             $tutor = Tutor::where('user_id', $user->id)->first();
-            $tutor->update($request->except(['education', 'subjects', 'grades']));
+            $tutor->update($request->except(['education', 'subject_ids', 'grade_ids']));
             
             $tutor->education = [
                 'institution' => $request->input('institution'),
@@ -74,16 +74,16 @@ class UserManagementController extends Controller
                 'completion_year' => $request->input('completion_year'),
             ];
             
-            $tutor->subjects = $request->input('subjects');
-            $tutor->grades = $request->input('grades');
+            $tutor->subject_ids = $request->input('subject_ids');
+            $tutor->grade_ids = $request->input('grade_ids');
             
             $tutor->save();
             
             return redirect()->route('admin.user-management.index')->with('success', 'Tutor Updated Successfully.');
         } else {
             $student = Student::where('user_id', $user->id)->first();
-            $student->update($request->except(['subjects']));
-            $student->subjects = $request->input('subjects');
+            $student->update($request->except(['subject_ids']));
+            $student->subject_ids = $request->input('subject_ids');
             
             $student->save();
             

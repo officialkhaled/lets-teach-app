@@ -12,7 +12,7 @@ class PostsManagementController extends Controller
     public function index()
     {
         $studentId = Student::query()->where('user_id', auth()->user()->id)->first()['id'] ?? '';
-        $posts = Post::query()->with(['student', 'tags', 'tag'])->where('student_id', $studentId)->latest()->get();
+        $posts = Post::query()->with(['student', 'subjects', 'grade'])->where('student_id', $studentId)->latest()->get();
         
         return view('student.posts-management.list', [
             'posts' => $posts,
@@ -37,8 +37,8 @@ class PostsManagementController extends Controller
         
         Post::create([
             'student_id' => $studentId,
-            'subjects' => $request->input('subjects'),
-            'grade' => $request->input('grade'),
+            'subject_ids' => $request->input('subject_ids'),
+            'grade_id' => $request->input('grade_id'),
             'description' => $request->input('description'),
             'budget' => $request->input('budget'),
             'from_time' => $request->input('from_time'),
@@ -55,7 +55,7 @@ class PostsManagementController extends Controller
             ->latest()
             ->get();
         
-        $selectedSubjects = $post->subjects ?? [];
+        $selectedSubjects = $post->subject_ids ?? [];
         
         return view('student.posts-management.edit-post', [
             'post' => $post,
@@ -66,8 +66,8 @@ class PostsManagementController extends Controller
     
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except('subjects'));
-        $post->subjects = $request->input('subjects');
+        $post->update($request->except('subject_ids'));
+        $post->subject_ids = $request->input('subject_ids');
         $post->save();
         
         return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
