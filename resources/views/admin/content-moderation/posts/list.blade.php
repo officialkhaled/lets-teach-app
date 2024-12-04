@@ -74,3 +74,6 @@
 	</main>
 
 @endsection
+@section('script')
+
+@endsection

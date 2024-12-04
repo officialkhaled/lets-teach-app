@@ -67,4 +67,12 @@
             });
         });
 	</script>
+	<script>
+		@if(session('success'))
+        	toastr.success('Review Updated Successfully!');
+		@endif
+		@if(session('error'))
+        	toastr.error('Review Update Failed!');
+		@endif
+	</script>
 @endsection

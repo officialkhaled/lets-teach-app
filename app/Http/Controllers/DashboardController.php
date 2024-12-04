@@ -26,17 +26,17 @@ class DashboardController extends Controller
     
     public function tutorDashboard()
     {
-//        $tutors = Tutor::all();
-//        $students = Student::all();
-//        $tags = Tag::query()->where('status', 1)->get();
-//        $posts = Post::all();
-//
-//        return view('tutor.dashboard', [
-//            'tutors' => $tutors,
-//            'students' => $students,
-//            'tags' => $tags,
-//            'posts' => $posts,
-//        ]);
+        $tutors = Tutor::all();
+        $students = Student::all();
+        $tags = Tag::query()->where('status', 1)->get();
+        $posts = Post::all();
+
+        return view('tutor.dashboard', [
+            'tutors' => $tutors,
+            'students' => $students,
+            'tags' => $tags,
+            'posts' => $posts,
+        ]);
     }
     
     public function studentDashboard()

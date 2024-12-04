@@ -67,4 +67,12 @@
             });
         });
 	</script>
+	<script>
+		@if(session('success'))
+        	toastr.success('Tag Updated Successfully!');
+		@endif
+		@if(session('error'))
+        	toastr.error('Tag Update Failed!');
+		@endif
+	</script>
 @endsection
