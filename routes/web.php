@@ -94,14 +94,6 @@ Route::middleware(['auth', 'role:1'])->group(function () {
                 Route::patch('/{tutor}', 'update')->name('update');
             });
         });
-        
-        Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-            Route::controller(ProfileController::class)->group(function () {
-                Route::get('/', 'edit')->name('edit');
-                Route::patch('/', 'update')->name('update');
-                Route::delete('/', 'destroy')->name('destroy');
-            });
-        });
     });
 });
 
