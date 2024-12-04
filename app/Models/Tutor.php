@@ -11,6 +11,8 @@ use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
  * @property array|mixed $education
  * @property mixed $subjects
  * @property mixed $grades
+ * @property mixed $user
+ * @property mixed $id
  */
 class Tutor extends Model
 {

@@ -226,13 +226,6 @@
 	
 	</main>
 	
-	@if(session('success'))
-		toastr.success('User Updated Successfully!');
-	@endif
-	@if(session('error'))
-		toastr.error('Something Went Wrong!');
-	@endif
-
 @endsection
 
 @section('script')
@@ -243,5 +236,13 @@
         $(document).ready(function () {
             $('.select2').select2();
         });
+	</script>
+	<script>
+		@if(session('success'))
+        	toastr.success('User Updated Successfully!');
+		@endif
+		@if(session('error'))
+        	toastr.error('User Update Failed!');
+		@endif
 	</script>
 @endsection

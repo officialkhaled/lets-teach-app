@@ -42,6 +42,16 @@ class TutorProfileManagementController extends Controller
         
         $tutor->save();
         
+        if ($request->image) {
+            $user = auth()->user();
+            
+            $imageName = "images/" . time() . '.' . $request->image->extension();
+            $request->image->move(storage_path('app/public/images'), $imageName);
+            $user->image = $imageName;
+            
+            $user->save();
+        }
+        
         return redirect()->route('tutor.profile-management.edit', $tutor->id)->with('success', 'Tutor Updated Successfully.');
     }
 }

@@ -84,13 +84,13 @@
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('tutor/profile-management*') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('tutor/profile-management*') ? 'active' : '' }}"
-							   href="{{ route('tutor.profile-management.edit', $tutor->id) }}">
-								<i class="nav-main-link-icon fas fa-address-card"></i>
-								<span class="nav-main-link-name">Profile Management</span>
-							</a>
-						</li>
+{{--						<li class="nav-main-item {{ request()->is('tutor/profile-management*') ? 'active-menu' : '' }}">--}}
+{{--							<a class="nav-main-link {{ request()->is('tutor/profile-management*') ? 'active' : '' }}"--}}
+{{--							   href="{{ route('tutor.profile-management.edit', $tutor->id) }}">--}}
+{{--								<i class="nav-main-link-icon fas fa-address-card"></i>--}}
+{{--								<span class="nav-main-link-name">Profile Management</span>--}}
+{{--							</a>--}}
+{{--						</li>--}}
 						
 						<li class="nav-main-item ">
 							<a class="nav-main-link " href="#">

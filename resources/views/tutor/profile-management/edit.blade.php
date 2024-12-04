@@ -118,6 +118,24 @@
 										</select>
 									</div>
 								</div>
+								
+								<div class="row" style="margin-top: 14px;">
+									<div class="col-md-12">
+										<h2 class="block-title fw-bold content-heading">Image Upload</h2>
+									</div>
+								</div>
+								
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-md-6">
+										<label class="form-label" for="image">Profile Picture</label>
+										<input class="form-control" type="file" id="image" name="image" onchange="previewImage(event)">
+									</div>
+									<div class="col-md-6 text-center">
+										<img id="preview" alt="Profile Picture Preview" class="img-fluid"
+											 style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
+											 src="{{ $tutor->user->image ? asset('storage/' . $tutor->user->image) : asset('assets/no_image.jpg') }}">
+									</div>
+								</div>
 							</div>
 							
 							<div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
@@ -148,12 +166,29 @@
                 allowClear: false,
             });
         });
-		
+
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+	</script>
+	
+	<script>
 		@if(session('success'))
         	toastr.success('Profile Updated Successfully!');
 		@endif
 		@if(session('error'))
-			toastr.error('Profile Update Failed!');
+        	toastr.error('Profile Update Failed!');
 		@endif
 	</script>
 @endsection
