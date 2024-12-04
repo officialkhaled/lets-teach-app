@@ -96,8 +96,8 @@
 								
 								<div class="row" style="margin-top: 10px;">
 									<div class="col-md-6">
-										<label class="form-label" for="subjects">Subjects</label>
-										<select name="subjects[]" id="subjects" class="select2 form-select" multiple>
+										<label class="form-label" for="subject_ids">Subjects</label>
+										<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
 											<option></option>
 											@foreach($tags->where('type', 1) as $tag)
 												<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>
@@ -107,8 +107,8 @@
 										</select>
 									</div>
 									<div class="col-md-6">
-										<label class="form-label" for="grades">Grades</label>
-										<select name="grades[]" id="grades" class="select2 form-select" multiple>
+										<label class="form-label" for="grade_ids">Grades</label>
+										<select name="grade_ids[]" id="grade_ids" class="select2 form-select" multiple>
 											<option></option>
 											@foreach($tags->where('type', 2) as $tag)
 												<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>

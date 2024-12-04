@@ -15,8 +15,8 @@ class TutorProfileManagementController extends Controller
             ->latest()
             ->get();
         
-        $selectedSubjects = $tutor->subjects ?? [];
-        $selectedGrades = $tutor->grades ?? [];
+        $selectedSubjects = $tutor->subject_ids ?? [];
+        $selectedGrades = $tutor->grade_ids ?? [];
         
         return view('tutor.profile-management.edit', [
             'tutor' => $tutor,
@@ -28,7 +28,7 @@ class TutorProfileManagementController extends Controller
     
     public function update(Request $request, Tutor $tutor)
     {
-        $tutor->update($request->except(['education', 'subjects', 'grades']));
+        $tutor->update($request->except(['education', 'subject_ids', 'grade_ids']));
         
         $tutor->education = [
             'institution' => $request->input('institution'),
@@ -37,8 +37,8 @@ class TutorProfileManagementController extends Controller
             'completion_year' => $request->input('completion_year'),
         ];
         
-        $tutor->subjects = $request->input('subjects');
-        $tutor->grades = $request->input('grades');
+        $tutor->subject_ids = $request->input('subject_ids');
+        $tutor->grade_ids = $request->input('grade_ids');
         
         $tutor->save();
         
@@ -52,6 +52,6 @@ class TutorProfileManagementController extends Controller
             $user->save();
         }
         
-        return redirect()->route('tutor.profile-management.edit', $tutor->id)->with('success', 'Tutor Updated Successfully.');
+        return redirect()->route('tutor.tutor-dashboard', $tutor->id)->with('success', 'Tutor Updated Successfully.');
     }
 }

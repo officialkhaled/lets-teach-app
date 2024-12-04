@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
 
 /**
@@ -16,6 +17,8 @@ use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
  */
 class Tutor extends Model
 {
+    Use HasJsonRelationships;
+    
     protected $table = 'tutors';
     
     protected $fillable = [
@@ -24,14 +27,14 @@ class Tutor extends Model
         'bio',
         'experience',
         'education',
-        'subjects',
-        'grades',
+        'subject_ids',
+        'grade_ids',
     ];
     
     protected $casts = [
         'education' => Json::class,
-        'subjects' => Json::class,
-        'grades' => Json::class,
+        'subject_ids' => Json::class,
+        'grade_ids' => Json::class,
     ];
     
     public function user(): BelongsTo
@@ -39,13 +42,13 @@ class Tutor extends Model
         return $this->belongsTo(User::class, 'user_id')->withDefault();
     }
     
-    public function subjectTags(): BelongsToJson
+    public function subjects(): BelongsToJson
     {
-        return $this->belongsToJson(Tag::class, 'subjects', 'id');
+        return $this->belongsToJson(Tag::class, 'subject_ids', 'id');
     }
     
-    public function gradeTags(): BelongsToJson
+    public function grades(): BelongsToJson
     {
-        return $this->belongsToJson(Tag::class, 'grades', 'id');
+        return $this->belongsToJson(Tag::class, 'grade_ids', 'id');
     }
 }

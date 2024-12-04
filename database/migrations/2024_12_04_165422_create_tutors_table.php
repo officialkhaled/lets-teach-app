@@ -9,14 +9,14 @@ return new class extends Migration {
     {
         Schema::create('tutors', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('user_id');
             $table->string('phone_number')->nullable();
-            $table->string('bio')->nullable();
+            $table->text('bio')->nullable();
             $table->string('experience')->nullable();
-            $table->string('education')->nullable();
-            $table->string('skills')->nullable();
-            $table->string('tags')->nullable();
+            $table->json('education')->nullable();
+            $table->json('subject_ids')->nullable();
+            $table->json('grade_ids')->nullable();
             
             $table->timestamps();
         });

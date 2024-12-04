@@ -32,8 +32,8 @@
 						@foreach($posts as $post)
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
-								<td class="d-none d-sm-table-cell">{{ $post->tags->pluck('name')->implode(', ') }}</td>
-								<td class="d-none d-sm-table-cell">{{ $post->tag->name }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->subjects->pluck('name')->implode(', ') }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->grade->name }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->budget }} Tk.</td>
 								<td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
 								<td class="d-none d-sm-table-cell text-center">

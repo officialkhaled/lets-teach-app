@@ -18,6 +18,11 @@ class Tag extends Model
     
     public function grade(): HasOne
     {
-        return $this->hasOne(Student::class, 'grade');
+        return $this->hasOne(Student::class, 'grade_id');
+    }
+    
+    public function grades(): HasOne
+    {
+        return $this->hasOne(Student::class, 'grade_ids');
     }
 }

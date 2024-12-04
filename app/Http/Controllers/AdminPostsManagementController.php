@@ -10,7 +10,7 @@ class AdminPostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'tags', 'tag'])->latest()->get();
+        $posts = Post::query()->with(['student', 'subjects', 'grade'])->latest()->get();
         
         return view('admin.content-moderation.posts.list', [
             'posts' => $posts,
@@ -24,7 +24,7 @@ class AdminPostsManagementController extends Controller
             ->latest()
             ->get();
         
-        $selectedSubjects = $post->subjects ?? [];
+        $selectedSubjects = $post->subject_ids ?? [];
         
         return view('admin.content-moderation.posts.edit-post', [
             'post' => $post,
@@ -35,8 +35,8 @@ class AdminPostsManagementController extends Controller
     
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except('subjects'));
-        $post->subjects = $request->input('subjects');
+        $post->update($request->except('subject_ids'));
+        $post->subject_ids = $request->input('subject_ids');
         $post->save();
         
         return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Updated Successfully!');

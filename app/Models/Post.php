@@ -16,32 +16,31 @@ class Post extends Model
     
     protected $fillable = [
         'student_id',
-        'subjects',
-        'grade',
+        'subject_ids',
+        'grade_id',
         'description',
         'budget',
         'from_time',
         'to_time',
-        'status',
         'approval_status',
     ];
     
     protected $casts = [
-        'subjects' => Json::class,
+        'subject_ids' => Json::class,
     ];
-
+    
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
     
-    public function tags(): BelongsToJson
+    public function subjects(): BelongsToJson
     {
-        return $this->belongsToJson(Tag::class, 'subjects', 'id');
+        return $this->belongsToJson(Tag::class, 'subject_ids', 'id');
     }
     
-    public function tag(): BelongsTo
+    public function grade(): BelongsTo
     {
-        return $this->belongsTo(Tag::class, 'grade');
+        return $this->belongsTo(Tag::class, 'grade_id');
     }
 }
