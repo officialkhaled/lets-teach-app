@@ -73,15 +73,15 @@
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
-						<li class="nav-main-item {{ request()->is('admin/dashboard') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" href="{{ route('tutor.tutor-dashboard') }}">
+						<li class="nav-main-item {{ request()->is('tutor/dashboard') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('tutor/dashboard') ? 'active' : '' }}" href="{{ route('tutor.tutor-dashboard') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('admin/user-management/users-list') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('admin/user-management/users-list') ? 'active' : '' }}"
-							   href="{{ route('admin.user-management.index') }}">
+						<li class="nav-main-item {{ request()->is('tutor/*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('tutor/*') ? 'active' : '' }}"
+							   href="#">
 								<i class="nav-main-link-icon fas fa-address-card"></i>
 								<span class="nav-main-link-name">Profile Management</span>
 							</a>
@@ -90,16 +90,16 @@
 						<li class="nav-main-item ">
 							<a class="nav-main-link " href="#">
 								<i class="nav-main-link-icon fas fa-sitemap"></i>
-								<span class="nav-main-link-name">Student Post Interaction</span>
+								<span class="nav-main-link-name">Job Posts</span>
 							</a>
 						</li>
 						
-						<li class="nav-main-item ">
-							<a class="nav-main-link " href="#">
-								<i class="nav-main-link-icon fas fa-star"></i>
-								<span class="nav-main-link-name">Ratings and Reviews</span>
-							</a>
-						</li>
+						{{--						<li class="nav-main-item ">--}}
+						{{--							<a class="nav-main-link " href="#">--}}
+						{{--								<i class="nav-main-link-icon fas fa-star"></i>--}}
+						{{--								<span class="nav-main-link-name">Ratings and Reviews</span>--}}
+						{{--							</a>--}}
+						{{--						</li>--}}
 					</ul>
 				</div>
 			</div>
