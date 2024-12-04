@@ -55,9 +55,7 @@
 								<div class="row" style="margin-top: 14px;">
 									<div class="col-md-12">
 										<label class="form-label" for="bio">Bio</label>
-										<textarea class="form-control" name="bio" id="bio" cols="20" rows="4" placeholder="Write...">
-											{{ $tutor->bio ?? '' }}
-										</textarea>
+										<textarea class="form-control" name="bio" id="bio" rows="4" placeholder="Write...">{{ $tutor->bio ?? '' }}</textarea>
 									</div>
 								</div>
 								
@@ -126,7 +124,7 @@
 								<button class="btn btn-success btn-sm" type="submit">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
 								</button>
-								<a href="{{ route('student.posts-management.create') }}" class="btn btn-warning btn-sm" type="button">
+								<a href="{{ route('tutor.profile-management.edit', $tutor->id) }}" class="btn btn-warning btn-sm" type="button">
 									&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 								</a>
 							</div>
@@ -150,5 +148,12 @@
                 allowClear: false,
             });
         });
+		
+		@if(session('success'))
+        	toastr.success('Profile Updated Successfully!');
+		@endif
+		@if(session('error'))
+			toastr.error('Profile Update Failed!');
+		@endif
 	</script>
 @endsection

@@ -63,10 +63,9 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<div class="block block-rounded d-flex justify-content-center"
-						 style="height: 600px; align-items: center; background-color: #0d2f38">
+					<div class="block block-rounded d-flex justify-content-center" style="height: 600px; align-items: center; background-color: #74b9ff">
 						<h1 class="block-title text-uppercase text-white-75" style="font-size: 28px; flex: none; cursor: pointer;">
-							Welcome to your <span class="text-warning fw-bold">Student</span> Dashboard!
+							Welcome to your <span class="fw-bold" style="color: #0984e3;">Student</span> Dashboard!
 						</h1>
 					</div>
 				</div>
