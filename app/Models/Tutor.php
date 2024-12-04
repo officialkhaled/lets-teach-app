@@ -5,7 +5,13 @@ namespace App\Models;
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
 
+/**
+ * @property array|mixed $education
+ * @property mixed $subjects
+ * @property mixed $grades
+ */
 class Tutor extends Model
 {
     protected $table = 'tutors';
@@ -29,5 +35,15 @@ class Tutor extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();
+    }
+    
+    public function subjectTags(): BelongsToJson
+    {
+        return $this->belongsToJson(Tag::class, 'subjects', 'id');
+    }
+    
+    public function gradeTags(): BelongsToJson
+    {
+        return $this->belongsToJson(Tag::class, 'grades', 'id');
     }
 }

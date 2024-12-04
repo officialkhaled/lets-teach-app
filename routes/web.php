@@ -8,6 +8,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
 use App\Http\Controllers\AdminPostsManagementController;
+use App\Http\Controllers\TutorProfileManagementController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -85,6 +86,13 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::group(['prefix' => 'tutor', 'as' => 'tutor.'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
+        });
+        
+        Route::group(['prefix' => 'profile-management', 'as' => 'profile-management.'], function () {
+            Route::controller(TutorProfileManagementController::class)->group(function () {
+                Route::get('/{tutor}/edit', 'edit')->name('edit');
+                Route::patch('/{tutor}', 'update')->name('update');
+            });
         });
         
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {

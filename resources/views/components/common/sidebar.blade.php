@@ -70,6 +70,11 @@
 		@endif
 		
 		@if (auth()->user()->role == 1)
+			@php
+				$tutor = \App\Models\Tutor::query()
+							->where('user_id', auth()->user()->id)
+							->first();
+			@endphp
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
@@ -79,9 +84,9 @@
 								<span class="nav-main-link-name">Dashboard</span>
 							</a>
 						</li>
-						<li class="nav-main-item {{ request()->is('tutor/*') ? 'active-menu' : '' }}">
-							<a class="nav-main-link {{ request()->is('tutor/*') ? 'active' : '' }}"
-							   href="#">
+						<li class="nav-main-item {{ request()->is('tutor/profile-management*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link {{ request()->is('tutor/profile-management*') ? 'active' : '' }}"
+							   href="{{ route('tutor.profile-management.edit', $tutor->id) }}">
 								<i class="nav-main-link-icon fas fa-address-card"></i>
 								<span class="nav-main-link-name">Profile Management</span>
 							</a>
