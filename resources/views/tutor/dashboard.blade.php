@@ -66,8 +66,8 @@
 					<div class="block block-rounded d-flex justify-content-center" style="height: 600px; align-items: center; background-color: #636e72">
 						<div class="block-content block-content-full d-sm-flex justify-content-center align-items-center">
 							<h1 class="block-title text-uppercase text-white-75" style="font-size: 28px; flex: none; cursor: pointer;">
-								Welcome to your
-								<span class="fw-bold" style="color: #2d3436;">Tutor</span> Dashboard!
+								Hello, <span class="fw-bold" style="color: #2d3436;">{{ auth()->user()->name }}</span>! <br>
+								Welcome to your <span class="fw-bold" style="color: #2d3436;">Tutor</span> Dashboard!
 							</h1>
 						</div>
 					</div>
