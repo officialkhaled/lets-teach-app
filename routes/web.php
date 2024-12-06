@@ -89,16 +89,16 @@ Route::middleware(['auth', 'role:1'])->group(function () {
             Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
         });
         
+        Route::group(['prefix' => 'job-posts', 'as' => 'job-posts.'], function () {
+            Route::controller(JobPostsController::class)->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
+        });
+        
         Route::group(['prefix' => 'profile-management', 'as' => 'profile-management.'], function () {
             Route::controller(TutorProfileManagementController::class)->group(function () {
                 Route::get('/{tutor}/edit', 'edit')->name('edit');
                 Route::patch('/{tutor}', 'update')->name('update');
-            });
-        });
-        
-        Route::group(['prefix' => 'job-posts', 'as' => 'job-posts.'], function () {
-            Route::controller(JobPostsController::class)->group(function () {
-                Route::get('/', 'index')->name('index');
             });
         });
     });
