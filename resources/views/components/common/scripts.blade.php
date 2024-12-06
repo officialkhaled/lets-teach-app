@@ -5,7 +5,7 @@
 <script src="{{ asset('assets/js/pages/be_pages_dashboard.min.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>--}}
 
 <script src="{{ asset('assets/js/plugins/datatables/dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -28,15 +28,26 @@
 <script src="{{ asset('assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/dropzone/min/dropzone.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/be_comp_dialogs.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/jquery-appear/jquery.appear.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/raty-js/jquery.raty.js') }}"></script>
+<script src="{{ asset('assets/js/pages/be_comp_rating.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/be_ui_animations.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
 <script>
     Codebase.helpersOnLoad([
+        'jq-appear',
+        'jq-notify',
         'js-flatpickr',
         'jq-datepicker',
-        'jq-maxlength',
+        'jq-magnific-popup',
         // 'jq-select2',
+        'jq-maxlength',
         'jq-rangeslider',
         'jq-masked-inputs',
-        'jq-pw-strength'
+        'jq-pw-strength',
     ]);
 </script>

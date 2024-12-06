@@ -75,5 +75,13 @@
 
 @endsection
 @section('script')
-
+	<script>
+        Codebase.helpers('jq-notify', {
+            align: 'right',
+            from: 'top',
+            type: 'success',
+            icon: 'fa fa-info me-5',
+            message: 'Post Status Updated to Approved Successfully!'
+        });
+	</script>
 @endsection
