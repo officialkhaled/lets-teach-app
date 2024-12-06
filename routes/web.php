@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
@@ -86,6 +87,12 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::group(['prefix' => 'tutor', 'as' => 'tutor.'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
+        });
+        
+        Route::group(['prefix' => 'job-posts', 'as' => 'job-posts.'], function () {
+            Route::controller(JobPostsController::class)->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
         });
         
         Route::group(['prefix' => 'profile-management', 'as' => 'profile-management.'], function () {

@@ -42,6 +42,7 @@
         'jq-appear',
         'jq-notify',
         'js-flatpickr',
+        'jqMagnific',
         'jq-datepicker',
         'jq-magnific-popup',
         // 'jq-select2',
