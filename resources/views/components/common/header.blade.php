@@ -111,7 +111,7 @@
 				<div class="dropdown d-inline-block">
 					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
 							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img class="img-avatar img-avatar32" style="margin-right: 6px;"
+						<img class="img-avatar img-avatar32" style="margin-right: 6px; object-fit: cover"
 							 onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
 							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="Image">
 						<span class="d-none d-sm-inline-block fw-semibold">{{ auth()->user()->name }}</span>
@@ -132,9 +132,9 @@
 								</a>
 							@endif
 							@if (auth()->user()->role === 1)
-									@php
-										$tutor = \App\Models\Tutor::where('user_id', auth()->user()->id)->first();
-									@endphp
+								@php
+									$tutor = \App\Models\Tutor::where('user_id', auth()->user()->id)->first();
+								@endphp
 								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
 								   href="{{ route('tutor.profile-management.edit', $tutor->id) }}">
 									<span>Profile</span>

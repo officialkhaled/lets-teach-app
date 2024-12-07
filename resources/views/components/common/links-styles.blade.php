@@ -74,9 +74,21 @@
         border-color: #5CB85C !important;
     }
 
+    .btn-success:hover {
+        background-color: #367c36 !important;
+        border-color: #367c36 !important;
+        transition: background-color 0.35s ease-in-out;
+    }
+
     .btn-warning {
         background-color: #F0AD54 !important;
         border-color: #F0AD54 !important;
+    }
+
+    .btn-warning:hover {
+        background-color: #d38012 !important;
+        border-color: #d38012 !important;
+        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-danger {
@@ -84,9 +96,21 @@
         border-color: #D9534F !important;
     }
 
+    .btn-danger:hover {
+        background-color: #a72925 !important;
+        border-color: #a72925 !important;
+        transition: background-color 0.35s ease-in-out;
+    }
+
     .btn-info {
         background-color: #61BDE5 !important;
         border-color: #61BDE5 !important;
+    }
+
+    .btn-info:hover {
+        background-color: #2094c5 !important;
+        border-color: #2094c5 !important;
+        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-pdf {
@@ -94,9 +118,21 @@
         border-color: #C14643 !important;
     }
 
+    .btn-pdf:hover {
+        background-color: #862e2d !important;
+        border-color: #862e2d !important;
+        transition: background-color 0.35s ease-in-out;
+    }
+
     .btn-excel {
         background-color: #5CB85C !important;
         border-color: #5CB85C !important;
+    }
+
+    .btn-excel:hover {
+        background-color: #367c36 !important;
+        border-color: #367c36 !important;
+        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-primary {
@@ -104,9 +140,21 @@
         border-color: #0275D8 !important;
     }
 
+    .btn-primary:hover {
+        background-color: #01447e !important;
+        border-color: #01447e !important;
+        transition: background-color 0.35s ease-in-out;
+    }
+
     .btn-refresh {
         background-color: #F0AD4E !important;
         border-color: #F0AD4E !important;
+    }
+
+    .btn-refresh:hover {
+        background-color: #d38312 !important;
+        border-color: #d38312 !important;
+        transition: background-color 0.35s ease-in-out;
     }
 
     .hide-texts {

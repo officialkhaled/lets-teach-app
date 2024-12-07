@@ -24,6 +24,7 @@ class Tutor extends Model
     protected $fillable = [
         'user_id',
         'phone_number',
+        'gender',
         'bio',
         'experience',
         'education',
