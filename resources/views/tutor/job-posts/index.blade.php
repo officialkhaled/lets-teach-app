@@ -74,13 +74,13 @@
 									</div>
 								</div>
 								
-								<div class="row mt-4 mb-2">
+								<div class="row mt-4 mb-1 d-flex align-items-baseline">
 									<div class="col-md-6">
 										<p class="text-secondary">Posted at: {{ today()->format('d M, Y') }}</p>
 									</div>
 									<div class="col-md-6">
 										<div class=" d-flex justify-content-end">
-											<button class="btn btn-md btn-success" type="submit">
+											<button class="btn btn-sm btn-success" type="submit">
 												&nbsp;<i class="fa-solid fa-circle-check opacity-75"></i>&nbsp;&nbsp;Apply&nbsp;
 											</button>
 										</div>
