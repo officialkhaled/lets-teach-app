@@ -14,6 +14,7 @@ class JobPostsController extends Controller
             ->with(['student', 'subjects', 'grade'])
 //            ->whereIn('subject_ids',)
 //            ->whereIn('grade_id',)
+            ->where('approval_status', 1)
             ->get();
 //
 //        dd($posts);
