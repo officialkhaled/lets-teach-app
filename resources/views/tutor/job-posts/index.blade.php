@@ -27,7 +27,7 @@
 							<div class="block-content">
 								<div class="row">
 									<div class="col-md-8">
-										<div class="d-flex align-items-baseline">
+										<div class="d-flex align-items-baseline text-secondary">
 											<i class="fa-solid fa-location-dot"></i>&ensp;<p>Dhaka, Bangladesh</p>
 										</div>
 									</div>
@@ -38,7 +38,7 @@
 								
 								<div class="row">
 									<div class="col-md-12">
-										<h3>Physics Tutor Needed for English Medium</h3>
+										<h2>Physics Tutor Needed for English Medium</h2>
 									</div>
 								</div>
 								
@@ -64,12 +64,17 @@
 									</div>
 									<div class="col-md-4">
 										<p>Subject</p>
-										<span class="badge bg-info" style="margin-top: -25px;">Subject</span>
+										<div class="d-flex gap-2 flex-wrap">
+											<p class="bg-primary badge" style="margin-top: -25px;">Chemistry</p>
+											<p class="bg-info badge" style="margin-top: -25px;">English</p>
+											<p class="bg-earth badge" style="margin-top: -25px;">Physics</p>
+											<p class="bg-warning badge" style="margin-top: -25px;">Biology</p>
+										</div>
 									</div>
 									<div class="col-md-4">
 										<p>Salary</p>
 										<p class="fw-bold" style="margin-top: -25px;">
-											4500 Tk<small class="fw-light">/Month</small>
+											<span class="text-primary">4500 Tk</span><small class="fw-light">/Month</small>
 										</p>
 									</div>
 								</div>
