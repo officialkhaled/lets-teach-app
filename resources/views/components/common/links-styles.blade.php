@@ -163,5 +163,17 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+    
+    .job-card-box {
+        transition: transform 0.35s ease-in-out;
+    }
+    
+    .job-card-box:hover {
+        transform: translate(0, -8px);
+    }
+    
+    .job-card:hover {
+        box-shadow: rgba(149, 157, 165, 1) 0 12px 24px;
+    }
 
 </style>

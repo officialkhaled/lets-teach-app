@@ -11,8 +11,8 @@
 				</div>
 				
 				@foreach($posts as $post)
-					<div class="block-content block-content-full overflow-x-auto" style="margin-bottom: -40px;">
-						<div class="block block-rounded" style="box-shadow: rgba(149, 157, 165, 0.15) 0 8px 24px;">
+					<div class="block-content block-content-full overflow-x-auto job-card-box" style="margin-bottom: -40px;">
+						<div class="block block-rounded job-card" style="box-shadow: rgba(149, 157, 165, 0.15) 0 8px 24px;">
 							<div class="block-header block-header-default">
 								<h3 class="block-title">Job Opening {{ $loop->iteration }}</h3>
 								<div class="block-options">
@@ -86,7 +86,7 @@
 									<div class="col-md-6">
 										<div class=" d-flex justify-content-end">
 											<button class="btn btn-sm btn-success" type="submit">
-												&nbsp;<i class="fa-solid fa-circle-check opacity-75"></i>&nbsp;&nbsp;Apply&nbsp;
+												&nbsp;<i class="fa-regular fa-circle-check opacity-75"></i>&nbsp;&nbsp;Apply&nbsp;
 											</button>
 										</div>
 									</div>
