@@ -84,7 +84,7 @@
 										</div>
 										<div class="col-sm-6 text-sm-end push">
 											<button type="submit" class="btn btn-sm btn-alt-primary fw-semibold">
-												&nbsp;<i class="fa-solid fa-circle-plus"></i>&nbsp;&nbsp;Create Account&nbsp;
+												&nbsp;<i class="fa-solid fa-circle-plus opacity-75"></i>&nbsp;&nbsp;Create Account&nbsp;
 											</button>
 										</div>
 									</div>
@@ -94,10 +94,10 @@
 									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('login') }}">
 										<i class="fa fa-arrow-left opacity-50 me-1"></i> Sign In
 									</a>
-									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="#" data-bs-toggle="modal"
-									   data-bs-target="#modal-terms">
-										<i class="fa fa-book opacity-50 me-1"></i> Read Terms
-									</a>
+{{--									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="#" data-bs-toggle="modal"--}}
+{{--									   data-bs-target="#modal-terms">--}}
+{{--										<i class="fa fa-book opacity-50 me-1"></i> Read Terms--}}
+{{--									</a>--}}
 								</div>
 							</div>
 						</form>

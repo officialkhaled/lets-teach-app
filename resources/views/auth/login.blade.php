@@ -62,7 +62,7 @@
 										</div>
 										<div class="col-sm-6 text-sm-end push">
 											<button type="submit" class="btn btn-sm btn-alt-primary fw-medium">
-												&nbsp;<i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Sign In&nbsp;
+												&nbsp;<i class="fa-solid fa-right-to-bracket opacity-75"></i>&nbsp;&nbsp;Sign In&nbsp;
 											</button>
 										</div>
 									</div>
