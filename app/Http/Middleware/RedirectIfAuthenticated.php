@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
@@ -24,11 +24,11 @@ class RedirectIfAuthenticated
                 $user = Auth::user();
                 
                 if ($user->role === 0) {
-                    return redirect()->intended(RouteServiceProvider::HOME_ADMIN);
+                    return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
                 } else if ($user->role === 1) {
-                    return redirect()->intended(RouteServiceProvider::HOME_TUTOR);
+                    return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
                 } else {
-                    return redirect()->intended(RouteServiceProvider::HOME_STUDENT);
+                    return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
                 }
             }
         }

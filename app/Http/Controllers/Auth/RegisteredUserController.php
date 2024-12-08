@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
                 'name' => ['required', 'string'],
                 'email' => ['required', 'string', 'lowercase', 'email', 'unique:' . User::class],
                 'role' => ['required'],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'password' => ['required', 'confirmed'],
             ]);
             
             $user = User::create([
@@ -52,12 +52,12 @@ class RegisteredUserController extends Controller
             
             Auth::login($user);
             
-            if ($user->role === 0) {
-                return redirect(RouteServiceProvider::HOME_ADMIN);
-            } else if ($user->role === 1) {
-                return redirect(RouteServiceProvider::HOME_TUTOR);
+            if (Auth::user()->role === 0) {
+                return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
+            } else if (Auth::user()->role === 1) {
+                return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
             } else {
-                return redirect(RouteServiceProvider::HOME_STUDENT);
+                return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
             }
         } catch (\Exception $e) {
             \Log::error('Error during user registration: ' . $e->getMessage());
