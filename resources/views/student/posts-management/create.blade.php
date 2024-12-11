@@ -22,7 +22,7 @@
 							
 							<div class="col-md-12">
 								<div class="row" style="margin-top: 10px;">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label class="form-label" for="subject_ids">Subjects</label>
 										<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
 											<option></option>
@@ -31,7 +31,7 @@
 											@endforeach
 										</select>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label class="form-label" for="grade_id">Grade</label>
 										<select name="grade_id" id="grade_id" class="select2 form-select">
 											<option></option>
@@ -40,25 +40,33 @@
 											@endforeach
 										</select>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label class="form-label" for="budget">Budget (BDT)</label>
 										<input type="number" class="form-control" id="budget" name="budget" placeholder="Enter your budget">
 									</div>
+									<div class="col-md-3">
+										<label class="form-label" for="description">Days/Week</label>
+										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
+									</div>
 								</div>
 								<div class="row" style="margin-top: 30px;">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label class="form-label" for="from_time">From Time</label>
 										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<label class="form-label" for="to_time">To Time</label>
 										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
 									</div>
-									<div class="col-md-4">
-										<label class="form-label" for="description">Description</label>
-										<textarea name="description" class="form-control" id="description" rows="1" placeholder="Write..."></textarea>
+									<div class="col-md-3">
+										<label class="form-label" for="tutoring_days">Days/Week</label>
+										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
+									</div>
+									<div class="col-md-3">
+										<label class="form-label" for="description">Days/Week</label>
+										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
 									</div>
 								</div>
 							</div>
