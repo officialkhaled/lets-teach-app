@@ -99,12 +99,12 @@
             });
         });
 	</script>
-	<script>
-		@if(session('success'))
-        	toastr.success('Post Updated Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('Post Update Failed!');
-		@endif
-	</script>
+{{--	<script>--}}
+{{--		@if(session('success'))--}}
+{{--        	toastr.success('Post Updated Successfully!');--}}
+{{--		@endif--}}
+{{--		@if(session('error'))--}}
+{{--        	toastr.error('Post Update Failed!');--}}
+{{--		@endif--}}
+{{--	</script>--}}
 @endsection

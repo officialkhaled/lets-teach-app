@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             
             $table->string('name');
-            $table->tinyInteger('type')->comment('1: Subject, 2: Grade');
+            $table->tinyInteger('type')->comment('1: Subject, 2: Grade, 3: Medium, 4: Gender, 5: Tutoring Days');
             $table->tinyInteger('status')->default(1)->comment('0: Inactive, 1: Active');
             
             $table->timestamps();

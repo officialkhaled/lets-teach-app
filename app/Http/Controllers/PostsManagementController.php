@@ -12,7 +12,14 @@ class PostsManagementController extends Controller
     public function index()
     {
         $studentId = Student::query()->where('user_id', auth()->user()->id)->first()['id'] ?? '';
-        $posts = Post::query()->with(['student', 'subjects', 'grade'])->where('student_id', $studentId)->latest()->get();
+        $posts = Post::query()->with([
+            'student',
+            'subjects',
+            'grade',
+            'medium',
+            'preferredTutor',
+            'tutoringDay',
+        ])->where('student_id', $studentId)->latest()->get();
         
         return view('student.posts-management.list', [
             'posts' => $posts,
@@ -39,8 +46,12 @@ class PostsManagementController extends Controller
             'student_id' => $studentId,
             'subject_ids' => $request->input('subject_ids'),
             'grade_id' => $request->input('grade_id'),
-            'description' => $request->input('description'),
-            'budget' => $request->input('budget'),
+            'job_id' => $request->input('job_id'),
+            'title' => $request->input('title'),
+            'medium_id' => $request->input('medium_id'),
+            'preferred_tutor_id' => $request->input('preferred_tutor_id'),
+            'salary' => $request->input('salary'),
+            'tutoring_day_id' => $request->input('tutoring_day_id'),
             'from_time' => $request->input('from_time'),
             'to_time' => $request->input('to_time'),
         ]);

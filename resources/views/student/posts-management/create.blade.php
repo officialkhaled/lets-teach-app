@@ -22,6 +22,30 @@
 							
 							<div class="col-md-12">
 								<div class="row" style="margin-top: 10px;">
+									<div class="col-md-6">
+										<label class="form-label" for="title">Title</label>
+										<textarea name="title" id="title" rows="1" placeholder="Enter your title" class="form-control"></textarea>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label" for="medium_id">Medium</label>
+										<select name="medium_id" id="medium_id" class="select2 form-select">
+											<option></option>
+											@foreach($tags->where('type', 3) as $tag)
+												<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+											@endforeach
+										</select>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label" for="preferred_tutor_id">Preferred Tutor</label>
+										<select name="preferred_tutor_id" id="preferred_tutor_id" class="select2 form-select">
+											<option></option>
+											@foreach($tags->where('type', 4) as $tag)
+												<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+											@endforeach
+										</select>
+									</div>
+								</div>
+								<div class="row" style="margin-top: 30px;">
 									<div class="col-md-3">
 										<label class="form-label" for="subject_ids">Subjects</label>
 										<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
@@ -41,32 +65,29 @@
 										</select>
 									</div>
 									<div class="col-md-3">
-										<label class="form-label" for="budget">Budget (BDT)</label>
-										<input type="number" class="form-control" id="budget" name="budget" placeholder="Enter your budget">
+										<label class="form-label" for="tutoring_day_id">Tutoring Days/Week</label>
+										<select name="tutoring_day_id" id="tutoring_day_id" class="select2 form-select">
+											<option></option>
+											@foreach($tags->where('type', 5) as $tag)
+												<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+											@endforeach
+										</select>
 									</div>
 									<div class="col-md-3">
-										<label class="form-label" for="description">Days/Week</label>
-										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
+										<label class="form-label" for="salary">Budget (BDT)</label>
+										<input type="number" class="form-control" id="salary" name="salary" placeholder="Enter your budget">
 									</div>
 								</div>
 								<div class="row" style="margin-top: 30px;">
 									<div class="col-md-3">
 										<label class="form-label" for="from_time">From Time</label>
-										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time"
+										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time" placeholder="Enter from time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
 									</div>
 									<div class="col-md-3">
 										<label class="form-label" for="to_time">To Time</label>
-										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time"
+										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time" placeholder="Enter to time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i">
-									</div>
-									<div class="col-md-3">
-										<label class="form-label" for="tutoring_days">Days/Week</label>
-										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
-									</div>
-									<div class="col-md-3">
-										<label class="form-label" for="description">Days/Week</label>
-										<input type="number" step="any" class="form-control" id="tutoring_days" name="tutoring_days" placeholder="Enter tutoring days">
 									</div>
 								</div>
 							</div>

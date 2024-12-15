@@ -32,6 +32,9 @@
 											<option></option>
 											<option value="1">Subject</option>
 											<option value="2">Grade</option>
+											<option value="3">Medium</option>
+											<option value="4">Gender</option>
+											<option value="5">Tutoring Day(s)</option>
 										</select>
 									</div>
 								</div>

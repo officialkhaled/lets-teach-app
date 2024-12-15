@@ -20,10 +20,10 @@ class Post extends Model
         'grade_id',
         'job_id',
         'title',
-        'medium',
-        'preferred_tutor',
+        'medium_id',
+        'preferred_tutor_id',
         'salary',
-        'tutoring_days',
+        'tutoring_day_id',
         'from_time',
         'to_time',
         'approval_status',
@@ -46,5 +46,20 @@ class Post extends Model
     public function grade(): BelongsTo
     {
         return $this->belongsTo(Tag::class, 'grade_id');
+    }
+    
+    public function medium(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'medium_id');
+    }
+    
+    public function preferredTutor(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'preferred_tutor_id');
+    }
+    
+    public function tutoringDay(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class, 'tutoring_day_id');
     }
 }

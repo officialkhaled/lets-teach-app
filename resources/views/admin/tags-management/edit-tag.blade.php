@@ -33,6 +33,9 @@
 											<option></option>
 											<option value="1" {{ old('type', $tag->type) == 1 ? 'selected' : '' }}>Subject</option>
 											<option value="2" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>Grade</option>
+											<option value="3" {{ old('type', $tag->type) == 3 ? 'selected' : '' }}>Medium</option>
+											<option value="4" {{ old('type', $tag->type) == 4 ? 'selected' : '' }}>Gender</option>
+											<option value="5" {{ old('type', $tag->type) == 5 ? 'selected' : '' }}>Tutoring Day(s)</option>
 										</select>
 									</div>
 								</div>
@@ -69,10 +72,10 @@
 	</script>
 	<script>
 		@if(session('success'))
-        	toastr.success('Tag Updated Successfully!');
+        toastr.success('Tag Updated Successfully!');
 		@endif
 		@if(session('error'))
-        	toastr.error('Tag Update Failed!');
+        toastr.error('Tag Update Failed!');
 		@endif
 	</script>
 @endsection

@@ -28,14 +28,20 @@
 						</thead>
 						<tbody>
 						@foreach($tags as $tag)
+							@php
+								$typeLabels = [
+									1 => 'Subject',
+									2 => 'Grade',
+									3 => 'Medium',
+									4 => 'Gender',
+									5 => 'Tutoring Day(s)',
+								];
+								$type = $typeLabels[$tag->type] ?? null;
+							@endphp
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
 								<td class="fw-semibold">{{ $tag->name }}</td>
-								<td class="d-none d-sm-table-cell">
-									<span class="badge {{ $tag->type === 1 ? 'bg-info' : 'bg-warning' }}">
-										{{ $tag->type === 1 ? 'Subject' : 'Grade' }}
-									</span>
-								</td>
+								<td class="d-none d-sm-table-cell">{{ $type }}</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<span class="badge {{ $tag->status === 1 ? 'bg-success' : 'bg-secondary' }}">
 										{{ $tag->status === 1 ? 'Active' : 'Inactive' }}
@@ -43,7 +49,7 @@
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										<a class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+										<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
 										   href="{{ route('admin.tags-management.edit', $tag->id) }}">
 											<i class="fa fa-edit opacity-75"></i>
 										</a>
@@ -51,7 +57,7 @@
 											@csrf
 											@method('DELETE')
 											
-											<button class="btn btn-danger btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+											<button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
 												<i class="fa fa-trash opacity-75"></i>
 											</button>
 										</form>

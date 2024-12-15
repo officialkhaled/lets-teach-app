@@ -11,7 +11,14 @@ class JobPostsController extends Controller
 //        $tagIds = auth()->user()->
         
         $posts = Post::query()
-            ->with(['student', 'subjects', 'grade'])
+            ->with([
+                'student',
+                'subjects',
+                'grade',
+                'medium',
+                'preferredTutor',
+                'tutoringDay',
+            ])
 //            ->whereIn('subject_ids',)
 //            ->whereIn('grade_id',)
             ->where('approval_status', 1)
