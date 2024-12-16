@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('tutoring_day_id')->nullable();
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
+            $table->string('location')->nullable();
             $table->tinyInteger('approval_status')->default(0)->comment('0: Unapproved, 1: Approved, 2: Rejected');
             
             $table->timestamps();

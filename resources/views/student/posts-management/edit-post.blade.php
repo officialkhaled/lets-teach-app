@@ -85,15 +85,19 @@
 									</div>
 								</div>
 								<div class="row" style="margin-top: 30px;">
-									<div class="col-md-3">
+									<div class="col-md-4">
 										<label class="form-label" for="from_time">From Time</label>
 										<input type="text" class="js-flatpickr form-control" id="from_time" name="from_time" placeholder="Enter from time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i" value="{{ $post->from_time }}">
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-4">
 										<label class="form-label" for="to_time">To Time</label>
 										<input type="text" class="js-flatpickr form-control" id="to_time" name="to_time" placeholder="Enter to time"
 											   data-enable-time="true" data-no-calendar="true" data-date-format="H:i" value="{{ $post->to_time }}">
+									</div>
+									<div class="col-md-4">
+										<label class="form-label" for="location">Location</label>
+										<input type="text" class="form-control" id="location" name="location" placeholder="Enter your location" value="{{ $post->location }}">
 									</div>
 								</div>
 							</div>

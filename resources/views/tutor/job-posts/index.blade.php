@@ -28,60 +28,63 @@
 								<div class="row">
 									<div class="col-md-8">
 										<div class="d-flex align-items-baseline text-secondary">
-											<i class="fa-solid fa-location-dot"></i>&ensp;<p>Dhaka, Bangladesh</p>
+											<i class="fa-solid text-earth fa-location-dot"></i>&ensp;<p>{{ $post->location }}</p>
 										</div>
 									</div>
 									<div class="col-md-4 d-flex justify-content-end">
-										<p class="btn btn-sm btn-outline-info">Job ID: 456785</p>
+										<p class="btn btn-sm btn-outline-secondary">Job ID: {{ $post->job_id ?? 'N/A' }}</p>
 									</div>
 								</div>
 								
 								<div class="row">
 									<div class="col-md-12">
-										<h2>Physics Tutor Needed for English Medium</h2>
+										<h2>{{ $post->title }}</h2>
 									</div>
 								</div>
 								
 								<div class="row">
 									<div class="col-md-4">
-										<p>Medium</p>
-										<p class="fw-bold" style="margin-top: -25px;">English Medium</p>
+										<p><i class="fa-brands fa-medium"></i>&nbsp; Medium</p>
+										<p class="fw-bold" style="margin-top: -25px;">{{ $post->medium->name }}</p>
 									</div>
 									<div class="col-md-4">
-										<p>Class</p>
-										<p class="fw-bold" style="margin-top: -25px;">Standard 8</p>
+										<p><i class="fa-solid fa-landmark"></i>&nbsp; Class</p>
+										<p class="fw-bold" style="margin-top: -25px;">{{ $post->grade->name }}</p>
 									</div>
 									<div class="col-md-4">
-										<p>Preferred Tutor</p>
-										<p class="fw-bold" style="margin-top: -25px;">Male</p>
+										<p>
+											<i class="fa-solid fa-venus-mars"></i>&nbsp; Preferred Tutor
+										</p>
+										<p class="fw-bold" style="margin-top: -25px;">{{ $post->preferredTutor->name }}</p>
 									</div>
 								</div>
 								
 								<div class="row">
 									<div class="col-md-4">
-										<p>Tutoring Days</p>
-										<p class="fw-bold" style="margin-top: -25px;">4 Days/Week</p>
+										<p>
+											<i class="fa-solid fa-calendar-day"></i>&nbsp; Tutoring Days
+										</p>
+										<p class="fw-bold" style="margin-top: -25px;">{{ $post->tutoringDay->name }} Days/Week</p>
 									</div>
 									<div class="col-md-4">
-										<p>Subject</p>
+										<p><i class="fa-solid fa-book"></i>&nbsp; Subject</p>
 										<div class="d-flex gap-2 flex-wrap">
-											<p class="bg-primary badge" style="margin-top: -25px;">Chemistry</p>
-											<p class="bg-info badge" style="margin-top: -25px;">English</p>
-											<p class="bg-earth badge" style="margin-top: -25px;">Physics</p>
-											<p class="bg-warning badge" style="margin-top: -25px;">Biology</p>
+											@foreach($post->subjects as $subject)
+												<p class="bg-primary badge" style="margin-top: -25px;">{{ $subject->name }}</p>
+											@endforeach
 										</div>
 									</div>
 									<div class="col-md-4">
-										<p>Salary</p>
+										<p><i class="fa-solid fa-money-bill-1"></i>&nbsp; Salary</p>
 										<p class="fw-bold" style="margin-top: -25px;">
-											<span class="text-primary">4500 Tk</span><small class="fw-light">/Month</small>
+											<span class="text-primary">{{ $post->salary }} Tk</span><small class="fw-light">/Month</small>
 										</p>
 									</div>
 								</div>
 								
 								<div class="row mt-4 mb-1 d-flex align-items-baseline">
 									<div class="col-md-6">
-										<p class="text-secondary">Posted at: {{ today()->format('d M, Y') }}</p>
+										<p class="text-secondary">Posted at: {{ $post->created_at->format('d M, Y') }}</p>
 									</div>
 									<div class="col-md-6">
 										<div class=" d-flex justify-content-end">

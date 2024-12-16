@@ -26,6 +26,7 @@ class Post extends Model
         'tutoring_day_id',
         'from_time',
         'to_time',
+        'location',
         'approval_status',
     ];
     
