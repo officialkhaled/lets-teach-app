@@ -26,12 +26,31 @@ class Post extends Model
         'tutoring_day_id',
         'from_time',
         'to_time',
+        'location',
         'approval_status',
     ];
     
     protected $casts = [
         'subject_ids' => Json::class,
     ];
+    
+    protected static function boot(): void
+    {
+        parent::boot();
+        
+        static::creating(function ($job) {
+            $monthInitials = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+            
+            $prefix = $monthInitials[now()->month - 1] ?? 'X';
+            
+            $job->job_id = sprintf(
+                '%s%s%03d',
+                $prefix,
+                now()->format('dmy'),
+                random_int(0, 999)
+            );
+        });
+    }
     
     public function student(): BelongsTo
     {

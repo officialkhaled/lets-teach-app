@@ -21,6 +21,7 @@
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
 							<th class="d-none d-sm-table-cell">Title</th>
+							<th class="d-none d-sm-table-cell">Job ID</th>
 							<th class="d-none d-sm-table-cell">Subjects</th>
 							<th class="d-none d-sm-table-cell">Grade</th>
 							<th class="d-none d-sm-table-cell">Medium</th>
@@ -28,6 +29,7 @@
 							<th class="d-none d-sm-table-cell">Budget</th>
 							<th class="d-none d-sm-table-cell">Tutoring Days</th>
 							<th class="d-none d-sm-table-cell">Schedule</th>
+							<th class="d-none d-sm-table-cell">Location</th>
 							<th class="d-none d-sm-table-cell" style="width: 10%;">Status</th>
 							<th class="d-none d-sm-table-cell text-center" style="width: 8%;">Action</th>
 						</tr>
@@ -37,6 +39,7 @@
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->title }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->job_id }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->subjects?->pluck('name')->implode(', ') }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->grade?->name }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->medium?->name }}</td>
@@ -44,6 +47,7 @@
 								<td class="d-none d-sm-table-cell">{{ $post->salary }} Tk.</td>
 								<td class="d-none d-sm-table-cell">{{ $post->tutoringDay?->name }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->location }}</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<span class="badge {{ $post->approval_status === 0 ? 'bg-secondary' : ($post->approval_status === 1 ? 'bg-success' : 'bg-danger') }}">
 										{{ $post->approval_status === 0 ? 'Unapproved' : ($post->approval_status === 1 ? 'Approved' : 'Rejected') }}
