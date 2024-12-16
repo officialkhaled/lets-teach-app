@@ -97,7 +97,7 @@
 							</div>
 							
 							<div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
-								<button class="btn btn-success btn-sm" type="submit">
+								<button class="btn btn-success btn-sm" type="submit" id="save-post">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;
 								</button>
 								<a href="{{ route('student.posts-management.create') }}" class="btn btn-warning btn-sm" type="button">
@@ -122,6 +122,34 @@
         $(document).ready(function () {
             $('.select2').select2({
                 allowClear: false,
+            });
+
+            $('#save-post').on('click', function (e) {
+                e.preventDefault();
+
+                let form = $('#post-form');
+                let route = form.data('route');
+                let formData = new FormData(form[0]);
+
+                $('#success-message').addClass('d-none').text('');
+
+                $.ajax({
+                    url: route,
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $('#success-message').removeClass('d-none').text(response.message);
+                        form[0].reset();
+                        $('.select2').val(null).trigger('change');
+                    },
+                    error: function (xhr) {
+                        let errors = xhr.responseJSON.errors || {};
+                        let errorMessages = Object.values(errors).flat().join('\n');
+                        alert('Error: ' + errorMessages);
+                    },
+                });
             });
         });
 	</script>

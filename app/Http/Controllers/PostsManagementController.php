@@ -56,6 +56,10 @@ class PostsManagementController extends Controller
             'to_time' => $request->input('to_time'),
         ]);
         
+        if ($request->ajax()) {
+            return response()->json(['message' => 'Post Added Successfully!'], 200);
+        }
+        
         return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');
     }
     
