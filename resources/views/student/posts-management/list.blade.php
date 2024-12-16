@@ -21,6 +21,7 @@
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
 							<th class="d-none d-sm-table-cell">Title</th>
+							<th class="d-none d-sm-table-cell">Job ID</th>
 							<th class="d-none d-sm-table-cell">Subjects</th>
 							<th class="d-none d-sm-table-cell">Grade</th>
 							<th class="d-none d-sm-table-cell">Medium</th>
@@ -37,6 +38,7 @@
 							<tr>
 								<td class="text-center">{{ $loop->iteration }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->title }}</td>
+								<td class="d-none d-sm-table-cell">{{ $post->job_id }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->subjects?->pluck('name')->implode(', ') }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->grade?->name }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->medium?->name }}</td>

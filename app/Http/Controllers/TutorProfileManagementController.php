@@ -28,6 +28,8 @@ class TutorProfileManagementController extends Controller
     
     public function update(Request $request, Tutor $tutor)
     {
+        auth()->user()->update($request->all());
+        
         $tutor->update($request->except(['education', 'subject_ids', 'grade_ids']));
         
         $tutor->education = [
