@@ -69,12 +69,4 @@
             });
         });
 	</script>
-	<script>
-		@if(session('success'))
-        	toastr.success('Tag Created Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('Tag Creation Failed!');
-		@endif
-	</script>
 @endsection

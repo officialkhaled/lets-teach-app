@@ -72,12 +72,5 @@
 @endsection
 
 @section('script')
-	<script>
-		@if(session('success'))
-        	toastr.success('User Deleted Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('User Not Found!');
-		@endif
-	</script>
+
 @endsection

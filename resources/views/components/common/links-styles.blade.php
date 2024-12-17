@@ -77,7 +77,6 @@
     .btn-success:hover {
         background-color: #367c36 !important;
         border-color: #367c36 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-warning {
@@ -88,7 +87,6 @@
     .btn-warning:hover {
         background-color: #d38012 !important;
         border-color: #d38012 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-danger {
@@ -99,7 +97,6 @@
     .btn-danger:hover {
         background-color: #a72925 !important;
         border-color: #a72925 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-info {
@@ -110,7 +107,6 @@
     .btn-info:hover {
         background-color: #2094c5 !important;
         border-color: #2094c5 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-pdf {
@@ -121,7 +117,6 @@
     .btn-pdf:hover {
         background-color: #862e2d !important;
         border-color: #862e2d !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-excel {
@@ -132,7 +127,6 @@
     .btn-excel:hover {
         background-color: #367c36 !important;
         border-color: #367c36 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-primary {
@@ -143,7 +137,6 @@
     .btn-primary:hover {
         background-color: #01447e !important;
         border-color: #01447e !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .btn-refresh {
@@ -154,7 +147,6 @@
     .btn-refresh:hover {
         background-color: #d38312 !important;
         border-color: #d38312 !important;
-        transition: background-color 0.35s ease-in-out;
     }
 
     .hide-texts {

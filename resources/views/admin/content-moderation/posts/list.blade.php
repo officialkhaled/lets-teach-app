@@ -2,7 +2,6 @@
 @section('content')
 	
 	<main id="main-container">
-		
 		<div class="content">
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
@@ -16,7 +15,7 @@
 						<thead>
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
-							<th class="d-none d-sm-table-cell">Title</th>
+							<th class="d-none d-sm-table-cell" style="width: 40%">Title</th>
 							<th class="d-none d-sm-table-cell">Job ID</th>
 							<th class="d-none d-sm-table-cell">Subjects</th>
 							<th class="d-none d-sm-table-cell">Grade</th>
@@ -63,11 +62,16 @@
 											</button>
 										</form>
 										
+{{--										<div class="btn btn-sm btn-alt-info js-swal-confirm">--}}
+{{--											Try--}}
+{{--										</div>--}}
+										
 										@if ($post->approval_status === 0)
 											<a class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
 											   href="{{ route('admin.content-moderation.posts.approve', $post->id) }}">
 												<i class="fa-solid fa-square-check opacity-75"></i>
 											</a>
+											
 											<a class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject"
 											   href="{{ route('admin.content-moderation.posts.reject', $post->id) }}">
 												<i class="fa-solid fa-xmark opacity-75"></i>
@@ -82,18 +86,6 @@
 				</div>
 			</div>
 		</div>
-	
 	</main>
 
-@endsection
-@section('script')
-	<script>
-        // Codebase.helpers('jq-notify', {
-        //     align: 'right',
-        //     from: 'top',
-        //     type: 'success',
-        //     icon: 'fa fa-info me-5',
-        //     message: 'Post Status Updated to Approved Successfully!'
-        // });
-	</script>
 @endsection

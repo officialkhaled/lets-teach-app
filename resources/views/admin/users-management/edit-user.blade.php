@@ -230,12 +230,4 @@
             $('.select2').select2();
         });
 	</script>
-	<script>
-		@if(session('success'))
-        	toastr.success('User Updated Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('User Update Failed!');
-		@endif
-	</script>
 @endsection

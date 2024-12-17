@@ -182,13 +182,4 @@
             }
         }
 	</script>
-	
-	<script>
-		@if(session('success'))
-        	toastr.success('Profile Updated Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('Profile Update Failed!');
-		@endif
-	</script>
 @endsection
