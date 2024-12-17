@@ -2,7 +2,6 @@
 @section('content')
 	
 	<main id="main-container">
-		
 		<div class="content">
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
@@ -16,7 +15,7 @@
 						<thead>
 						<tr>
 							<th class="text-center" style="width: 3%">SL</th>
-							<th class="d-none d-sm-table-cell">Title</th>
+							<th class="d-none d-sm-table-cell" style="width: 40%">Title</th>
 							<th class="d-none d-sm-table-cell">Job ID</th>
 							<th class="d-none d-sm-table-cell">Subjects</th>
 							<th class="d-none d-sm-table-cell">Grade</th>
@@ -82,7 +81,6 @@
 				</div>
 			</div>
 		</div>
-	
 	</main>
 
 @endsection

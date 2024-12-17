@@ -68,6 +68,7 @@
 @if (session()->has('success') || session()->has('error'))
 	@php
 		$key = session()->has('success') ? 'success' : 'error';
+		$icon = session()->has('success') ? 'fa-solid fa-square-check' : 'fa-solid fa-triangle-exclamation';
 	@endphp
 	
 	<script>
@@ -75,7 +76,7 @@
             align: 'right',
             from: 'top',
             type: '{{ $key }}',
-            icon: 'fa fa-info me-5',
+            icon: '{{ $icon }} me-2',
             message: '{{ session()->get($key) }}'
         });
 	</script>

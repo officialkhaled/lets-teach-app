@@ -79,7 +79,7 @@ class UserManagementController extends Controller
             
             $tutor->save();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Updated Successfully.');
+            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Details Updated Successfully.');
         } else {
             $student = Student::where('user_id', $user->id)->first();
             $student->update($request->except(['subject_ids']));
@@ -87,7 +87,7 @@ class UserManagementController extends Controller
             
             $student->save();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Student Updated Successfully');
+            return redirect()->route('admin.user-management.index')->with('success', 'Student Details Updated Successfully');
         }
     }
     
@@ -98,13 +98,13 @@ class UserManagementController extends Controller
             $tutor?->delete();
             $user->delete();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Deleted Successfully.');
+            return redirect()->route('admin.user-management.index')->with('success', 'Tutor Details Deleted Successfully.');
         } elseif ($user->role == 2) {
             $student = Student::where('user_id', $user->id)->first();
             $student?->delete();
             $user->delete();
             
-            return redirect()->route('admin.user-management.index')->with('success', 'Student Deleted Successfully.');
+            return redirect()->route('admin.user-management.index')->with('success', 'Student Details Deleted Successfully.');
         } else {
             return redirect()->route('admin.user-management.index')->with('error', 'User Not Found.');
         }
