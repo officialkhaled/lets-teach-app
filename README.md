@@ -20,3 +20,22 @@ And JS dependencies:
 ```bash
 npm install
 ```
+
+Get the project ready:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+To run the application:
+
+```bash
+php artisan serve
+```
+And JS dependencies:
+```bash
+npm run dev
+```
+
+To view the application running on the server: 
+[Database](http://127.0.0.1:9000/) ``` [View Site](http://127.0.0.1:8000/)
