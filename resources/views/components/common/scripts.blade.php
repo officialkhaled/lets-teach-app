@@ -45,10 +45,10 @@
         'jqMagnific',
         'jq-datepicker',
         'jq-magnific-popup',
-        // 'jq-select2',
         'jq-maxlength',
         'jq-rangeslider',
         'jq-masked-inputs',
         'jq-pw-strength',
+        // 'jq-select2',
     ]);
 </script>
