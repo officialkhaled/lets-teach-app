@@ -54,11 +54,12 @@ class PostsManagementController extends Controller
             'tutoring_day_id' => $request->input('tutoring_day_id'),
             'from_time' => $request->input('from_time'),
             'to_time' => $request->input('to_time'),
+            'location' => $request->input('location'),
         ]);
-        
-        if ($request->ajax()) {
-            return response()->json(['message' => 'Post Added Successfully!'], 200);
-        }
+
+//        if ($request->ajax()) {
+//            return response()->json(['message' => 'Post Added Successfully!'], 200);
+//        }
         
         return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');
     }
