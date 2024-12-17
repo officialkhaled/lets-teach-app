@@ -65,5 +65,21 @@
 
 @yield('script')
 
+@if (session()->has('success') || session()->has('error'))
+	@php
+		$key = session()->has('success') ? 'success' : 'error';
+	@endphp
+	
+	<script>
+        Codebase.helpers('jq-notify', {
+            align: 'right',
+            from: 'top',
+            type: '{{ $key }}',
+            icon: 'fa fa-info me-5',
+            message: '{{ session()->get($key) }}'
+        });
+	</script>
+@endif
+
 </body>
 </html>
