@@ -36,9 +36,5 @@ npm run dev
 
 To view the application running on the server: 
 <br><br>
-```bash
-[Local Live Server](http://127.0.0.1:8000/)
-```
-```bash
-[Database (phpmyadmin)](http://127.0.0.1:9000/) 
-```
+[Local Live Server](http://127.0.0.1:8000/)                 
+[Local Database (phpmyadmin)](http://127.0.0.1:9000/) 
