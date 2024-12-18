@@ -77,6 +77,7 @@ class pageDialogs {
         let swalConfirmDelete = document.querySelector('.js-swal-confirm-delete');
         if (swalConfirmDelete) {
             swalConfirmDelete.addEventListener('click', e => {
+                e.preventDefault();
                 toast.fire({
                     title: 'Are you sure?',
                     text: 'You will not be able to recover this data!',
@@ -109,6 +110,7 @@ class pageDialogs {
         let swalConfirm = document.querySelector('.js-swal-confirm');
         if (swalConfirm) {
             swalConfirm.addEventListener('click', e => {
+                e.preventDefault();
                 toast.fire({
                     title: 'Are you sure?',
                     text: 'Do you want to approve this data?!',
@@ -130,6 +132,7 @@ class pageDialogs {
                 }).then(result => {
                     if (result.value) {
                         toast.fire('Done!', 'Approved Successfully.', 'success');
+                        window.location.href = swalConfirm.getAttribute('href');
                     }
                 });
             });
