@@ -50,29 +50,26 @@
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-										   href="{{ route('admin.content-moderation.posts.edit', $post->id) }}">
+										<a class="btn btn-success btn-sm" data-bs-toggle="tooltip"
+										   href="{{ route('admin.content-moderation.posts.edit', $post->id) }}"
+										   data-bs-placement="top" title="Edit">
 											<i class="fa fa-edit opacity-75"></i>
 										</a>
 										<form action="{{ route('admin.content-moderation.posts.destroy', $post->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
-											<button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+											<button class="btn btn-danger btn-sm js-swal-confirm-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
 												<i class="fa fa-trash opacity-75"></i>
 											</button>
 										</form>
 										
-{{--										<div class="btn btn-sm btn-alt-info js-swal-confirm">--}}
-{{--											Try--}}
-{{--										</div>--}}
-										
 										@if ($post->approval_status === 0)
-											<a class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
+											<a class="btn btn-info btn-sm js-swal-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
 											   href="{{ route('admin.content-moderation.posts.approve', $post->id) }}">
 												<i class="fa-solid fa-square-check opacity-75"></i>
 											</a>
 											
-											<a class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject"
+											<a class="btn btn-warning btn-sm js-swal-reject" data-bs-toggle="tooltip" data-bs-placement="top" title="Reject"
 											   href="{{ route('admin.content-moderation.posts.reject', $post->id) }}">
 												<i class="fa-solid fa-xmark opacity-75"></i>
 											</a>
@@ -87,5 +84,9 @@
 			</div>
 		</div>
 	</main>
+
+@endsection
+
+@section('script')
 
 @endsection
