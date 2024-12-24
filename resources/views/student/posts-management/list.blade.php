@@ -9,7 +9,6 @@
 					<h3 class="block-title">
 						Posts Management
 					</h3>
-					{{--					@dd($posts->count())--}}
 					<a href="{{ route('student.posts-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
 					</a>
