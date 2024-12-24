@@ -63,10 +63,14 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<div class="block block-rounded d-flex justify-content-center" style="height: 600px; align-items: center; background-color: #74b9ff">
-						<h1 class="block-title text-uppercase text-white-75" style="font-size: 28px; flex: none; cursor: pointer;">
-							Hello, <span class="fw-bold" style="color: #0984e3;">{{ auth()->user()->name }}</span>! <br>
-							Welcome to your <span class="fw-bold" style="color: #0984e3;">Student</span> Dashboard!
+					<div class="block block-rounded d-flex justify-content-center" id="dynamic-background"
+						 style="height: 600px; align-items: center; background-color: #74b9ff">
+						<h1 class="block-title text-uppercase text-white-75"
+							style="font-size: 28px; flex: none; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.5) 0 10px 30px 0;
+								background-color: #075a85; border-radius: 8px; padding: 10px 20px; color: #bae6fd">
+							Hello, <span class="fw-bold" style="color: #fff;">{{ auth()->user()->name }}</span>!
+							<br>
+							Welcome to your <span class="fw-bold" style="color: #fff;">Student</span> Dashboard!
 						</h1>
 					</div>
 				</div>
@@ -77,5 +81,19 @@
 @endsection
 
 @section('script')
+	
+	<script>
+        VANTA.CELLS({
+            el: "#dynamic-background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            color1: 0xe8c,
+            color2: 0x35f2de
+        })
+	</script>
 
 @endsection
