@@ -155,17 +155,36 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    
+
     .job-card-box {
         transition: transform 0.35s ease-in-out;
     }
-    
+
     .job-card-box:hover {
         transform: translate(0, -8px);
     }
-    
+
     .job-card:hover {
         box-shadow: rgba(149, 157, 165, 1) 0 12px 24px;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 8px;
+        background-color: #f5f5f5;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #61BDE5;
+        border-radius: 8px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background-color: #e2e2e2;
+        border-radius: 8px;
+    }
+
+    .vanta-canvas {
+        border-radius: 8px;
     }
 
 </style>
