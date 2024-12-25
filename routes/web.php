@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TutorProfileController;
 use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
 use App\Http\Controllers\AdminPostsManagementController;
-use App\Http\Controllers\TutorProfileManagementController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -96,8 +96,8 @@ Route::middleware(['auth', 'role:1'])->group(function () {
             });
         });
         
-        Route::group(['prefix' => 'profile-management', 'as' => 'profile-management.'], function () {
-            Route::controller(TutorProfileManagementController::class)->group(function () {
+        Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+            Route::controller(TutorProfileController::class)->group(function () {
                 Route::get('/{tutor}/edit', 'edit')->name('edit');
                 Route::patch('/{tutor}', 'update')->name('update');
             });

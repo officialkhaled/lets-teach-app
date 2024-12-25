@@ -10,14 +10,14 @@
 						Profile Edit
 					</h3>
 					
-					{{--					<a href="{{ route('tutor.profile-management.edit') }}" class="btn btn-info btn-sm waves-effect bg-gradient">--}}
+					{{--					<a href="{{ route('tutor.profile.edit') }}" class="btn btn-info btn-sm waves-effect bg-gradient">--}}
 					{{--						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;--}}
 					{{--					</a>--}}
 				</div>
 				
 				<div class="block-content block-content-full overflow-x-auto">
 					<div class="row">
-						<form method="POST" action="{{ route('tutor.profile-management.update', $tutor->id) }}"
+						<form method="POST" action="{{ route('tutor.profile.update', $tutor->id) }}"
 							  class="space-y-3" enctype="multipart/form-data">
 							@csrf
 							@method('patch')
@@ -142,7 +142,7 @@
 								<button class="btn btn-success btn-sm" type="submit">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
 								</button>
-								<a href="{{ route('tutor.profile-management.edit', $tutor->id) }}" class="btn btn-warning btn-sm" type="button">
+								<a href="{{ route('tutor.profile.edit', $tutor->id) }}" class="btn btn-warning btn-sm" type="button">
 									&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
 								</a>
 							</div>
@@ -158,9 +158,6 @@
 
 @section('script')
 	<script>
-        $.fn.select2.defaults.set("theme", "bootstrap-5");
-        $.fn.select2.defaults.set("placeholder", "Select");
-
         $(document).ready(function () {
             $('.select2').select2({
                 allowClear: false,

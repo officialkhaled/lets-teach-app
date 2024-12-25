@@ -136,7 +136,7 @@
 									$tutor = \App\Models\Tutor::where('user_id', auth()->user()->id)->first();
 								@endphp
 								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-								   href="{{ route('tutor.profile-management.edit', $tutor->id) }}">
+								   href="{{ route('tutor.profile.edit', $tutor->id) }}">
 									<span>Profile</span>
 									<i class="fa fa-fw fa-user opacity-25"></i>
 								</a>

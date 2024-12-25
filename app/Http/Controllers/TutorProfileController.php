@@ -6,7 +6,7 @@ use App\Models\Tag;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
 
-class TutorProfileManagementController extends Controller
+class TutorProfileController extends Controller
 {
     public function edit(Tutor $tutor)
     {
@@ -18,7 +18,7 @@ class TutorProfileManagementController extends Controller
         $selectedSubjects = $tutor->subject_ids ?? [];
         $selectedGrades = $tutor->grade_ids ?? [];
         
-        return view('tutor.profile-management.edit', [
+        return view('tutor.profile.edit', [
             'tutor' => $tutor,
             'tags' => $tags,
             'selectedSubjects' => $selectedSubjects,
