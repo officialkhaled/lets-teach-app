@@ -46,9 +46,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
 
 <script>
-    $.fn.select2.defaults.set("theme", "bootstrap-5");
-    $.fn.select2.defaults.set("placeholder", "Select");
-    
     Codebase.helpersOnLoad([
         'jq-appear',
         'jq-notify',
