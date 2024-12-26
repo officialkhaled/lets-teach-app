@@ -54,6 +54,6 @@ class TutorProfileController extends Controller
             $user->save();
         }
         
-        return redirect()->route('tutor.tutor-dashboard', $tutor->id)->with('success', 'Tutor Updated Successfully.');
+        return redirect()->route('tutor.tutor-dashboard', $tutor->id)->with('success', 'Profile Updated Successfully.');
     }
 }

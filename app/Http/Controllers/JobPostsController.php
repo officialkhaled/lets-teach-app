@@ -26,8 +26,9 @@ class JobPostsController extends Controller
         ]);
     }
     
-    public function apply()
+    public function apply(Post $post)
     {
-        
+        $post->update(['approval_status' => 3]);
+        return back()->with('success', 'Applied Successfully.');
     }
 }
