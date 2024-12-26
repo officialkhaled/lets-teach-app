@@ -38,7 +38,6 @@
 <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.clouds.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.cells.min.js"></script>
@@ -46,9 +45,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
 
 <script>
-    $.fn.select2.defaults.set("theme", "bootstrap-5");
-    $.fn.select2.defaults.set("placeholder", "Select");
-    
     Codebase.helpersOnLoad([
         'jq-appear',
         'jq-notify',
