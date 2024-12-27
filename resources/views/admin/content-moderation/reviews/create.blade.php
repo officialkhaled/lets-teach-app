@@ -66,12 +66,4 @@
             });
         });
 	</script>
-	<script>
-		@if(session('success'))
-        	toastr.success('Review Created Successfully!');
-		@endif
-		@if(session('error'))
-        	toastr.error('Review Creation Failed!');
-		@endif
-	</script>
 @endsection
