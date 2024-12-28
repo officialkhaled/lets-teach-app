@@ -2,7 +2,6 @@
 @section('content')
 	
 	<main id="main-container">
-		
 		<div class="content">
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
@@ -50,7 +49,6 @@
 				</div>
 			</div>
 		</div>
-	
 	</main>
 
 @endsection
