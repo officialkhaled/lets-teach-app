@@ -92,7 +92,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
         Route::group(['prefix' => 'job-posts', 'as' => 'job-posts.'], function () {
             Route::controller(JobPostsController::class)->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::get('/apply', 'apply')->name('apply');
+                Route::get('/{post}/apply', 'apply')->name('apply');
             });
         });
         

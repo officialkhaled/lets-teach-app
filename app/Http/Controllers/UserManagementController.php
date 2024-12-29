@@ -8,7 +8,6 @@ use App\Models\Tutor;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-
 class UserManagementController extends Controller
 {
     public function index()
