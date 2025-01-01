@@ -32,7 +32,7 @@
 							
 							<div class="row">
 								<div class="col-md-12">
-									<div class="alert alert-primary" role="alert" data-bs-toggle="tooltip" data-bs-placement="top" title="Quote of the Day">
+									<div class="alert alert-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Quote of the Day">
 										<p class="mb-0">
 											{{ $randomQuote }}
 										</p>
@@ -48,7 +48,7 @@
 						<div class="block-header bg-corporate">
 							<h3 class="block-title">Corporate Light</h3>
 							<div class="block-options">
-								<a href="#" class="btn-block-option"
+								<a href="{{ route('tutor.job-posts.index') }}" class="btn-block-option"
 								   data-bs-toggle="tooltip" data-bs-placement="top" title="View Available Jobs">
 									<i class="fa-solid fa-clipboard-list opacity-75"></i>
 								</a>
@@ -57,7 +57,7 @@
 						<div class="block-content">
 							<div class="row">
 								<div class="col-md-3 d-flex justify-content-center" style="align-items: center; margin-top: -1.625rem;">
-									<i class="fa-solid fa-location-crosshairs text-corporate" style="font-size: 4rem;"></i>
+									<i class="fa-brands fa-algolia text-corporate" style="font-size: 4rem;"></i>
 								</div>
 								<div class="col-md-9">
 									<div class="row">
@@ -85,6 +85,64 @@
 			</div>
 			
 			<div class="row">
+				<div class="col-6 col-xl-3">
+					<a class="block block-rounded shadow-none bg-primary" href="javascript:void(0)">
+						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+							<div class="d-none d-sm-block">
+								<i class="fa-brands fa-magento fa-2x text-black-50"></i>
+							</div>
+							<div class="text-end">
+								<div class="fs-3 fw-semibold text-white">{{ $appliedJobs }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Applied Jobs</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				<div class="col-6 col-xl-3">
+					<a class="block block-rounded shadow-none bg-earth" href="javascript:void(0)">
+						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+							<div class="d-none d-sm-block">
+								<i class="fa-solid fa-list-check fa-2x text-black-50"></i>
+							</div>
+							<div class="text-end">
+								<div class="fs-3 fw-semibold text-white">{{ $assignedJobs }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Assigned Jobs</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				<div class="col-6 col-xl-3">
+					<a class="block block-rounded shadow-none bg-info" href="javascript:void(0)">
+						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+							<div class="d-none d-sm-block">
+								<i class="fa-solid fa-circle-check fa-2x text-black-50"></i>
+							</div>
+							<div class="text-end">
+								<div class="fs-3 fw-semibold text-white">{{ $confirmedJobs }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Confirmed Jobs</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				<div class="col-6 col-xl-3">
+					<a class="block block-rounded shadow-none bg-gray-dark" href="javascript:void(0)">
+						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+							<div class="d-none d-sm-block">
+								<i class="fa-solid fa-ban fa-2x text-black-50"></i>
+							</div>
+							<div class="text-end">
+								<div class="fs-3 fw-semibold text-white">{{ $cancelledJobs }}</div>
+								<div class="fs-sm fw-semibold text-uppercase text-white-75">Cancelled Jobs</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			
+			<div class="row">
 				<div class="col-md-12">
 					<div class="block block-rounded d-flex justify-content-center" id="dynamic-background"
 						 style="height: 600px; align-items: center; background-color: #636e72">
@@ -102,64 +160,6 @@
 					</div>
 				</div>
 			</div>
-			
-			{{--			<div class="row">--}}
-			{{--				<div class="col-6 col-xl-3">--}}
-			{{--					<a class="block block-rounded shadow-none bg-primary" href="javascript:void(0)">--}}
-			{{--						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">--}}
-			{{--							<div class="d-none d-sm-block">--}}
-			{{--								<i class="fa-solid fa-person-chalkboard fa-2x text-black-50"></i>--}}
-			{{--							</div>--}}
-			{{--							<div class="text-end">--}}
-			{{--								<div class="fs-3 fw-semibold text-white">{{ $tutors->count() }}</div>--}}
-			{{--								<div class="fs-sm fw-semibold text-uppercase text-white-75">Tutors</div>--}}
-			{{--							</div>--}}
-			{{--						</div>--}}
-			{{--					</a>--}}
-			{{--				</div>--}}
-			{{--				--}}
-			{{--				<div class="col-6 col-xl-3">--}}
-			{{--					<a class="block block-rounded shadow-none bg-earth" href="javascript:void(0)">--}}
-			{{--						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">--}}
-			{{--							<div class="d-none d-sm-block">--}}
-			{{--								<i class="fa-solid fa-graduation-cap fa-2x text-black-50"></i>--}}
-			{{--							</div>--}}
-			{{--							<div class="text-end">--}}
-			{{--								<div class="fs-3 fw-semibold text-white">{{ $students->count() }}</div>--}}
-			{{--								<div class="fs-sm fw-semibold text-uppercase text-white-75">Students</div>--}}
-			{{--							</div>--}}
-			{{--						</div>--}}
-			{{--					</a>--}}
-			{{--				</div>--}}
-			{{--				--}}
-			{{--				<div class="col-6 col-xl-3">--}}
-			{{--					<a class="block block-rounded shadow-none bg-warning" href="javascript:void(0)">--}}
-			{{--						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">--}}
-			{{--							<div class="d-none d-sm-block">--}}
-			{{--								<i class="fa-solid fa-tags fa-2x text-black-50"></i>--}}
-			{{--							</div>--}}
-			{{--							<div class="text-end">--}}
-			{{--								<div class="fs-3 fw-semibold text-white">{{ $tags->count() }}</div>--}}
-			{{--								<div class="fs-sm fw-semibold text-uppercase text-white-75">Tags</div>--}}
-			{{--							</div>--}}
-			{{--						</div>--}}
-			{{--					</a>--}}
-			{{--				</div>--}}
-			{{--				--}}
-			{{--				<div class="col-6 col-xl-3">--}}
-			{{--					<a class="block block-rounded shadow-none bg-info" href="javascript:void(0)">--}}
-			{{--						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">--}}
-			{{--							<div class="d-none d-sm-block">--}}
-			{{--								<i class="fa-solid fa-envelopes-bulk fa-2x text-black-50"></i>--}}
-			{{--							</div>--}}
-			{{--							<div class="text-end">--}}
-			{{--								<div class="fs-3 fw-semibold text-white">{{ $posts->count() }}</div>--}}
-			{{--								<div class="fs-sm fw-semibold text-uppercase text-white-75">Posts</div>--}}
-			{{--							</div>--}}
-			{{--						</div>--}}
-			{{--					</a>--}}
-			{{--				</div>--}}
-			{{--			</div>--}}
 		</div>
 	</main>
 @endsection

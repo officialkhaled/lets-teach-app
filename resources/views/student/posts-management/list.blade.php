@@ -48,14 +48,14 @@
 								<td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->location }}</td>
 								<td class="d-none d-sm-table-cell text-center">
-									<span class="badge {{ $post->approval_status === 0 ? 'bg-secondary' : ($post->approval_status === 1 ? 'bg-success' : 'bg-danger') }}">
-										{{ $post->approval_status === 0 ? 'Unapproved' : ($post->approval_status === 1 ? 'Approved' : 'Rejected') }}
+									<span class="badge {{ $post->status === 0 ? 'bg-secondary' : ($post->status === 1 ? 'bg-success' : 'bg-danger') }}">
+										{{ $post->status === 0 ? 'Unapproved' : ($post->status === 1 ? 'Approved' : 'Rejected') }}
 									</span>
 								</td>
 								
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
-										@if ($post->approval_status === 0)
+										@if ($post->status === 0)
 											<a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
 											   href="{{ route('student.posts-management.edit', $post->id) }}">
 												<i class="fa fa-edit opacity-75"></i>

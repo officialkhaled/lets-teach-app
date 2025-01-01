@@ -49,6 +49,14 @@ class DashboardController extends Controller
         $tags = Tag::query()->where('status', 1)->get();
         $posts = Post::all();
         
+        $appliedJobs = Post::query()->where('status', 3)->get()->count();
+        $assignedJobs = Post::query()->where('status', 4)->get()->count();
+        $confirmedJobs = Post::query()->where('status', 5)->get()->count();
+        $cancelledJobs = Post::query()->where('status', 6)->get()->count();
+        
+        $userId = auth()->user()->id;
+        $tutor = Tutor::query()->firstWhere('user_id', $userId);
+        
         $quotes = [
             "The best way to get started is to quit talking and begin doing. - Walt Disney",
             "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. - Winston Churchill",
@@ -59,15 +67,16 @@ class DashboardController extends Controller
         
         $randomQuote = $quotes[array_rand($quotes)];
         
-        $userId = auth()->user()->id;
-        $tutor = Tutor::query()->firstWhere('user_id', $userId);
-        
         return view('tutor.dashboard', [
             'tutors' => $tutors,
             'tutor' => $tutor,
             'students' => $students,
             'tags' => $tags,
             'posts' => $posts,
+            'appliedJobs' => $appliedJobs,
+            'assignedJobs' => $assignedJobs,
+            'confirmedJobs' => $confirmedJobs,
+            'cancelledJobs' => $cancelledJobs,
             'greet' => $this->greet(),
             'randomQuote' => $randomQuote,
         ]);

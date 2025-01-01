@@ -17,7 +17,7 @@ class JobPostsController extends Controller
                 'preferredTutor',
                 'tutoringDay',
             ])
-            ->where('approval_status', 1)
+            ->where('status', 1)
             ->latest()
             ->get();
         
@@ -28,7 +28,7 @@ class JobPostsController extends Controller
     
     public function apply(Post $post)
     {
-        $post->update(['approval_status' => 3]);
+        $post->update(['status' => 3]);
         return back()->with('success', 'Applied Successfully.');
     }
 }

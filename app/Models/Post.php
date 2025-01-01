@@ -27,7 +27,7 @@ class Post extends Model
         'from_time',
         'to_time',
         'location',
-        'approval_status',
+        'status',
     ];
     
     protected $casts = [
