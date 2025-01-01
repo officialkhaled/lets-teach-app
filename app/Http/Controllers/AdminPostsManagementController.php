@@ -50,13 +50,13 @@ class AdminPostsManagementController extends Controller
     
     public function approve(Post $post)
     {
-        $post->update(['approval_status' => 1]);
+        $post->update(['status' => 1]);
         return back()->with('success', 'Post Approved Successfully.');
     }
     
     public function reject(Post $post)
     {
-        $post->update(['approval_status' => 2]);
+        $post->update(['status' => 2]);
         return back()->with('success', 'Post Rejected Successfully.');
     }
 }

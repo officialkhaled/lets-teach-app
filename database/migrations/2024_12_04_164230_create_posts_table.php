@@ -22,7 +22,8 @@ return new class extends Migration {
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
             $table->string('location')->nullable();
-            $table->tinyInteger('approval_status')->default(0)->comment('0: Unapproved, 1: Approved, 2: Rejected');
+            $table->tinyInteger('status')->default(0)
+                ->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled,');
             
             $table->timestamps();
         });

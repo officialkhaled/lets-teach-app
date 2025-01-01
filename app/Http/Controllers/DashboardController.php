@@ -49,6 +49,11 @@ class DashboardController extends Controller
         $tags = Tag::query()->where('status', 1)->get();
         $posts = Post::all();
         
+        $appliedJobs = Post::query()->where('status', 3)->get()->count();
+        $assignedJobs = Post::query()->where('status', 4)->get()->count();
+        $confirmedJobs = Post::query()->where('status', 5)->get()->count();
+        $cancelledJobs = Post::query()->where('status', 6)->get()->count();
+        
         $userId = auth()->user()->id;
         $tutor = Tutor::query()->firstWhere('user_id', $userId);
         
@@ -68,6 +73,10 @@ class DashboardController extends Controller
             'students' => $students,
             'tags' => $tags,
             'posts' => $posts,
+            'appliedJobs' => $appliedJobs,
+            'assignedJobs' => $assignedJobs,
+            'confirmedJobs' => $confirmedJobs,
+            'cancelledJobs' => $cancelledJobs,
             'greet' => $this->greet(),
             'randomQuote' => $randomQuote,
         ]);

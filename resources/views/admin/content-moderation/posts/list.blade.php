@@ -44,8 +44,8 @@
 								<td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
 								<td class="d-none d-sm-table-cell">{{ $post->location }}</td>
 								<td class="d-none d-sm-table-cell text-center">
-									<span class="badge {{ $post->approval_status === 0 ? 'bg-secondary' : ($post->approval_status === 1 ? 'bg-success' : 'bg-danger') }}">
-										{{ $post->approval_status === 0 ? 'Unapproved' : ($post->approval_status === 1 ? 'Approved' : 'Rejected') }}
+									<span class="badge {{ $post->status === 0 ? 'bg-secondary' : ($post->status === 1 ? 'bg-success' : 'bg-danger') }}">
+										{{ $post->status === 0 ? 'Unapproved' : ($post->status === 1 ? 'Approved' : 'Rejected') }}
 									</span>
 								</td>
 								<td class="d-none d-sm-table-cell text-center">
@@ -63,7 +63,7 @@
 											</button>
 										</form>
 										
-										@if ($post->approval_status === 0)
+										@if ($post->status === 0)
 											<a class="btn btn-info btn-sm js-swal-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Approve"
 											   href="{{ route('admin.content-moderation.posts.approve', $post->id) }}">
 												<i class="fa-solid fa-square-check opacity-75"></i>
