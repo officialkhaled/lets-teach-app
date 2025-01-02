@@ -10,7 +10,11 @@ class AdminPostsManagementController extends Controller
 {
     public function index()
     {
-        $posts = Post::query()->with(['student', 'subjects', 'grade'])->latest()->get();
+        $posts = Post::query()
+            ->with(['student', 'subjects', 'grade'])
+            ->active()
+            ->latest()
+            ->get();
         
         return view('admin.content-moderation.posts.list', [
             'posts' => $posts,
@@ -21,6 +25,7 @@ class AdminPostsManagementController extends Controller
     {
         $tags = Tag::query()
             ->where('status', 1)
+            ->active()
             ->latest()
             ->get();
         

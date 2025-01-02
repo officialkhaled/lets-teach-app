@@ -44,10 +44,10 @@ class DashboardController extends Controller
     
     public function tutorDashboard()
     {
-        $tutors = Tutor::all();
-        $students = Student::all();
-        $tags = Tag::query()->where('status', 1)->get();
-        $posts = Post::all();
+        $tutors = Tutor::query()->active()->get();
+        $students = Student::query()->active()->get();
+        $tags = Tag::query()->active()->get();
+        $posts = Post::query()->active()->get();
         
         $appliedJobs = Post::query()->where('status', 3)->get()->count();
         $assignedJobs = Post::query()->where('status', 4)->get()->count();
@@ -84,10 +84,10 @@ class DashboardController extends Controller
     
     public function studentDashboard()
     {
-        $tutors = Tutor::all();
-        $students = Student::all();
-        $tags = Tag::query()->where('status', 1)->get();
-        $posts = Post::all();
+        $tutors = Tutor::query()->active()->get();
+        $students = Student::query()->active()->get();
+        $tags = Tag::query()->active()->get();
+        $posts = Post::query()->active()->get();
         
         return view('student.dashboard', [
             'tutors' => $tutors,
