@@ -7,10 +7,10 @@ const FAIL = 500;
 
 const ACTIVE = 1;
 const INACTIVE = 0;
-const APPLIED = 1;
-const ASSIGNED = 1;
-const CONFIRMED = 1;
-const CANCELLED = 1;
+const APPLIED = 3;
+const ASSIGNED = 4;
+const CONFIRMED = 5;
+const CANCELLED = 6;
 
 const YES = 1;
 const NO = 0;

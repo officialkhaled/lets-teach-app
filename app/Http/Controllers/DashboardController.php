@@ -9,8 +9,6 @@ use App\Models\Student;
 
 class DashboardController extends Controller
 {
-    public const greeting = null;
-    
     public function greet()
     {
         $hour = now()->hour;
@@ -24,6 +22,18 @@ class DashboardController extends Controller
         }
         
         return $greeting;
+    }
+    
+    public function randomQuote()
+    {
+        $quotes = [
+            "The best way to get started is to quit talking and begin doing. - Walt Disney",
+            "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. - Winston Churchill",
+            "Don't let yesterday take up too much of today. - Will Rogers",
+            "You learn more from failure than from success. Don't let it stop you. Failure builds character. - Elon Musk",
+            "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
+        ];
+        return $quotes[array_rand($quotes)];
     }
     
     public function adminDashboard()
@@ -44,40 +54,25 @@ class DashboardController extends Controller
     
     public function tutorDashboard()
     {
-        $tutors = Tutor::all();
-        $students = Student::all();
-        $tags = Tag::query()->active()->get();
-        $posts = Post::query()->active()->get();
-        
-        $appliedJobs = Post::query()->applied()->get()->count();
-        $assignedJobs = Post::query()->assigned()->get()->count();
-        $confirmedJobs = Post::query()->confirmed()->get()->count();
-        $cancelledJobs = Post::query()->cancelled()->get()->count();
+        $jobCounts = Post::query()
+            ->selectRaw("
+                COUNT(CASE WHEN status = '3' THEN 1 END) as appliedJobs,
+                COUNT(CASE WHEN status = '4' THEN 1 END) as assignedJobs,
+                COUNT(CASE WHEN status = '5' THEN 1 END) as confirmedJobs,
+                COUNT(CASE WHEN status = '6' THEN 1 END) as cancelledJobs
+            ")
+            ->first();
         
         $tutor = Tutor::query()->firstWhere('user_id', userId());
         
-        $quotes = [
-            "The best way to get started is to quit talking and begin doing. - Walt Disney",
-            "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. - Winston Churchill",
-            "Don't let yesterday take up too much of today. - Will Rogers",
-            "You learn more from failure than from success. Don't let it stop you. Failure builds character. - Elon Musk",
-            "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
-        ];
-        
-        $randomQuote = $quotes[array_rand($quotes)];
-        
         return view('tutor.dashboard', [
-            'tutors' => $tutors,
             'tutor' => $tutor,
-            'students' => $students,
-            'tags' => $tags,
-            'posts' => $posts,
-            'appliedJobs' => $appliedJobs,
-            'assignedJobs' => $assignedJobs,
-            'confirmedJobs' => $confirmedJobs,
-            'cancelledJobs' => $cancelledJobs,
+            'appliedJobs' => $jobCounts->appliedJobs ?? 0,
+            'assignedJobs' => $jobCounts->assignedJobs ?? 0,
+            'confirmedJobs' => $jobCounts->confirmedJobs ?? 0,
+            'cancelledJobs' => $jobCounts->cancelledJobs ?? 0,
             'greet' => $this->greet(),
-            'randomQuote' => $randomQuote,
+            'randomQuote' => $this->randomQuote(),
         ]);
     }
     
