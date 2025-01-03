@@ -114,13 +114,13 @@
 						<img class="img-avatar img-avatar32" style="margin-right: 6px; object-fit: cover"
 							 onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
 							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="Image">
-						<span class="d-none d-sm-inline-block fw-semibold">{{ auth()->user()->name }}</span>
+						<span class="d-none d-sm-inline-block fw-semibold">{{ userName() }}</span>
 						<i class="fa fa-angle-down opacity-50 ms-1"></i>
 					</button>
 					<div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
 						<div class="px-2 py-3 bg-body-light rounded-top">
 							<h5 class="h6 text-center mb-0">
-								{{ auth()->user()->name }}
+								{{ userName() }}
 							</h5>
 						</div>
 						<div class="p-2">
@@ -133,7 +133,7 @@
 							@endif
 							@if (auth()->user()->role === 1)
 								@php
-									$tutor = \App\Models\Tutor::where('user_id', auth()->user()->id)->first();
+									$tutor = \App\Models\Tutor::where('user_id', userId())->first();
 								@endphp
 								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
 								   href="{{ route('tutor.profile.edit', $tutor->id) }}">

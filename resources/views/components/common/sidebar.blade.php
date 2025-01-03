@@ -72,7 +72,7 @@
 		@if (auth()->user()->role == 1)
 			@php
 				$tutor = \App\Models\Tutor::query()
-							->where('user_id', auth()->user()->id)
+							->where('user_id', userId())
 							->first();
 			@endphp
 			<div class="js-sidebar-scroll">

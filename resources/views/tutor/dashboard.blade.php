@@ -8,7 +8,7 @@
 						<div class="block-header bg-elegance">
 							<h3 class="block-title">
 								{{ $greet }},
-								<span class="fw-bold">{{ auth()->user()->name }}</span>
+								<span class="fw-bold">{{ userName() }}</span>
 							</h3>
 							<div class="block-options">
 								<a href="{{ route('tutor.profile.edit', $tutor->id) }}" class="btn-block-option"

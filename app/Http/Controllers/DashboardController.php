@@ -83,12 +83,16 @@ class DashboardController extends Controller
         $tags = Tag::query()->active()->get();
         $posts = Post::query()->active()->get();
         
+        $student = Student::query()->firstWhere('user_id', userId());
+        
         return view('student.dashboard', [
             'tutors' => $tutors,
             'students' => $students,
             'tags' => $tags,
             'posts' => $posts,
+            'student' => $student,
             'greet' => $this->greet(),
+            'randomQuote' => $this->randomQuote(),
         ]);
     }
 }
