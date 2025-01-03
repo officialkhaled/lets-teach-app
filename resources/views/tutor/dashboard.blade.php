@@ -46,7 +46,7 @@
 				<div class="col-md-4">
 					<div class="block block-themed block-rounded">
 						<div class="block-header bg-corporate">
-							<h3 class="block-title">Corporate Light</h3>
+							<h3 class="block-title">Available Jobs In Your Area</h3>
 							<div class="block-options">
 								<a href="{{ route('tutor.job-posts.index') }}" class="btn-block-option"
 								   data-bs-toggle="tooltip" data-bs-placement="top" title="View Available Jobs">
