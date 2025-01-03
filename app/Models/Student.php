@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Casts\Json;
+use App\Traits\StatusFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
 
 class Student extends Model
 {
+    use StatusFilter;
     use HasJsonRelationships;
     
     protected $table = 'students';

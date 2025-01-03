@@ -30,7 +30,7 @@ class DashboardController extends Controller
     {
         $tutors = Tutor::all();
         $students = Student::all();
-        $tags = Tag::query()->where('status', 1)->get();
+        $tags = Tag::query()->active()->get();
         $posts = Post::all();
         
         return view('admin.dashboard', [
@@ -44,18 +44,17 @@ class DashboardController extends Controller
     
     public function tutorDashboard()
     {
-        $tutors = Tutor::query()->active()->get();
-        $students = Student::query()->active()->get();
+        $tutors = Tutor::all();
+        $students = Student::all();
         $tags = Tag::query()->active()->get();
         $posts = Post::query()->active()->get();
         
-        $appliedJobs = Post::query()->where('status', 3)->get()->count();
-        $assignedJobs = Post::query()->where('status', 4)->get()->count();
-        $confirmedJobs = Post::query()->where('status', 5)->get()->count();
-        $cancelledJobs = Post::query()->where('status', 6)->get()->count();
+        $appliedJobs = Post::query()->applied()->get()->count();
+        $assignedJobs = Post::query()->assigned()->get()->count();
+        $confirmedJobs = Post::query()->confirmed()->get()->count();
+        $cancelledJobs = Post::query()->cancelled()->get()->count();
         
-        $userId = auth()->user()->id;
-        $tutor = Tutor::query()->firstWhere('user_id', $userId);
+        $tutor = Tutor::query()->firstWhere('user_id', userId());
         
         $quotes = [
             "The best way to get started is to quit talking and begin doing. - Walt Disney",
@@ -84,8 +83,8 @@ class DashboardController extends Controller
     
     public function studentDashboard()
     {
-        $tutors = Tutor::query()->active()->get();
-        $students = Student::query()->active()->get();
+        $tutors = Tutor::all();
+        $students = Student::all();
         $tags = Tag::query()->active()->get();
         $posts = Post::query()->active()->get();
         
