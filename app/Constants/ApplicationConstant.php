@@ -13,4 +13,8 @@ class ApplicationConstant
         self::TUTOR => 1,
         self::STUDENT => 2,
     ];
+    
+    const ADMIN_ROLE_ID = 0;
+    const TUTOR_ROLE_ID = 1;
+    const STUDENT_ROLE_ID = 2;
 }
