@@ -12,22 +12,27 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        $faker = generateFaker();
         $password = Hash::make('12345');
         
-        User::create([
-            'name' => "Super Admin",
-            'email' => "super@skylarksoft.com",
-            'role' => 0,
-            'image' => null,
-            'password' => $password,
-        ]);
+        $superUserExists = User::where('email', 'super@skylarksoft.com')->exists();
         
-        for ($i = 101; $i <= 105; $i++) {
-            $user = User::create([
-                'name' => "Tutor $i",
-                'email' => "tutor$i@gmail.com",
-                'role' => 1,
+        if (!$superUserExists) {
+            User::create([
+                'name' => "Super Admin",
+                'email' => "super@skylarksoft.com",
+                'role' => 0,
                 'image' => null,
+                'password' => $password,
+            ]);
+        }
+        
+        for ($i = 1; $i <= 3; $i++) {
+            $user = User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'role' => 1,
+                'image' => $faker->imageUrl(640, 480),
                 'password' => $password,
             ]);
             
@@ -36,12 +41,12 @@ class UserSeeder extends Seeder
             ]);
         }
         
-        for ($i = 201; $i <= 205; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $user = User::create([
-                'name' => "Student $i",
-                'email' => "student$i@gmail.com",
+                'name' => $faker->name,
+                'email' => $faker->email,
                 'role' => 2,
-                'image' => null,
+                'image' => $faker->imageUrl(640, 480),
                 'password' => $password,
             ]);
             
