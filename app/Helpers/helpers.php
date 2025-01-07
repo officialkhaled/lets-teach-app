@@ -17,9 +17,16 @@ const NO = 0;
 
 const SEND = 1;
 
-/**
- * get Current User object
- */
+
+if (!function_exists('generateFaker')) {
+    function generateFaker()
+    {
+        $faker = \Faker\Factory::create();
+        
+        return $faker ?? null;
+    }
+}
+
 if (!function_exists('currentUser')) {
     function currentUser()
     {
@@ -31,21 +38,17 @@ if (!function_exists('currentUser')) {
     }
 }
 
-/**
- * get Current User's ID
- */
-function userId()
-{
-    if (Auth::check()) {
-        return Auth::user()->id;
+if (!function_exists('userId')) {
+    function userId()
+    {
+        if (Auth::check()) {
+            return Auth::user()->id;
+        }
+        
+        return null;
     }
-    
-    return null;
 }
 
-/**
- * get Current User's Name
- */
 if (!function_exists('userName')) {
     function userName(): string
     {
