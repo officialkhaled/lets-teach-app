@@ -12,7 +12,6 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        $faker = generateFaker();
         $password = Hash::make('12345');
         
         $superUserExists = User::where('email', 'super@skylarksoft.com')->exists();
@@ -29,10 +28,10 @@ class UserSeeder extends Seeder
         
         for ($i = 1; $i <= 3; $i++) {
             $user = User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
+                'name' => generateFaker()->name,
+                'email' => generateFaker()->email,
                 'role' => 1,
-                'image' => $faker->imageUrl(640, 480),
+                'image' => generateFaker()->imageUrl(640, 480),
                 'password' => $password,
             ]);
             
@@ -43,10 +42,10 @@ class UserSeeder extends Seeder
         
         for ($i = 1; $i <= 3; $i++) {
             $user = User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
+                'name' => generateFaker()->name,
+                'email' => generateFaker()->email,
                 'role' => 2,
-                'image' => $faker->imageUrl(640, 480),
+                'image' => generateFaker()->imageUrl(640, 480),
                 'password' => $password,
             ]);
             
