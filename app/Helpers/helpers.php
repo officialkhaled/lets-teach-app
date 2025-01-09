@@ -7,6 +7,10 @@ const FAIL = 500;
 
 const ACTIVE = 1;
 const INACTIVE = 0;
+
+const DRAFT = 0;
+const APPROVED = 1;
+const REJECTED = 2;
 const APPLIED = 3;
 const ASSIGNED = 4;
 const CONFIRMED = 5;
@@ -17,6 +21,37 @@ const NO = 0;
 
 const SEND = 1;
 
+
+if (!function_exists('greet')) {
+    function greet(): string
+    {
+        $hour = now()->hour;
+        
+        if ($hour < 12) {
+            $greeting = "Good Morning";
+        } elseif ($hour < 18) {
+            $greeting = "Good Afternoon";
+        } else {
+            $greeting = "Good Evening";
+        }
+        
+        return $greeting;
+    }
+}
+
+if (!function_exists('randomQuote')) {
+    function randomQuote(): string
+    {
+        $quotes = [
+            "The best way to get started is to quit talking and begin doing. - Walt Disney",
+            "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty. - Winston Churchill",
+            "Don't let yesterday take up too much of today. - Will Rogers",
+            "You learn more from failure than from success. Don't let it stop you. Failure builds character. - Elon Musk",
+            "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
+        ];
+        return $quotes[array_rand($quotes)];
+    }
+}
 
 if (!function_exists('generateFaker')) {
     function generateFaker()

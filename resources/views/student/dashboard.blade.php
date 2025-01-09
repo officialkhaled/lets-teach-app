@@ -8,7 +8,7 @@
 					<div class="block block-themed block-rounded">
 						<div class="block-header bg-elegance">
 							<h3 class="block-title">
-								{{ $greet }},
+								{{ greet() }},
 								<span class="fw-bold">{{ userName() }}</span>
 							</h3>
 							<div class="block-options">
@@ -35,7 +35,7 @@
 								<div class="col-md-12">
 									<div class="alert alert-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Quote of the Day">
 										<p class="mb-0">
-											{{ $randomQuote }}
+											{{ randomQuote() }}
 										</p>
 									</div>
 								</div>

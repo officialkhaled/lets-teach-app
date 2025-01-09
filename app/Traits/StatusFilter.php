@@ -14,22 +14,22 @@ trait StatusFilter
         return $query->where('status', INACTIVE);
     }
     
-    public function scopeApplied($query)
+    public function scopeAppliedFilter($query)
     {
         return $query->where('status', APPLIED);
     }
     
-    public function scopeAssigned($query)
+    public function scopeAssignedFilter($query)
     {
         return $query->where('status', ASSIGNED);
     }
     
-    public function scopeConfirmed($query)
+    public function scopeConfirmedFilter($query)
     {
         return $query->where('status', CONFIRMED);
     }
     
-    public function scopeCancelled($query)
+    public function scopeCancelledFilter($query)
     {
         return $query->where('status', CANCELLED);
     }
