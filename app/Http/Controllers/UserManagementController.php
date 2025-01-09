@@ -13,7 +13,7 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::query()
-            ->whereNot('role', 0)
+            ->whereNot('role', ADMIN)
             ->latest()
             ->get();
         
@@ -29,7 +29,7 @@ class UserManagementController extends Controller
         $selectedGrades = [];
         
         $tags = Tag::query()
-            ->where('status', 1)
+            ->where('status', ACTIVE)
             ->latest()
             ->get();
         

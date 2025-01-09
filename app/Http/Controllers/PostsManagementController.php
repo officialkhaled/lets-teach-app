@@ -29,7 +29,7 @@ class PostsManagementController extends Controller
     public function create()
     {
         $tags = Tag::query()
-            ->where('status', 1)
+            ->where('status', ACTIVE)
             ->latest()
             ->get();
         
@@ -63,7 +63,7 @@ class PostsManagementController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::query()
-            ->where('status', 1)
+            ->where('status', ACTIVE)
             ->latest()
             ->get();
         

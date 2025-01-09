@@ -11,7 +11,7 @@ class TutorProfileController extends Controller
     public function edit(Tutor $tutor)
     {
         $tags = Tag::query()
-            ->where('status', 1)
+            ->where('status', ACTIVE)
             ->latest()
             ->get();
         
