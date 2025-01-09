@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Casts\Json;
 use App\Traits\CommonBooted;
 use App\Traits\StatusFilter;
+use App\Traits\UpdateStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Staudenmeir\EloquentJsonRelations\HasJsonRelationships;
@@ -14,6 +15,7 @@ class Post extends Model
 {
     use CommonBooted;
     use StatusFilter;
+    use UpdateStatus;
     use HasJsonRelationships;
     
     protected $table = 'posts';
