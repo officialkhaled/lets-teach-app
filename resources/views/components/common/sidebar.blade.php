@@ -115,7 +115,7 @@
 							<a class="nav-main-link  {{ request()->is('student/profile*') ? 'active' : '' }}"
 							   href="{{ route('student.profile.edit', $student->id) }}">
 								<i class="nav-main-link-icon fa-solid fa-user"></i>
-								<span class="nav-main-link-name">Profile</span>
+								<span class="nav-main-link-name">Profile Management</span>
 							</a>
 						</li>
 						

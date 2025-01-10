@@ -187,6 +187,10 @@
         border-radius: 8px;
     }
     
+    .select2-selection__choice__display {
+        color: #0a0a0a;
+    }
+    
     .title-animation {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.5) 0 10px 30px 0;

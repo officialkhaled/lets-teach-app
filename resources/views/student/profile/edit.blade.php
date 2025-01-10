@@ -6,34 +6,147 @@
 			<div class="block block-rounded overflow-hidden">
 				<ul class="nav nav-tabs nav-tabs-block" role="tablist">
 					<li class="nav-item">
-						<button class="nav-link active" id="btabs-animated-fade-home-tab" data-bs-toggle="tab" data-bs-target="#btabs-animated-fade-home"
-								role="tab" aria-controls="btabs-animated-fade-home" aria-selected="true">Profile info
+						<button class="nav-link active" id="btabs-animated-fade-tuition-tab" data-bs-toggle="tab" data-bs-target="#btabs-animated-fade-tuition"
+								role="tab" aria-controls="btabs-animated-fade-tuition" aria-selected="true">
+							Tuition Section
 						</button>
 					</li>
 					<li class="nav-item">
 						<button class="nav-link" id="btabs-animated-fade-profile-tab" data-bs-toggle="tab" data-bs-target="#btabs-animated-fade-profile"
-								role="tab" aria-controls="btabs-animated-fade-profile" aria-selected="false">Tuition Info
+								role="tab" aria-controls="btabs-animated-fade-profile" aria-selected="false">
+							Profile Section
 						</button>
 					</li>
 				</ul>
-				
-				<div class="block-content tab-content overflow-hidden">
-					<div class="tab-pane fade show active" id="btabs-animated-fade-home" role="tabpanel"
-						 aria-labelledby="btabs-animated-fade-home-tab" tabindex="0">
-						<div class="block-content block-content-full overflow-x-auto">
-							<div class="row">
-								<form method="POST" action="{{ route('student.profile.update', $student->id) }}"
-									  class="space-y-3" enctype="multipart/form-data">
-									@csrf
-									@method('patch')
-									
+				<form method="POST" action="{{ route('student.profile.update', $student->id) }}" class="space-y-3" enctype="multipart/form-data">
+					@csrf @method('patch')
+					
+					<div class="block-content tab-content overflow-hidden">
+						<div class="tab-pane fade show active" id="btabs-animated-fade-tuition" role="tabpanel" aria-labelledby="btabs-animated-fade-tuition-tab" tabindex="0">
+							<div class="block-content block-content-full overflow-x-auto">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="row" style="margin-top: -60px;">
+											<div class="col-md-12">
+												<h2 class="block-title fw-bold content-heading">Tutoring Preferences</h2>
+											</div>
+										</div>
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-md-6" style="margin-bottom: 10px;">
+												<label class="form-label" for="district_ids">Tuition Providing District</label>
+												<select name="district_ids[]" id="district_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 1) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label class="form-label" for="area_ids">Preferred Area for Tuition</label>
+												<select name="area_ids[]" id="area_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 2) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+										</div>
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-md-3">
+												<label class="form-label" for="medium_ids">Preferred Medium</label>
+												<select name="medium_ids[]" id="medium_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 1) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="class_ids">Preferred Classes</label>
+												<select name="class_ids[]" id="class_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 2) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="subject_ids">Preferred Subjects </label>
+												<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 2) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="tutoring_preference_ids">Tutoring Preference</label>
+												<select name="tutoring_preference_ids[]" id="tutoring_preference_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 2) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+										</div>
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-md-3">
+												<label class="form-label" for="days_ids">Days per Week</label>
+												<select name="days_ids[]" id="days_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 1) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="shift_ids">Shift Timing</label>
+												<select name="shift_ids[]" id="shift_ids" class="select2 form-select" multiple>
+													{{--													@foreach($tags->where('type', 2) as $tag)--}}
+													{{--														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>--}}
+													{{--															{{ $tag->name }}--}}
+													{{--														</option>--}}
+													{{--													@endforeach--}}
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="experience">Tuition Experience</label>
+												<input type="text" class="form-control" id="experience" name="experience" placeholder="Enter your experience"
+													   value="">
+											</div>
+											<div class="col-md-3">
+												<label class="form-label" for="salary">Expected Salary</label>
+												<input type="text" class="form-control" id="salary" name="salary" placeholder="Enter your salary"
+													   value="">
+											</div>
+										</div>
+										
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-md-12">
+												<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="tab-pane fade" id="btabs-animated-fade-profile" role="tabpanel" aria-labelledby="btabs-animated-fade-profile-tab" tabindex="0">
+							<div class="block-content block-content-full overflow-x-auto">
+								<div class="row">
 									<div class="col-md-12">
 										<div class="row" style="margin-top: -60px;">
 											<div class="col-md-12">
 												<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 											</div>
 										</div>
-										
 										<div class="row" style="margin-top: 10px;">
 											<div class="col-md-3">
 												<label class="form-label" for="name">Name</label>
@@ -95,37 +208,6 @@
 										
 										<div class="row" style="margin-top: 14px;">
 											<div class="col-md-12">
-												<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
-											</div>
-										</div>
-										
-										<div class="row" style="margin-top: 10px;">
-											<div class="col-md-6">
-												<label class="form-label" for="subject_ids">Subjects</label>
-												<select name="subject_ids[]" id="subject_ids" class="select2 form-select" multiple>
-													<option></option>
-													@foreach($tags->where('type', 1) as $tag)
-														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedSubjects ?? []) ? 'selected' : '' }}>
-															{{ $tag->name }}
-														</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="col-md-6">
-												<label class="form-label" for="grade_ids">Grades</label>
-												<select name="grade_ids[]" id="grade_ids" class="select2 form-select" multiple>
-													<option></option>
-													@foreach($tags->where('type', 2) as $tag)
-														<option value="{{ $tag->id }}" {{ in_array($tag->id, $selectedGrades ?? []) ? 'selected' : '' }}>
-															{{ $tag->name }}
-														</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
-										
-										<div class="row" style="margin-top: 14px;">
-											<div class="col-md-12">
 												<h2 class="block-title fw-bold content-heading">Image Upload</h2>
 											</div>
 										</div>
@@ -142,26 +224,22 @@
 											</div>
 										</div>
 									</div>
-									
-									<div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
-										<button class="btn btn-success btn-sm" type="submit">
-											&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
-										</button>
-										<a href="{{ route('student.profile.edit', $student->id) }}" class="btn btn-warning btn-sm" type="button">
-											&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
-										</a>
-									</div>
-								</form>
+								</div>
 							</div>
 						</div>
+						
+						
+						<div class="d-flex justify-content-center gap-2" style="margin: 20px 0;">
+							<button class="btn btn-success btn-sm" type="submit">
+								&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+							</button>
+							<a href="{{ route('student.profile.edit', $student->id) }}" class="btn btn-warning btn-sm" type="button">
+								&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+							</a>
+						</div>
 					</div>
-					
-					<div class="tab-pane fade" id="btabs-animated-fade-profile" role="tabpanel" aria-labelledby="btabs-animated-fade-profile-tab" tabindex="0">
-						<h4 class="fw-normal">Profile Content</h4>
-						<p>Content Goes Here...</p>
-					</div>
-				</div>
-			
+				
+				</form>
 			</div>
 		</div>
 	
@@ -173,23 +251,8 @@
 	<script>
         $(document).ready(function () {
             $('.select2').select2({
-                allowClear: false,
+                allowClear: true,
             });
         });
-
-        function previewImage(event) {
-            const input = event.target;
-            const preview = document.getElementById('preview');
-
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
 	</script>
 @endsection
