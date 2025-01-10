@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TutorProfileController;
 use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
 use App\Http\Controllers\AdminPostsManagementController;
@@ -123,12 +124,19 @@ Route::middleware(['auth', 'role:2'])->group(function () {
         });
         
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-            Route::controller(ProfileController::class)->group(function () {
-                Route::get('/', 'edit')->name('edit');
-                Route::patch('/', 'update')->name('update');
-                Route::delete('/', 'destroy')->name('destroy');
+            Route::controller(StudentProfileController::class)->group(function () {
+                Route::get('/{student}/edit', 'edit')->name('edit');
+                Route::patch('/{student}', 'update')->name('update');
             });
         });
+        
+//        Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+//            Route::controller(ProfileController::class)->group(function () {
+//                Route::get('/', 'edit')->name('edit');
+//                Route::patch('/', 'update')->name('update');
+//                Route::delete('/', 'destroy')->name('destroy');
+//            });
+//        });
     });
 });
 
