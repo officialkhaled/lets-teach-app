@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		
-		@if (auth()->user()->role == 0)
+		@if (currentUser()->role == 0)
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
@@ -69,12 +69,8 @@
 			</div>
 		@endif
 		
-		@if (auth()->user()->role == 1)
-			@php
-				$tutor = \App\Models\Tutor::query()
-							->where('user_id', userId())
-							->first();
-			@endphp
+		@if (currentUser()->role == 1)
+			@php($tutor = \App\Models\Tutor::query()->firstWhere('user_id', userId()))
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
@@ -103,7 +99,8 @@
 			</div>
 		@endif
 		
-		@if (auth()->user()->role == 2)
+		@if (currentUser()->role == 2)
+			@php($student = \App\Models\Student::query()->firstWhere('user_id', userId()))
 			<div class="js-sidebar-scroll">
 				<div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
 					<ul class="nav-main">
@@ -111,6 +108,14 @@
 							<a class="nav-main-link {{ request()->is('student/dashboard') ? 'active' : '' }}" href="{{ route('student.student-dashboard') }}">
 								<i class="nav-main-link-icon fa-solid fa-house"></i>
 								<span class="nav-main-link-name">Dashboard</span>
+							</a>
+						</li>
+						
+						<li class="nav-main-item {{ request()->is('student/profile*') ? 'active-menu' : '' }}">
+							<a class="nav-main-link  {{ request()->is('student/profile*') ? 'active' : '' }}"
+							   href="{{ route('student.profile.edit', $student->id) }}">
+								<i class="nav-main-link-icon fa-solid fa-user"></i>
+								<span class="nav-main-link-name">Profile</span>
 							</a>
 						</li>
 						
