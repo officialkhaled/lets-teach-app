@@ -186,5 +186,20 @@
     .vanta-canvas {
         border-radius: 8px;
     }
+    
+    .select2-selection__choice__display {
+        color: #0a0a0a;
+    }
+    
+    .title-animation {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.5) 0 10px 30px 0;
+        border-radius: 8px;
+        transition: 0.4s ease-in-out;
+    }
+    
+    .title-animation:hover {
+        transform: scale(1.5);
+    }
 
 </style>

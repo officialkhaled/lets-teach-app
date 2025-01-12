@@ -113,7 +113,7 @@
 							data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<img class="img-avatar img-avatar32" style="margin-right: 6px; object-fit: cover"
 							 onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
-							 src="{{ asset('storage/' . auth()->user()->image) }}" alt="Image">
+							 src="{{ asset('storage/' . currentUser()->image) }}" alt="Image">
 						<span class="d-none d-sm-inline-block fw-semibold">{{ userName() }}</span>
 						<i class="fa fa-angle-down opacity-50 ms-1"></i>
 					</button>
@@ -124,14 +124,14 @@
 							</h5>
 						</div>
 						<div class="p-2">
-							@if (auth()->user()->role === 0)
+							@if (currentUser()->role === 0)
 								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
 								   href="{{ route('admin.profile.edit') }}">
 									<span>Profile</span>
 									<i class="fa fa-fw fa-user opacity-25"></i>
 								</a>
 							@endif
-							@if (auth()->user()->role === 1)
+							@if (currentUser()->role === 1)
 								@php
 									$tutor = \App\Models\Tutor::where('user_id', userId())->first();
 								@endphp
@@ -141,9 +141,12 @@
 									<i class="fa fa-fw fa-user opacity-25"></i>
 								</a>
 							@endif
-							@if (auth()->user()->role === 2)
+							@if (currentUser()->role === 2)
+								@php
+									$student = \App\Models\Student::where('user_id', userId())->first();
+								@endphp
 								<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
-								   href="{{ route('student.profile.edit') }}">
+								   href="{{ route('student.profile.edit', $student->id) }}">
 									<span>Profile</span>
 									<i class="fa fa-fw fa-user opacity-25"></i>
 								</a>

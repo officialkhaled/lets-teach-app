@@ -49,19 +49,23 @@ class DashboardController extends Controller
     
     public function studentDashboard()
     {
-        $tutors = Tutor::all();
-        $students = Student::all();
-        $tags = Tag::query()->active()->get();
-        $posts = Post::query()->active()->get();
+        $jobCounts = Post::query()
+            ->selectRaw("
+                COUNT(CASE WHEN status = '0' THEN 1 END) as pendingJobs,
+                COUNT(CASE WHEN status = '1' THEN 1 END) as approvedJobs,
+                COUNT(CASE WHEN status = '3' THEN 1 END) as appliedJobs,
+                COUNT(CASE WHEN status = '5' THEN 1 END) as confirmedJobs
+            ")
+            ->first();
         
         $student = Student::query()->firstWhere('user_id', userId());
         
         return view('student.dashboard', [
-            'tutors' => $tutors,
-            'students' => $students,
-            'tags' => $tags,
-            'posts' => $posts,
             'student' => $student,
+            'pendingJobs' => $jobCounts->pendingJobs ?? 0,
+            'approvedJobs' => $jobCounts->approvedJobs ?? 0,
+            'appliedJobs' => $jobCounts->appliedJobs ?? 0,
+            'confirmedJobs' => $jobCounts->confirmedJobs ?? 0,
         ]);
     }
 }
