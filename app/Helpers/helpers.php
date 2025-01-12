@@ -19,7 +19,9 @@ const CANCELLED = 6;
 const YES = 1;
 const NO = 0;
 
-const SEND = 1;
+const ADMIN = 0;
+const TUTOR = 1;
+const STUDENT = 2;
 
 
 if (!function_exists('greet')) {

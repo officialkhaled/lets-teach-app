@@ -22,7 +22,7 @@
 								<div class="col-md-6">
 									<p class="m-b-1">
 										Email:
-										<span class="fw-bold">{{ auth()->user()->email }}</span>
+										<span class="fw-bold">{{ currentUser()->email }}</span>
 										<br>
 										Phone:
 										<span class="fw-bold">{{ $tutor->phone_number }}</span>
@@ -151,7 +151,7 @@
 							{{--								style="font-size: 28px; flex: none; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.5) 0 10px 30px 0;--}}
 							{{--									background-color: #19634e; border-radius: 8px; padding: 10px 20px; color: #b5e5cf">--}}
 							{{--								Hello,--}}
-							{{--								<span class="fw-bold" style="color: #fff;">{{ auth()->user()->name }}</span>!--}}
+							{{--								<span class="fw-bold" style="color: #fff;">{{ currentUser()->name }}</span>!--}}
 							{{--								<br>--}}
 							{{--								Welcome to your--}}
 							{{--								<span class="fw-bold" style="color: #fff;">Tutor</span> Dashboard!--}}

@@ -24,7 +24,7 @@ class AdminPostsManagementController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::query()
-            ->where('status', 1)
+            ->where('status', ACTIVE)
             ->active()
             ->latest()
             ->get();
