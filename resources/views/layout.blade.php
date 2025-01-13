@@ -50,15 +50,12 @@
 	'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
 -->
 <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-modern main-content-boxed">
-	
 	@include('components.common.sidebar')
-	
 	@include('components.common.header')
 	
 	@yield('content')
 	
 	@include('components.common.footer')
-
 </div>
 
 @include('components.common.scripts')
