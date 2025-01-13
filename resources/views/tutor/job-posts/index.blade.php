@@ -10,9 +10,9 @@
 					</h3>
 				</div>
 				
-				@foreach($posts as $post)
-					<div class="row" style="display: flex; justify-content: center">
-						<div class="col-md-8">
+				<div class="row" style="display: flex; justify-content: center">
+					@foreach($posts as $post)
+						<div class="col-md-6">
 							<div class="block-content block-content-full overflow-x-auto job-card-box" style="{{ $loop->last ? 'margin-bottom: 10px;' : 'margin-bottom: -20px' }}">
 								<div class="block block-rounded job-card" style="box-shadow: rgba(149, 157, 165, 0.15) 0 8px 24px;">
 									<div class="block-header block-header-default">
@@ -46,20 +46,22 @@
 										
 										<div class="row">
 											<div class="col-md-4">
-												<p><i class="fa-brands fa-medium"></i>&nbsp; Medium
+												<p>
+													<i class="fa-brands fa-medium"></i>&nbsp; Medium
 												</p>
-												<p class="fw-bold" style="margin-top: -25px;">{{ $post->medium->name }}</p>
+												<p style="margin-top: -25px;">{{ $post->medium->name }}</p>
 											</div>
 											<div class="col-md-4">
-												<p><i class="fa-solid fa-landmark"></i>&nbsp; Class
+												<p>
+													<i class="fa-solid fa-landmark"></i>&nbsp; Class
 												</p>
-												<p class="fw-bold" style="margin-top: -25px;">{{ $post->grade->name }}</p>
+												<p style="margin-top: -25px;">{{ $post->grade->name }}</p>
 											</div>
 											<div class="col-md-4">
 												<p>
 													<i class="fa-solid fa-venus-mars"></i>&nbsp; Preferred Tutor
 												</p>
-												<p class="fw-bold" style="margin-top: -25px;">{{ $post->preferredTutor->name }}</p>
+												<p style="margin-top: -25px;">{{ $post->preferredTutor->name }}</p>
 											</div>
 										</div>
 										
@@ -68,7 +70,7 @@
 												<p>
 													<i class="fa-solid fa-calendar-day"></i>&nbsp; Tutoring Days
 												</p>
-												<p class="fw-bold" style="margin-top: -25px;">{{ $post->tutoringDay->name }} Days/Week</p>
+												<p style="margin-top: -25px;">{{ $post->tutoringDay->name }} Days/Week</p>
 											</div>
 											<div class="col-md-4">
 												<p><i class="fa-solid fa-book"></i>&nbsp; Subject
@@ -83,7 +85,7 @@
 												<p>
 													<i class="fa-solid fa-money-bill-1"></i>&nbsp; Salary
 												</p>
-												<p class="fw-bold" style="margin-top: -25px;">
+												<p style="margin-top: -25px;">
 													<span class="text-primary">{{ $post->salary }} Tk</span><small class="fw-light">/Month</small>
 												</p>
 											</div>
@@ -134,9 +136,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				@endforeach
-			
+					@endforeach
+				</div>
 			</div>
 		</div>
 	</main>
