@@ -157,3 +157,15 @@ if (!function_exists('getMonthNameById')) {
     }
 }
 
+if (!function_exists('formatNumber')) {
+    function formatNumber($number): string
+    {
+        return match (true) {
+            $number >= 1000000000 => round($number / 1000000000, 2) . ' B',
+            $number >= 1000000 => round($number / 1000000, 2) . ' M',
+            $number >= 1000 => round($number / 1000, 2) . ' K',
+            default => $number,
+        };
+    }
+}
+
