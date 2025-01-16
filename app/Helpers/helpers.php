@@ -28,7 +28,7 @@ if (!function_exists('greet')) {
     function greet(): string
     {
         $hour = now()->hour;
-        
+
         if ($hour < 12) {
             $greeting = "Good Morning";
         } elseif ($hour < 18) {
@@ -36,7 +36,7 @@ if (!function_exists('greet')) {
         } else {
             $greeting = "Good Evening";
         }
-        
+
         return $greeting;
     }
 }
@@ -59,7 +59,7 @@ if (!function_exists('generateFaker')) {
     function generateFaker()
     {
         $faker = \Faker\Factory::create();
-        
+
         return $faker ?? null;
     }
 }
@@ -70,7 +70,7 @@ if (!function_exists('currentUser')) {
         if (Auth::check()) {
             return Auth::user();
         }
-        
+
         return null;
     }
 }
@@ -81,7 +81,7 @@ if (!function_exists('userId')) {
         if (Auth::check()) {
             return Auth::user()->id;
         }
-        
+
         return null;
     }
 }
@@ -92,7 +92,7 @@ if (!function_exists('userName')) {
         if (Auth::check()) {
             return auth()->user()->name;
         }
-        
+
         return '';
     }
 }
@@ -103,7 +103,7 @@ if (!function_exists('getPercentage')) {
         if ($second_num != 0) {
             return ($first_num * 100) / $second_num;
         }
-        
+
         return 0;
     }
 }
@@ -152,7 +152,7 @@ if (!function_exists('getMonthNameById')) {
             11 => ['en' => 'November', 'bn' => 'নভেম্বর'],
             12 => ['en' => 'December', 'bn' => 'ডিসেম্বর']
         ];
-        
+
         return $months[$monthId] ?? null;
     }
 }
@@ -169,3 +169,23 @@ if (!function_exists('formatNumber')) {
     }
 }
 
+if (!function_exists('requiredValidation')) {
+    function requiredValidation($name): string
+    {
+        return "The {$name} is required.";
+    }
+}
+
+if (!function_exists('uniqueValidation')) {
+    function uniqueValidation($name): string
+    {
+        return "The {$name} has already been taken.";
+    }
+}
+
+if (!function_exists('emailValidation')) {
+    function emailValidation($name): string
+    {
+        return "The {$name} must be a valid email address.";
+    }
+}
