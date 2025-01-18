@@ -16,11 +16,11 @@ class Json implements CastsAttributes
      * @param array $attributes
      * @return array
      */
-    public function get($model, $key, $value, $attributes)
+    public function get($model, $key, $value, $attributes): array
     {
         return json_decode($value, true);
     }
-    
+
     /**
      * Prepare the given value for storage.
      *
@@ -28,9 +28,9 @@ class Json implements CastsAttributes
      * @param string $key
      * @param array $value
      * @param array $attributes
-     * @return string
+     * @return string|null
      */
-    public function set($model, $key, $value, $attributes)
+    public function set($model, $key, $value, $attributes): ?string
     {
         return $value ? json_encode($value) : null;
     }
