@@ -1,6 +1,6 @@
 # Let's Teach Application
 
-This is a basic Tutor Hiring Platform app built using Laravel and React. It has three users: an admin who manages the users and their posts, a tutor who can create a profile and apply to available jobs, and a student who can make job posts according to their needs. 
+This basic Tutor Hiring Platform app is built using Laravel and many other laravel packages. It has three users: an admin who manages the users and their posts, a tutor who can create a profile and apply to available jobs, and a student who can make job posts according to their needs. 
 
 A walkthrough going over the steps taken to produce this app.
 
