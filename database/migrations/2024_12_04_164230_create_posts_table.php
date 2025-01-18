@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('student_id');
             $table->json('subject_ids')->nullable();
             $table->unsignedBigInteger('grade_id')->nullable();
@@ -22,13 +22,12 @@ return new class extends Migration {
             $table->string('from_time')->nullable();
             $table->string('to_time')->nullable();
             $table->string('location')->nullable();
-            $table->tinyInteger('status')->default(0)
-                ->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled,');
-            
+            $table->tinyInteger('status')->default(0)->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled,');
+
             $table->timestamps();
         });
     }
-    
+
     public function down(): void
     {
         Schema::dropIfExists('posts');

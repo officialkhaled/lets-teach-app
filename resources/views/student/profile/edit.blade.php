@@ -34,19 +34,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="row" style="margin-top: 14px;">
-                                        <div class="col-md-12">
-                                            <label class="form-label" for="bio">Bio</label>
-                                            <textarea class="form-control" name="bio" id="bio" rows="4" placeholder="Write...">{{ $student->bio ?? '' }}</textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="margin-top: 14px;">
-                                        <div class="col-md-12">
-                                            <h2 class="block-title fw-bold content-heading">Education Info</h2>
-                                        </div>
-                                    </div>
-
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-md-3">
                                             <label class="form-label" for="institution">Institution</label>
@@ -75,7 +62,6 @@
                                             <h2 class="block-title fw-bold content-heading">Image Upload</h2>
                                         </div>
                                     </div>
-
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-md-6">
                                             <label class="form-label" for="image">Profile Picture</label>
