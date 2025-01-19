@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Constants\ApplicationConstant;
 
 class PostsManagementController extends Controller
 {
@@ -20,28 +21,35 @@ class PostsManagementController extends Controller
             'preferredTutor',
             'tutoringDay',
         ])->where('student_id', $studentId)->latest()->get();
-        
+
         return view('student.posts-management.list', [
             'posts' => $posts,
         ]);
     }
-    
+
     public function create()
     {
         $tags = Tag::query()
             ->where('status', ACTIVE)
             ->latest()
             ->get();
-        
+
+        $mediums = ApplicationConstant::MEDIUM;
+        $classes = ApplicationConstant::CLASSES;
+        $subjects = ApplicationConstant::SUBJECTS;
+
         return view('student.posts-management.create', [
             'tags' => $tags,
+            'mediums' => $mediums,
+            'classes' => $classes,
+            'subjects' => $subjects,
         ]);
     }
-    
+
     public function store(Request $request)
     {
         $studentId = Student::where('user_id', auth()->user()->id)->first()['id'];
-        
+
         Post::create([
             'student_id' => $studentId,
             'subject_ids' => $request->input('subject_ids'),
@@ -59,32 +67,32 @@ class PostsManagementController extends Controller
 
         return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');
     }
-    
+
     public function edit(Post $post)
     {
         $tags = Tag::query()
             ->where('status', ACTIVE)
             ->latest()
             ->get();
-        
+
         $selectedSubjects = $post->subject_ids ?? [];
-        
+
         return view('student.posts-management.edit-post', [
             'post' => $post,
             'tags' => $tags,
             'selectedSubjects' => $selectedSubjects,
         ]);
     }
-    
+
     public function update(Request $request, Post $post)
     {
         $post->update($request->except('subject_ids'));
         $post->subject_ids = $request->input('subject_ids');
         $post->save();
-        
+
         return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
     }
-    
+
     public function destroy(Post $post)
     {
         $post->delete();
