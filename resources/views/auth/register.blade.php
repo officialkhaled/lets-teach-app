@@ -3,18 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	
+
 	<title>Register</title>
-	
+
 	<link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
 	<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
 	<link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	
+
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
-	
+
 	<script src="{{ asset('assets/js/setTheme.js') }}"></script>
 </head>
 
@@ -38,15 +38,15 @@
 								We’re excited to have you on board!
 							</h2>
 						</div>
-						
+
 						<form class="js-validation-signup" action="{{ route('register') }}" method="POST">
 							@csrf
-							
+
 							<div class="block block-themed block-rounded block-fx-shadow">
 								<div class="block-header bg-gd-emerald">
 									<h3 class="block-title">Please enter your details</h3>
 								</div>
-								
+
 								<div class="block-content">
 									<div class="mb-4">
 										<label class="form-label" for="name">Name</label>
@@ -74,7 +74,7 @@
 										<input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
 											   placeholder="Confirm your password" autocomplete="new-password">
 									</div>
-									
+
 									<div class="row">
 										<div class="col-sm-6 d-sm-flex align-items-center push">
 											{{--											<div class="form-check">--}}
@@ -89,7 +89,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="block-content block-content-full bg-body-light d-flex justify-content-between">
 									<a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('login') }}">
 										<i class="fa fa-arrow-left opacity-50 me-1"></i> Sign In
@@ -104,8 +104,8 @@
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="modal fade" id="modal-terms" tabindex="-1" role="dialog" aria-labelledby="modal-terms" aria-hidden="true">
 				<div class="modal-dialog modal-lg modal-dialog-slidedown" role="document">
 					<div class="modal-content">
@@ -136,7 +136,7 @@
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.
 								</p>
 							</div>
-							
+
 							<div class="block-content block-content-full block-content-sm text-end border-top">
 								<button type="button" class="btn btn-alt-secondary" data-bs-dismiss="modal">
 									&nbsp;<i class="fa-solid fa-circle-xmark"></i>&nbsp;&nbsp;Close&nbsp;
@@ -166,7 +166,7 @@
 
     $(document).ready(function () {
         $('.select2').select2({
-            allowClear: true,
+            allowClear: false,
         });
     });
 </script>
