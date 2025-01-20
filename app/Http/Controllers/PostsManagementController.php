@@ -29,17 +29,11 @@ class PostsManagementController extends Controller
 
     public function create()
     {
-        $tags = Tag::query()
-            ->where('status', ACTIVE)
-            ->latest()
-            ->get();
-
-        $mediums = ApplicationConstant::MEDIUM;
+                $mediums = ApplicationConstant::MEDIUM;
         $classes = ApplicationConstant::CLASSES;
         $subjects = ApplicationConstant::SUBJECTS;
 
         return view('student.posts-management.create', [
-            'tags' => $tags,
             'mediums' => $mediums,
             'classes' => $classes,
             'subjects' => $subjects,
