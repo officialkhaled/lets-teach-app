@@ -16,7 +16,7 @@ class FileAttachment extends Model
         'file_attachmentable_id',
         'file_attachmentable_type',
         'name',
-        'path'
+        'path',
     ];
 
     protected $appends = ['file', 'full_path'];
