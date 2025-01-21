@@ -1,6 +1,8 @@
 <?php
 
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 const SUCCESS = 200;
 const FAIL = 500;
@@ -65,7 +67,7 @@ if (!function_exists('generateFaker')) {
 }
 
 if (!function_exists('currentUser')) {
-    function currentUser()
+    function currentUser(): User|Authenticatable|null
     {
         if (Auth::check()) {
             return Auth::user();
