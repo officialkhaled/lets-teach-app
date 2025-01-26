@@ -29,7 +29,7 @@ class PostsManagementController extends Controller
 
     public function create()
     {
-                $mediums = ApplicationConstant::MEDIUM;
+        $mediums = ApplicationConstant::MEDIUM;
         $classes = ApplicationConstant::CLASSES;
         $subjects = ApplicationConstant::SUBJECTS;
 
