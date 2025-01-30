@@ -20,11 +20,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <p class="m-b-1">
-                                        Email:
-                                        <span class="fw-bold">{{ currentUser()->email }}</span>
+                                        Email: <span class="fw-bold">{{ currentUser()->email }}</span>
                                         <br>
-                                        Phone:
-                                        <span class="fw-bold">{{ $tutor->phone_number }}</span>
+                                        Phone: <span class="fw-bold">{{ $tutor->phone_number }}</span>
                                     </p>
                                 </div>
                             </div>
