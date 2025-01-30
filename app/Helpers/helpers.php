@@ -26,23 +26,6 @@ const TUTOR = 1;
 const STUDENT = 2;
 
 
-if (!function_exists('greet')) {
-    function greet(): string
-    {
-        $hour = now()->hour;
-
-        if ($hour < 12) {
-            $greeting = "Good Morning";
-        } elseif ($hour < 18) {
-            $greeting = "Good Afternoon";
-        } else {
-            $greeting = "Good Evening";
-        }
-
-        return $greeting;
-    }
-}
-
 if (!function_exists('randomQuote')) {
     function randomQuote(): string
     {
