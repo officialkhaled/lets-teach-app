@@ -1,6 +1,8 @@
 <?php
 
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 const SUCCESS = 200;
 const FAIL = 500;
@@ -23,23 +25,6 @@ const ADMIN = 0;
 const TUTOR = 1;
 const STUDENT = 2;
 
-
-if (!function_exists('greet')) {
-    function greet(): string
-    {
-        $hour = now()->hour;
-
-        if ($hour < 12) {
-            $greeting = "Good Morning";
-        } elseif ($hour < 18) {
-            $greeting = "Good Afternoon";
-        } else {
-            $greeting = "Good Evening";
-        }
-
-        return $greeting;
-    }
-}
 
 if (!function_exists('randomQuote')) {
     function randomQuote(): string
@@ -65,7 +50,7 @@ if (!function_exists('generateFaker')) {
 }
 
 if (!function_exists('currentUser')) {
-    function currentUser()
+    function currentUser(): User|Authenticatable|null
     {
         if (Auth::check()) {
             return Auth::user();
