@@ -152,12 +152,12 @@
                                             <div class="col-md-3">
                                                 <label class="form-label" for="name">Name</label>
                                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
-                                                       value="{{ $tutor->user->name }}">
+                                                       value="{{ $tutor->user?->name }}">
                                             </div>
                                             <div class="col-md-3">
                                                 <label class="form-label" for="email">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                                                       value="{{ $tutor->user->email }}">
+                                                       value="{{ $tutor->user?->email }}">
                                             </div>
                                             <div class="col-md-3">
                                                 <label class="form-label" for="phone_number">Phone Number (+88)</label>
@@ -221,7 +221,7 @@
                                             <div class="col-md-6 text-center">
                                                 <img id="preview" alt="Profile Picture Preview" class="img-fluid"
                                                      style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
-                                                     src="{{ $tutor->user->image ? asset('storage/' . $tutor->user->image) : asset('assets/no_image.jpg') }}">
+                                                     src="{{ $tutor->user?->image ? asset('storage/' . $tutor->user?->image) : asset('assets/no_image.jpg') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -274,12 +274,12 @@
                                     <div class="col-md-3">
                                         <label class="form-label" for="name">Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
-                                               value="{{ $tutor->user->name }}">
+                                               value="{{ $tutor->user?->name }}">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label" for="email">Email</label>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                                               value="{{ $tutor->user->email }}">
+                                               value="{{ $tutor->user?->email }}">
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label" for="phone_number">Phone Number (+88)</label>
@@ -374,7 +374,7 @@
                                     <div class="col-md-6 text-center">
                                         <img id="preview" alt="Profile Picture Preview" class="img-fluid"
                                              style="width: 150px; height: 150px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);"
-                                             src="{{ $tutor->user->image ? asset('storage/' . $tutor->user->image) : asset('assets/no_image.jpg') }}">
+                                             src="{{ $tutor->user?->image ? asset('storage/' . $tutor->user?->image) : asset('assets/no_image.jpg') }}">
                                     </div>
                                 </div>
                             </div>
