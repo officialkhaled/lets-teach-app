@@ -21,7 +21,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
         });
-        
+
         Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
             Route::group(['prefix' => 'users'], function () {
                 Route::controller(UserManagementController::class)->group(function () {
@@ -32,7 +32,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                 });
             });
         });
-        
+
         Route::group(['prefix' => 'tags-management', 'as' => 'tags-management.'], function () {
             Route::group(['prefix' => 'tags'], function () {
                 Route::controller(TagManagementController::class)->group(function () {
@@ -45,7 +45,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                 });
             });
         });
-        
+
         Route::group(['prefix' => 'content-moderation', 'as' => 'content-moderation.'], function () {
             Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
                 Route::controller(AdminPostsManagementController::class)->group(function () {
@@ -59,7 +59,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                     Route::get('/{post}/reject', 'reject')->name('reject');
                 });
             });
-            
+
             Route::group(['prefix' => 'reviews', 'as' => 'reviews.'], function () {
                 Route::controller(ReviewsManagementController::class)->group(function () {
                     Route::get('/reviews-list', 'index')->name('index');
@@ -73,7 +73,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
                 });
             });
         });
-        
+
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
             Route::controller(ProfileController::class)->group(function () {
                 Route::get('/', 'edit')->name('edit');
@@ -89,14 +89,14 @@ Route::middleware(['auth', 'role:1'])->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
         });
-        
+
         Route::group(['prefix' => 'job-posts', 'as' => 'job-posts.'], function () {
             Route::controller(JobPostsController::class)->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{post}/apply', 'apply')->name('apply');
             });
         });
-        
+
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
             Route::controller(TutorProfileController::class)->group(function () {
                 Route::get('/{tutor}/edit', 'edit')->name('edit');
@@ -111,7 +111,7 @@ Route::middleware(['auth', 'role:2'])->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
         });
-        
+
         Route::group(['prefix' => 'posts-management', 'as' => 'posts-management.'], function () {
             Route::controller(PostsManagementController::class)->group(function () {
                 Route::get('/', 'index')->name('index');
@@ -122,14 +122,14 @@ Route::middleware(['auth', 'role:2'])->group(function () {
                 Route::delete('/{post}', 'destroy')->name('destroy');
             });
         });
-        
+
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
             Route::controller(StudentProfileController::class)->group(function () {
                 Route::get('/{student}/edit', 'edit')->name('edit');
                 Route::patch('/{student}', 'update')->name('update');
             });
         });
-        
+
 //        Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 //            Route::controller(ProfileController::class)->group(function () {
 //                Route::get('/', 'edit')->name('edit');

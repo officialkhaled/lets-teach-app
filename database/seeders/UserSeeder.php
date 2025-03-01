@@ -13,9 +13,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $password = Hash::make('12345');
-        
+
         $superUserExists = User::where('email', 'super@skylarksoft.com')->exists();
-        
+
         if (!$superUserExists) {
             User::create([
                 'name' => "Super Admin",
@@ -25,30 +25,30 @@ class UserSeeder extends Seeder
                 'password' => $password,
             ]);
         }
-        
+
         for ($i = 1; $i <= 3; $i++) {
             $user = User::create([
                 'name' => generateFaker()->name,
                 'email' => generateFaker()->email,
                 'role' => 1,
-                'image' => generateFaker()->imageUrl(640, 480),
+                'image' => null,
                 'password' => $password,
             ]);
-            
+
             Tutor::create([
                 'user_id' => $user->id,
             ]);
         }
-        
+
         for ($i = 1; $i <= 3; $i++) {
             $user = User::create([
                 'name' => generateFaker()->name,
                 'email' => generateFaker()->email,
                 'role' => 2,
-                'image' => generateFaker()->imageUrl(640, 480),
+                'image' => null,
                 'password' => $password,
             ]);
-            
+
             Student::create([
                 'user_id' => $user->id,
             ]);

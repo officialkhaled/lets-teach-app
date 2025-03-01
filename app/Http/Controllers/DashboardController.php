@@ -15,16 +15,15 @@ class DashboardController extends Controller
         $students = Student::all();
         $tags = Tag::query()->active()->get();
         $posts = Post::all();
-        
+
         return view('admin.dashboard', [
             'tutors' => $tutors,
             'students' => $students,
             'tags' => $tags,
             'posts' => $posts,
-            'greet' => greet(),
         ]);
     }
-    
+
     public function tutorDashboard()
     {
         $jobCounts = Post::query()
@@ -35,9 +34,9 @@ class DashboardController extends Controller
                 COUNT(CASE WHEN status = '6' THEN 1 END) as cancelledJobs
             ")
             ->first();
-        
+
         $tutor = Tutor::query()->firstWhere('user_id', userId());
-        
+
         return view('tutor.dashboard', [
             'tutor' => $tutor,
             'appliedJobs' => $jobCounts->appliedJobs ?? 0,
@@ -46,7 +45,7 @@ class DashboardController extends Controller
             'cancelledJobs' => $jobCounts->cancelledJobs ?? 0,
         ]);
     }
-    
+
     public function studentDashboard()
     {
         $jobCounts = Post::query()
@@ -57,9 +56,9 @@ class DashboardController extends Controller
                 COUNT(CASE WHEN status = '5' THEN 1 END) as confirmedJobs
             ")
             ->first();
-        
+
         $student = Student::query()->firstWhere('user_id', userId());
-        
+
         return view('student.dashboard', [
             'student' => $student,
             'pendingJobs' => $jobCounts->pendingJobs ?? 0,
