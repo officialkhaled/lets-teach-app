@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\TutorProfileController;
 use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
@@ -16,7 +19,19 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::middleware(['auth', 'role:0'])->group(function () {
+Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
+    Route::resource('permissions', PermissionController::class);
+    Route::get('permissions/{permissionId}/delete', [PermissionController::class, 'destroy']);
+
+    Route::resource('roles', RoleController::class);
+    Route::get('roles/{roleId}/delete', [RoleController::class, 'destroy']);
+    Route::get('roles/{roleId}/give-permissions', [RoleController::class, 'addPermissionToRole']);
+    Route::put('roles/{roleId}/give-permissions', [RoleController::class, 'givePermissionToRole']);
+
+    Route::resource('users', UserController::class);
+    Route::get('users/{userId}/delete', [UserController::class, 'destroy']);
+
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
@@ -84,7 +99,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     });
 });
 
-Route::middleware(['auth', 'role:1'])->group(function () {
+Route::middleware(['auth', 'role:tutor'])->group(function () {
     Route::group(['prefix' => 'tutor', 'as' => 'tutor.'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'tutorDashboard')->name('tutor-dashboard');
@@ -106,7 +121,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     });
 });
 
-Route::middleware(['auth', 'role:2'])->group(function () {
+Route::middleware(['auth', 'role:student'])->group(function () {
     Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'studentDashboard')->name('student-dashboard');
