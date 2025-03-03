@@ -1,23 +1,23 @@
 <header id="page-header">
 	<div class="content-header" style="padding-top: 0;">
-		
+
 		{{-- Left Part --}}
 		<div class="space-x-1">
 			<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle" title="Toggle Sidebar">
 				<i class="fa fa-fw fa-bars"></i>
 			</button>
-			
+
 			<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="header_search_on" title="Search...">
 				<i class="fa fa-fw fa-search"></i>
 			</button>
-			
+
 			<div class="dropdown d-inline-block">
 				<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-themes-dropdown" title="Theme"
 						data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-fw fa-brush"></i>
 				</button>
 				<div class="dropdown-menu dropdown-menu-lg p-0" aria-labelledby="page-header-themes-dropdown">
-					
+
 					{{--					<div class="px-3 py-2 bg-body-light rounded-top">--}}
 					{{--						<h5 class="fs-sm text-center mb-0">--}}
 					{{--							Color Themes--}}
@@ -57,7 +57,7 @@
 					{{--							</div>--}}
 					{{--						</div>--}}
 					{{--					</div>--}}
-					
+
 					<div class="px-3 py-2 bg-body-light rounded-top">
 						<h5 class="fs-sm text-center mb-0">
 							Mode
@@ -85,7 +85,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					{{--					<div class="p-3 bg-body-light rounded-bottom">--}}
 					{{--						<div class="row g-sm text-center">--}}
 					{{--							<div class="col-6">--}}
@@ -100,11 +100,11 @@
 					{{--							</div>--}}
 					{{--						</div>--}}
 					{{--					</div>--}}
-				
+
 				</div>
 			</div>
 		</div>
-		
+
 		{{-- Right Part --}}
 		@auth
 			<div class="space-x-1">
@@ -155,17 +155,17 @@
 								<span>Inbox</span>
 								<i class="fa fa-fw fa-envelope-open opacity-25"></i>
 							</a>
-							
+
 							<div class="dropdown-divider"></div>
-							
+
 							<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
 							   href="#" data-toggle="layout" data-action="side_overlay_toggle">
 								<span>Settings</span>
 								<i class="fa fa-fw fa-wrench opacity-25"></i>
 							</a>
-							
+
 							<div class="dropdown-divider"></div>
-							
+
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
 								@csrf
 								<button type="submit" class="dropdown-item d-flex align-items-center justify-content-between space-x-1">
@@ -176,7 +176,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				{{--				<div class="dropdown d-inline-block">--}}
 				{{--					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-notifications" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 				{{--						<i class="fa fa-flag"></i>--}}
@@ -257,7 +257,7 @@
 				{{--				</button>--}}
 			</div>
 		@endauth
-		
+
 		@guest
 			<div class="space-x-1">
 				<div class="dropdown d-inline-block">
@@ -286,13 +286,13 @@
 								<i class="fa fa-fw fa-file opacity-25"></i>
 							</a>
 							<div class="dropdown-divider"></div>
-							
+
 							<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
 							   href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
 								<span>Settings</span>
 								<i class="fa fa-fw fa-wrench opacity-25"></i>
 							</a>
-							
+
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item d-flex align-items-center justify-content-between space-x-1" href="{{ route('logout') }}">
 								<span>Sign Out</span>
@@ -301,7 +301,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				{{--				<div class="dropdown d-inline-block">--}}
 				{{--					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-notifications" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 				{{--						<i class="fa fa-flag"></i>--}}
@@ -383,7 +383,7 @@
 			</div>
 		@endguest
 	</div>
-	
+
 	{{-- Search Bar --}}
 	<div id="page-header-search" class="overlay-header bg-body-extra-light">
 		<div class="content-header">
@@ -400,7 +400,7 @@
 			</form>
 		</div>
 	</div>
-	
+
 	{{-- Loader --}}
 	<div id="page-header-loader" class="overlay-header bg-primary">
 		<div class="content-header">
