@@ -21,7 +21,10 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::query()->latest()->get();
-        return view('role-permission.roles.index', ['roles' => $roles]);
+
+        return view('role-permission.roles.index', [
+            'roles' => $roles
+        ]);
     }
 
     public function create()
@@ -43,7 +46,7 @@ class RoleController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect('roles')->with('status', 'Role Created Successfully');
+        return redirect('admin/settings/roles')->with('success', 'Role Created Successfully');
     }
 
     public function edit(Role $role)
@@ -67,20 +70,22 @@ class RoleController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect('roles')->with('status', 'Role Updated Successfully');
+        return redirect('admin/settings/roles')->with('success', 'Role Updated Successfully');
     }
 
     public function destroy($roleId)
     {
         $role = Role::find($roleId);
         $role->delete();
-        return redirect('roles')->with('status', 'Role Deleted Successfully');
+
+        return redirect('admin/settings/roles')->with('success', 'Role Deleted Successfully');
     }
 
     public function addPermissionToRole($roleId)
     {
         $permissions = Permission::get();
         $role = Role::findOrFail($roleId);
+
         $rolePermissions = DB::table('role_has_permissions')
             ->where('role_has_permissions.role_id', $role->id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
@@ -102,6 +107,6 @@ class RoleController extends Controller
         $role = Role::findOrFail($roleId);
         $role->syncPermissions($request->permission);
 
-        return redirect()->back()->with('status', 'Permissions added to role');
+        return redirect()->back()->with('success', 'Permissions Added to Role');
     }
 }

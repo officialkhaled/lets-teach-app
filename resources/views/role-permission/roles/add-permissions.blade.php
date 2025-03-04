@@ -7,7 +7,7 @@
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">
-                        Role Entry
+                        Permissions
                     </h3>
 
                     <a href="{{ route('admin.settings.roles.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
@@ -17,21 +17,35 @@
 
                 <div class="block-content block-content-full overflow-x-auto">
                     <div class="row">
-                        <form method="POST" action="{{ route('admin.settings.roles.store') }}" class="space-y-3">
+                        <form method="POST" action="{{ url('admin/settings/roles/'.$role->id.'/give-permissions') }}" class="space-y-3">
                             @csrf
+                            @method('PUT')
 
                             <div class="col-md-12">
-                                <div class="row" style="margin-top: 10px;">
+                                <div class="row">
                                     <div class="col-md-12">
-                                        <label class="form-label" for="name">Role Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                                        <label for="permission" class="mb-2">
+                                            <b>Role: <span class="underline">{{ $role->name }}</span></b>
+                                        </label>
                                     </div>
+                                </div>
+                                <hr>
+                                <div class="row" style="margin-top: 10px;">
+                                    @foreach ($permissions as $permission)
+                                        <div class="col-md-2">
+                                            <label>
+                                                <input type="checkbox" name="permission[]" value="{{ $permission->name }}"
+                                                    {{ in_array($permission->id, $rolePermissions) ? 'checked':'' }}/>
+                                                {{ $permission->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
                                 <button class="btn btn-success btn-sm" type="submit">
-                                    &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;
+                                    &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
                                 </button>
                                 <button class="btn btn-warning btn-sm" type="button" onclick="pageRefresh()">
                                     &nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;

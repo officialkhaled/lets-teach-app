@@ -21,7 +21,7 @@
                         <tr>
                             <th class="text-center" style="width: 8%">SL</th>
                             <th>Name</th>
-                            <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Action</th>
+                            <th class="d-none d-sm-table-cell text-center" style="width: 25%;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,13 +30,16 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td class="text-center">
+                                    <a href="{{ url('admin/settings/roles/'.$role->id.'/give-permissions') }}" class="btn btn-sm btn-warning shadow-sm">
+                                        <i class="fa-solid fa-plus opacity-75"></i>&nbsp;&nbsp;Add / Edit Role Permission
+                                    </a>
                                     @can('update permission')
-                                        <a href="{{ url('admin/settings/roles/'.$role->id.'/edit') }}" class="btn btn-sm btn-success shadow-sm">
+                                        <a href="{{ url('admin/settings/roles/'.$role->id.'/edit') }}" class="btn btn-sm btn-success mx-1 shadow-sm">
                                             <i class="fa-solid fa-pen-to-square opacity-75"></i>
                                         </a>
                                     @endcan
                                     @can('delete permission')
-                                        <a href="{{ url('admin/settings/roles/'.$role->id.'/delete') }}" class="btn btn-sm btn-danger mx-2 shadow-sm">
+                                        <a href="{{ url('admin/settings/roles/'.$role->id.'/delete') }}" class="btn btn-sm btn-danger shadow-sm">
                                             <i class="fa-solid fa-trash opacity-75"></i>
                                         </a>
                                     @endcan

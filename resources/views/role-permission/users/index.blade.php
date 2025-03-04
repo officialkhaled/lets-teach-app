@@ -7,10 +7,10 @@
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">
-                        Permissions
+                        Users
                     </h3>
 
-                    <a href="{{ route('admin.settings.permissions.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+                    <a href="{{ route('admin.settings.users.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
                         &nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
                     </a>
                 </div>
@@ -21,22 +21,32 @@
                         <tr>
                             <th class="text-center" style="width: 8%">SL</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>Roles</th>
                             <th class="d-none d-sm-table-cell text-center" style="width: 15%;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($permissions as $permission)
+                        @foreach ($users as $user)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $permission->name }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td class="text-center">
-                                    @can('update permission')
-                                        <a href="{{ url('admin/settings/permissions/'.$permission->id.'/edit') }}" class="btn btn-sm btn-success shadow-sm">
+                                    @if (!empty($user->getRoleNames()))
+                                        @foreach ($user->getRoleNames() as $rolename)
+                                            <label class="badge bg-primary mx-1">{{ $rolename }}</label>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @can('update user')
+                                        <a href="{{ url('admin/settings/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-success shadow-sm">
                                             <i class="fa-solid fa-pen-to-square opacity-75"></i>
                                         </a>
                                     @endcan
-                                    @can('delete permission')
-                                        <a href="{{ url('admin/settings/permissions/'.$permission->id.'/delete') }}" class="btn btn-sm btn-danger mx-2 shadow-sm">
+                                    @can('delete user')
+                                        <a href="{{ url('admin/settings/users/'.$user->id.'/delete') }}" class="btn btn-sm btn-danger shadow-sm">
                                             <i class="fa-solid fa-trash opacity-75"></i>
                                         </a>
                                     @endcan

@@ -21,12 +21,14 @@ class UserController extends Controller
     public function index()
     {
         $users = User::query()->latest()->get();
+
         return view('role-permission.users.index', ['users' => $users]);
     }
 
     public function create()
     {
-        $roles = Role::pluck('name', 'name')->all();
+        $roles = Role::query()->orderBy('id', 'ASC')->pluck('name', 'name')->all();
+
         return view('role-permission.users.create', ['roles' => $roles]);
     }
 
@@ -47,13 +49,14 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect('/users')->with('status', 'User Created Successfully with Roles');
+        return redirect('admin/settings/users')->with('success', 'User Created Successfully with Roles');
     }
 
     public function edit(User $user)
     {
         $roles = Role::pluck('name', 'name')->all();
         $userRoles = $user->roles->pluck('name', 'name')->all();
+
         return view('role-permission.users.edit', [
             'user' => $user,
             'roles' => $roles,
@@ -83,7 +86,7 @@ class UserController extends Controller
         $user->update($data);
         $user->syncRoles($request->roles);
 
-        return redirect('/users')->with('status', 'User Updated Successfully with Roles');
+        return redirect('admin/settings/users')->with('success', 'User Updated Successfully with Roles');
     }
 
     public function destroy($userId)
@@ -91,6 +94,6 @@ class UserController extends Controller
         $user = User::findOrFail($userId);
         $user->delete();
 
-        return redirect('/users')->with('status', 'User Deleted Successfully');
+        return redirect('admin/settings/users')->with('success', 'User Deleted Successfully');
     }
 }
