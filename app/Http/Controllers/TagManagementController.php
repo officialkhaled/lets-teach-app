@@ -20,7 +20,9 @@ class TagManagementController extends Controller
 
     public function create()
     {
-        return view('admin.tags-management.create');
+        return view('admin.tags-management.create', [
+            'tagTypes' => Tag::TAG_TYPES,
+        ]);
     }
 
     public function store(Request $request)
@@ -37,6 +39,8 @@ class TagManagementController extends Controller
     {
         return view('admin.tags-management.edit-tag', [
             'tag' => $tag,
+            'tagTypes' => Tag::TAG_TYPES,
+            'selectedTagType' => $tag->id,
         ]);
     }
 

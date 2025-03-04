@@ -30,11 +30,9 @@
                                         <label class="form-label" for="type">Type</label>
                                         <select name="type" id="type" class="select2 form-select">
                                             <option></option>
-                                            <option value="1">Subject</option>
-                                            <option value="2">Grade</option>
-                                            <option value="3">Medium</option>
-                                            <option value="4">Gender</option>
-                                            <option value="5">Tutoring Day(s)</option>
+                                            @foreach($tagTypes as $id => $type)
+                                                <option value="{{ $id }}">{{ $type }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

@@ -31,11 +31,11 @@
                                         <label class="form-label" for="type">Type</label>
                                         <select name="type" id="type" class="select2 form-select">
                                             <option></option>
-                                            <option value="1" {{ old('type', $tag->type) == 1 ? 'selected' : '' }}>Subject</option>
-                                            <option value="2" {{ old('type', $tag->type) == 2 ? 'selected' : '' }}>Grade</option>
-                                            <option value="3" {{ old('type', $tag->type) == 3 ? 'selected' : '' }}>Medium</option>
-                                            <option value="4" {{ old('type', $tag->type) == 4 ? 'selected' : '' }}>Gender</option>
-                                            <option value="5" {{ old('type', $tag->type) == 5 ? 'selected' : '' }}>Tutoring Day(s)</option>
+                                            @foreach($tagTypes as $id => $type)
+                                                <option value="{{ $id }}" {{ $selectedTagType == $id ? 'selected' : '' }}>
+                                                    {{ $type }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
