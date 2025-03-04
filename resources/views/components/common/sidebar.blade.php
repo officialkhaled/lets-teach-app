@@ -27,14 +27,6 @@
                             </a>
                         </li>
 
-                        <li class="nav-main-item {{ request()->is('admin/user-management*') ? 'active-menu' : '' }}">
-                            <a class="nav-main-link {{ request()->is('admin/user-management*') ? 'active' : '' }}"
-                               href="{{ route('admin.user-management.index') }}">
-                                <i class="nav-main-link-icon fa-solid fa-users-gear"></i>
-                                <span class="nav-main-link-name">Users Management</span>
-                            </a>
-                        </li>
-
                         <li class="nav-main-item {{ request()->is('admin/tags-management*') ? 'active-menu' : '' }}">
                             <a class="nav-main-link {{ request()->is('admin/tags-management*') ? 'active' : '' }}"
                                href="{{ route('admin.tags-management.index') }}">

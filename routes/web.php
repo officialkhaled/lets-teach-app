@@ -17,7 +17,7 @@ use App\Http\Controllers\RolePermission\PermissionController;
 
 Route::get('/', function () {
     return redirect()->route('login');
-});
+})->name('home');
 
 Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -36,17 +36,6 @@ Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
 
             Route::resource('users', UserController::class);
             Route::get('users/{userId}/delete', [UserController::class, 'destroy']);
-        });
-
-        Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
-            Route::group(['prefix' => 'users'], function () {
-                Route::controller(UserManagementController::class)->group(function () {
-                    Route::get('/', 'index')->name('index');
-                    Route::get('/{user}/edit', 'edit')->name('edit');
-                    Route::patch('/{user}', 'update')->name('update');
-                    Route::delete('/{user}', 'destroy')->name('destroy');
-                });
-            });
         });
 
         Route::group(['prefix' => 'tags-management', 'as' => 'tags-management.'], function () {

@@ -13,26 +13,26 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     * @param \Closure(Request): (Response) $next
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
-        
+
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 $user = Auth::user();
-                
-                if ($user->role === 0) {
+
+                if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
                     return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
-                } else if ($user->role === 1) {
+                } elseif ($user->hasRole('tutor')) {
                     return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
-                } else {
+                } elseif ($user->hasRole('student')) {
                     return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
                 }
             }
         }
-        
+
         return $next($request);
     }
 }

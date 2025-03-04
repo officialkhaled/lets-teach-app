@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -13,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use App\Actions\PopulateRoleWiseTableAction;
+use Illuminate\Validation\ValidationException;
 
 class RegisteredUserController extends Controller
 {
@@ -23,11 +23,11 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-    
+
     /**
      * Handle an incoming registration request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -35,28 +35,26 @@ class RegisteredUserController extends Controller
             $request->validate([
                 'name' => ['required', 'string'],
                 'email' => ['required', 'string', 'lowercase', 'email', 'unique:' . User::class],
-                'role' => ['required'],
                 'password' => ['required', 'confirmed'],
             ]);
-            
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'role' => $request->role,
                 'password' => Hash::make($request->password),
             ]);
-            
+
             event(new Registered($user));
-            
+
             (new PopulateRoleWiseTableAction())->execute($user);
-            
+
             Auth::login($user);
-            
-            if (Auth::user()->role === 0) {
+
+            if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
                 return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
-            } else if (Auth::user()->role === 1) {
+            } elseif ($user->hasRole('tutor')) {
                 return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
-            } else {
+            } elseif ($user->hasRole('student')) {
                 return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
             }
         } catch (\Exception $e) {

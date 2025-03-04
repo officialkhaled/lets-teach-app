@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-    
+
     /**
      * Handle an incoming authentication request.
      */
@@ -27,28 +27,30 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        
+
         $user = Auth::user();
-        
-        if ($user->role === 0) {
+
+        if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
             return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
-        } else if ($user->role === 1) {
+        } elseif ($user->hasRole('tutor')) {
             return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
-        } else {
+        } elseif ($user->hasRole('student')) {
             return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
         }
+
+        return redirect()->route('home');
     }
-    
+
     /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/login');
     }
 }

@@ -70,6 +70,7 @@ class UserRolePermissionSeeder extends Seeder
         ]);
         $tutor->assignRole($tutorRole);
 
+
         $student = User::firstOrCreate([
             'email' => 'student@gmail.com',
         ], [
