@@ -6,7 +6,6 @@ use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TutorProfileController;
 use App\Http\Controllers\TagManagementController;
-use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\AdminPostsManagementController;
 use App\Http\Controllers\RolePermission\PermissionController;
 
 Route::get('/', function () {
+//    return view('welcome');
     return redirect()->route('login');
 })->name('home');
 

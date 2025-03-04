@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -46,6 +47,14 @@ class RegisteredUserController extends Controller
 
             event(new Registered($user));
 
+            $roles = Role::query()->pluck('name', 'name')->toArray();
+
+            if ($request->role === 'tutor') {
+                $user->assignRole($roles['tutor']);
+            } else if ($request->role === 'student') {
+                $user->assignRole($roles['student']);
+            }
+
             (new PopulateRoleWiseTableAction())->execute($user);
 
             Auth::login($user);
@@ -57,6 +66,9 @@ class RegisteredUserController extends Controller
             } elseif ($user->hasRole('student')) {
                 return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
             }
+
+            return redirect()->route('home');
+
         } catch (\Exception $e) {
             \Log::error('Error during user registration: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'An error occurred during registration.']);

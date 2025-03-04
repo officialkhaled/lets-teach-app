@@ -107,7 +107,7 @@
 
         {{-- Right Part --}}
         <div class="space-x-1">
-            <div class="dropdown d-inline-block border">
+            <div class="dropdown d-inline-block border" style="border-radius: 8px;">
                 <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="img-avatar img-avatar32" style="margin-right: 6px; object-fit: cover"
@@ -117,11 +117,6 @@
                     <i class="fa fa-angle-down opacity-50 ms-1"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
-                    <div class="px-2 py-3 bg-body-light rounded-top">
-                        <h5 class="h6 text-center mb-0">
-                            {{ userName() }}
-                        </h5>
-                    </div>
                     <div class="p-2">
                         @if (currentUser()->hasRole('super-admin') || currentUser()->hasRole('admin'))
                             <a class="dropdown-item d-flex align-items-center justify-content-between space-x-1"
