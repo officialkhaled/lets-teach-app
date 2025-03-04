@@ -3,10 +3,10 @@
         <div class="content-header justify-content-lg-center">
             <div>
                 <a class="link-fx fw-bold tracking-wide mx-auto" href="#">
-                <span class="smini-hidden">
-                  <i class="fa fa-fire text-primary"></i>
-                  <span class="fs-4 text-dual">Let's</span><span class="fs-4 text-primary">Teach</span>
-                </span>
+                    <span class="smini-hidden">
+                        <i class="fa-solid fa-user-graduate text-primary"></i>
+                        <span class="fs-4 text-dual">Let's</span><span class="fs-4 text-primary">Teach</span>
+                    </span>
                 </a>
             </div>
             <div>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        @if (currentUser()->roles->first()->name == 'super-admin' || currentUser()->roles->first()->name == 'admin')
+        @if (currentUser()->roles?->first()->name == 'super-admin' || currentUser()->roles?->first()->name == 'admin')
             <div class="js-sidebar-scroll">
                 <div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
                     <ul class="nav-main">
@@ -102,7 +102,7 @@
             </div>
         @endif
 
-        @if (currentUser()->roles->first()->name == 'tutor')
+        @if (currentUser()->roles?->first()->name == 'tutor')
             @php($tutor = \App\Models\Tutor::query()->firstWhere('user_id', userId()))
             <div class="js-sidebar-scroll">
                 <div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
@@ -132,7 +132,7 @@
             </div>
         @endif
 
-        @if (currentUser()->roles->first()->name == 'student')
+        @if (currentUser()->roles?->first()->name == 'student')
             @php($student = \App\Models\Student::query()->firstWhere('user_id', userId()))
             <div class="js-sidebar-scroll">
                 <div class="content	-side content-side-full" style="padding: 1px 1.5rem;">
