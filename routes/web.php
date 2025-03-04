@@ -1,19 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\TutorProfileController;
 use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
+use App\Http\Controllers\RolePermission\RoleController;
+use App\Http\Controllers\RolePermission\UserController;
 use App\Http\Controllers\AdminPostsManagementController;
+use App\Http\Controllers\RolePermission\PermissionController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -24,7 +24,6 @@ Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/dashboard', 'adminDashboard')->name('admin-dashboard');
         });
-
 
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
             Route::resource('permissions', PermissionController::class);
@@ -38,7 +37,6 @@ Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
             Route::resource('users', UserController::class);
             Route::get('users/{userId}/delete', [UserController::class, 'destroy']);
         });
-
 
         Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
             Route::group(['prefix' => 'users'], function () {
