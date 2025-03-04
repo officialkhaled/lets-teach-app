@@ -3,48 +3,42 @@
 
     <main id="main-container">
 
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-12">
+        <div class="content">
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">
+                        Permission Edit
+                    </h3>
 
-                    @if ($errors->any())
-                        <ul class="alert alert-warning mt-2">
-                            @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    @endif
+                    <a href="{{ route('admin.settings.permissions.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+                        &nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
+                    </a>
+                </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="d-flex justify-content-between align-items-center">
-                                <b>Edit Permission</b>
-                                <a href="{{ url('permissions') }}" class="btn btn-sm btn-danger float-end shadow-sm">
-                                    <i class="fa-solid fa-circle-chevron-left opacity-75"></i>&nbsp;&nbsp;Back
-                                </a>
-                            </h2>
-                        </div>
+                <div class="block-content block-content-full overflow-x-auto">
+                    <div class="row">
+                        <form method="POST" action="{{ route('admin.settings.permissions.update', $permission->id) }}" class="space-y-3" enctype="multipart/form-data">
+                            @csrf
+                            @method('patch')
 
-                        <div class="card-body">
-                            <form action="{{ url('permissions/'.$permission->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="name">Permission Name</label>
-                                    <input type="text" name="name" value="{{ $permission->name }}" class="form-control rounded-md"/>
+                            <div class="col-md-12">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-12">
+                                        <label class="form-label" for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ $permission->name }}">
+                                    </div>
                                 </div>
-                                <div class="mb-2 mt-4 flex justify-center gap-1">
-                                    <button type="submit" class="btn btn-sm btn-success shadow-sm" onclick="formSubmit()">
-                                        <i class="fa-solid fa-floppy-disk opacity-75"></i>&nbsp;&nbsp;Update
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-warning shadow-sm" onclick="pageRefresh()">
-                                        <i class="fa-solid fa-arrows-rotate opacity-75"></i>&nbsp;&nbsp;Refresh
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
 
+                            <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
+                                <button class="btn btn-success btn-sm" type="submit">
+                                    &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+                                </button>
+                                <button class="btn btn-warning btn-sm" type="button" onclick="pageRefresh()">
+                                    &nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

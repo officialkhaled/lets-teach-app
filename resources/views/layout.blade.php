@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en" class="remember-theme">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	
-	<title>Let's Teach App</title>
-	
-	@include('components.common.links-styles')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Let's Teach App</title>
+
+    @include('components.common.links-styles')
 </head>
 
 <body>
@@ -50,12 +50,12 @@
 	'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
 -->
 <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-modern main-content-boxed">
-	@include('components.common.sidebar')
-	@include('components.common.header')
-	
-	@yield('content')
-	
-	@include('components.common.footer')
+    @include('components.common.sidebar')
+    @include('components.common.header')
+
+    @yield('content')
+
+    @include('components.common.footer')
 </div>
 
 @include('components.common.scripts')
@@ -63,12 +63,12 @@
 @yield('script')
 
 @if (session()->has('success') || session()->has('error'))
-	@php
-		$key = session()->has('success') ? 'success' : 'error';
-		$icon = session()->has('success') ? 'fa-solid fa-square-check' : 'fa-solid fa-triangle-exclamation';
-	@endphp
-	
-	<script>
+    @php
+        $key = session()->has('success') ? 'success' : 'error';
+        $icon = session()->has('success') ? 'fa-solid fa-square-check' : 'fa-solid fa-triangle-exclamation';
+    @endphp
+
+    <script>
         Codebase.helpers('jq-notify', {
             align: 'right',
             from: 'top',
@@ -76,7 +76,7 @@
             icon: '{{ $icon }} me-2',
             message: '{{ session()->get($key) }}'
         });
-	</script>
+    </script>
 @endif
 
 </body>

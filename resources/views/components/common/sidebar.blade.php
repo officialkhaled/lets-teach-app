@@ -66,12 +66,36 @@
                             </ul>
                         </li>
 
-                        <li class="nav-main-item {{ request()->is('admin/permissions*') ? 'active-menu' : '' }}">
-                            <a class="nav-main-link {{ request()->is('admin/permissions*') ? 'active' : '' }}"
-                               href="{{ route('admin.permissions.index') }}">
-                                <i class="nav-main-link-icon fa-solid fa-lock"></i>
-                                <span class="nav-main-link-name">Permissions</span>
+                        <li class="nav-main-item {{ request()->is('admin/settings*') ? 'active-menu open' : '' }}">
+                            <a class="nav-main-link nav-main-link-submenu {{ request()->is('admin/settings*') ? 'active' : '' }}" data-toggle="submenu" href="#">
+                                <i class="nav-main-link-icon fa-solid fa-gear"></i>
+                                <span class="nav-main-link-name">Settings</span>
                             </a>
+                            <ul class="nav-main-submenu {{ request()->is('admin/settings*') ? 'active-menu' : '' }}">
+                                <li class="nav-main-item {{ request()->is('admin/settings/permissions*') ? 'active-menu' : '' }}">
+                                    <a class="nav-main-link {{ request()->is('admin/settings/permissions*') ? 'active' : '' }}"
+                                       href="{{ route('admin.settings.permissions.index') }}">
+                                        <i class="nav-main-link-icon fa-solid fa-lock"></i>
+                                        <span class="nav-main-link-name">Permissions</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-main-item {{ request()->is('admin/settings/roles*') ? 'active-menu' : '' }}">
+                                    <a class="nav-main-link {{ request()->is('admin/settings/roles*') ? 'active' : '' }}"
+                                       href="{{ route('admin.settings.roles.index') }}">
+                                        <i class="nav-main-link-icon fa-solid fa-key"></i>
+                                        <span class="nav-main-link-name">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-main-item {{ request()->is('admin/settings/users*') ? 'active-menu' : '' }}">
+                                    <a class="nav-main-link {{ request()->is('admin/settings/users*') ? 'active' : '' }}"
+                                       href="{{ route('admin.settings.users.index') }}">
+                                        <i class="nav-main-link-icon fa-solid fa-users-gear"></i>
+                                        <span class="nav-main-link-name">Users</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

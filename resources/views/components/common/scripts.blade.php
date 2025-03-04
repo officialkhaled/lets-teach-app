@@ -73,4 +73,8 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    function pageRefresh() {
+        window.location.reload();
+    }
 </script>
