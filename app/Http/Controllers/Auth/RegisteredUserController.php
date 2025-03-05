@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Tutor;
+use App\Models\Student;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -51,8 +53,14 @@ class RegisteredUserController extends Controller
 
             if ($request->role === 'tutor') {
                 $user->assignRole($roles['tutor']);
+                Tutor::create([
+                    'user_id' => $user->id,
+                ]);
             } else if ($request->role === 'student') {
                 $user->assignRole($roles['student']);
+                Student::create([
+                    'user_id' => $user->id,
+                ]);
             }
 
             (new PopulateRoleWiseTableAction())->execute($user);

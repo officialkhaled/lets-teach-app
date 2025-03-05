@@ -51,4 +51,16 @@ class ApplicationConstant
         9 => 'Finance',
         10 => 'Higher Mathematics',
     ];
+
+    const GENDERS = [
+        1 => 'Male',
+        2 => 'Female',
+    ];
+
+    const TUTORING_DAYS = [
+        1 => '3 Days/Week',
+        2 => '4 Days/Week',
+        3 => '5 Days/Week',
+        4 => '6 Days/Week',
+    ];
 }
