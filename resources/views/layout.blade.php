@@ -10,11 +10,11 @@
 </head>
 
 <body>
+
 <!--
   Available classes for #page-container:
 
   SIDEBAR & SIDE OVERLAY
-
 	'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
 	'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
 	'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
@@ -29,12 +29,10 @@
 	'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
 
   HEADER
-
 	''                                          Static Header if no class is added
 	'page-header-fixed'                         Fixed Header
 
   HEADER STYLE
-
 	''                                          Classic Header style if no class is added
 	'page-header-modern'                        Modern Header style
 	'page-header-dark'                          Dark themed Header (works only with classic Header style)
@@ -44,18 +42,20 @@
 												(absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
 
   MAIN CONTENT LAYOUT
-
 	''                                          Full width Main Content if no class is added
 	'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
 	'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
 -->
+
 <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-modern main-content-boxed">
+
     @include('components.common.sidebar')
     @include('components.common.header')
 
     @yield('content')
 
     @include('components.common.footer')
+
 </div>
 
 @include('components.common.scripts')

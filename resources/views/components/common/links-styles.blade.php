@@ -6,7 +6,7 @@
 <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
-	  integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <link rel="stylesheet" id="css-theme" href="{{ asset('assets/css/themes/flat.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
@@ -49,9 +49,9 @@
     }
 
     /* light-mode */
-    /* .active-menu {
-		background-color: #f3f3f3;
-	} */
+    .active-menu {
+        background-color: #f3f3f3;
+    }
 
     .waves-effect {
         position: relative;
@@ -186,18 +186,18 @@
     .vanta-canvas {
         border-radius: 8px;
     }
-    
+
     .select2-selection__choice__display {
         color: #0a0a0a;
     }
-    
+
     .title-animation {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.5) 0 10px 30px 0;
         border-radius: 8px;
         transition: 0.4s ease-in-out;
     }
-    
+
     .title-animation:hover {
         transform: scale(1.5);
     }
