@@ -48,11 +48,6 @@
         background-color: #025197 !important;
     }
 
-    /* light-mode */
-    .active-menu {
-        background-color: #f3f3f3;
-    }
-
     .waves-effect {
         position: relative;
         cursor: pointer;
