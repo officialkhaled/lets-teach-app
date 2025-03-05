@@ -60,8 +60,6 @@
 
 @include('components.common.scripts')
 
-@yield('script')
-
 @if (session()->has('success') || session()->has('error'))
     @php
         $key = session()->has('success') ? 'success' : 'error';
@@ -78,6 +76,8 @@
         });
     </script>
 @endif
+
+@yield('script')
 
 </body>
 </html>
