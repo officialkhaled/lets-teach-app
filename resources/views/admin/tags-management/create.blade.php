@@ -23,10 +23,6 @@
                             <div class="col-md-12">
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-6">
-                                        <label class="form-label" for="name">Name/Text</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
-                                    </div>
-                                    <div class="col-md-6">
                                         <label class="form-label" for="type">Type</label>
                                         <select name="type" id="type" class="select2 form-select">
                                             <option></option>
@@ -34,6 +30,10 @@
                                                 <option value="{{ $id }}">{{ $type }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="name">Name/Text</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
                                     </div>
                                 </div>
                             </div>

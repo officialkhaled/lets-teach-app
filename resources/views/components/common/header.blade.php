@@ -17,46 +17,45 @@
                     <i class="fa fa-fw fa-brush"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg p-0" aria-labelledby="page-header-themes-dropdown">
-
-                    {{--					<div class="px-3 py-2 bg-body-light rounded-top">--}}
-                    {{--						<h5 class="fs-sm text-center mb-0">--}}
-                    {{--							Color Themes--}}
-                    {{--						</h5>--}}
-                    {{--					</div>--}}
-                    {{--					<div class="p-3">--}}
-                    {{--						<div class="row g-0 text-center">--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-default" data-toggle="theme" data-theme="default" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-elegance" data-toggle="theme" data-theme="assets/css/themes/elegance.min.css" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-pulse" data-toggle="theme" data-theme="assets/css/themes/pulse.min.css" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-flat" data-toggle="theme" data-theme="assets/css/themes/flat.min.css" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-corporate" data-toggle="theme" data-theme="assets/css/themes/corporate.min.css" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--							<div class="col-2">--}}
-                    {{--								<a class="text-earth" data-toggle="theme" data-theme="assets/css/themes/earth.min.css" href="javascript:void(0)">--}}
-                    {{--									<i class="fa fa-2x fa-circle"></i>--}}
-                    {{--								</a>--}}
-                    {{--							</div>--}}
-                    {{--						</div>--}}
-                    {{--					</div>--}}
+                    <div class="px-3 py-2 bg-body-light rounded-top">
+                        <h5 class="fs-sm text-center mb-0">
+                            Color Themes
+                        </h5>
+                    </div>
+                    <div class="p-3">
+                        <div class="row g-0 text-center">
+                            <div class="col-2">
+                                <a class="text-default" data-toggle="theme" data-theme="default" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-elegance" data-toggle="theme" data-theme="{{ asset('assets/css/themes/elegance.min.css') }}" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-pulse" data-toggle="theme" data-theme="{{ asset('assets/css/themes/pulse.min.css') }}" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-flat" data-toggle="theme" data-theme="{{ asset('assets/css/themes/flat.min.css') }}" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-corporate" data-toggle="theme" data-theme="{{ asset('assets/css/themes/corporate.min.css') }}" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-earth" data-toggle="theme" data-theme="{{ asset('assets/css/themes/earth.min.css') }}" href="javascript:void(0)">
+                                    <i class="fa fa-2x fa-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="px-3 py-2 bg-body-light rounded-top">
                         <h5 class="fs-sm text-center mb-0">
@@ -107,6 +106,73 @@
 
         {{-- Right Part --}}
         <div class="space-x-1">
+            {{-- Notification Dropdown --}}
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-notifications" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-flag"></i>
+                    <span class="text-primary">&bull;</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications">
+                    <div class="px-2 py-3 bg-body-light rounded-top">
+                        <h5 class="h6 text-center mb-0">
+                            Notifications
+                        </h5>
+                    </div>
+                    <ul class="nav-items my-2 fs-sm">
+                        <li>
+                            <a class="text-dark d-flex py-2" href="javascript:void(0)">
+                                <div class="flex-shrink-0 me-2 ms-3">
+                                    <i class="fa fa-fw fa-check text-success"></i>
+                                </div>
+                                <div class="flex-grow-1 pe-2">
+                                    <p class="fw-medium mb-1">You’ve upgraded to a VIP account successfully!</p>
+                                    <div class="text-muted">15 min ago</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark d-flex py-2" href="javascript:void(0)">
+                                <div class="flex-shrink-0 me-2 ms-3">
+                                    <i class="fa fa-fw fa-exclamation-triangle text-warning"></i>
+                                </div>
+                                <div class="flex-grow-1 pe-2">
+                                    <p class="fw-medium mb-1">Please check your payment info since we can’t validate them!</p>
+                                    <div class="text-muted">50 min ago</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark d-flex py-2" href="javascript:void(0)">
+                                <div class="flex-shrink-0 me-2 ms-3">
+                                    <i class="fa fa-fw fa-times text-danger"></i>
+                                </div>
+                                <div class="flex-grow-1 pe-2">
+                                    <p class="fw-medium mb-1">Web server stopped responding and it was automatically restarted!</p>
+                                    <div class="text-muted">4 hours ago</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-dark d-flex py-2" href="javascript:void(0)">
+                                <div class="flex-shrink-0 me-2 ms-3">
+                                    <i class="fa fa-fw fa-plus text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1 pe-2">
+                                    <p class="fw-medium mb-1">New purchases! +$250</p>
+                                    <div class="text-muted">1 day ago</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="p-2 bg-body-light rounded-bottom">
+                        <a class="dropdown-item text-center mb-0" href="javascript:void(0)">
+                            <i class="fa fa-fw fa-flag opacity-50 me-1"></i> View All
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Profile Dropdown --}}
             <div class="dropdown d-inline-block border" style="border-radius: 8px;">
                 <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -170,85 +236,6 @@
                     </div>
                 </div>
             </div>
-
-            {{--				<div class="dropdown d-inline-block">--}}
-            {{--					<button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-notifications" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-            {{--						<i class="fa fa-flag"></i>--}}
-            {{--						<span class="text-primary">&bull;</span>--}}
-            {{--					</button>--}}
-            {{--					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications">--}}
-            {{--						<div class="px-2 py-3 bg-body-light rounded-top">--}}
-            {{--							<h5 class="h6 text-center mb-0">--}}
-            {{--								Notifications--}}
-            {{--							</h5>--}}
-            {{--						</div>--}}
-            {{--						<ul class="nav-items my-2 fs-sm">--}}
-            {{--							<li>--}}
-            {{--								<a class="text-dark d-flex py-2" href="javascript:void(0)">--}}
-            {{--									<div class="flex-shrink-0 me-2 ms-3">--}}
-            {{--										<i class="fa fa-fw fa-check text-success"></i>--}}
-            {{--									</div>--}}
-            {{--									<div class="flex-grow-1 pe-2">--}}
-            {{--										<p class="fw-medium mb-1">You’ve upgraded to a VIP account successfully!</p>--}}
-            {{--										<div class="text-muted">15 min ago</div>--}}
-            {{--									</div>--}}
-            {{--								</a>--}}
-            {{--							</li>--}}
-            {{--							<li>--}}
-            {{--								<a class="text-dark d-flex py-2" href="javascript:void(0)">--}}
-            {{--									<div class="flex-shrink-0 me-2 ms-3">--}}
-            {{--										<i class="fa fa-fw fa-exclamation-triangle text-warning"></i>--}}
-            {{--									</div>--}}
-            {{--									<div class="flex-grow-1 pe-2">--}}
-            {{--										<p class="fw-medium mb-1">Please check your payment info since we can’t validate them!</p>--}}
-            {{--										<div class="text-muted">50 min ago</div>--}}
-            {{--									</div>--}}
-            {{--								</a>--}}
-            {{--							</li>--}}
-            {{--							<li>--}}
-            {{--								<a class="text-dark d-flex py-2" href="javascript:void(0)">--}}
-            {{--									<div class="flex-shrink-0 me-2 ms-3">--}}
-            {{--										<i class="fa fa-fw fa-times text-danger"></i>--}}
-            {{--									</div>--}}
-            {{--									<div class="flex-grow-1 pe-2">--}}
-            {{--										<p class="fw-medium mb-1">Web server stopped responding and it was automatically restarted!</p>--}}
-            {{--										<div class="text-muted">4 hours ago</div>--}}
-            {{--									</div>--}}
-            {{--								</a>--}}
-            {{--							</li>--}}
-            {{--							<li>--}}
-            {{--								<a class="text-dark d-flex py-2" href="javascript:void(0)">--}}
-            {{--									<div class="flex-shrink-0 me-2 ms-3">--}}
-            {{--										<i class="fa fa-fw fa-exclamation-triangle text-warning"></i>--}}
-            {{--									</div>--}}
-            {{--									<div class="flex-grow-1 pe-2">--}}
-            {{--										<p class="fw-medium mb-1">Please consider upgrading your plan. You are running out of space.</p>--}}
-            {{--										<div class="text-muted">16 hours ago</div>--}}
-            {{--									</div>--}}
-            {{--								</a>--}}
-            {{--							</li>--}}
-            {{--							<li>--}}
-            {{--								<a class="text-dark d-flex py-2" href="javascript:void(0)">--}}
-            {{--									<div class="flex-shrink-0 me-2 ms-3">--}}
-            {{--										<i class="fa fa-fw fa-plus text-primary"></i>--}}
-            {{--									</div>--}}
-            {{--									<div class="flex-grow-1 pe-2">--}}
-            {{--										<p class="fw-medium mb-1">New purchases! +$250</p>--}}
-            {{--										<div class="text-muted">1 day ago</div>--}}
-            {{--									</div>--}}
-            {{--								</a>--}}
-            {{--							</li>--}}
-            {{--						</ul>--}}
-            {{--						<div class="p-2 bg-body-light rounded-bottom">--}}
-            {{--							<a class="dropdown-item text-center mb-0" href="javascript:void(0)">--}}
-            {{--								<i class="fa fa-fw fa-flag opacity-50 me-1"></i> View All--}}
-            {{--							</a>--}}
-            {{--						</div>--}}
-            {{--					</div>--}}
-            {{--				</div>--}}
-            {{--				<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="side_overlay_toggle">--}}
-            {{--					<i class="fa fa-fw fa-stream"></i>--}}
-            {{--				</button>--}}
         </div>
     </div>
 
