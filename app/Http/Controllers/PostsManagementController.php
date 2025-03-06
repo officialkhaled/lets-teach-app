@@ -12,15 +12,19 @@ class PostsManagementController extends Controller
 {
     public function index()
     {
-        $studentId = Student::query()->where('user_id', auth()->user()->id)->first()['id'] ?? '';
-        $posts = Post::query()->with([
-            'student',
-            'subjects',
-            'grade',
-            'medium',
-            'preferredTutor',
-            'tutoringDay',
-        ])->where('student_id', $studentId)->latest()->get();
+        $studentId = Student::query()->where('user_id', userId())->first()['id'] ?? '';
+        $posts = Post::query()
+            ->with([
+                'student',
+                'subjects',
+                'grades',
+                'medium',
+                'preferredTutor',
+                'tutoringDay',
+            ])
+            ->where('student_id', $studentId)
+            ->latest()
+            ->get();
 
         return view('student.posts-management.list', [
             'posts' => $posts,
@@ -29,20 +33,18 @@ class PostsManagementController extends Controller
 
     public function create()
     {
-        $mediums = ApplicationConstant::MEDIUM;
-        $classes = ApplicationConstant::CLASSES;
-        $subjects = ApplicationConstant::SUBJECTS;
-
         return view('student.posts-management.create', [
-            'mediums' => $mediums,
-            'classes' => $classes,
-            'subjects' => $subjects,
+            'mediums' => ApplicationConstant::MEDIUM,
+            'classes' => ApplicationConstant::CLASSES,
+            'subjects' => ApplicationConstant::SUBJECTS,
+            'genders' => ApplicationConstant::GENDERS,
+            'tutoringDays' => ApplicationConstant::TUTORING_DAYS,
         ]);
     }
 
     public function store(Request $request)
     {
-        $studentId = Student::where('user_id', auth()->user()->id)->first()['id'];
+        $studentId = Student::where('user_id', userId())->first()['id'];
 
         Post::create([
             'student_id' => $studentId,
@@ -80,8 +82,9 @@ class PostsManagementController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except('subject_ids'));
+        $post->update($request->except(['subject_ids', 'grade_ids']));
         $post->subject_ids = $request->input('subject_ids');
+        $post->grade_ids = $request->input('grade_ids');
         $post->save();
 
         return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
