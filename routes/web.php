@@ -125,6 +125,7 @@ Route::middleware(['auth', 'role:student'])->group(function () {
                 Route::get('/{post}/edit', 'edit')->name('edit');
                 Route::patch('/{post}', 'update')->name('update');
                 Route::delete('/{post}', 'destroy')->name('destroy');
+                Route::get('/{post}', 'view')->name('view');
             });
         });
 

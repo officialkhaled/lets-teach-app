@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $tutors = Tutor::all();
         $students = Student::all();
-        $tags = Tag::query()->active()->get();
+        $tags = Tag::query()->isActive()->get();
         $posts = Post::all();
 
         return view('admin.dashboard', [

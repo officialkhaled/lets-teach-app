@@ -4,31 +4,31 @@ namespace App\Traits;
 
 trait StatusFilter
 {
-    public function scopeActive($query)
+    public function scopeIsActive($query)
     {
         return $query->where('status', ACTIVE);
     }
-    
-    public function scopeInactive($query)
+
+    public function scopeInActive($query)
     {
         return $query->where('status', INACTIVE);
     }
-    
+
     public function scopeAppliedFilter($query)
     {
         return $query->where('status', APPLIED);
     }
-    
+
     public function scopeAssignedFilter($query)
     {
         return $query->where('status', ASSIGNED);
     }
-    
+
     public function scopeConfirmedFilter($query)
     {
         return $query->where('status', CONFIRMED);
     }
-    
+
     public function scopeCancelledFilter($query)
     {
         return $query->where('status', CANCELLED);

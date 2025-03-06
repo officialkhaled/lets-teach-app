@@ -4,6 +4,7 @@ namespace App\Constants;
 
 class ApplicationConstant
 {
+    const SUPER_ADMIN = 'super-admin';
     const ADMIN = 'admin';
     const TUTOR = 'tutor';
     const STUDENT = 'student';
@@ -13,10 +14,6 @@ class ApplicationConstant
         self::TUTOR => 1,
         self::STUDENT => 2,
     ];
-
-    const ADMIN_ROLE_ID = 0;
-    const TUTOR_ROLE_ID = 1;
-    const STUDENT_ROLE_ID = 2;
 
     const MEDIUM = [
         1 => 'Bangla Medium',
@@ -50,17 +47,27 @@ class ApplicationConstant
         8 => 'Economics',
         9 => 'Finance',
         10 => 'Higher Mathematics',
+        11 => 'ICT',
     ];
 
     const GENDERS = [
-        1 => 'Male',
-        2 => 'Female',
+        1 => 'Any',
+        2 => 'Male',
+        3 => 'Female',
+    ];
+
+    const TUTORING_TYPE = [
+        1 => 'Online',
+        2 => 'Home',
     ];
 
     const TUTORING_DAYS = [
-        1 => '3 Days/Week',
-        2 => '4 Days/Week',
-        3 => '5 Days/Week',
-        4 => '6 Days/Week',
+        1 => '1 Days/Week',
+        2 => '2 Days/Week',
+        3 => '3 Days/Week',
+        4 => '4 Days/Week',
+        5 => '5 Days/Week',
+        6 => '6 Days/Week',
+        7 => '7 Days/Week',
     ];
 }

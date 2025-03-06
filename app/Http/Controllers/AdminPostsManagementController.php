@@ -11,54 +11,54 @@ class AdminPostsManagementController extends Controller
     public function index()
     {
         $posts = Post::query()
-            ->with(['student', 'subjects', 'grade'])
-            ->active()
+            ->with('student')
+            ->isActive()
             ->latest()
             ->get();
-        
+
         return view('admin.content-moderation.posts.list', [
             'posts' => $posts,
         ]);
     }
-    
+
     public function edit(Post $post)
     {
         $tags = Tag::query()
             ->where('status', ACTIVE)
-            ->active()
+            ->isActive()
             ->latest()
             ->get();
-        
+
         $selectedSubjects = $post->subject_ids ?? [];
-        
+
         return view('admin.content-moderation.posts.edit-post', [
             'post' => $post,
             'tags' => $tags,
             'selectedSubjects' => $selectedSubjects,
         ]);
     }
-    
+
     public function update(Request $request, Post $post)
     {
         $post->update($request->except('subject_ids'));
         $post->subject_ids = $request->input('subject_ids');
         $post->save();
-        
+
         return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Updated Successfully!');
     }
-    
+
     public function destroy(Post $post)
     {
         $post->delete();
         return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Deleted Successfully.');
     }
-    
+
     public function approve(Post $post)
     {
         $post->approve();
         return back()->with('success', 'Post Approved Successfully.');
     }
-    
+
     public function reject(Post $post)
     {
         $post->reject();

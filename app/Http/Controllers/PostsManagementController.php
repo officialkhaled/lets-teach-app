@@ -12,16 +12,9 @@ class PostsManagementController extends Controller
 {
     public function index()
     {
-        $studentId = Student::query()->where('user_id', userId())->first()['id'] ?? '';
+        $studentId = Student::query()->firstWhere('user_id', userId())['id'] ?? '';
         $posts = Post::query()
-            ->with([
-                'student',
-                'subjects',
-                'grades',
-                'medium',
-                'preferredTutor',
-                'tutoringDay',
-            ])
+            ->with('student')
             ->where('student_id', $studentId)
             ->latest()
             ->get();
@@ -44,7 +37,7 @@ class PostsManagementController extends Controller
 
     public function store(Request $request)
     {
-        $studentId = Student::where('user_id', userId())->first()['id'];
+        $studentId = Student::firstWhere('user_id', userId())['id'];
 
         Post::create([
             'student_id' => $studentId,
@@ -94,5 +87,10 @@ class PostsManagementController extends Controller
     {
         $post->delete();
         return redirect()->route('student.posts-management.index')->with('success', 'Post Deleted Successfully.');
+    }
+
+    public function view(Post $post)
+    {
+
     }
 }

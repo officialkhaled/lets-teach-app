@@ -21,23 +21,26 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
+        'title',
+        'job_id',
         'student_id',
         'subject_ids',
-        'grade_ids',
-        'job_id',
-        'title',
+        'class_id',
         'medium_id',
-        'preferred_tutor_id',
-        'salary',
+        'gender_id',
         'tutoring_day_id',
+        'tutoring_type_id',
+        'salary',
         'from_time',
         'to_time',
         'location',
+        'note',
         'status',
     ];
 
     protected $casts = [
         'subject_ids' => Json::class,
+        'location' => Json::class,
     ];
 
     protected static function boot(): void
@@ -61,30 +64,5 @@ class Post extends Model
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id');
-    }
-
-    public function subjects(): BelongsToJson
-    {
-        return $this->belongsToJson(Tag::class, 'subject_ids', 'id');
-    }
-
-    public function grades(): BelongsTo
-    {
-        return $this->belongsToJson(Tag::class, 'grade_ids');
-    }
-
-    public function medium(): BelongsTo
-    {
-        return $this->belongsTo(Tag::class, 'medium_id');
-    }
-
-    public function preferredTutor(): BelongsTo
-    {
-        return $this->belongsTo(Tag::class, 'preferred_tutor_id');
-    }
-
-    public function tutoringDay(): BelongsTo
-    {
-        return $this->belongsTo(Tag::class, 'tutoring_day_id');
     }
 }
