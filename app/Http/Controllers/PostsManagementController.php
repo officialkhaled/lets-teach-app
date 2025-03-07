@@ -61,25 +61,24 @@ class PostsManagementController extends Controller
 
     public function edit(Post $post)
     {
-        $tags = Tag::query()
-            ->where('status', ACTIVE)
-            ->latest()
-            ->get();
-
         $selectedSubjects = $post->subject_ids ?? [];
 
         return view('student.posts-management.edit-post', [
             'post' => $post,
-            'tags' => $tags,
+            'mediums' => ApplicationConstant::MEDIUMS,
+            'classes' => ApplicationConstant::CLASSES,
+            'subjects' => ApplicationConstant::SUBJECTS,
+            'genders' => ApplicationConstant::GENDERS,
+            'tutoringTypes' => ApplicationConstant::TUTORING_TYPE,
+            'tutoringDays' => ApplicationConstant::TUTORING_DAYS,
             'selectedSubjects' => $selectedSubjects,
         ]);
     }
 
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except(['subject_ids', 'grade_ids']));
+        $post->update($request->except('subject_ids'));
         $post->subject_ids = $request->input('subject_ids');
-        $post->grade_ids = $request->input('grade_ids');
         $post->save();
 
         return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
@@ -93,6 +92,6 @@ class PostsManagementController extends Controller
 
     public function view(Post $post)
     {
-
+        return view('student.posts-management.view.index');
     }
 }

@@ -145,7 +145,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
-                                <button class="btn btn-success btn-sm" type="submit" id="save-post">
+                                <button type="submit" class="btn btn-success btn-sm">
                                     &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm" onclick="pageRefresh()">

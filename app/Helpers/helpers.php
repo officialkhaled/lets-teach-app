@@ -154,6 +154,13 @@ if (!function_exists('formatNumber')) {
     }
 }
 
+if (!function_exists('format12hr')) {
+    function format12hr($time): string
+    {
+        return date("g:i A", strtotime($time));
+    }
+}
+
 if (!function_exists('requiredValidation')) {
     function requiredValidation($name): string
     {

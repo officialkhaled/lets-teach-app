@@ -47,7 +47,7 @@
                                 <td class="d-none d-sm-table-cell">{{ ApplicationConstant::GENDERS[$post->gender_id] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->salary }} Tk.</td>
                                 <td class="d-none d-sm-table-cell">{{ ApplicationConstant::TUTORING_DAYS[$post->tutoring_day_id] }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
+                                <td class="d-none d-sm-table-cell">{{ format12hr($post->from_time) . ' - ' . format12hr($post->to_time) }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->location }}</td>
                                 <td class="d-none d-sm-table-cell text-center">
 									<span class="badge {{ $post->status === 0 ? 'bg-secondary' : ($post->status === 1 ? 'bg-success' : 'bg-danger') }}">
@@ -55,7 +55,7 @@
 									</span>
                                 </td>
                                 <td class="d-none d-sm-table-cell text-center">
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex justify-content-center gap-1">
                                         @if ($post->status === 0)
                                             <a class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                href="{{ route('student.posts-management.edit', $post->id) }}">
