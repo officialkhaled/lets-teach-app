@@ -11,7 +11,7 @@
                     </h3>
 
                     <a href="{{ route('admin.settings.users.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-                        &nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
+                        &nbsp;<i class="fa-solid fa-plus opacity-75"></i>&nbsp;&nbsp;Add&nbsp;
                     </a>
                 </div>
 

@@ -27,15 +27,15 @@ class Post extends Model
         'subject_ids',
         'class_id',
         'medium_id',
-        'gender_id',
+        'gender_id', // 1: Any, 2: Male, 3: Female
         'tutoring_day_id',
-        'tutoring_type_id',
+        'tutoring_type_id', // 1: Home, 2: Online
         'salary',
         'from_time',
         'to_time',
         'location',
         'note',
-        'status',
+        'status', // 0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled
     ];
 
     protected $casts = [

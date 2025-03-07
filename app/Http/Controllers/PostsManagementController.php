@@ -92,6 +92,8 @@ class PostsManagementController extends Controller
 
     public function view(Post $post)
     {
-        return view('student.posts-management.view.index');
+        return view('student.posts-management.view.index', [
+            'post' => $post,
+        ]);
     }
 }

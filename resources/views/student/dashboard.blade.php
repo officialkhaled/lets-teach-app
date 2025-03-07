@@ -21,11 +21,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <p class="m-b-1">
-                                        Email:
-                                        <span class="fw-bold">{{ auth()->user()->email }}</span>
+                                        Email: <span class="fw-bold">{{ currentUser()->email }}</span>
                                         <br>
-                                        Phone:
-                                        <span class="fw-bold">{{ '' }}</span>
+                                        Phone: <span class="fw-bold">{{ '' }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -150,8 +148,7 @@
                          style="height: 600px; align-items: center; background-color: #74b9ff">
                         <h1 class="block-title text-uppercase text-white-75 title-animation"
                             style="font-size: 28px; flex: none; background-color: #075a85; padding: 10px 20px; color: #bae6fd">
-                            Welcome to your
-                            <span class="fw-bold" style="color: #fff;">Student</span> Dashboard!
+                            Welcome to your <span class="fw-bold" style="color: #fff;">Student</span> Dashboard!
                         </h1>
                     </div>
                 </div>

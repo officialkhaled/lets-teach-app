@@ -11,12 +11,12 @@
                     </h3>
                     <div>
                         <button type="button" class="btn btn-sm btn-primary" onclick="Codebase.helpers('cb-print');">
-                            <i class="si si-printer fw-bold"></i>
+                            <i class="si si-printer opacity-75"></i>
 {{--                            <i class="fa-solid fa-print opacity-75"></i>--}}
                         </button>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                         <a href="{{ route('student.posts-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-                            &nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
+                            &nbsp;<i class="fa-regular fa-circle-left opacity-75"></i>&nbsp;&nbsp;Back&nbsp;
                         </a>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         <div class="table-responsive push">
                             <table class="table table-bordered table-hover">
                                 <thead>
-                                <tr>
+                                <tr class="table-primary">
                                     <th class="text-center" style="width: 60px;"></th>
                                     <th>Product</th>
                                     <th class="text-center" style="width: 90px;">Qnt</th>

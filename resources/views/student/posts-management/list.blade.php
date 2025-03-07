@@ -12,14 +12,14 @@
                         Posts Management
                     </h3>
                     <a href="{{ route('student.posts-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-                        &nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
+                        &nbsp;<i class="fa-solid fa-plus opacity-75"></i>&nbsp;&nbsp;Add&nbsp;
                     </a>
                 </div>
 
                 <div class="block-content block-content-full overflow-x-auto">
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
                         <thead>
-                        <tr>
+                        <tr class="table-primary">
                             <th class="text-center" style="width: 3%">SL</th>
                             <th class="d-none d-sm-table-cell">Title</th>
                             <th class="d-none d-sm-table-cell">Job ID</th>
@@ -30,7 +30,6 @@
                             <th class="d-none d-sm-table-cell">Budget</th>
                             <th class="d-none d-sm-table-cell">Tutoring Days</th>
                             <th class="d-none d-sm-table-cell">Schedule</th>
-                            <th class="d-none d-sm-table-cell">Location</th>
                             <th class="d-none d-sm-table-cell" style="width: 10%;">Status</th>
                             <th class="d-none d-sm-table-cell text-center" style="width: 8%;">Action</th>
                         </tr>
@@ -48,7 +47,6 @@
                                 <td class="d-none d-sm-table-cell">{{ $post->salary }} Tk.</td>
                                 <td class="d-none d-sm-table-cell">{{ ApplicationConstant::TUTORING_DAYS[$post->tutoring_day_id] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ format12hr($post->from_time) . ' - ' . format12hr($post->to_time) }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $post->location }}</td>
                                 <td class="d-none d-sm-table-cell text-center">
 									<span class="badge {{ $post->status === 0 ? 'bg-secondary' : ($post->status === 1 ? 'bg-success' : 'bg-danger') }}">
 										{{ $post->status === 0 ? 'Unapproved' : ($post->status === 1 ? 'Approved' : 'Rejected') }}
@@ -61,18 +59,18 @@
                                                href="{{ route('student.posts-management.edit', $post->id) }}">
                                                 <i class="fa fa-edit opacity-75"></i>
                                             </a>
+                                            <form action="{{ route('student.posts-management.destroy', $post->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                    <i class="fa fa-trash opacity-75"></i>
+                                                </button>
+                                            </form>
                                         @endif
-                                        <a class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail View"
+                                        <a class="btn btn-warning btn-sm" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail View"
                                            href="{{ route('student.posts-management.view', $post->id) }}">
                                             <i class="fa fa-eye opacity-75"></i>
                                         </a>
-                                        <form action="{{ route('student.posts-management.destroy', $post->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <i class="fa fa-trash opacity-75"></i>
-                                            </button>
-                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -85,4 +83,10 @@
 
     </main>
 
+@endsection
+
+@section('script')
+    <script>
+
+    </script>
 @endsection

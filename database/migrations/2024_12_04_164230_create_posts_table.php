@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('to_time');
             $table->text('location');
             $table->text('note')->nullable();
-            $table->tinyInteger('status')->default(0)->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled,');
+            $table->tinyInteger('status')->default(0)->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled');
 
             $table->timestamps();
         });
