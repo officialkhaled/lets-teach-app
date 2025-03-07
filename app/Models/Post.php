@@ -13,10 +13,7 @@ use Staudenmeir\EloquentJsonRelations\Relations\BelongsToJson;
 
 class Post extends Model
 {
-    use CommonBooted;
-    use StatusFilter;
-    use UpdateStatus;
-    use HasJsonRelationships;
+    use CommonBooted, StatusFilter, UpdateStatus, HasJsonRelationships;
 
     protected $table = 'posts';
 
@@ -27,9 +24,9 @@ class Post extends Model
         'subject_ids',
         'class_id',
         'medium_id',
-        'gender_id', // 1: Any, 2: Male, 3: Female
+        'gender_id',
         'tutoring_day_id',
-        'tutoring_type_id', // 1: Home, 2: Online
+        'tutoring_type_id',
         'salary',
         'from_time',
         'to_time',
@@ -47,21 +44,16 @@ class Post extends Model
         parent::boot();
 
         static::creating(function ($job) {
-            $monthInitials = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+            $monthInitials = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-            $prefix = $monthInitials[now()->month - 1] ?? 'X';
+            $prefix = $monthInitials[now()->month - 1];
 
-            $job->job_id = sprintf(
-                '%s%s%03d',
-                $prefix,
-                now()->format('dmy'),
-                random_int(0, 999)
-            );
+            $job->job_id = sprintf('%s%s%03d', $prefix, now()->format('dmy'), random_int(0, 999));
         });
     }
 
     public function student(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class, 'student_id')->withDefault();
     }
 }

@@ -41,10 +41,7 @@ Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
             Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
                 Route::controller(AdminPostsManagementController::class)->group(function () {
                     Route::get('/', 'index')->name('index');
-                    Route::get('/create', 'create')->name('create');
-                    Route::post('/', 'store')->name('store');
-                    Route::get('/{post}/edit', 'edit')->name('edit');
-                    Route::patch('/{post}', 'update')->name('update');
+                    Route::get('/{post}', 'view')->name('view');
                     Route::delete('/{post}', 'destroy')->name('destroy');
                     Route::get('/{post}/approve', 'approve')->name('approve');
                     Route::get('/{post}/reject', 'reject')->name('reject');

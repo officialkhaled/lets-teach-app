@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class AdminPostsManagementController extends Controller
 {
@@ -11,7 +10,6 @@ class AdminPostsManagementController extends Controller
     {
         $posts = Post::query()
             ->with('student')
-            ->isActive()
             ->latest()
             ->get();
 
@@ -20,30 +18,11 @@ class AdminPostsManagementController extends Controller
         ]);
     }
 
-    public function edit(Post $post)
+    public function view(Post $post)
     {
-        $tags = Tag::query()
-            ->where('status', ACTIVE)
-            ->isActive()
-            ->latest()
-            ->get();
-
-        $selectedSubjects = $post->subject_ids ?? [];
-
-        return view('admin.content-moderation.posts.edit-post', [
+        return view('admin.content-moderation.posts.view.index', [
             'post' => $post,
-            'tags' => $tags,
-            'selectedSubjects' => $selectedSubjects,
         ]);
-    }
-
-    public function update(Request $request, Post $post)
-    {
-        $post->update($request->except('subject_ids'));
-        $post->subject_ids = $request->input('subject_ids');
-        $post->save();
-
-        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Updated Successfully!');
     }
 
     public function destroy(Post $post)

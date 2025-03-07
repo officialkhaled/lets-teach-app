@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
-	
+
 	<main id="main-container">
-		
+
 		<div class="content">
 			<div class="row">
 				<div class="col-6 col-xl-3">
@@ -18,7 +18,7 @@
 						</div>
 					</a>
 				</div>
-				
+
 				<div class="col-6 col-xl-3">
 					<a class="block block-rounded shadow-none bg-earth" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
@@ -32,7 +32,7 @@
 						</div>
 					</a>
 				</div>
-				
+
 				<div class="col-6 col-xl-3">
 					<a class="block block-rounded shadow-none bg-warning" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
@@ -40,13 +40,13 @@
 								<i class="fa-solid fa-tags fa-2x text-black-50"></i>
 							</div>
 							<div class="text-end">
-								<div class="fs-3 fw-semibold text-white">{{ $tags->count() }}</div>
+								<div class="fs-3 fw-semibold text-white">{{ '' }}</div>
 								<div class="fs-sm fw-semibold text-uppercase text-white-75">Tags</div>
 							</div>
 						</div>
 					</a>
 				</div>
-				
+
 				<div class="col-6 col-xl-3">
 					<a class="block block-rounded shadow-none bg-info" href="javascript:void(0)">
 						<div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
@@ -61,7 +61,7 @@
 					</a>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block block-rounded d-flex justify-content-center" id="dynamic-background"
@@ -77,13 +77,13 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</main>
 
 @endsection
 
 @section('script')
-	
+
 	<script>
         VANTA.FOG({
             el: "#dynamic-background",

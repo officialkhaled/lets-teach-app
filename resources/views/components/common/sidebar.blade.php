@@ -27,14 +27,6 @@
                             </a>
                         </li>
 
-                        <li class="nav-main-item {{ request()->is('admin/tags-management*') ? 'active-menu' : '' }}">
-                            <a class="nav-main-link {{ request()->is('admin/tags-management*') ? 'active' : '' }}"
-                               href="{{ route('admin.tags-management.index') }}">
-                                <i class="nav-main-link-icon fa-solid fa-tags"></i>
-                                <span class="nav-main-link-name">Tags Management</span>
-                            </a>
-                        </li>
-
                         <li class="nav-main-item {{ request()->is('admin/content-moderation*') ? 'active-menu open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu {{ request()->is('admin/content-moderation*') ? 'active' : '' }}" data-toggle="submenu" href="#">
                                 <i class="nav-main-link-icon fa-brands fa-contao"></i>
@@ -45,7 +37,7 @@
                                     <a class="nav-main-link {{ request()->is('admin/content-moderation/posts*') ? 'active' : '' }}"
                                        href="{{ route('admin.content-moderation.posts.index') }}">
                                         <i class="nav-main-link-icon fa-solid fa-layer-group"></i>
-                                        <span class="nav-main-link-name">Posts</span>
+                                        <span class="nav-main-link-name">Posts Management</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item {{ request()->is('admin/content-moderation/reviews-management*') ? 'active' : '' }}">
@@ -148,7 +140,7 @@
                             <a class="nav-main-link  {{ request()->is('student/posts-management*') ? 'active' : '' }}"
                                href="{{ route('student.posts-management.index') }}">
                                 <i class="nav-main-link-icon fa-solid fa-newspaper"></i>
-                                <span class="nav-main-link-name">Post Management</span>
+                                <span class="nav-main-link-name">Posts Management</span>
                             </a>
                         </li>
 

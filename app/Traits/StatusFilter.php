@@ -14,6 +14,11 @@ trait StatusFilter
         return $query->where('status', INACTIVE);
     }
 
+    public function scopeInDraft($query)
+    {
+        return $query->where('status', DRAFT);
+    }
+
     public function scopeAppliedFilter($query)
     {
         return $query->where('status', APPLIED);
