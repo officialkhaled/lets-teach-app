@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Tutor;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -70,6 +72,11 @@ class UserRolePermissionSeeder extends Seeder
         ]);
         $tutor->assignRole($tutorRole);
 
+        Tutor::firstOrCreate([
+            'user_id' => $tutor->id,
+        ], [
+            'user_id' => $tutor->id,
+        ]);
 
         $student = User::firstOrCreate([
             'email' => 'student@gmail.com',
@@ -79,5 +86,11 @@ class UserRolePermissionSeeder extends Seeder
             'password' => Hash::make('123456'),
         ]);
         $student->assignRole($studentRole);
+
+        Student::firstOrCreate([
+            'user_id' => $student->id,
+        ], [
+            'user_id' => $student->id,
+        ]);
     }
 }

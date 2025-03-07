@@ -15,7 +15,7 @@ class ApplicationConstant
         self::STUDENT => 2,
     ];
 
-    const MEDIUM = [
+    const MEDIUMS = [
         1 => 'Bangla Medium',
         2 => 'English Medium',
         3 => 'English Version',
@@ -62,7 +62,7 @@ class ApplicationConstant
     ];
 
     const TUTORING_DAYS = [
-        1 => '1 Days/Week',
+        1 => '1 Day/Week',
         2 => '2 Days/Week',
         3 => '3 Days/Week',
         4 => '4 Days/Week',

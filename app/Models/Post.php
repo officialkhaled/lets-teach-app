@@ -40,7 +40,6 @@ class Post extends Model
 
     protected $casts = [
         'subject_ids' => Json::class,
-        'location' => Json::class,
     ];
 
     protected static function boot(): void

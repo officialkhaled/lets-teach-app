@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobPostsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TutorProfileController;
-use App\Http\Controllers\TagManagementController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\PostsManagementController;
 use App\Http\Controllers\ReviewsManagementController;
@@ -36,19 +35,6 @@ Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
 
             Route::resource('users', UserController::class);
             Route::get('users/{userId}/delete', [UserController::class, 'destroy']);
-        });
-
-        Route::group(['prefix' => 'tags-management', 'as' => 'tags-management.'], function () {
-            Route::group(['prefix' => 'tags'], function () {
-                Route::controller(TagManagementController::class)->group(function () {
-                    Route::get('/', 'index')->name('index');
-                    Route::get('/create', 'create')->name('create');
-                    Route::post('/', 'store')->name('store');
-                    Route::get('/{tag}/edit', 'edit')->name('edit');
-                    Route::patch('/{tag}', 'update')->name('update');
-                    Route::delete('/{tag}', 'destroy')->name('destroy');
-                });
-            });
         });
 
         Route::group(['prefix' => 'content-moderation', 'as' => 'content-moderation.'], function () {

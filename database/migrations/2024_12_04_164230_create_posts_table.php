@@ -13,16 +13,16 @@ return new class extends Migration {
             $table->string('title');
             $table->string('job_id')->nullable();
             $table->unsignedBigInteger('student_id');
-            $table->json('subject_ids')->nullable();
-            $table->unsignedBigInteger('class_id')->nullable();
-            $table->unsignedBigInteger('medium_id')->nullable();
+            $table->json('subject_ids');
+            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('medium_id');
             $table->unsignedBigInteger('gender_id')->default(1)->comment('1: Any, 2: Male, 3: Female');
-            $table->unsignedBigInteger('tutoring_day_id')->nullable();
+            $table->unsignedBigInteger('tutoring_day_id');
             $table->unsignedBigInteger('tutoring_type_id')->default(1)->comment('1: Home, 2: Online');
             $table->string('salary');
-            $table->string('from_time')->nullable();
-            $table->string('to_time')->nullable();
-            $table->json('location');
+            $table->string('from_time');
+            $table->string('to_time');
+            $table->text('location');
             $table->text('note')->nullable();
             $table->tinyInteger('status')->default(0)->comment('0: Draft, 1: Approved, 2: Rejected, 3: Applied, 4: Assigned, 5: Confirmed, 6: Cancelled,');
 

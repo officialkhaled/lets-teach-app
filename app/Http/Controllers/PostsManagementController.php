@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Constants\ApplicationConstant;
+use App\Http\Requests\PostsManagementRequest;
 
 class PostsManagementController extends Controller
 {
@@ -27,10 +27,11 @@ class PostsManagementController extends Controller
     public function create()
     {
         return view('student.posts-management.create', [
-            'mediums' => ApplicationConstant::MEDIUM,
+            'mediums' => ApplicationConstant::MEDIUMS,
             'classes' => ApplicationConstant::CLASSES,
             'subjects' => ApplicationConstant::SUBJECTS,
             'genders' => ApplicationConstant::GENDERS,
+            'tutoringTypes' => ApplicationConstant::TUTORING_TYPE,
             'tutoringDays' => ApplicationConstant::TUTORING_DAYS,
         ]);
     }
@@ -40,18 +41,19 @@ class PostsManagementController extends Controller
         $studentId = Student::firstWhere('user_id', userId())['id'];
 
         Post::create([
+            'title' => $request->input('title'),
             'student_id' => $studentId,
             'subject_ids' => $request->input('subject_ids'),
-            'grade_id' => $request->input('grade_id'),
-            'job_id' => $request->input('job_id'),
-            'title' => $request->input('title'),
+            'class_id' => $request->input('class_id'),
             'medium_id' => $request->input('medium_id'),
-            'preferred_tutor_id' => $request->input('preferred_tutor_id'),
-            'salary' => $request->input('salary'),
+            'gender_id' => $request->input('gender_id'),
             'tutoring_day_id' => $request->input('tutoring_day_id'),
+            'tutoring_type_id' => $request->input('tutoring_type_id'),
+            'salary' => $request->input('salary'),
             'from_time' => $request->input('from_time'),
             'to_time' => $request->input('to_time'),
             'location' => $request->input('location'),
+            'note' => $request->input('note'),
         ]);
 
         return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');

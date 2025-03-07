@@ -24,7 +24,7 @@
                             <th class="d-none d-sm-table-cell">Title</th>
                             <th class="d-none d-sm-table-cell">Job ID</th>
                             <th class="d-none d-sm-table-cell">Subjects</th>
-                            <th class="d-none d-sm-table-cell">Grade</th>
+                            <th class="d-none d-sm-table-cell">Class</th>
                             <th class="d-none d-sm-table-cell">Medium</th>
                             <th class="d-none d-sm-table-cell">Preferred Tutor</th>
                             <th class="d-none d-sm-table-cell">Budget</th>
@@ -41,12 +41,12 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->title }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->job_id }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $post->subjects?->pluck('name')->implode(', ') }}</td>
-                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::MEDIUM[$post->class_id] }}</td>
-                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::MEDIUM[$post->medium_id] }}</td>
-                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::MEDIUM[$post->gender_id] }}</td>
+                                <td class="d-none d-sm-table-cell">{{ implode(', ', array_map(fn($id) => ApplicationConstant::SUBJECTS[$id], $post->subject_ids)) }}</td>
+                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::CLASSES[$post->class_id] }}</td>
+                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::MEDIUMS[$post->medium_id] }}</td>
+                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::GENDERS[$post->gender_id] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->salary }} Tk.</td>
-                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::MEDIUM[$post->tutoring_day_id] }}</td>
+                                <td class="d-none d-sm-table-cell">{{ ApplicationConstant::TUTORING_DAYS[$post->tutoring_day_id] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->from_time . ' - ' . $post->to_time }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $post->location }}</td>
                                 <td class="d-none d-sm-table-cell text-center">
