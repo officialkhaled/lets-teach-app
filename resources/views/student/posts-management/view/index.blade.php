@@ -15,7 +15,8 @@
                             {{--                            <i class="fa-solid fa-print opacity-75"></i>--}}
                         </button>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                        <a href="{{ route('student.posts-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
+                        <a href="{{ currentUser()->roles?->first()->name == 'student' ? route('student.posts-management.index') : route('admin.content-moderation.posts.index') }}"
+                           class="btn btn-info btn-sm waves-effect bg-gradient">
                             &nbsp;<i class="fa-regular fa-circle-left opacity-75"></i>&nbsp;&nbsp;Back&nbsp;
                         </a>
                     </div>

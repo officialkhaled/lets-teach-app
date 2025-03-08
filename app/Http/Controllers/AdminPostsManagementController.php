@@ -20,9 +20,7 @@ class AdminPostsManagementController extends Controller
 
     public function view(Post $post)
     {
-        return view('admin.content-moderation.posts.view.index', [
-            'post' => $post,
-        ]);
+        return (new PostsManagementController())->view($post);
     }
 
     public function destroy(Post $post)
