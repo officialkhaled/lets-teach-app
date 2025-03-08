@@ -55,17 +55,37 @@
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" autocomplete="current-password">
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-6 d-sm-flex align-items-center push">
+                                        <div class="col-sm-6 d-sm-flex align-items-center">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" id="remember_me" name="remember_me">
                                                 <label class="form-check-label" for="remember_me">Remember Me</label>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 text-sm-end push">
+                                        <div class="col-sm-6 text-sm-end">
                                             <button type="submit" class="btn btn-sm btn-alt-primary fw-medium">
                                                 &nbsp;<i class="fa-solid fa-right-to-bracket opacity-75"></i>&nbsp;&nbsp;Sign In&nbsp;
                                             </button>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="block-content block-content-full text-center">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('login.google') }}" data-toggle="tooltip" data-placement="top" title="Google Sign In!"
+                                           class="px-4 py-2 card shadow-sm">
+                                            <div class="d-flex align-items-center w-100">
+                                                <img src="{{ asset('assets/media/brand_logos/google.png') }}" class="" alt="google"
+                                                     style="width: 30px; height: 30px;">
+                                                <p style="margin-bottom: 0 !important; margin-left: 10px;">Continue using Google</p>
+                                            </div>
+                                        </a>
+                                        <a href="{{ route('login.github') }}" data-toggle="tooltip" data-placement="top" title="GitHub Sign In!"
+                                           class="px-4 py-2 card shadow-sm">
+                                            <div class="d-flex align-items-center w-100">
+                                                <img src="{{ asset('assets/media/brand_logos/github.png') }}" class="" alt="github"
+                                                     style="width: 30px; height: 30px;">
+                                                <p style="margin-bottom: 0 !important; margin-left: 10px;">Continue using GitHub</p>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="block-content block-content-full bg-body-light text-center d-flex justify-content-between">
