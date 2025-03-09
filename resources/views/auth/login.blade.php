@@ -48,7 +48,7 @@
                                 <div class="block-content">
                                     <div class="mb-4">
                                         <label class="form-label" for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+                                        <input type="email" class="form-control" id="email" name="email" autocomplete="current-email" placeholder="Enter Email">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label" for="password">Password</label>

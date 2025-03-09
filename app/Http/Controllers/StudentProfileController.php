@@ -11,16 +11,10 @@ class StudentProfileController extends Controller
 {
     public function edit(Student $student)
     {
-        $tags = Tag::query()
-            ->where('status', ACTIVE)
-            ->latest()
-            ->get();
-
         $selectedSubjects = $student->subject_ids ?? [];
 
         return view('student.profile.edit', [
             'student' => $student,
-            'tags' => $tags,
             'selectedSubjects' => $selectedSubjects,
         ]);
     }
@@ -29,32 +23,30 @@ class StudentProfileController extends Controller
     {
         currentUser()->update($request->all());
 
-        $student->update($request->except(['education', 'subject_ids', 'grade_ids']));
+        $student->update($request->all());
 
-        $student->education = [
-            'institution' => $request->input('institution'),
-            'degree' => $request->input('degree'),
-            'score' => $request->input('score'),
-            'completion_year' => $request->input('completion_year'),
-        ];
+//        $student->education = [
+//            'institution' => $request->input('institution'),
+//            'degree' => $request->input('degree'),
+//            'score' => $request->input('score'),
+//            'completion_year' => $request->input('completion_year'),
+//        ];
 
-        $student->subject_ids = $request->input('subject_ids');
-        $student->grade_ids = $request->input('grade_ids');
+//        $student->subject_ids = $request->input('subject_ids');
+//        $student->grade_ids = $request->input('grade_ids');
 
         $student->save();
 
-        if ($request->image) {
-            $user = auth()->user();
-
-            if ($user->image && Storage::exists('public/' . $user->image)) {
-                Storage::delete('public/' . $user->image);
+        if ($request->avatar) {
+            if (currentUser()->avatar && Storage::exists('public/' . currentUser()->avatar)) {
+                Storage::delete('public/' . currentUser()->avatar);
             }
 
-            $imageName = "images/" . time() . '.' . $request->image->extension();
-            $request->image->move(storage_path('app/public/images'), $imageName);
-            $user->image = $imageName;
+            $imageName = "images/" . time() . '.' . $request->avatar->extension();
+            $request->avatar->move(storage_path('app/public/images'), $imageName);
+            currentUser()->avatar = $imageName;
 
-            $user->save();
+            currentUser()->save();
         }
 
         return redirect()->route('student.student-dashboard', $student->id)->with('success', 'Profile Updated Successfully.');

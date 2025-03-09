@@ -176,10 +176,10 @@
             <div class="dropdown d-inline-block border" style="border-radius: 8px;">
                 <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="img-avatar img-avatar32" style="margin-right: 6px; object-fit: cover"
-                         onerror="{{ asset('assets/media/avatars/avatar15.jpg') }}"
-                         src="{{ currentUser()->avatar ? asset(currentUser()->avatar) : asset('assets/default-avatar.png') }}" alt="Image">
-                    {{--                         src="{{ currentUser()->avatar ? asset('storage/' . currentUser()->avatar) : asset('assets/default-avatar.png') }}" alt="Image">--}}
+                    <img class="img-avatar img-avatar32"
+                         style="margin-right: 6px; object-fit: cover"
+                         onerror="this.src='{{ asset('assets/media/avatars/avatar15.jpg') }}'"
+                         src="{{ getAvatarUrl(currentUser()->avatar) }}" alt="Image">
                     <span class="d-none d-sm-inline-block fw-semibold">{{ userName() }}</span>
                     <i class="fa fa-angle-down opacity-50 ms-1"></i>
                 </button>

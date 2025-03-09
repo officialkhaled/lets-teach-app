@@ -20,37 +20,36 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
-    
+
     /**
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $user = auth()->user();
-        $user->fill($request->validated());
-        
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+        currentUser()->fill($request->validated());
+
+        if (currentUser()->isDirty('email')) {
+            currentUser()->email_verified_at = null;
         }
-        
-        if ($request->image) {
-            $imageName = "images/" . time() . '.' . $request->image->extension();
-            $request->image->move(storage_path('app/public/images'), $imageName);
-            
-            $user->image = $imageName;
+
+        if ($request->avatar) {
+            $imageName = "images/" . time() . '.' . $request->avatar->extension();
+            $request->avatar->move(storage_path('app/public/images'), $imageName);
+
+            currentUser()->avatar = $imageName;
         }
-        
-        $user->save();
-        
-        if ($user->role === 0) {
+
+        currentUser()->save();
+
+        if (currentUser()->hasRole('super-admin') || currentUser()->hasRole('admin')) {
             return Redirect::route('admin.admin-dashboard')->with('success', 'Profile Updated Successfully.');
-        } else if ($user->role === 1) {
+        } else if (currentUser()->hasRole('tutor')) {
             return Redirect::route('tutor.tutor-dashboard')->with('success', 'Profile Updated Successfully.');
         } else {
             return Redirect::route('student.student-dashboard')->with('success', 'Profile Updated Successfully.');
         }
     }
-    
+
     /**
      * Delete the user's account.
      */
@@ -59,16 +58,16 @@ class ProfileController extends Controller
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
-        
+
         $user = $request->user();
-        
+
         Auth::logout();
-        
+
         $user->delete();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return Redirect::to('/');
     }
 }
