@@ -82,6 +82,22 @@ if (!function_exists('userName')) {
     }
 }
 
+if (!function_exists('getAvatarUrl')) {
+    function getAvatarUrl($avatar)
+    {
+        if (!$avatar) {
+            return asset('assets/default-avatar.png');
+        }
+
+        if (Str::startsWith($avatar, ['http://', 'https://'])) {
+            return $avatar;
+        }
+
+        return asset('storage/' . $avatar);
+    }
+}
+
+
 if (!function_exists('getPercentage')) {
     function getPercentage($first_num, $second_num): float|int
     {
