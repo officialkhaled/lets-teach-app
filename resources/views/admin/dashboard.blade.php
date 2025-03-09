@@ -40,7 +40,7 @@
                                 <i class="fa-solid fa-tags fa-2x text-black-50"></i>
                             </div>
                             <div class="text-end">
-                                <div class="fs-3 fw-semibold text-white">{{ '' }}</div>
+                                <div class="fs-3 fw-semibold text-white">{{ '0' }}</div>
                                 <div class="fs-sm fw-semibold text-uppercase text-white-75">Tags</div>
                             </div>
                         </div>
