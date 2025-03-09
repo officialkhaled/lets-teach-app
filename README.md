@@ -35,4 +35,4 @@ npm run dev
 ```
 
 # To view the application running on the server: 
-(http://127.0.0.1:8000)
+http://127.0.0.1:8000
