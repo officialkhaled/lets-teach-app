@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Job Posts')
 @section('content')
 	<main id="main-container">
 		<div class="content">
@@ -8,7 +9,7 @@
 						Job Posts
 					</h3>
 				</div>
-				
+
 				<div class="row" style="display: flex; justify-content: center">
 					@foreach($posts as $post)
 						<div class="col-md-6">
@@ -24,7 +25,7 @@
 											<button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
 										</div>
 									</div>
-									
+
 									<div class="block-content">
 										<div class="row">
 											<div class="col-md-8">
@@ -36,13 +37,13 @@
 												<p class="btn btn-sm btn-outline-secondary">Job ID: {{ $post->job_id ?? 'N/A' }}</p>
 											</div>
 										</div>
-										
+
 										<div class="row">
 											<div class="col-md-12">
 												<h2>{{ $post->title }}</h2>
 											</div>
 										</div>
-										
+
 										<div class="row">
 											<div class="col-md-4">
 												<p>
@@ -63,7 +64,7 @@
 												<p style="margin-top: -25px;">{{ $post->preferredTutor->name }}</p>
 											</div>
 										</div>
-										
+
 										<div class="row">
 											<div class="col-md-4">
 												<p>
@@ -89,7 +90,7 @@
 												</p>
 											</div>
 										</div>
-										
+
 										<div class="row mt-4 mb-1 d-flex align-items-baseline">
 											<div class="col-md-6">
 												<p class="text-secondary">Posted at: {{ $post->created_at->format('d M, Y') }}</p>
@@ -102,7 +103,7 @@
 												</div>
 											</div>
 										</div>
-										
+
 										{{--								<ul class="timeline pull-t">--}}
 										{{--									<li class="timeline-event">--}}
 										{{--										<div class="timeline-event-time">50 min ago</div>--}}

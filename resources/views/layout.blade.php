@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>Let's Teach App</title>
+    <title>@yield('title', 'Let\'s Teach App'){{ View::hasSection('title') ? ' | Let\'s Teach App' : '' }}</title>
 
     @include('components.common.links-styles')
 </head>

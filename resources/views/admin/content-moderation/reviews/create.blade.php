@@ -1,6 +1,7 @@
 @extends('layout')
+@section('title', 'Add | Reviews')
 @section('content')
-	
+
 	<main id="main-container">
 		<div class="content">
 			<div class="block block-rounded">
@@ -8,17 +9,17 @@
 					<h3 class="block-title">
 						Tag Entry
 					</h3>
-					
+
 					<a href="{{ route('admin.tags-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
 						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
 					</a>
 				</div>
-				
+
 				<div class="block-content block-content-full overflow-x-auto">
 					<div class="row">
 						<form method="post" action="{{ route('admin.tags-management.store') }}" class="space-y-3" enctype="multipart/form-data">
 							@csrf
-							
+
 							<div class="col-md-12">
 								<div class="row" style="margin-top: 10px;">
 									<div class="col-md-6">
@@ -35,7 +36,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
 								<button class="btn btn-success btn-sm" type="submit">
 									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;

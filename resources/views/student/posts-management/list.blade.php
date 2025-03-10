@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Posts')
 @section('content')
 
     @php use \App\Constants\ApplicationConstant; @endphp

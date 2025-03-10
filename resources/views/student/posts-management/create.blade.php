@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Add | Posts')
 @section('content')
 
     <main id="main-container">
