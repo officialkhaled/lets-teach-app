@@ -1,6 +1,10 @@
 # Let's Teach Application
 
-This basic Tutor Hiring Platform app uses Laravel and many other laravel packages. It has three usertypes: an <b>admin</b> who manages the users and their posts, a <b>tutor</b> who can create a profile and apply to available jobs, and a <b>student</b> who can make job posts according to their needs. 
+This basic Tutor Hiring Platform app uses Laravel and many other laravel packages. 
+It has three user types: 
+- <b>Admin</b> who manages the users and their posts. 
+- <b>Tutor</b> who can create a profile and apply to available jobs.
+- <b>Student</b> who can make job posts according to their needs. 
 
 A walkthrough going over the steps taken to produce this app.
 
