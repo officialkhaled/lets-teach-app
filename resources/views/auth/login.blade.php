@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="col-sm-6 text-sm-end">
                                             <button type="submit" class="btn btn-sm btn-alt-primary fw-medium">
-                                                &nbsp;<i class="fa-solid fa-right-to-bracket opacity-75"></i>&nbsp;&nbsp;Sign In&nbsp;
+                                                &nbsp;<i class="fa-solid fa-right-to-bracket opacity-75"></i>&nbsp;&nbsp;Sign In
                                             </button>
                                         </div>
                                     </div>
@@ -72,11 +72,11 @@
                                 </div>
                                 <div class="block-content block-content-full bg-body-light text-center d-flex justify-content-between">
                                     <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('register') }}">
-                                        <i class="fa fa-plus opacity-75 me-1"></i> Create Account
+                                        <i class="fa fa-user-plus opacity-75 me-1"></i> Create Account
                                     </a>
                                     @if (Route::has('password.request'))
                                         <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('password.request') }}">
-                                            Forgot Password
+                                            <i class="fa-solid fa-unlock-keyhole opacity-75 me-1"></i> Forgot Password
                                         </a>
                                     @endif
                                 </div>
