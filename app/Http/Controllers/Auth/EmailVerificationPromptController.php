@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
 
 class EmailVerificationPromptController extends Controller
 {
@@ -15,8 +15,16 @@ class EmailVerificationPromptController extends Controller
      */
     public function __invoke(Request $request): RedirectResponse|View
     {
-        return $request->user()->hasVerifiedEmail()
-                    ? redirect()->intended(RouteServiceProvider::HOME)
-                    : view('auth.verify-email');
+        if ($request->user()->hasVerifiedEmail()) {
+            if ($request->user()->hasRole('super-admin') || $request->user()->hasRole('admin')) {
+                return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
+            } elseif ($request->user()->hasRole('tutor')) {
+                return redirect()->intended(RouteServiceProvider::TUTOR_DASHBOARD);
+            } elseif ($request->user()->hasRole('student')) {
+                return redirect()->intended(RouteServiceProvider::STUDENT_DASHBOARD);
+            }
+        }
+
+        return view('auth.verify-email');
     }
 }
