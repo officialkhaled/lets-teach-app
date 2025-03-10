@@ -1,20 +1,21 @@
 @extends('layout')
+@section('title', 'Reviews')
 @section('content')
-	
+
 	<main id="main-container">
-		
+
 		<div class="content">
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
 					<h3 class="block-title">
 						Tags Management <small>(Subjects &amp; Grades List)</small>
 					</h3>
-					
+
 					<a href="{{ route('admin.tags-management.create') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-solid fa-plus opacity-50"></i>&nbsp;&nbsp;Add&nbsp;
+						&nbsp;<i class="fa-solid fa-plus opacity-75"></i>&nbsp;&nbsp;Add&nbsp;
 					</a>
 				</div>
-				
+
 				<div class="block-content block-content-full overflow-x-auto">
 					<table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
 						<thead>
@@ -44,14 +45,14 @@
 								<td class="d-none d-sm-table-cell text-center">
 									<div class="d-flex justify-content-center gap-2">
 										<a class="btn btn-success btn-sm" href="{{ route('admin.tags-management.edit', $tag->id) }}">
-											&nbsp;<i class="fa fa-edit opacity-50"></i>&nbsp;&nbsp;Edit&nbsp;
+											&nbsp;<i class="fa fa-edit opacity-75"></i>&nbsp;&nbsp;Edit&nbsp;
 										</a>
 										<form action="{{ route('admin.tags-management.destroy', $tag->id) }}" method="POST">
 											@csrf
 											@method('DELETE')
-											
+
 											<button class="btn btn-danger btn-sm">
-												&nbsp;<i class="fa fa-trash opacity-50"></i>&nbsp;&nbsp;Delete&nbsp;
+												&nbsp;<i class="fa fa-trash opacity-75"></i>&nbsp;&nbsp;Delete&nbsp;
 											</button>
 										</form>
 									</div>
@@ -63,7 +64,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</main>
 
 @endsection

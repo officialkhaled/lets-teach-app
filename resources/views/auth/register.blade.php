@@ -1,26 +1,12 @@
-<!doctype html>
-<html lang="en" class="remember-theme">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <title>Register</title>
-
-    <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
-    <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
+@extends('auth-layout')
+@section('title', 'Register')
+@section('style')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
+@endsection
 
-    <script src="{{ asset('assets/js/setTheme.js') }}"></script>
-</head>
+@section('content')
 
-<body>
-
-<div id="page-container" class="main-content-boxed">
     <main id="main-container">
         <div class="bg-body-dark">
             <div class="hero-static content content-full px-1">
@@ -172,25 +158,26 @@
             </div>
         </div>
     </main>
-</div>
 
-<script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/op_auth_signup.min.js') }}"></script>
+@endsection
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@section('script')
+    <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/op_auth_signup.min.js') }}"></script>
 
-<script>
-    $.fn.select2.defaults.set("theme", "bootstrap-5");
-    $.fn.select2.defaults.set("placeholder", "Select");
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    $(document).ready(function () {
-        $('.select2').select2({
-            allowClear: false,
+    <script>
+        $.fn.select2.defaults.set("theme", "bootstrap-5");
+        $.fn.select2.defaults.set("placeholder", "Select");
+
+        $(document).ready(function () {
+            $('.select2').select2({
+                allowClear: false,
+            });
         });
-    });
-</script>
+    </script>
 
-</body>
-</html>
+@endsection

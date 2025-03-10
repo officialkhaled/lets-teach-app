@@ -1,24 +1,6 @@
-<!doctype html>
-<html lang="en" class="remember-theme">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <title>Login</title>
-
-    <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
-    <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
-          integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <script src="{{ asset('assets/js/setTheme.js') }}"></script>
-</head>
-
-<body>
-
-<div id="page-container" class="main-content-boxed">
+@extends('auth-layout')
+@section('title', 'Login')
+@section('content')
 
     <main id="main-container">
         <div class="bg-body-dark">
@@ -90,7 +72,7 @@
                                 </div>
                                 <div class="block-content block-content-full bg-body-light text-center d-flex justify-content-between">
                                     <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('register') }}">
-                                        <i class="fa fa-plus opacity-50 me-1"></i> Create Account
+                                        <i class="fa fa-plus opacity-75 me-1"></i> Create Account
                                     </a>
                                     @if (Route::has('password.request'))
                                         <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('password.request') }}">
@@ -105,12 +87,5 @@
             </div>
         </div>
     </main>
-</div>
 
-<script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
-<script src="{{ asset('assets/js/lib/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/op_auth_signin.min.js') }}"></script>
-
-</body>
-</html>
+@endsection

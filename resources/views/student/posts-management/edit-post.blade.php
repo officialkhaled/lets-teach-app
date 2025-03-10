@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Edit | Posts')
 @section('content')
 
     <main id="main-container">
@@ -150,10 +151,10 @@
 
                             <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
                                 <button type="submit" class="btn btn-success btn-sm">
-                                    &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+                                    &nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Update&nbsp;
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm" onclick="pageRefresh()">
-                                    &nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+                                    &nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
                                 </button>
                             </div>
                         </form>
