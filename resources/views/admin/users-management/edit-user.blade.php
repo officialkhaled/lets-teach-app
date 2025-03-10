@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
-	
+
 	<main id="main-container">
-		
+
 		<div class="content">
 			<div class="block block-rounded">
 				<div class="block-header block-header-default">
@@ -13,12 +13,12 @@
 							User Edit <small>(Student)</small>
 						@endif
 					</h3>
-					
+
 					<a href="{{ route('admin.user-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
+						&nbsp;<i class="fa-regular fa-circle-left opacity-75"></i>&nbsp;&nbsp;Back&nbsp;
 					</a>
 				</div>
-				
+
 				<div class="block-content block-content-full overflow-x-auto">
 					@if ($user->role == 1)
 						<div class="row">
@@ -26,14 +26,14 @@
 								  class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
-								
+
 								<div class="col-md-12">
 									<div class="row" style="margin-top: -60px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-3">
 											<label class="form-label" for="name">Name</label>
@@ -56,20 +56,20 @@
 												   value="{{ $tutor->experience ?? '' }}">
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
 											<label class="form-label" for="bio">Bio</label>
 											<textarea class="form-control" name="bio" id="bio" cols="20" rows="4" placeholder="Write...">{{ $tutor->bio ?? '' }}</textarea>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Education Info</h2>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-3">
 											<label class="form-label" for="institution">Institution</label>
@@ -92,13 +92,13 @@
 												   value="{{ $tutor->education['completion_year'] ?? '' }}">
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-6">
 											<label class="form-label" for="subject_ids">Subjects</label>
@@ -124,34 +124,34 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
-										&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+										&nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
-									
+
 									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
-										&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+										&nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
 									</a>
 								</div>
 							</form>
 						</div>
 					@endif
-					
+
 					@if ($user->role == 2)
 						<div class="row">
 							<form method="POST" action="{{ route('admin.user-management.update', $student->user_id) }}"
 								  class="space-y-3" enctype="multipart/form-data">
 								@csrf
 								@method('patch')
-								
+
 								<div class="col-md-12">
 									<div class="row" style="margin-top: -60px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Basic Info</h2>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-4">
 											<label class="form-label" for="name">Name</label>
@@ -169,13 +169,13 @@
 												   value="{{ $student->phone_number ?? '' }}">
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 14px;">
 										<div class="col-md-12">
 											<h2 class="block-title fw-bold content-heading">Tags Selection</h2>
 										</div>
 									</div>
-									
+
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-md-6">
 											<label class="form-label" for="subject_ids">Subjects</label>
@@ -201,13 +201,13 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="d-flex justify-content-center gap-2" style="margin-top: 24px;">
 									<button class="btn btn-success btn-sm" type="submit">
-										&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+										&nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Update&nbsp;
 									</button>
 									<a href="{{ route('admin.user-management.index') }}" class="btn btn-warning btn-sm" type="button">
-										&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+										&nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
 									</a>
 								</div>
 							</form>
@@ -216,9 +216,9 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</main>
-	
+
 @endsection
 
 @section('script')

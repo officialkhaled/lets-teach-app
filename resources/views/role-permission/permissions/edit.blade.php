@@ -33,10 +33,10 @@
 
                             <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
                                 <button class="btn btn-success btn-sm" type="submit">
-                                    &nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Update&nbsp;
+                                    &nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Update&nbsp;
                                 </button>
                                 <button class="btn btn-warning btn-sm" type="button" onclick="pageRefresh()">
-                                    &nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+                                    &nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
                                 </button>
                             </div>
                         </form>

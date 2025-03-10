@@ -11,7 +11,7 @@
 					</h3>
 
 					<a href="{{ route('admin.tags-management.index') }}" class="btn btn-info btn-sm waves-effect bg-gradient">
-						&nbsp;<i class="fa-regular fa-circle-left opacity-50"></i>&nbsp;&nbsp;Back&nbsp;
+						&nbsp;<i class="fa-regular fa-circle-left opacity-75"></i>&nbsp;&nbsp;Back&nbsp;
 					</a>
 				</div>
 
@@ -39,10 +39,10 @@
 
 							<div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
 								<button class="btn btn-success btn-sm" type="submit">
-									&nbsp;<i class="fa fa-save opacity-50"></i>&nbsp;&nbsp;Save&nbsp;
+									&nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Save&nbsp;
 								</button>
 								<a href="" class="btn btn-warning btn-sm" type="button">
-									&nbsp;<i class="fa fa-refresh opacity-50"></i>&nbsp;&nbsp;Refresh&nbsp;
+									&nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
 								</a>
 							</div>
 						</form>
