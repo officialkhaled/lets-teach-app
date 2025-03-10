@@ -33,9 +33,12 @@
                                         <input type="email" class="form-control" id="email" name="email" autocomplete="current-email" placeholder="Enter Email">
                                     </div>
                                 </div>
-                                <div class="block-content block-content-full bg-body-light text-center d-flex justify-content-end">
+                                <div class="block-content block-content-full bg-body-light text-center d-flex justify-content-between">
+                                    <a class="fs-sm fw-medium link-fx text-muted me-2 mb-1 d-inline-block" href="{{ route('login') }}">
+                                        <i class="fa-solid fa-right-to-bracket opacity-75 me-1"></i> Sign In
+                                    </a>
                                     <button type="submit" class="btn btn-sm btn-alt-primary fw-medium">
-                                        &nbsp;<i class="fa-solid fa-right-to-bracket opacity-75"></i>&nbsp;&nbsp;Send Reset Link&nbsp;
+                                        <i class="fa-solid fa-paper-plane opacity-75"></i>&nbsp;&nbsp;Send Reset Link&nbsp;
                                     </button>
                                 </div>
                             </div>
