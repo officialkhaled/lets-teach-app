@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\InvalidAmountException;
+use App\Exceptions\InvalidAmountExceptionHandler;
 
 class CurrencyFormatter
 {
