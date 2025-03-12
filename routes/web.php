@@ -19,7 +19,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 })->name('home');
 
-
 Route::group(['prefix' => '/login', 'as' => 'login.'], function () {
     Route::get('google', [LoginController::class, 'redirectToGoogle'])->name('google');
     Route::get('google/callback', [LoginController::class, 'handleGoogleCallback']);
@@ -27,7 +26,6 @@ Route::group(['prefix' => '/login', 'as' => 'login.'], function () {
     Route::get('github', [LoginController::class, 'redirectToGithub'])->name('github');
     Route::get('github/callback', [LoginController::class, 'handleGithubCallback']);
 });
-
 
 Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
