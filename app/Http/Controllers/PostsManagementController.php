@@ -63,7 +63,7 @@ class PostsManagementController extends Controller
     {
         $selectedSubjects = $post->subject_ids ?? [];
 
-        return view('student.posts-management.edit-post', [
+        return view('student.posts-management.edit', [
             'post' => $post,
             'mediums' => ApplicationConstant::MEDIUMS,
             'classes' => ApplicationConstant::CLASSES,

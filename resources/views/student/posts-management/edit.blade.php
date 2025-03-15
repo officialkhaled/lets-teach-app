@@ -150,12 +150,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center gap-2" style="margin-top: 30px;">
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    &nbsp;<i class="fa fa-save opacity-75"></i>&nbsp;&nbsp;Update&nbsp;
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm" onclick="pageRefresh()">
-                                    &nbsp;<i class="fa fa-refresh opacity-75"></i>&nbsp;&nbsp;Refresh&nbsp;
-                                </button>
+                                @include('components.common.dynamic-button', ['name' => 'Update', 'icon' => 'save'])
                             </div>
                         </form>
                     </div>
