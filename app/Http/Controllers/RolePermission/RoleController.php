@@ -34,19 +34,34 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:roles,name'
-            ]
-        ]);
+        try {
+            $request->validate([
+                'name' => [
+                    'required',
+                    'string',
+                    'unique:roles,name'
+                ]
+            ]);
 
-        Role::create([
-            'name' => $request->name
-        ]);
+            Role::create([
+                'name' => $request->name
+            ]);
 
-        return redirect('admin/settings/roles')->with('success', 'Role Created Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Role Created Successfully.');
+
+            return redirect('admin/settings/roles');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function edit(Role $role)
@@ -58,27 +73,57 @@ class RoleController extends Controller
 
     public function update(Request $request, Role $role)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:roles,name,' . $role->id
-            ]
-        ]);
+        try {
+            $request->validate([
+                'name' => [
+                    'required',
+                    'string',
+                    'unique:roles,name,' . $role->id
+                ]
+            ]);
 
-        $role->update([
-            'name' => $request->name
-        ]);
+            $role->update([
+                'name' => $request->name
+            ]);
 
-        return redirect('admin/settings/roles')->with('success', 'Role Updated Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Role Updated Successfully.');
+
+            return redirect('admin/settings/roles');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function destroy($roleId)
     {
-        $role = Role::find($roleId);
-        $role->delete();
+        try {
+            $role = Role::find($roleId);
+            $role->delete();
 
-        return redirect('admin/settings/roles')->with('success', 'Role Deleted Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Role Deleted Successfully.');
+
+            return redirect('admin/settings/roles');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function addPermissionToRole($roleId)
@@ -100,13 +145,28 @@ class RoleController extends Controller
 
     public function givePermissionToRole(Request $request, $roleId)
     {
-        $request->validate([
-            'permission' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'permission' => 'required'
+            ]);
 
-        $role = Role::findOrFail($roleId);
-        $role->syncPermissions($request->permission);
+            $role = Role::findOrFail($roleId);
+            $role->syncPermissions($request->permission);
 
-        return redirect()->back()->with('success', 'Permissions Added to Role');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Permissions Added to Role.');
+
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

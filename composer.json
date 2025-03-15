@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.8",
+        "php-flasher/flasher-notyf-laravel": "^1.15",
         "spatie/laravel-permission": "^6.16",
         "staudenmeir/eloquent-json-relations": "^1.10",
         "staudenmeir/laravel-adjacency-list": "^1.20"

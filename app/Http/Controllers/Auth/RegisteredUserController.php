@@ -67,6 +67,11 @@ class RegisteredUserController extends Controller
 
             Auth::login($user);
 
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('User Created Successfully.');
+
             if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
                 return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
             } elseif ($user->hasRole('tutor')) {
@@ -79,6 +84,13 @@ class RegisteredUserController extends Controller
 
         } catch (\Exception $e) {
             \Log::error('Error during user registration: ' . $e->getMessage());
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addSuccess($e->getMessage());
+
             return redirect()->back()->withErrors(['error' => 'An error occurred during registration.']);
         }
     }

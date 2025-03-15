@@ -34,22 +34,37 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:5|max:20',
-            'roles' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:users,email',
+                'password' => 'required|string|min:5|max:20',
+                'roles' => 'required'
+            ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        $user->syncRoles($request->roles);
+            $user->syncRoles($request->roles);
 
-        return redirect('admin/settings/users')->with('success', 'User Created Successfully with Roles');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('User Created Successfully with Roles.');
+
+            return redirect('admin/settings/users');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function edit(User $user)
@@ -66,34 +81,64 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'password' => 'nullable|string|min:5|max:20',
-            'roles' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'password' => 'nullable|string|min:5|max:20',
+                'roles' => 'required'
+            ]);
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-        ];
-
-        if (!empty($request->password)) {
-            $data += [
-                'password' => Hash::make($request->password),
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
             ];
+
+            if (!empty($request->password)) {
+                $data += [
+                    'password' => Hash::make($request->password),
+                ];
+            }
+
+            $user->update($data);
+            $user->syncRoles($request->roles);
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('User Updated Successfully with Roles.');
+
+            return redirect('admin/settings/users');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
         }
-
-        $user->update($data);
-        $user->syncRoles($request->roles);
-
-        return redirect('admin/settings/users')->with('success', 'User Updated Successfully with Roles');
     }
 
     public function destroy($userId)
     {
-        $user = User::findOrFail($userId);
-        $user->delete();
+        try {
+            $user = User::findOrFail($userId);
+            $user->delete();
 
-        return redirect('admin/settings/users')->with('success', 'User Deleted Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('User Deleted Successfully.');
+
+            return redirect('admin/settings/users');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

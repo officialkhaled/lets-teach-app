@@ -25,19 +25,67 @@ class AdminPostsManagementController extends Controller
 
     public function destroy(Post $post)
     {
-        $post->delete();
-        return redirect()->route('admin.content-moderation.posts.index')->with('success', 'Post Deleted Successfully.');
+        try {
+            $post->delete();
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Deleted Successfully.');
+
+            return redirect()->route('admin.content-moderation.posts.index');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function approve(Post $post)
     {
-        $post->approve();
-        return back()->with('success', 'Post Approved Successfully.');
+        try {
+            $post->approve();
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Approved Successfully.');
+
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function reject(Post $post)
     {
-        $post->reject();
-        return back()->with('success', 'Post Rejected Successfully.');
+        try {
+            $post->reject();
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Rejected Successfully.');
+
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

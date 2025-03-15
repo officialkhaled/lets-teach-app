@@ -38,25 +38,40 @@ class PostsManagementController extends Controller
 
     public function store(Request $request)
     {
-        $studentId = Student::firstWhere('user_id', userId())['id'];
+        try {
+            $studentId = Student::firstWhere('user_id', userId())['id'];
 
-        Post::create([
-            'title' => $request->input('title'),
-            'student_id' => $studentId,
-            'subject_ids' => $request->input('subject_ids'),
-            'class_id' => $request->input('class_id'),
-            'medium_id' => $request->input('medium_id'),
-            'gender_id' => $request->input('gender_id'),
-            'tutoring_day_id' => $request->input('tutoring_day_id'),
-            'tutoring_type_id' => $request->input('tutoring_type_id'),
-            'salary' => $request->input('salary'),
-            'from_time' => $request->input('from_time'),
-            'to_time' => $request->input('to_time'),
-            'location' => $request->input('location'),
-            'note' => $request->input('note'),
-        ]);
+            Post::create([
+                'title' => $request->input('title'),
+                'student_id' => $studentId,
+                'subject_ids' => $request->input('subject_ids'),
+                'class_id' => $request->input('class_id'),
+                'medium_id' => $request->input('medium_id'),
+                'gender_id' => $request->input('gender_id'),
+                'tutoring_day_id' => $request->input('tutoring_day_id'),
+                'tutoring_type_id' => $request->input('tutoring_type_id'),
+                'salary' => $request->input('salary'),
+                'from_time' => $request->input('from_time'),
+                'to_time' => $request->input('to_time'),
+                'location' => $request->input('location'),
+                'note' => $request->input('note'),
+            ]);
 
-        return redirect()->route('student.posts-management.index')->with('success', 'Post Added Successfully!');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Created Successfully.');
+
+            return redirect()->route('student.posts-management.index');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function edit(Post $post)
@@ -77,17 +92,49 @@ class PostsManagementController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $post->update($request->except('subject_ids'));
-        $post->subject_ids = $request->input('subject_ids');
-        $post->save();
+        try {
+            $post->update($request->except('subject_ids'));
+            $post->subject_ids = $request->input('subject_ids');
+            
+            $post->save();
 
-        return redirect()->route('student.posts-management.index')->with('success', 'Post Updated Successfully!');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Updated Successfully.');
+
+            return redirect()->route('student.posts-management.index');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function destroy(Post $post)
     {
-        $post->delete();
-        return redirect()->route('student.posts-management.index')->with('success', 'Post Deleted Successfully.');
+        try {
+            $post->delete();
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Post Deleted Successfully.');
+
+            return redirect()->route('student.posts-management.index');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function view(Post $post)

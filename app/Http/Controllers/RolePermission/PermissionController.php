@@ -32,19 +32,34 @@ class PermissionController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:permissions,name'
-            ]
-        ]);
+        try {
+            $request->validate([
+                'name' => [
+                    'required',
+                    'string',
+                    'unique:permissions,name'
+                ]
+            ]);
 
-        Permission::create([
-            'name' => $request->name
-        ]);
+            Permission::create([
+                'name' => $request->name
+            ]);
 
-        return redirect('admin/settings/permissions')->with('success', 'Permission Created Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Permission Created Successfully.');
+
+            return redirect('admin/settings/permissions');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function edit(Permission $permission)
@@ -54,26 +69,56 @@ class PermissionController extends Controller
 
     public function update(Request $request, Permission $permission)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:permissions,name,' . $permission->id
-            ]
-        ]);
+        try {
+            $request->validate([
+                'name' => [
+                    'required',
+                    'string',
+                    'unique:permissions,name,' . $permission->id
+                ]
+            ]);
 
-        $permission->update([
-            'name' => $request->name
-        ]);
+            $permission->update([
+                'name' => $request->name
+            ]);
 
-        return redirect('admin/settings/permissions')->with('success', 'Permission Updated Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Permission Updated Successfully.');
+
+            return redirect('admin/settings/permissions');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 
     public function destroy($permissionId)
     {
-        $permission = Permission::find($permissionId);
-        $permission->delete();
+        try {
+            $permission = Permission::find($permissionId);
+            $permission->delete();
 
-        return redirect('admin/settings/permissions')->with('success', 'Permission Deleted Successfully');
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->addSuccess('Permission Deleted Successfully.');
+
+            return redirect('admin/settings/permissions');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

@@ -30,6 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
+        notyf()
+            ->position('y', 'top')
+            ->dismissible(true)
+            ->addSuccess('User Signed In Successfully.');
+
         if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
             return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
         } elseif ($user->hasRole('tutor')) {
@@ -50,6 +55,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        notyf()
+            ->position('y', 'top')
+            ->dismissible(true)
+            ->addSuccess('User Signed Out Successfully.');
 
         return redirect('/login');
     }
