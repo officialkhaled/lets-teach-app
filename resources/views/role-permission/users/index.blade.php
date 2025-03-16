@@ -41,12 +41,12 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    @can('update user')
+                                    @can('Update User')
                                         <a href="{{ url('admin/settings/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-success shadow-sm">
                                             <i class="fa-solid fa-pen-to-square opacity-75"></i>
                                         </a>
                                     @endcan
-                                    @can('delete user')
+                                    @can('Delete User')
                                         <a href="{{ url('admin/settings/users/'.$user->id.'/delete') }}" class="btn btn-sm btn-danger shadow-sm">
                                             <i class="fa-solid fa-trash opacity-75"></i>
                                         </a>

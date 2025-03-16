@@ -14,20 +14,20 @@ class UserRolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        Permission::create(['name' => 'view role']);
-        Permission::create(['name' => 'create role']);
-        Permission::create(['name' => 'update role']);
-        Permission::create(['name' => 'delete role']);
+        Permission::create(['name' => 'View Role']);
+        Permission::create(['name' => 'Create Role']);
+        Permission::create(['name' => 'Update Role']);
+        Permission::create(['name' => 'Delete Role']);
 
-        Permission::create(['name' => 'view permission']);
-        Permission::create(['name' => 'create permission']);
-        Permission::create(['name' => 'update permission']);
-        Permission::create(['name' => 'delete permission']);
+        Permission::create(['name' => 'View Permission']);
+        Permission::create(['name' => 'Create Permission']);
+        Permission::create(['name' => 'Update Permission']);
+        Permission::create(['name' => 'Delete Permission']);
 
-        Permission::create(['name' => 'view user']);
-        Permission::create(['name' => 'create user']);
-        Permission::create(['name' => 'update user']);
-        Permission::create(['name' => 'delete user']);
+        Permission::create(['name' => 'View User']);
+        Permission::create(['name' => 'Create User']);
+        Permission::create(['name' => 'Update User']);
+        Permission::create(['name' => 'Delete User']);
 
 
         $superAdminRole = Role::create(['name' => 'super-admin']);
@@ -38,9 +38,9 @@ class UserRolePermissionSeeder extends Seeder
         $allPermissionNames = Permission::pluck('name')->toArray();
         $superAdminRole->givePermissionTo($allPermissionNames);
 
-        $adminRole->givePermissionTo(['create role', 'view role', 'update role']);
-        $adminRole->givePermissionTo(['create permission', 'view permission']);
-        $adminRole->givePermissionTo(['create user', 'view user', 'update user']);
+        $adminRole->givePermissionTo(['Create Role', 'View Role', 'Update Role']);
+        $adminRole->givePermissionTo(['Create Permission', 'View Permission']);
+        $adminRole->givePermissionTo(['Create User', 'View User', 'Update User']);
 
 
         $superAdminUser = User::firstOrCreate([

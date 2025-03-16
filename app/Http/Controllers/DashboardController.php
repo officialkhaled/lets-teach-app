@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Tutor;
 use App\Models\Student;

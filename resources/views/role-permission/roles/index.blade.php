@@ -34,12 +34,12 @@
                                     <a href="{{ url('admin/settings/roles/'.$role->id.'/give-permissions') }}" class="btn btn-sm btn-warning shadow-sm">
                                         <i class="fa-solid fa-plus opacity-75"></i>&nbsp;&nbsp;Add / Edit Role Permission
                                     </a>
-                                    @can('update permission')
+                                    @can('Update Permission')
                                         <a href="{{ url('admin/settings/roles/'.$role->id.'/edit') }}" class="btn btn-sm btn-success mx-1 shadow-sm">
                                             <i class="fa-solid fa-pen-to-square opacity-75"></i>
                                         </a>
                                     @endcan
-                                    @can('delete permission')
+                                    @can('Delete Permission')
                                         <a href="{{ url('admin/settings/roles/'.$role->id.'/delete') }}" class="btn btn-sm btn-danger shadow-sm">
                                             <i class="fa-solid fa-trash opacity-75"></i>
                                         </a>

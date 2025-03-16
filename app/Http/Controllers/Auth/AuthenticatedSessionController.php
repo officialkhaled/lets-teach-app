@@ -33,6 +33,7 @@ class AuthenticatedSessionController extends Controller
         notyf()
             ->position('y', 'top')
             ->dismissible(true)
+            ->ripple(false)
             ->addSuccess('User Signed In Successfully.');
 
         if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
@@ -59,6 +60,7 @@ class AuthenticatedSessionController extends Controller
         notyf()
             ->position('y', 'top')
             ->dismissible(true)
+            ->ripple(false)
             ->addSuccess('User Signed Out Successfully.');
 
         return redirect('/login');

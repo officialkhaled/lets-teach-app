@@ -10,10 +10,10 @@ class PermissionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view permission', ['only' => ['index']]);
-        $this->middleware('permission:create permission', ['only' => ['create', 'store']]);
-        $this->middleware('permission:update permission', ['only' => ['update', 'edit']]);
-        $this->middleware('permission:delete permission', ['only' => ['destroy']]);
+        $this->middleware('permission:View Permission', ['only' => ['index']]);
+        $this->middleware('permission:Create Permission', ['only' => ['create', 'store']]);
+        $this->middleware('permission:Update Permission', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:Delete Permission', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -48,6 +48,7 @@ class PermissionController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Permission Created Successfully.');
 
             return redirect('admin/settings/permissions');
@@ -85,6 +86,7 @@ class PermissionController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Permission Updated Successfully.');
 
             return redirect('admin/settings/permissions');
@@ -108,6 +110,7 @@ class PermissionController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Permission Deleted Successfully.');
 
             return redirect('admin/settings/permissions');
