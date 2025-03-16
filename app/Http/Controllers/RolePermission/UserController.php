@@ -12,10 +12,10 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view user', ['only' => ['index']]);
-        $this->middleware('permission:create user', ['only' => ['create', 'store']]);
-        $this->middleware('permission:update user', ['only' => ['update', 'edit']]);
-        $this->middleware('permission:delete user', ['only' => ['destroy']]);
+        $this->middleware('permission:View User', ['only' => ['index']]);
+        $this->middleware('permission:Create User', ['only' => ['create', 'store']]);
+        $this->middleware('permission:Update User', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:Delete User', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -53,6 +53,7 @@ class UserController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('User Created Successfully with Roles.');
 
             return redirect('admin/settings/users');
@@ -105,6 +106,7 @@ class UserController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('User Updated Successfully with Roles.');
 
             return redirect('admin/settings/users');
@@ -128,6 +130,7 @@ class UserController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('User Deleted Successfully.');
 
             return redirect('admin/settings/users');

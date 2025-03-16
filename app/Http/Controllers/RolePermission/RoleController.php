@@ -12,10 +12,10 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:view role', ['only' => ['index']]);
-        $this->middleware('permission:create role', ['only' => ['create', 'store', 'addPermissionToRole', 'givePermissionToRole']]);
-        $this->middleware('permission:update role', ['only' => ['update', 'edit']]);
-        $this->middleware('permission:delete role', ['only' => ['destroy']]);
+        $this->middleware('permission:View Role', ['only' => ['index']]);
+        $this->middleware('permission:Create Role', ['only' => ['create', 'store', 'addPermissionToRole', 'givePermissionToRole']]);
+        $this->middleware('permission:Update Role', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:Delete Role', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -50,6 +50,7 @@ class RoleController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Role Created Successfully.');
 
             return redirect('admin/settings/roles');
@@ -89,6 +90,7 @@ class RoleController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Role Updated Successfully.');
 
             return redirect('admin/settings/roles');
@@ -112,6 +114,7 @@ class RoleController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Role Deleted Successfully.');
 
             return redirect('admin/settings/roles');
@@ -156,6 +159,7 @@ class RoleController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Permissions Added to Role.');
 
             return redirect()->back();

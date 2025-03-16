@@ -20,15 +20,30 @@ class JobPostsController extends Controller
             ->where('status', ACTIVE)
             ->latest()
             ->get();
-        
+
         return view('tutor.job-posts.index', [
             'posts' => $posts,
         ]);
     }
-    
+
     public function apply(Post $post)
     {
-        $post->apply();
-        return back()->with('success', 'Applied Successfully.');
+        try {
+            $post->apply();
+
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addSuccess('Applied Successfully.');
+        } catch (\Exception $exception) {
+            notyf()
+                ->position('y', 'top')
+                ->dismissible(true)
+                ->ripple(false)
+                ->addError($exception->getMessage());
+        }
+
+        return redirect()->back();
     }
 }

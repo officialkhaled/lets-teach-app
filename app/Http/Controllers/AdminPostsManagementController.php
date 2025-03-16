@@ -31,6 +31,7 @@ class AdminPostsManagementController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Deleted Successfully.');
 
             return redirect()->route('admin.content-moderation.posts.index');
@@ -53,6 +54,7 @@ class AdminPostsManagementController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Approved Successfully.');
 
             return redirect()->back();
@@ -75,6 +77,7 @@ class AdminPostsManagementController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Rejected Successfully.');
 
             return redirect()->back();

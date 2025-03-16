@@ -70,6 +70,7 @@ class RegisteredUserController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('User Created Successfully.');
 
             if ($user->hasRole('super-admin') || $user->hasRole('admin')) {

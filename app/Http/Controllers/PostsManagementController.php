@@ -60,6 +60,7 @@ class PostsManagementController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Created Successfully.');
 
             return redirect()->route('student.posts-management.index');
@@ -95,12 +96,13 @@ class PostsManagementController extends Controller
         try {
             $post->update($request->except('subject_ids'));
             $post->subject_ids = $request->input('subject_ids');
-            
+
             $post->save();
 
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Updated Successfully.');
 
             return redirect()->route('student.posts-management.index');
@@ -123,6 +125,7 @@ class PostsManagementController extends Controller
             notyf()
                 ->position('y', 'top')
                 ->dismissible(true)
+                ->ripple(false)
                 ->addSuccess('Post Deleted Successfully.');
 
             return redirect()->route('student.posts-management.index');

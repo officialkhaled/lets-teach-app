@@ -1,5 +1,6 @@
 <nav id="sidebar">
     <div class="sidebar-content">
+        {{-- Application Logo --}}
         <div class="content-header justify-content-lg-center">
             <div>
                 <a class="link-fx fw-bold tracking-wide mx-auto" href="#">
@@ -15,6 +16,85 @@
                 </button>
             </div>
         </div>
+
+{{--        <div class="js-sidebar-scroll">--}}
+{{--            <div class="content	-side content-side-full" style="padding: 1px 1.5rem;">--}}
+{{--                <ul class="nav-main">--}}
+{{--                    <li class="nav-main-item {{ request()->is('dashboard') ? 'active-menu' : '' }}">--}}
+{{--                        <a class="nav-main-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('admin-dashboard') }}">--}}
+{{--                            <i class="nav-main-link-icon fa-solid fa-house"></i>--}}
+{{--                            <span class="nav-main-link-name">Dashboard</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                    <li class="nav-main-item {{ request()->is('content-moderation*') ? 'active-menu open' : '' }}">--}}
+{{--                        <a class="nav-main-link nav-main-link-submenu {{ request()->is('content-moderation*') ? 'active' : '' }}" data-toggle="submenu" href="#">--}}
+{{--                            <i class="nav-main-link-icon fa-brands fa-contao"></i>--}}
+{{--                            <span class="nav-main-link-name">Content Moderation</span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="nav-main-submenu {{ request()->is('content-moderation*') ? 'active-menu' : '' }}">--}}
+{{--                            @can('View Posts')--}}
+{{--                                <li class="nav-main-item">--}}
+{{--                                    <a class="nav-main-link {{ request()->is('content-moderation/posts*') ? 'active' : '' }}"--}}
+{{--                                       href="{{ route('content-moderation.posts.index') }}">--}}
+{{--                                        <i class="nav-main-link-icon fa-solid fa-layer-group"></i>--}}
+{{--                                        <span class="nav-main-link-name">Posts Management</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            @endcan--}}
+{{--                            @can('View Reviews')--}}
+{{--                                <li class="nav-main-item {{ request()->is('content-moderation/reviews-management*') ? 'active' : '' }}">--}}
+{{--                                    <a class="nav-main-link {{ request()->is('content-moderation/reviews*') ? 'active' : '' }}"--}}
+{{--                                       href="{{ route('content-moderation.reviews.index') }}">--}}
+{{--                                        <i class="nav-main-link-icon fa-solid fa-star"></i>--}}
+{{--                                        <span class="nav-main-link-name">Reviews</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            @endcan--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+
+{{--                    <li class="nav-main-item {{ request()->is('settings*') ? 'active-menu open' : '' }}">--}}
+{{--                        <a class="nav-main-link nav-main-link-submenu {{ request()->is('settings*') ? 'active' : '' }}" data-toggle="submenu" href="#">--}}
+{{--                            <i class="nav-main-link-icon fa-solid fa-gear"></i>--}}
+{{--                            <span class="nav-main-link-name">Settings</span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="nav-main-submenu {{ request()->is('settings*') ? 'active-menu' : '' }}">--}}
+{{--                            @can('View Permissions')--}}
+{{--                                <li class="nav-main-item {{ request()->is('settings/permissions*') ? 'active-menu' : '' }}">--}}
+{{--                                    <a class="nav-main-link {{ request()->is('settings/permissions*') ? 'active' : '' }}"--}}
+{{--                                       href="{{ route('settings.permissions.index') }}">--}}
+{{--                                        <i class="nav-main-link-icon fa-solid fa-lock"></i>--}}
+{{--                                        <span class="nav-main-link-name">Permissions</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            @endcan--}}
+{{--                            @can('View Roles')--}}
+{{--                                <li class="nav-main-item {{ request()->is('settings/roles*') ? 'active-menu' : '' }}">--}}
+{{--                                    <a class="nav-main-link {{ request()->is('settings/roles*') ? 'active' : '' }}"--}}
+{{--                                       href="{{ route('settings.roles.index') }}">--}}
+{{--                                        <i class="nav-main-link-icon fa-solid fa-key"></i>--}}
+{{--                                        <span class="nav-main-link-name">Roles</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            @endcan--}}
+{{--                            @can('View Users')--}}
+{{--                                <li class="nav-main-item {{ request()->is('settings/users*') ? 'active-menu' : '' }}">--}}
+{{--                                    <a class="nav-main-link {{ request()->is('settings/users*') ? 'active' : '' }}"--}}
+{{--                                       href="{{ route('settings.users.index') }}">--}}
+{{--                                        <i class="nav-main-link-icon fa-solid fa-users-gear"></i>--}}
+{{--                                        <span class="nav-main-link-name">Users</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            @endcan--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+
+{{--                    --}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
 
         @if (currentUser()->roles?->first()->name == 'super-admin' || currentUser()->roles?->first()->name == 'admin')
             <div class="js-sidebar-scroll">

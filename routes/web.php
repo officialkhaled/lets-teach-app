@@ -27,6 +27,31 @@ Route::group(['prefix' => '/login', 'as' => 'login.'], function () {
     Route::get('github/callback', [LoginController::class, 'handleGithubCallback']);
 });
 
+//Route::group(['prefix' => 'content-moderation', 'as' => 'content-moderation.'], function () {
+//    Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
+//        Route::controller(AdminPostsManagementController::class)->group(function () {
+//            Route::get('/', 'index')->name('index');
+//            Route::get('/{post}', 'view')->name('view');
+//            Route::delete('/{post}', 'destroy')->name('destroy');
+//            Route::get('/{post}/approve', 'approve')->name('approve');
+//            Route::get('/{post}/reject', 'reject')->name('reject');
+//        });
+//    });
+//
+//    Route::group(['prefix' => 'reviews', 'as' => 'reviews.'], function () {
+//        Route::controller(ReviewsManagementController::class)->group(function () {
+//            Route::get('/reviews-list', 'index')->name('index');
+//            Route::get('/create', 'create')->name('create');
+//            Route::post('/', 'store')->name('store');
+//            Route::get('/{review}/edit', 'edit')->name('edit');
+//            Route::patch('/{review}', 'update')->name('update');
+//            Route::delete('/{review}', 'destroy')->name('destroy');
+//            Route::get('/{review}/approve', 'approve')->name('approve');
+//            Route::get('/{review}/reject', 'reject')->name('reject');
+//        });
+//    });
+//});
+
 Route::middleware(['auth', 'role:super-admin|admin'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::controller(DashboardController::class)->group(function () {
