@@ -38,11 +38,7 @@ class ConfirmablePasswordController extends Controller
 
         $user = Auth::user();
 
-        notyf()
-            ->position('y', 'top')
-            ->dismissible(true)
-            ->ripple(false)
-            ->addSuccess('Password Confirmed Successfully.');
+        notyf()->addSuccess('Password Confirmed Successfully.');
 
         if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
             return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);

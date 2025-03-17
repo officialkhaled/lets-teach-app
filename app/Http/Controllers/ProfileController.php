@@ -26,27 +26,35 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        currentUser()->fill($request->validated());
+        try {
+            currentUser()->fill($request->validated());
 
-        if (currentUser()->isDirty('email')) {
-            currentUser()->email_verified_at = null;
-        }
+            if (currentUser()->isDirty('email')) {
+                currentUser()->email_verified_at = null;
+            }
 
-        if ($request->avatar) {
-            $imageName = "images/" . time() . '.' . $request->avatar->extension();
-            $request->avatar->move(storage_path('app/public/images'), $imageName);
+            if ($request->avatar) {
+                $imageName = "images/" . time() . '.' . $request->avatar->extension();
+                $request->avatar->move(storage_path('app/public/images'), $imageName);
 
-            currentUser()->avatar = $imageName;
-        }
+                currentUser()->avatar = $imageName;
+            }
 
-        currentUser()->save();
+            currentUser()->save();
 
-        if (currentUser()->hasRole('super-admin') || currentUser()->hasRole('admin')) {
-            return Redirect::route('admin.admin-dashboard')->with('success', 'Profile Updated Successfully.');
-        } else if (currentUser()->hasRole('tutor')) {
-            return Redirect::route('tutor.tutor-dashboard')->with('success', 'Profile Updated Successfully.');
-        } else {
-            return Redirect::route('student.student-dashboard')->with('success', 'Profile Updated Successfully.');
+            notyf()->addSuccess('Profile Updated Successfully.');
+
+            if (currentUser()->hasRole('super-admin') || currentUser()->hasRole('admin')) {
+                return Redirect::route('admin.admin-dashboard')->with('success', 'Profile Updated Successfully.');
+            } else if (currentUser()->hasRole('tutor')) {
+                return Redirect::route('tutor.tutor-dashboard')->with('success', 'Profile Updated Successfully.');
+            } else {
+                return Redirect::route('student.student-dashboard')->with('success', 'Profile Updated Successfully.');
+            }
+        } catch (\Exception $exception) {
+            notyf()->addError($exception->getMessage());
+
+            return redirect()->back();
         }
     }
 
@@ -55,19 +63,27 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        try {
+            $request->validateWithBag('userDeletion', [
+                'password' => ['required', 'current_password'],
+            ]);
 
-        $user = $request->user();
+            $user = $request->user();
 
-        Auth::logout();
+            Auth::logout();
 
-        $user->delete();
+            $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+            notyf()->addSuccess('Profile Updated Successfully.');
+
+            return Redirect::to('/');
+        } catch (\Exception $exception) {
+            notyf()->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

@@ -31,17 +31,9 @@ class JobPostsController extends Controller
         try {
             $post->apply();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Applied Successfully.');
+            notyf()->addSuccess('Applied Successfully.');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
         }
 
         return redirect()->back();

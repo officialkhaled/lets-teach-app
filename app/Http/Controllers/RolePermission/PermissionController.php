@@ -45,19 +45,11 @@ class PermissionController extends Controller
                 'name' => $request->name
             ]);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Permission Created Successfully.');
+            notyf()->addSuccess('Permission Created Successfully.');
 
             return redirect('admin/settings/permissions');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -83,19 +75,11 @@ class PermissionController extends Controller
                 'name' => $request->name
             ]);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Permission Updated Successfully.');
+            notyf()->addSuccess('Permission Updated Successfully.');
 
             return redirect('admin/settings/permissions');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -107,19 +91,11 @@ class PermissionController extends Controller
             $permission = Permission::find($permissionId);
             $permission->delete();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Permission Deleted Successfully.');
+            notyf()->addSuccess('Permission Deleted Successfully.');
 
             return redirect('admin/settings/permissions');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }

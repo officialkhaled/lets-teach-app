@@ -47,19 +47,11 @@ class RoleController extends Controller
                 'name' => $request->name
             ]);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Role Created Successfully.');
+            notyf()->addSuccess('Role Created Successfully.');
 
             return redirect('admin/settings/roles');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -87,19 +79,11 @@ class RoleController extends Controller
                 'name' => $request->name
             ]);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Role Updated Successfully.');
+            notyf()->addSuccess('Role Updated Successfully.');
 
             return redirect('admin/settings/roles');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -111,19 +95,11 @@ class RoleController extends Controller
             $role = Role::find($roleId);
             $role->delete();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Role Deleted Successfully.');
+            notyf()->addSuccess('Role Deleted Successfully.');
 
             return redirect('admin/settings/roles');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -156,19 +132,11 @@ class RoleController extends Controller
             $role = Role::findOrFail($roleId);
             $role->syncPermissions($request->permission);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Permissions Added to Role.');
+            notyf()->addSuccess('Permissions Added to Role.');
 
             return redirect()->back();
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }

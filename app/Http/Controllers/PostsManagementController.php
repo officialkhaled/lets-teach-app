@@ -57,19 +57,11 @@ class PostsManagementController extends Controller
                 'note' => $request->input('note'),
             ]);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Post Created Successfully.');
+            notyf()->addSuccess('Post Created Successfully.');
 
             return redirect()->route('student.posts-management.index');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -99,19 +91,11 @@ class PostsManagementController extends Controller
 
             $post->save();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Post Updated Successfully.');
+            notyf()->addSuccess('Post Updated Successfully.');
 
             return redirect()->route('student.posts-management.index');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -122,19 +106,11 @@ class PostsManagementController extends Controller
         try {
             $post->delete();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Post Deleted Successfully.');
+            notyf()->addSuccess('Post Deleted Successfully.');
 
             return redirect()->route('student.posts-management.index');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }

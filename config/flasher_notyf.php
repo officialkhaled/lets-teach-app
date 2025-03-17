@@ -22,4 +22,12 @@ return array(
             '/vendor/flasher/flasher-notyf.min.css',
         ),
     ),
+    'options' => array(
+        'dismissible' => true,
+        'ripple' => false,
+        'position' => array(
+            'x' => 'right',
+            'y' => 'top',
+        ),
+    ),
 );
