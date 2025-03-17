@@ -16,11 +16,7 @@ class EmailVerificationPromptController extends Controller
     public function __invoke(Request $request): RedirectResponse|View
     {
         if ($request->user()->hasVerifiedEmail()) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('Email Verified Successfully.');
+            notyf()->addSuccess('Email Verified Successfully.');
 
             if ($request->user()->hasRole('super-admin') || $request->user()->hasRole('admin')) {
                 return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);

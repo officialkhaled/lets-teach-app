@@ -74,24 +74,6 @@ return array(
         'local' => '/vendor/flasher/flasher.min.css',
     ),
 
-    'plugins' => array(
-        'notyf' => [
-            'scripts' => [
-                '/vendor/flasher/flasher-notyf.min.js',
-            ],
-            'styles' => [
-                '/vendor/flasher/flasher-notyf.min.css',
-            ],
-            'options' => [
-                'dismissible' => true,
-                'position' => [
-                    'x' => 'right',
-                    'y' => 'top',
-                ],
-            ],
-        ],
-    ),
-
     /*
     |---------------------------------------------------------------------------
     | Whether to use CDN for PHPFlasher assets or not

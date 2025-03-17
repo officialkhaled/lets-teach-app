@@ -50,19 +50,11 @@ class UserController extends Controller
 
             $user->syncRoles($request->roles);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('User Created Successfully with Roles.');
+            notyf()->addSuccess('User Created Successfully with Roles.');
 
             return redirect('admin/settings/users');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -103,19 +95,11 @@ class UserController extends Controller
             $user->update($data);
             $user->syncRoles($request->roles);
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('User Updated Successfully with Roles.');
+            notyf()->addSuccess('User Updated Successfully with Roles.');
 
             return redirect('admin/settings/users');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
@@ -127,19 +111,11 @@ class UserController extends Controller
             $user = User::findOrFail($userId);
             $user->delete();
 
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addSuccess('User Deleted Successfully.');
+            notyf()->addSuccess('User Deleted Successfully.');
 
             return redirect('admin/settings/users');
         } catch (\Exception $exception) {
-            notyf()
-                ->position('y', 'top')
-                ->dismissible(true)
-                ->ripple(false)
-                ->addError($exception->getMessage());
+            notyf()->addError($exception->getMessage());
 
             return redirect()->back();
         }
