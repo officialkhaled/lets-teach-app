@@ -31,12 +31,12 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $permission->name }}</td>
                                 <td class="text-center">
-                                    @can('update permission')
+                                    @can('Update Permission')
                                         <a href="{{ url('admin/settings/permissions/'.$permission->id.'/edit') }}" class="btn btn-sm btn-success shadow-sm">
                                             <i class="fa-solid fa-pen-to-square opacity-75"></i>
                                         </a>
                                     @endcan
-                                    @can('delete permission')
+                                    @can('Delete Permission')
                                         <a href="{{ url('admin/settings/permissions/'.$permission->id.'/delete') }}" class="btn btn-sm btn-danger mx-2 shadow-sm">
                                             <i class="fa-solid fa-trash opacity-75"></i>
                                         </a>

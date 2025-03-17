@@ -10,6 +10,18 @@ use App\Http\Requests\PostsManagementRequest;
 
 class PostsManagementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:View Posts', ['only' => ['index']]);
+        $this->middleware('permission:Create Posts', ['only' => ['create', 'store']]);
+        $this->middleware('permission:Update Posts', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:Delete Posts', ['only' => ['destroy']]);
+        $this->middleware('permission:Apply Post', ['only' => ['apply']]);
+        $this->middleware('permission:Approve Post', ['only' => ['approve']]);
+        $this->middleware('permission:Reject Post', ['only' => ['reject']]);
+        $this->middleware('permission:View Details', ['only' => ['view']]);
+    }
+
     public function index()
     {
         $studentId = Student::query()->firstWhere('user_id', userId())['id'] ?? '';
@@ -109,6 +121,49 @@ class PostsManagementController extends Controller
             notyf()->addSuccess('Post Deleted Successfully.');
 
             return redirect()->route('student.posts-management.index');
+        } catch (\Exception $exception) {
+            notyf()->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
+    }
+
+    public function apply(Post $post)
+    {
+        try {
+            $post->apply();
+
+            notyf()->addSuccess('Post Applied Successfully.');
+        } catch (\Exception $exception) {
+            notyf()->addError($exception->getMessage());
+        }
+
+        return redirect()->back();
+    }
+
+    public function approve(Post $post)
+    {
+        try {
+            $post->approve();
+
+            notyf()->addSuccess('Post Approved Successfully.');
+
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            notyf()->addError($exception->getMessage());
+
+            return redirect()->back();
+        }
+    }
+
+    public function reject(Post $post)
+    {
+        try {
+            $post->reject();
+
+            notyf()->addSuccess('Post Rejected Successfully.');
+
+            return redirect()->back();
         } catch (\Exception $exception) {
             notyf()->addError($exception->getMessage());
 
