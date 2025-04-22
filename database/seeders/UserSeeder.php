@@ -20,8 +20,7 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => "Super Admin",
                 'email' => "super@skylarksoft.com",
-                'role' => 0,
-                'image' => null,
+                'avatar' => null,
                 'password' => $password,
             ]);
         }
@@ -30,8 +29,7 @@ class UserSeeder extends Seeder
             $user = User::create([
                 'name' => generateFaker()->name,
                 'email' => generateFaker()->email,
-                'role' => 1,
-                'image' => null,
+                'avatar' => null,
                 'password' => $password,
             ]);
 
@@ -44,8 +42,7 @@ class UserSeeder extends Seeder
             $user = User::create([
                 'name' => generateFaker()->name,
                 'email' => generateFaker()->email,
-                'role' => 2,
-                'image' => null,
+                'avatar' => null,
                 'password' => $password,
             ]);
 
